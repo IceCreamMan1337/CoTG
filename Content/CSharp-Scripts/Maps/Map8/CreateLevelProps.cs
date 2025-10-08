@@ -15,7 +15,7 @@ public static class CreateLevelProps
         AddLevelProp("LevelProp_Odin_Lifts_Crystal", "Odin_Lifts_Crystal", new Vector3(1578.0967f, -78.48851f, 7505.5938f), new Vector3(0.0f, 12.0f, 0.0f), new Vector3(-233.3335f, 100.0f, -544.4445f), Vector3.One);
         AddLevelProp("LevelProp_OdinRockSaw02", "OdinRockSaw", new Vector3(5659.9004f, -11.821701f, 1016.47925f), new Vector3(0.0f, 40.0f, 0.0f), new Vector3(233.3334f, 133.3334f, -77.7778f), Vector3.One);
         AddLevelProp("LevelProp_OdinRockSaw01", "OdinRockSaw", new Vector3(2543.822f, -56.266106f, 1344.957f), Vector3.Zero, new Vector3(-122.2222f, 111.1112f, -744.4445f), Vector3.One);
-        AddLevelProp("LevelProp_Odin_Drill", "Odin_Drill", new Vector3(11992.028f, 343.7337f, 8547.805f), new Vector3(0.0f, 244.0f, 0.0f), new Vector3(33.3333f, 311.1111f, 0.0f), Vector3.One);
+        AddLevelProp("LevelProp_Odin_Drill", "Odin_Drill", new Vector3(11992.028f, 343.7337f, 8547.805f), new Vector3(244.0f, 0.0f, 0.0f), new Vector3(33.3333f, 311.1111f, 0.0f), Vector3.One);
         /* Stairs[0] = */
         AddLevelProp("LevelProp_Odin_SoG_Order", "Odin_SoG_Order", new Vector3(266.77225f, 139.9266f, 3903.9998f), Vector3.Zero, new Vector3(-288.8889f, 122.2222f, -188.8889f), Vector3.One);
 
