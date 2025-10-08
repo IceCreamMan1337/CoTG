@@ -499,7 +499,7 @@ internal class ContentManager
     private static void ProcessParticleFile(string file, string model, int skin)
     {
         RFile? contentFile = Cache.GetFile(Path.Join(ParticlesPath, file));
-        var fileName = Path.GetFileNameWithoutExtension(file).ToLowerInvariant() + ".troy";
+        var fileName = Path.GetFileName(file).ToLowerInvariant();
 
         if (contentFile is null)
         {

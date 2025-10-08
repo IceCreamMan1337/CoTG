@@ -11,11 +11,14 @@ using CoTGLibrary.Extensions;
 using CoTG.CoTGServer.GameObjects;
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
 using System.Buffers;
+using log4net;
+using CoTG.CoTGServer.Logging;
 
 namespace CoTG.CoTGServer.Content.Navigation
 {
     public class NavigationGrid
     {
+        ILog _logger = LoggerProvider.GetLogger();
         /// <summary>
         /// The minimum position on the NavigationGrid in normal coordinate space (bottom left in 2D).
         /// NavigationGridCells are undefined below these minimums.
@@ -258,6 +261,11 @@ namespace CoTG.CoTGServer.Content.Navigation
         {
             if (queue.TryDequeue(out var element, out _))
             {
+                if (element.Item1 is null)
+                {
+                    meetingPoint = null;
+                    return false;
+                }
                 float currentCost = element.Item2;
                 NavigationGridCell cell = element.Item1;
                 if (otherClosedList.Get(cell.ID))
@@ -338,6 +346,12 @@ namespace CoTG.CoTGServer.Content.Navigation
             {
                 AddCell(ref current);
                 current = forwardPaths[current.ID];
+                //HACK: prevent infinite loop
+                if (pathCount >= 0xFFFF)
+                {
+                    _logger.WarnFormat("Path exceeded designed limit({0})! Forcefully breaking out of the loop!", 0xFFFF);
+                    break;
+                }
             }
 
             Array.Reverse(pathStack, 0, pathCount);
@@ -348,6 +362,12 @@ namespace CoTG.CoTGServer.Content.Navigation
             {
                 AddCell(ref current);
                 current = backwardPaths[current.ID];
+                //HACK: prevent infinite loop
+                if (pathCount >= 0xFFFF)
+                {
+                    _logger.WarnFormat("Path exceeded designed limit({0})! Forcefully breaking out of the loop!", 0xFFFF);
+                    break;
+                }
             }
 
             // Convert to world positions
