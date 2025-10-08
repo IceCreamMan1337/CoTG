@@ -452,13 +452,9 @@ namespace PacketDefinitions126
 
         public bool HandlePacket(Peer peer, byte[] data, Channel channelId)
         {
-
-
-
-
             try
             {
-                var packet = BasePacket.Create(data, (ChannelID)channelId, Game.Config.VersionOfClient);
+                var packet = BasePacket.Create(data, (ChannelID)channelId);
                 int clientId = (int)peer.UserData;
                 Game.RequestHandler.OnMessage(clientId, packet);
                 return true;

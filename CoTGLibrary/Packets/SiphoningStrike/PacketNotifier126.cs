@@ -183,44 +183,14 @@ namespace PacketDefinitions126
 
         public void NotifyCreateTurret(LaneTurret turret, int userId, bool doVision)
         {
-            if (Game.Config.VersionOfClient == "1.0.0.126" || Game.Config.VersionOfClient == "1.0.0.131")
+            var packet = new S2C_CreateTurret
             {
-                var packet = new S2C_CreateTurret
-                {
-                    SenderNetID = turret.NetId,
-                    UniteNetID = turret.NetId,
-                    UnitNetNodeID = (byte)NetNodeID.Spawned,
-                    Name = turret.Name
-                };
-                SendSpawnPacket(userId, turret, packet, true);
-            }
-            else if (Game.Config.VersionOfClient == "1.0.0.132")
-            {
-                var packet = new TechmaturgicalRepairBot.Game.S2C_CreateTurret
-                {
-                    SenderNetID = turret.NetId,
-                    UniteNetID = turret.NetId,
-                    UnitNetNodeID = (byte)NetNodeID.Spawned,
-                    Name = turret.Name,
-                    IsTargetable = true,
-                    IsTargetableToTeamSpellFlags = (uint)StatusFlags.Targetable
-                };
-
-                SendSpawnPacket(userId, turret, packet, true);
-            }
-            else
-            {
-                var packet = new S2C_CreateTurret
-                {
-                    SenderNetID = turret.NetId,
-                    UniteNetID = turret.NetId,
-                    UnitNetNodeID = (byte)NetNodeID.Spawned,
-                    Name = turret.Name,
-
-                };
-                SendSpawnPacket(userId, turret, packet, true);
-            }
-
+                SenderNetID = turret.NetId,
+                UniteNetID = turret.NetId,
+                UnitNetNodeID = (byte)NetNodeID.Spawned,
+                Name = turret.Name
+            };
+            SendSpawnPacket(userId, turret, packet, true);
         }
 
         // TODO: implement option for multiple particles and groups of particles instead of hardcoding one
@@ -2258,40 +2228,6 @@ namespace PacketDefinitions126
             _packetHandlerManager.BroadcastPacket(response, Channel.CHL_LOW_PRIORITY, PacketFlags.UNSEQUENCED);
         }
 
-
-        public void NotifyPingLoadInfo(ClientInfo client, CrystalSlash.Game.C2S_Ping_Load_Info packet)
-        {
-            var response = new S2C_Ping_Load_Info
-            {
-                ConnectionInfo = new ConnectionInfo
-                {
-                    ClientID = packet.ConnectionInfo.ClientID,
-                    Ping = packet.ConnectionInfo.Ping,
-                    PlayerID = (ulong)client.PlayerId,
-                    ETA = packet.ConnectionInfo.ETA,
-                    Ready = packet.ConnectionInfo.Ready,
-                    Percentage = packet.ConnectionInfo.Percentage,
-                    Count = packet.ConnectionInfo.Count
-                }
-            };
-
-            //var response = new SiphoningStrike.Game.S2C_Ping_Load_Info
-            //{
-            //    ConnectionInfo = new SiphoningStrike.Game.Common.ConnectionInfo
-            //    {
-            //        ClientID = request.ClientID,
-            //        PlayerID = (ulong)client.PlayerId,
-            //        Percentage = request.Percentage,
-            //        ETA = request.ETA,
-            //        Count = request.Count,
-            //        Ping = request.Ping,
-            //        Ready = request.Ready
-            //    },
-            //};
-            //Logging->writeLine("loaded: %f, ping: %f, %f", loadInfo->loaded, loadInfo->ping, loadInfo->f3);
-            _packetHandlerManager.BroadcastPacket(response, Channel.CHL_LOW_PRIORITY);
-        }
-
         /// <summary>
         /// Sends a packet to all players that a champion has respawned.
         /// </summary>
@@ -2469,80 +2405,25 @@ namespace PacketDefinitions126
         /// <param name="userId">User to send the packet to. Set to -1 to broadcast.</param>
         public void NotifyS2C_CreateHero(ClientInfo clientInfo, int userId, TeamId team, bool doVision)
         {
-
             var champion = clientInfo.Champion;
-
-            if (Game.Config.VersionOfClient == "1.0.0.126" || Game.Config.VersionOfClient == "1.0.0.131")
+            var heroPacket = new S2C_CreateHero() // Broadcast
             {
+                UnitNetID = champion.NetId,
+                ClientID = (uint)clientInfo.ClientId,
+                NetNodeID = 0x40,
+                // For bots (0 = Beginner, 1 = Intermediate)
+                SkillLevel = 0,
+                TeamIsOrder = champion.Team is TeamId.TEAM_ORDER,
+                IsBot = false,//champion.IsBot,// is set to true , this will justrename bot to bot_champion_xxx 
+                BotRank = 0,
+                SpawnPositionIndex = 0,
+                SkinID = (uint)champion.SkinID,
+                Name = clientInfo.Name,
+                Skin = champion.Model,
 
-                var heroPacket = new S2C_CreateHero() // Broadcast
-                {
-                    UnitNetID = champion.NetId,
-                    ClientID = (uint)clientInfo.ClientId,
-                    NetNodeID = 0x40,
-                    // For bots (0 = Beginner, 1 = Intermediate)
-                    SkillLevel = 0,
-                    TeamIsOrder = champion.Team is TeamId.TEAM_ORDER,
-                    IsBot = false,//champion.IsBot,// is set to true , this will justrename bot to bot_champion_xxx 
-                    BotRank = 0,
-                    SpawnPositionIndex = 0,
-                    SkinID = (uint)champion.SkinID,
-                    Name = clientInfo.Name,
-                    Skin = champion.Model,
-
-                };
-                SendSpawnPacket(userId, champion, heroPacket, true);
-            }
-            else if (Game.Config.VersionOfClient == "1.0.0.132")
-            {
-
-                var heroPacket = new TechmaturgicalRepairBot.Game.S2C_CreateHero() // Broadcast
-                {
-                    UnitNetID = champion.NetId,
-                    ClientID = (uint)clientInfo.ClientId,
-                    NetNodeID = 0x40,
-                    // For bots (0 = Beginner, 1 = Intermediate)
-                    SkillLevel = 0,
-                    TeamIsOrder = champion.Team is TeamId.TEAM_ORDER,
-                    IsBot = champion.IsBot,
-                    BotRank = 0,
-                    SpawnPositionIndex = 0,
-                    SkinID = (uint)champion.SkinID,
-                    Name = clientInfo.Name,
-                    Skin = champion.Model,
-
-                };
-                SendSpawnPacket(userId, champion, heroPacket, true);
-            }
-            else
-            {
-
-                var heroPacket = new S2C_CreateHero() // Broadcast
-                {
-                    UnitNetID = champion.NetId,
-                    ClientID = (uint)clientInfo.ClientId,
-                    NetNodeID = 0x40,
-                    // For bots (0 = Beginner, 1 = Intermediate)
-                    SkillLevel = 0,
-                    TeamIsOrder = champion.Team is TeamId.TEAM_ORDER,
-                    IsBot = champion.IsBot,
-                    BotRank = 0,
-                    SpawnPositionIndex = 0,
-                    SkinID = (uint)champion.SkinID,
-                    Name = clientInfo.Name,
-                    Skin = champion.Model,
-
-                };
-                SendSpawnPacket(userId, champion, heroPacket, true);
-            }
-
-
-
-
-
-            //test
+            };
+            SendSpawnPacket(userId, champion, heroPacket, true);
             clientInfo.Champion.SetStatus(StatusFlags.CanMove, true);
-
         }
 
         public void NotifyS2C_CreateMinionCamp(NeutralMinionCamp monsterCamp, int userId, TeamId team)
@@ -3525,338 +3406,115 @@ namespace PacketDefinitions126
         /// <param name="mapId">ID of the map being played.</param>
         public void NotifySynchVersion(int userId, TeamId team, List<ClientInfo> players, string version, string gameMode, GameFeatures gameFeatures, int mapId, string[] mutators)
         {
-            if (Game.Config.VersionOfClient == "1.0.0.126" || Game.Config.VersionOfClient == "1.0.0.131")
+            var syncVersion = new S2C_SynchVersion
             {
-                var syncVersion = new S2C_SynchVersion
+                // TODO: Unhardcode all booleans below
+                IsVersionOK = true,
+                // Logs match to file.
+                // WriteToClientFile = false,
+                // Whether or not this game is considered a match.
+                // MatchedGame = true,
+                // Unknown
+                // DradisInit = false,
+
+                MapToLoad = mapId,
+                VersionString = "1.0.0.126",
+                MapMode = gameMode,
+                // TODO: Unhardcode all below
+                //PlatformID = "NA1",
+                //  MutatorsNum = 0,
+                //  OrderRankedTeamName = "",
+                //  OrderRankedTeamTag = "",
+                // ChaosRankedTeamName = "",
+                // ChaosRankedTeamTag = "",
+                // site.com
+                //  MetricsServerWebAddress = "",
+                // /messages
+                //   MetricsServerWebPath = "",
+                // 80
+                //  MetricsServerPort = 0,
+                // site.com
+                //  DradisProdAddress = "",
+                // /messages
+                //  DradisProdResource = "",
+                // 80
+                //  DradisProdPort = 0,
+                // test-lb-#.us-west-#.elb.someaws.com
+                //  DradisTestAddress = "",
+                // /messages
+                //   DradisTestResource = "",
+                // 80
+                //    DradisTestPort = 0,
+                // TODO: Create a new TipConfig class and use it here (basically, unhardcode this).
+                /*    TipConfig = new TipConfig
+                    {
+                        TipID = 0,
+                        ColorID = 0,
+                        DurationID = 0,
+                        Flags = 3
+                    },
+                    GameFeatures = (ulong)gameFeatures,*/
+            };
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                // Protection contre le dépassement d'index - limite à 10 joueurs maximum
+                if (i >= syncVersion.PlayerInfo.Length)
                 {
-                    // TODO: Unhardcode all booleans below
-                    IsVersionOK = true,
-                    // Logs match to file.
-                    // WriteToClientFile = false,
-                    // Whether or not this game is considered a match.
-                    // MatchedGame = true,
-                    // Unknown
-                    // DradisInit = false,
-
-                    MapToLoad = mapId,
-                    VersionString = Game.Config.VersionOfClient,
-                    MapMode = gameMode,
-                    // TODO: Unhardcode all below
-                    //PlatformID = "NA1",
-                    //  MutatorsNum = 0,
-                    //  OrderRankedTeamName = "",
-                    //  OrderRankedTeamTag = "",
-                    // ChaosRankedTeamName = "",
-                    // ChaosRankedTeamTag = "",
-                    // site.com
-                    //  MetricsServerWebAddress = "",
-                    // /messages
-                    //   MetricsServerWebPath = "",
-                    // 80
-                    //  MetricsServerPort = 0,
-                    // site.com
-                    //  DradisProdAddress = "",
-                    // /messages
-                    //  DradisProdResource = "",
-                    // 80
-                    //  DradisProdPort = 0,
-                    // test-lb-#.us-west-#.elb.someaws.com
-                    //  DradisTestAddress = "",
-                    // /messages
-                    //   DradisTestResource = "",
-                    // 80
-                    //    DradisTestPort = 0,
-                    // TODO: Create a new TipConfig class and use it here (basically, unhardcode this).
-                    /*    TipConfig = new TipConfig
-                        {
-                            TipID = 0,
-                            ColorID = 0,
-                            DurationID = 0,
-                            Flags = 3
-                        },
-                        GameFeatures = (ulong)gameFeatures,*/
-                };
-
-                for (int i = 0; i < players.Count; i++)
-                {
-                    // Protection contre le dépassement d'index - limite à 10 joueurs maximum
-                    if (i >= syncVersion.PlayerInfo.Length)
-                    {
-                        Console.WriteLine($"[DEBUG] Ignoring player {i} (PlayerInfo array full, max {syncVersion.PlayerInfo.Length} players)");
-                        break; // Sortir de la boucle si on dépasse la taille du tableau
-                    }
-
-                    var player = players[i];
-                    var info = new PlayerLoadInfo
-                    {
-                        PlayerID = (ulong)player.PlayerId,
-                        // TODO: Change to players[i].Item2.SummonerLevel
-                        SummonorLevel = 30,
-                        SummonorSpell1 = HashString(player.SummonerSkills[0]),
-                        SummonorSpell2 = HashString(player.SummonerSkills[1]),
-                        // TODO
-                        IsBot = false,
-                        TeamId = (uint)player.Team,
-                        BotName = "",
-                        BotSkinName = "",
-                        // EloRanking = player.Rank,
-                        // BotSkinID = 0,
-                        BotDifficulty = 0,
-                        ProfileIconId = player.Icon,
-                        // TODO: Unhardcode these two.
-                        // AllyBadgeID = 0,
-                        // EnemyBadgeID = 0
-                    };
-
-                    if (player.Champion.IsBot)
-                    {
-                        info.IsBot = true;
-                        //TODO: Fix the display of summoner spells
-                        info.BotName = player.Champion.Model + "\u0000";
-                        info.BotSkinName = player.Champion.Model + "\u0000";
-                        // info.BotSkinID = player.Champion.SkinID;
-                        info.BotDifficulty = 1; //todo unhardcode them with difficultflag
-                        info.ProfileIconId = 1;
-                    }
-
-                    syncVersion.PlayerInfo[i] = info;
+                    Console.WriteLine($"[DEBUG] Ignoring player {i} (PlayerInfo array full, max {syncVersion.PlayerInfo.Length} players)");
+                    break; // Sortir de la boucle si on dépasse la taille du tableau
                 }
 
-                byte mutatorCount = 0;
-                /*  for (byte i = 0; i < mutators.Length && i < 8; i++)
-                  {
-                      syncVersion.Mutators[mutators[i] is null ? mutatorCount : mutatorCount++] = mutators[i];
-                  }
-                  syncVersion.MutatorsNum = mutatorCount;
-                */
-                // TODO: syncVersion.Mutators
-
-                // TODO: syncVersion.DisabledItems
-
-                // TODO: syncVersion.EnabledDradisMessages
-
-                _packetHandlerManager.SendPacket(userId, syncVersion, Channel.CHL_S2C);
-            }
-            else if (Game.Config.VersionOfClient == "1.0.0.132")
-            {
-                /*  var syncVersion = new S2C_SynchVersion_131
-                  {
-                      // TODO: Unhardcode all booleans below
-                      IsVersionOK = true,
-                      // Logs match to file.
-                      // WriteToClientFile = false,
-                      // Whether or not this game is considered a match.
-                      // MatchedGame = true,
-                      // Unknown
-                      // DradisInit = false,
-
-                      MapToLoad = mapId,
-                      VersionString = "1.0.0.131",
-                      MapMode = gameMode,
-                      // TODO: Unhardcode all below
-                      //PlatformID = "NA1",
-                      //  MutatorsNum = 0,
-                      //  OrderRankedTeamName = "",
-                      //  OrderRankedTeamTag = "",
-                      // ChaosRankedTeamName = "",
-                      // ChaosRankedTeamTag = "",
-                      // site.com
-                      //  MetricsServerWebAddress = "",
-                      // /messages
-                      //   MetricsServerWebPath = "",
-                      // 80
-                      //  MetricsServerPort = 0,
-                      // site.com
-                      //  DradisProdAddress = "",
-                      // /messages
-                      //  DradisProdResource = "",
-                      // 80
-                      //  DradisProdPort = 0,
-                      // test-lb-#.us-west-#.elb.someaws.com
-                      //  DradisTestAddress = "",
-                      // /messages
-                      //   DradisTestResource = "",
-                      // 80
-                      //    DradisTestPort = 0,
-                      // TODO: Create a new TipConfig class and use it here (basically, unhardcode this).
-                          TipConfig = new TipConfig
-                          {
-                              TipID = 0,
-                              ColorID = 0,
-                              DurationID = 0,
-                              Flags = 3
-                          },
-                          GameFeatures = (ulong)gameFeatures,
-                  };
-
-                  for (int i = 0; i < players.Count; i++)
-                  {
-                      var player = players[i];
-                      var info = new PlayerLoadInfo_131
-                      {
-                          PlayerID = (ulong)player.PlayerId,
-                          // TODO: Change to players[i].Item2.SummonerLevel
-                          SummonorLevel = 30,
-                          SummonorSpell1 = (uint)HashString(player.SummonerSkills[0]),
-                          SummonorSpell2 = (uint)HashString(player.SummonerSkills[1]),
-                          // TODO
-                          IsBot = false,
-                          TeamId = (uint)player.Team,
-                          BotName = "",
-                          BotSkinName = "",
-                          // EloRanking = player.Rank,
-                          // BotSkinID = 0,
-                          BotDifficulty = 0,
-                          ProfileIconId = player.Icon,
-                          // TODO: Unhardcode these two.
-                          // AllyBadgeID = 0,
-                          // EnemyBadgeID = 0
-                      };
-
-                      if (player.Champion.IsBot)
-                      {
-                          info.IsBot = true;
-                          //TODO: Fix the display of summoner spells
-                          info.BotName = player.Champion.Model + "\u0000";
-                          info.BotSkinName = player.Champion.Model + "\u0000";
-                          // info.BotSkinID = player.Champion.SkinID;
-                          info.BotDifficulty = 1; //todo unhardcode them with difficultflag
-                          info.ProfileIconId = 1;
-                      }
-
-                      syncVersion.PlayerInfo_131[i] = info;
-                  }
-
-                  byte mutatorCount = 0;
-                    for (byte i = 0; i < mutators.Length && i < 8; i++)
-                    {
-                        syncVersion.Mutators[mutators[i] is null ? mutatorCount : mutatorCount++] = mutators[i];
-                    }
-                    syncVersion.MutatorsNum = mutatorCount;
-
-                  // TODO: syncVersion.Mutators
-
-                  // TODO: syncVersion.DisabledItems
-
-                  // TODO: syncVersion.EnabledDradisMessages
-
-                  _packetHandlerManager.SendPacket(userId, syncVersion, Channel.CHL_S2C); */
-            }
-
-            else
-            {
-                var syncVersion = new S2C_SynchVersion
+                var player = players[i];
+                var info = new PlayerLoadInfo
                 {
-                    // TODO: Unhardcode all booleans below
-                    IsVersionOK = true,
-                    // Logs match to file.
-                    // WriteToClientFile = false,
-                    // Whether or not this game is considered a match.
-                    // MatchedGame = true,
-                    // Unknown
-                    // DradisInit = false,
-
-                    MapToLoad = mapId,
-                    VersionString = "1.0.0.126",
-                    MapMode = gameMode,
-                    // TODO: Unhardcode all below
-                    //PlatformID = "NA1",
-                    //  MutatorsNum = 0,
-                    //  OrderRankedTeamName = "",
-                    //  OrderRankedTeamTag = "",
-                    // ChaosRankedTeamName = "",
-                    // ChaosRankedTeamTag = "",
-                    // site.com
-                    //  MetricsServerWebAddress = "",
-                    // /messages
-                    //   MetricsServerWebPath = "",
-                    // 80
-                    //  MetricsServerPort = 0,
-                    // site.com
-                    //  DradisProdAddress = "",
-                    // /messages
-                    //  DradisProdResource = "",
-                    // 80
-                    //  DradisProdPort = 0,
-                    // test-lb-#.us-west-#.elb.someaws.com
-                    //  DradisTestAddress = "",
-                    // /messages
-                    //   DradisTestResource = "",
-                    // 80
-                    //    DradisTestPort = 0,
-                    // TODO: Create a new TipConfig class and use it here (basically, unhardcode this).
-                    /*    TipConfig = new TipConfig
-                        {
-                            TipID = 0,
-                            ColorID = 0,
-                            DurationID = 0,
-                            Flags = 3
-                        },
-                        GameFeatures = (ulong)gameFeatures,*/
+                    PlayerID = (ulong)player.PlayerId,
+                    // TODO: Change to players[i].Item2.SummonerLevel
+                    SummonorLevel = 30,
+                    SummonorSpell1 = HashString(player.SummonerSkills[0]),
+                    SummonorSpell2 = HashString(player.SummonerSkills[1]),
+                    // TODO
+                    IsBot = false,
+                    TeamId = (uint)player.Team,
+                    BotName = "",
+                    BotSkinName = "",
+                    // EloRanking = player.Rank,
+                    // BotSkinID = 0,
+                    BotDifficulty = 0,
+                    ProfileIconId = player.Icon,
+                    // TODO: Unhardcode these two.
+                    // AllyBadgeID = 0,
+                    // EnemyBadgeID = 0
                 };
 
-                for (int i = 0; i < players.Count; i++)
+                if (player.Champion.IsBot)
                 {
-                    // Protection contre le dépassement d'index - limite à 10 joueurs maximum
-                    if (i >= syncVersion.PlayerInfo.Length)
-                    {
-                        Console.WriteLine($"[DEBUG] Ignoring player {i} (PlayerInfo array full, max {syncVersion.PlayerInfo.Length} players)");
-                        break; // Sortir de la boucle si on dépasse la taille du tableau
-                    }
-
-                    var player = players[i];
-                    var info = new PlayerLoadInfo
-                    {
-                        PlayerID = (ulong)player.PlayerId,
-                        // TODO: Change to players[i].Item2.SummonerLevel
-                        SummonorLevel = 30,
-                        SummonorSpell1 = HashString(player.SummonerSkills[0]),
-                        SummonorSpell2 = HashString(player.SummonerSkills[1]),
-                        // TODO
-                        IsBot = false,
-                        TeamId = (uint)player.Team,
-                        BotName = "",
-                        BotSkinName = "",
-                        // EloRanking = player.Rank,
-                        // BotSkinID = 0,
-                        BotDifficulty = 0,
-                        ProfileIconId = player.Icon,
-                        // TODO: Unhardcode these two.
-                        // AllyBadgeID = 0,
-                        // EnemyBadgeID = 0
-                    };
-
-                    if (player.Champion.IsBot)
-                    {
-                        info.IsBot = true;
-                        //TODO: Fix the display of summoner spells
-                        info.BotName = player.Champion.Model + "\u0000";
-                        info.BotSkinName = player.Champion.Model + "\u0000";
-                        // info.BotSkinID = player.Champion.SkinID;
-                        info.BotDifficulty = 1; //todo unhardcode them with difficultflag
-                        info.ProfileIconId = 1;
-                    }
-
-                    syncVersion.PlayerInfo[i] = info;
+                    info.IsBot = true;
+                    //TODO: Fix the display of summoner spells
+                    info.BotName = player.Champion.Model + "\u0000";
+                    info.BotSkinName = player.Champion.Model + "\u0000";
+                    // info.BotSkinID = player.Champion.SkinID;
+                    info.BotDifficulty = 1; //todo unhardcode them with difficultflag
+                    info.ProfileIconId = 1;
                 }
 
-                byte mutatorCount = 0;
-                /*  for (byte i = 0; i < mutators.Length && i < 8; i++)
-                  {
-                      syncVersion.Mutators[mutators[i] is null ? mutatorCount : mutatorCount++] = mutators[i];
-                  }
-                  syncVersion.MutatorsNum = mutatorCount;
-                */
-                // TODO: syncVersion.Mutators
-
-                // TODO: syncVersion.DisabledItems
-
-                // TODO: syncVersion.EnabledDradisMessages
-
-
-                _packetHandlerManager.SendPacket(userId, syncVersion, Channel.CHL_S2C);
-
+                syncVersion.PlayerInfo[i] = info;
             }
+
+            byte mutatorCount = 0;
+            /*  for (byte i = 0; i < mutators.Length && i < 8; i++)
+              {
+                  syncVersion.Mutators[mutators[i] is null ? mutatorCount : mutatorCount++] = mutators[i];
+              }
+              syncVersion.MutatorsNum = mutatorCount;
+            */
+            // TODO: syncVersion.Mutators
+
+            // TODO: syncVersion.DisabledItems
+
+            // TODO: syncVersion.EnabledDradisMessages
+
+            _packetHandlerManager.SendPacket(userId, syncVersion, Channel.CHL_S2C);
         }
 
 

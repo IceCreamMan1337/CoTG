@@ -52,11 +52,9 @@ namespace CoTG.CoTGServer.GameObjects.StatsNS
             UpdateFloat(2, Stats.Size.Total, 3, 3); //mSkinScaleCoef(mistyped as mCrit)
 
             //mDebugDrawRadius
-            if (Game.Config.ABClient)
-            {
-
+#if DEBUG_AB || RELEASE_AB
                 UpdateFloat(2, Owner.CollisionRadius, 3, 4);
-            }
+#endif
         }
     }
 }

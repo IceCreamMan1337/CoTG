@@ -12,26 +12,16 @@ public class Handle_C2S_Reconnect : PacketHandlerBase<C2S_Reconnect>
         peerInfo.IsStartedClient = true;
         peerInfo.IsDisconnected = false;
         Game.ObjectManager.OnReconnect(userId, peerInfo.Team, false);
-
-
-
-        if (Game.Config.VersionOfClient == "1.0.0.126" || Game.Config.VersionOfClient == "1.0.0.131") //&& peerinfo is disconnected 
-        {
-
-            var info = Game.PlayerManager.GetPeerInfo(userId);
-            var mapId = Game.Config.GameConfig.Map;
-            /*  SynchVersionNotify(
-                  userId, info.Team, Game.PlayerManager.GetPlayers(), Config.VERSION_STRING,
-                  Game.Config.GameConfig.GameMode,
-                  ContentManager.GameFeatures,
-                  mapId,
-                  Game.Map.MutatorNames
-              ); */
-        }
+        var info = Game.PlayerManager.GetPeerInfo(userId);
+        var mapId = Game.Config.GameConfig.Map;
+        /*  SynchVersionNotify(
+              userId, info.Team, Game.PlayerManager.GetPlayers(), Config.VERSION_STRING,
+              Game.Config.GameConfig.GameMode,
+              ContentManager.GameFeatures,
+              mapId,
+              Game.Map.MutatorNames
+          ); */
 
         return true;
-
-
-
     }
 }

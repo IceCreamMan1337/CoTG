@@ -25,7 +25,6 @@ namespace CoTG.CoTGServer
         public List<PlayerConfig> Players { get; private set; }
         public string HttpPostAddress { get; private set; } = string.Empty;
         public bool SupressScriptNotFound { get; private set; }
-        public bool ABClient { get; set; } = false;
         public bool EnableLogAndConsole { get; set; } = false;
         public bool EnableLogBehaviourTree { get; set; } = false;
         public bool EnableLogPKT { get; set; } = false;
@@ -42,7 +41,6 @@ namespace CoTG.CoTGServer
         internal string ContentPath { get; private set; } = string.Empty;
         internal string? DeployFolder { get; private set; }
         internal bool KeepAliveWhenEmpty { get; private set; }
-        internal string? VersionOfClient { get; private set; }
         internal string? nicknameforreplay { get; private set; }
         internal string? pswdforreplay { get; private set; }
 
@@ -106,7 +104,6 @@ namespace CoTG.CoTGServer
             //Time to the game get forced to start, even if not all players are connected
             ForcedStart = gameInfo?.Value<float?>("FORCE_START_TIMER") * 1000 ?? 60_000.0f;
             SupressScriptNotFound = gameInfo?.Value<bool?>("SUPRESS_SCRIPT_NOT_FOUND_LOGS") ?? false;
-            ABClient = gameInfo?.Value<bool?>("AB_CLIENT") ?? false;
             EnableLogAndConsole = gameInfo?.Value<bool?>("ENABLE_LOG_AND_CONSOLEWRITELINE") ?? false;
             EnableLogBehaviourTree = gameInfo?.Value<bool?>("ENABLE_LOG_BehaviourTree") ?? false;
             EnableLogPKT = gameInfo?.Value<bool?>("ENABLE_LOG_PKT") ?? false;
@@ -116,7 +113,6 @@ namespace CoTG.CoTGServer
             ContentPath = gameInfo?.Value<string?>("CONTENT_PATH") ?? string.Empty;
             DeployFolder = gameInfo?.Value<string?>("DEPLOY_FOLDER") ?? string.Empty;
             KeepAliveWhenEmpty = gameInfo?.Value<bool?>("KEEP_ALIVE_WHEN_EMPTY") ?? false;
-            VersionOfClient = gameInfo?.Value<string?>("CLIENT_VERSION") ?? string.Empty;
             //launcherside
             nicknameforreplay = gameInfo?.Value<string?>("USERNAMEOFREPLAYMAN") ?? string.Empty;
             pswdforreplay = gameInfo?.Value<string?>("PASSWORDOFREPLAYMAN") ?? string.Empty;

@@ -108,34 +108,5 @@ namespace CoTG.CoTGServer.GameObjects.StatsNS
 
             return data;
         }
-
-        public CrystalSlash.Game.Common.ReplicationData GetData106(bool partial = true)
-        {
-            var data = new CrystalSlash.Game.Common.ReplicationData()
-            {
-                UnitNetID = Owner.NetId,
-                Values = new Dictionary<int, Dictionary<int, uint>>(),
-            };
-
-            for (byte primaryId = 0; primaryId < 6; primaryId++)
-            {
-                for (byte secondaryId = 0; secondaryId < 32; secondaryId++)
-                {
-                    var rep = Values[primaryId, secondaryId];
-                    if (rep != null && (!partial || rep.Changed))
-                    {
-                        if (!data.Values.ContainsKey(primaryId))
-                        {
-                            data.Values[primaryId] = new Dictionary<int, uint>();
-                        }
-                        data.Values[primaryId][secondaryId] = rep.Value;
-                    }
-                }
-            }
-
-            return data;
-        }
-
-
     }
 }

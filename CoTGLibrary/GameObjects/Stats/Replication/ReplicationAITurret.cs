@@ -46,13 +46,9 @@ namespace CoTG.CoTGServer.GameObjects.StatsNS
 
             //SetupReplicationInfo 
             //mDebugDrawRadius
-            if (Game.Config.ABClient)
-            {
-
-                UpdateFloat(2, Owner.CollisionRadius, 3, 4);
-            }
-
-
+#if DEBUG_AB || RELEASE_AB
+            UpdateFloat(2, Owner.CollisionRadius, 3, 4);
+#endif
         }
     }
 }

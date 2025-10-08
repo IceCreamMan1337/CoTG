@@ -43,28 +43,13 @@ namespace PacketDefinitions126
             BlowFish[] blowfishes = new BlowFish[blowfishKeys.Length];
             for (int i = 0; i < blowfishKeys.Length; i++)
             {
-                if (Game.Config.VersionOfClient == "1.0.0.106" || Game.Config.VersionOfClient == "0.9.22.14")
+                // post 126 
+                var key = Convert.FromBase64String(blowfishKeys[i]);
+                if (key.Length <= 0)
                 {
-                    var key = Encoding.UTF8.GetBytes(blowfishKeys[i]);
-                    if (key.Length <= 0)
-                    {
-                        throw new Exception($"Invalid blowfish key supplied({key})");
-                    }
-                    blowfishes[i] = new BlowFish(key);
+                    throw new Exception($"Invalid blowfish key supplied({key})");
                 }
-                else
-                {
-                    // post 126 
-                    var key = Convert.FromBase64String(blowfishKeys[i]);
-                    if (key.Length <= 0)
-                    {
-                        throw new Exception($"Invalid blowfish key supplied({key})");
-                    }
-                    blowfishes[i] = new BlowFish(key);
-
-
-                }
-
+                blowfishes[i] = new BlowFish(key);
             }
 
             PacketHandlerManager = new PacketHandlerManager126(blowfishes, _server);

@@ -1,28 +1,24 @@
-﻿using System.Collections.Generic;
-
-using PacketDefinitions126;
-using PacketDefinitions106;
-using CoTGEnumNetwork.Packets.Handlers;
-using MirrorImage;
-using CoTG.CoTGServer;
-using CoTGLibrary.Packets.PacketHandlers.SiphoningStrike;
-using CoTG.CoTGServer.Packets.PacketHandlers;
-
-
-using Siph = SiphoningStrike;
-using Crys = CrystalSlash;
-using CoTGLibrary.Packets.PacketHandlers.CrystalSlash;
-using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
-using CoTGEnumNetwork.Enums;
+﻿using CoTG.CoTGServer;
+using CoTG.CoTGServer.GameObjects;
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
-using System.Numerics;
+using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
+using CoTG.CoTGServer.GameObjects.AttackableUnits.Buildings.AnimatedBuildings;
+using CoTG.CoTGServer.GameObjects.SpellNS.Missile;
+using CoTG.CoTGServer.GameObjects.StatsNS;
+using CoTG.CoTGServer.Inventory;
+using CoTG.CoTGServer.Packets.PacketHandlers;
+using CoTGEnumNetwork.Enums;
 using CoTGEnumNetwork.NetInfo;
 using CoTGEnumNetwork.Packets.Enums;
-using CoTG.CoTGServer.GameObjects;
-using CoTG.CoTGServer.Inventory;
-using CoTG.CoTGServer.GameObjects.StatsNS;
-using CoTG.CoTGServer.GameObjects.SpellNS.Missile;
-using CoTG.CoTGServer.GameObjects.AttackableUnits.Buildings.AnimatedBuildings;
+using CoTGEnumNetwork.Packets.Handlers;
+using CoTGLibrary.Packets.PacketHandlers.SiphoningStrike;
+using MirrorImage;
+using PacketDefinitions126;
+using SiphoningStrike.Game.Common;
+using System.Collections.Generic;
+using System.Numerics;
+using DeathData = CoTG.CoTGServer.GameObjects.AttackableUnits.DeathData;
+using Siph = SiphoningStrike;
 
 
 
@@ -39,8 +35,6 @@ namespace PacketVersioning
 
         private static PacketServer126 PacketServer126 { get; set; }
 
-        private static PacketServer106 PacketServer106 { get; set; }
-
         /// <summary>
         /// Handler for response packets sent by the server to game clients.
         /// </summary>
@@ -51,102 +45,19 @@ namespace PacketVersioning
         /// </summary>
         internal static PacketNotifier126 PacketNotifier126 { get; private set; }
 
-        internal static PacketNotifier106 PacketNotifier106 { get; private set; }
-
-
-
         public void NetLoop(uint timeout = 0)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketServer106.NetLoop(timeout); break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketServer126.NetLoop(timeout); break;
-                default:
-                    PacketServer126.NetLoop(timeout); break;
-            }
-
+            PacketServer126.NetLoop(timeout);
         }
 
         public static void SetupVersioningServer(ushort port, string[] blowfishKeys)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketServer106 = new PacketServer106(port, blowfishKeys);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketServer126 = new PacketServer126(port, blowfishKeys);
-                    break;
-                default:
-                    PacketServer126 = new PacketServer126(port, blowfishKeys);
-                    break;
-            }
+            PacketServer126 = new PacketServer126(port, blowfishKeys);
         }
 
         public static void InitializePacketHandlers(NetworkHandler<MirrorImage.BasePacket> RequestHandler)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    InitializePacketHandlers106(RequestHandler);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    InitializePacketHandlers126(RequestHandler);
-                    break;
-                default:
-                    InitializePacketHandlers126(RequestHandler);
-                    break;
-            }
-        }
-
-
-        public static void InitializePacketHandlers106(NetworkHandler<MirrorImage.BasePacket> RequestHandler)
-        {
-            // maybe use reflection, the problem is that Register is generic and so it needs to know its type at
-            // compile time, maybe just use interface and in runetime figure out the type - and again there is
-            // a problem with passing generic delegate to non-generic function, if we try to only constraint the
-            // argument to interface ICoreRequest we will get an error cause our generic handlers use generic type
-            // even with where statement that doesn't work
-
-            RequestHandler.Register<Crys.Game.C2S_BuyItemReq>(new Handle_C2S_BuyItemReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_CharSelected>(new Handle_C2S_CharSelected_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_ClientReady>(new Handle_C2S_ClientReady_106().HandlePacket);
-
-            RequestHandler.Register<Crys.Game.C2S_Exit>(new Handle_C2S_Exit_106(PacketServer106.PacketHandlerManager).HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_MapPing>(new Handle_C2S_MapPing_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_NPC_CastSpellReq>(new Handle_C2S_NPC_CastSpellReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_NPC_IssueOrderReq>(new Handle_C2S_NPC_IssueOrderReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_NPC_UpgradeSpellReq>(new Handle_C2S_NPC_UpgradeSpellReq_106().HandlePacket);
-            //  RequestHandler.Register<Crys.Game.C2S_OnQuestEvent>(new Handle_C2S_OnQuestEvent().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_OnReplication_Acc>(new Handle_C2S_OnReplication_Acc_106().HandlePacket);
-            // RequestHandler.Register<Crys.Game.C2S_OnScoreBoardOpened>(new Handle_C2S_OnScoreBoardOpened().HandlePacket);
-            //  RequestHandler.Register<Crys.Game.C2S_OnTipEvent>(new Handle_C2S_OnTipEvent().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_Ping_Load_Info>(new Handle_C2S_Ping_Load_Info_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_PlayEmote>(new Handle_C2S_PlayEmote_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_QueryStatusReq>(new Handle_C2S_QueryStatusReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_Reconnect>(new Handle_C2S_Reconnect_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_RemoveItemReq>(new Handle_C2S_RemoveItemReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_SwapItemReq>(new Handle_C2S_SwapItemReq_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_SynchSimTime>(new Handle_C2S_SynchSimTime_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_SynchVersion>(new Handle_C2S_SynchVersion_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_TeamSurrenderVote>(new Handle_C2S_TeamSurrenderVote_106().HandlePacket);
-            // RequestHandler.Register<Crys.Game.C2S_UseObject>(new Handle_C2S_UseObject().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_Waypoint_Acc>(new Handle_C2S_Waypoint_Acc_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_World_LockCamera_Server>(new Handle_C2S_World_LockCamera_Server_106().HandlePacket);
-            RequestHandler.Register<Crys.Game.C2S_World_SendCamera_Server>(new Handle_C2S_World_SendCamera_Server_106().HandlePacket);
-            RequestHandler.Register<Crys.ChatPacket>(new Handle_ChatPacket_106().HandlePacket);
-            RequestHandler.Register<Crys.LoadScreen.RequestJoinTeam>(new Handle_RequestJoinTeam_106().HandlePacket);
+            InitializePacketHandlers126(RequestHandler);
         }
 
         public static void InitializePacketHandlers126(NetworkHandler<MirrorImage.BasePacket> RequestHandler)
@@ -195,91 +106,26 @@ namespace PacketVersioning
 
         public static void InitializePacketNotifier()
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106 = new PacketNotifier106(PacketServer106.PacketHandlerManager, Game.Map.NavigationGrid);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126 = new PacketNotifier126(PacketServer126.PacketHandlerManager, Game.Map.NavigationGrid);
-                    break;
-                default:
-                    PacketNotifier126 = new PacketNotifier126(PacketServer126.PacketHandlerManager, Game.Map.NavigationGrid);
-                    break;
-            }
+
+            PacketNotifier126 = new PacketNotifier126(PacketServer126.PacketHandlerManager, Game.Map.NavigationGrid);
         }
-
-
-
-
-
-
-
-
-
 
         //find better way to do the rest
 
         public static void CreateAnimationdata(LevelProp prop, string animation, AnimationFlags animationFlag, float duration, bool destroyPropAfterAnimation)
         {
-            switch (Game.Config.VersionOfClient)
+            UpdateLevelPropDataPlayAnimation animationData2 = new()
             {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    var animationData = new Crys.Game.Common.UpdateLevelPropDataPlayAnimation
-                    {
-                        AnimationName = animation,
-                        AnimationFlags = (uint)animationFlag,
-                        Duration = duration,
-                        DestroyPropAfterAnimation = destroyPropAfterAnimation,
-                        StartMissionTime = Game.Time.GameTime,
-                        NetID = prop.NetId
-                    };
+                AnimationName = animation,
+                AnimationFlags = (uint)animationFlag,
+                Duration = duration,
+                DestroyPropAfterAnimation = destroyPropAfterAnimation,
+                StartMissionTime = Game.Time.GameTime,
+                NetID = prop.NetId
+            };
 
-
-
-
-
-                    PacketNotifier106.NotifyUpdateLevelPropS2C(animationData);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    var animationData2 = new Siph.Game.Common.UpdateLevelPropDataPlayAnimation
-                    {
-                        AnimationName = animation,
-                        AnimationFlags = (uint)animationFlag,
-                        Duration = duration,
-                        DestroyPropAfterAnimation = destroyPropAfterAnimation,
-                        StartMissionTime = Game.Time.GameTime,
-                        NetID = prop.NetId
-                    };
-
-
-
-                    PacketNotifier126.NotifyUpdateLevelPropS2C(animationData2);
-                    break;
-                default:
-                    var animationData3 = new Siph.Game.Common.UpdateLevelPropDataPlayAnimation
-                    {
-                        AnimationName = animation,
-                        AnimationFlags = (uint)animationFlag,
-                        Duration = duration,
-                        DestroyPropAfterAnimation = destroyPropAfterAnimation,
-                        StartMissionTime = Game.Time.GameTime,
-                        NetID = prop.NetId
-                    };
-
-
-
-                    PacketNotifier126.NotifyUpdateLevelPropS2C(animationData3);
-                    break;
-            }
+            PacketNotifier126.NotifyUpdateLevelPropS2C(animationData2);
         }
-
 
         public static void InstantStopAttackNotifier(AttackableUnit attacker, bool isSummonerSpell,
             bool keepAnimating = false,
@@ -288,1108 +134,294 @@ namespace PacketVersioning
             bool forceClient = false,
             uint missileNetID = 0)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_InstantStop_Attack(attacker, isSummonerSpell, keepAnimating, destroyMissile, overrideVisibility, forceClient, missileNetID);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_InstantStop_Attack(attacker, isSummonerSpell, keepAnimating, destroyMissile, overrideVisibility, forceClient, missileNetID);
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_InstantStop_Attack(attacker, isSummonerSpell, keepAnimating, destroyMissile, overrideVisibility, forceClient, missileNetID);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_InstantStop_Attack(attacker, isSummonerSpell, keepAnimating, destroyMissile, overrideVisibility, forceClient, missileNetID);
         }
-
 
         public static void ChangeSlotSpellDataNotifier(int userId, ObjAIBase owner, int slot, ChangeSlotSpellDataType changeType, bool isSummonerSpell = false, TargetingType targetingType = TargetingType.Invalid, string newName = "", float newRange = 0, float newMaxCastRange = 0, float newDisplayRange = 0, int newIconIndex = 0x0, List<uint> offsetTargets = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyChangeSlotSpellData(userId, owner, slot, changeType, slot is 4 or 5, targetingType, newName, newRange, newMaxCastRange, newDisplayRange, newIconIndex, offsetTargets);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyChangeSlotSpellData(userId, owner, slot, changeType, slot is 4 or 5, targetingType, newName, newRange, newMaxCastRange, newDisplayRange, newIconIndex, offsetTargets);
-                    break;
-                default:
-                    PacketNotifier126.NotifyChangeSlotSpellData(userId, owner, slot, changeType, slot is 4 or 5, targetingType, newName, newRange, newMaxCastRange, newDisplayRange, newIconIndex, offsetTargets);
-                    break;
-            }
+            PacketNotifier126.NotifyChangeSlotSpellData(userId, owner, slot, changeType, slot is 4 or 5, targetingType, newName, newRange, newMaxCastRange, newDisplayRange, newIconIndex, offsetTargets);
         }
 
         public static void SetSpellDataNotifier(int userId, uint netId, string spellName, int slot)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_SetSpellData(userId, netId, spellName, slot);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_SetSpellData(userId, netId, spellName, slot);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_SetSpellData(userId, netId, spellName, slot);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_SetSpellData(userId, netId, spellName, slot);
         }
 
         public static void SetSpellLevelNotifier(int userId, uint netId, int slot, int level)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_SetSpellLevel(userId, netId, slot, level);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_SetSpellLevel(userId, netId, slot, level);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_SetSpellLevel(userId, netId, slot, level);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_SetSpellLevel(userId, netId, slot, level);
         }
 
         public static void TargetHeroS2CNotifier(ObjAIBase attacker, AttackableUnit? target)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyAI_TargetHeroS2C(attacker, target);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyAI_TargetHeroS2C(attacker, target);
-                    break;
-                default:
-                    PacketNotifier126.NotifyAI_TargetHeroS2C(attacker, target);
-                    break;
-            }
+            PacketNotifier126.NotifyAI_TargetHeroS2C(attacker, target);
         }
 
         public static void TargetS2CNotifier(ObjAIBase attacker, AttackableUnit? target)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyAI_TargetS2C(attacker, target);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyAI_TargetS2C(attacker, target);
-                    break;
-                default:
-                    PacketNotifier126.NotifyAI_TargetS2C(attacker, target);
-                    break;
-            }
+            PacketNotifier126.NotifyAI_TargetS2C(attacker, target);
         }
 
         public static void UnitSetLookAtNotifier(AttackableUnit attacker, LookAtType lookAtType, AttackableUnit? target, Vector3 targetPosition = default)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_UnitSetLookAt(attacker, lookAtType, target, targetPosition);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_UnitSetLookAt(attacker, lookAtType, target, targetPosition);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_UnitSetLookAt(attacker, lookAtType, target, targetPosition);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_UnitSetLookAt(attacker, lookAtType, target, targetPosition);
         }
 
         public static void S2C_AIStateNotify(ObjAIBase owner, AIState state)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_AIState(owner, state);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_AIState(owner, state);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_AIState(owner, state);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_AIState(owner, state);
         }
 
         public static void ChangeCharacterDataNotifier(ObjAIBase obj, string skinName, bool modelOnly = true, bool overrideSpells = false, bool replaceCharacterPackage = false, int countchangemodel = 0)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_ChangeCharacterData(obj, skinName, modelOnly, overrideSpells, replaceCharacterPackage, countchangemodel);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ChangeCharacterData(obj, skinName, modelOnly, overrideSpells, replaceCharacterPackage, countchangemodel);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ChangeCharacterData(obj, skinName, modelOnly, overrideSpells, replaceCharacterPackage, countchangemodel);
-                    break;
-            }
-        }
-        public static void PopCharacterDataNotifier(ObjAIBase obj, int countchangemodel = 0)
-        {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_PopCharacterData(obj, countchangemodel);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_PopCharacterData(obj, countchangemodel);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_PopCharacterData(obj, countchangemodel);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ChangeCharacterData(obj, skinName, modelOnly, overrideSpells, replaceCharacterPackage, countchangemodel);
         }
 
+        public static void PopCharacterDataNotifier(ObjAIBase obj, int countchangemodel = 0)
+        {
+            PacketNotifier126.NotifyS2C_PopCharacterData(obj, countchangemodel);
+        }
 
         public static void GameStartNotify(int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyGameStart(userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyGameStart(userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyGameStart(userId);
-                    break;
-            }
+            PacketNotifier126.NotifyGameStart(userId);
         }
 
         public static void StartSpawnNotify(int userId, TeamId team, List<ClientInfo> players)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_StartSpawn(userId, team, players);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_StartSpawn(userId, team, players);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_StartSpawn(userId, team, players);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_StartSpawn(userId, team, players);
         }
 
         public static void SpawnEndNotify(int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySpawnEnd(userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySpawnEnd(userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifySpawnEnd(userId);
-                    break;
-            }
+            PacketNotifier126.NotifySpawnEnd(userId);
         }
 
         public static void OnEventWorldNotify(object mapEvent, AttackableUnit? source = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_OnEventWorld(mapEvent as Crys.Game.Events.IEvent, source);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_OnEventWorld(mapEvent as Siph.Game.Events.IEvent, source);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_OnEventWorld(mapEvent as Siph.Game.Events.IEvent, source);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_OnEventWorld(mapEvent as Siph.Game.Events.IEvent, source);
         }
-
-
 
         public static void SynchSimTimeNotify(float GameTime)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySynchSimTimeS2C(GameTime);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySynchSimTimeS2C(GameTime);
-                    break;
-                default:
-                    PacketNotifier126.NotifySynchSimTimeS2C(GameTime);
-                    break;
-            }
+            PacketNotifier126.NotifySynchSimTimeS2C(GameTime);
         }
 
         public static void SynchSimTimeNotify2(int userId, float GameTime)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySynchSimTimeS2C(userId, GameTime);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySynchSimTimeS2C(userId, GameTime);
-                    break;
-                default:
-                    PacketNotifier126.NotifySynchSimTimeS2C(userId, GameTime);
-                    break;
-            }
+            PacketNotifier126.NotifySynchSimTimeS2C(userId, GameTime);
         }
 
         public static void OnEventNotify(object mapEvent, AttackableUnit? source = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    // PacketNotifier106.NotifyOnEvent((mapEvent as Crys.Game.Events.IEvent), source);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyOnEvent(mapEvent as Siph.Game.Events.IEvent, source);
-                    break;
-                default:
-                    PacketNotifier126.NotifyOnEvent(mapEvent as Siph.Game.Events.IEvent, source);
-                    break;
-            }
+            PacketNotifier126.NotifyOnEvent(mapEvent as Siph.Game.Events.IEvent, source);
         }
 
         public static void OnMapPingNotify(Vector2 pos, Pings type, uint targetNetId = 0, ClientInfo client = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_MapPing(pos, type, targetNetId, client);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_MapPing(pos, type, targetNetId, client);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_MapPing(pos, type, targetNetId, client);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_MapPing(pos, type, targetNetId, client);
         }
 
         public static void GameScoreNotify(TeamId team, int score)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_HandleGameScore(team, score);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_HandleGameScore(team, score);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_HandleGameScore(team, score);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_HandleGameScore(team, score);
         }
 
         public static void HandleCapturePointUpdateNotify(int capturePointIndex, uint otherNetId, int PARType, int attackTeam, CapturePointUpdateCommand capturePointUpdateCommand)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_HandleCapturePointUpdate(capturePointIndex, otherNetId, PARType, attackTeam, capturePointUpdateCommand);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_HandleCapturePointUpdate(capturePointIndex, otherNetId, PARType, attackTeam, capturePointUpdateCommand);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_HandleCapturePointUpdate(capturePointIndex, otherNetId, PARType, attackTeam, capturePointUpdateCommand);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_HandleCapturePointUpdate(capturePointIndex, otherNetId, PARType, attackTeam, capturePointUpdateCommand);
         }
 
         public static void CameraBehaviorNotify(Champion target, Vector3 position)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_CameraBehavior(target, position);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_CameraBehavior(target, position);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_CameraBehavior(target, position);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_CameraBehavior(target, position);
         }
 
         public static void OnReplicationNotify()
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyOnReplication();
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyOnReplication();
-                    break;
-                default:
-                    PacketNotifier126.NotifyOnReplication();
-                    break;
-            }
+            PacketNotifier126.NotifyOnReplication();
         }
 
         public static void CreateUnitHighlightNotify(int userId, GameObject unit)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyCreateUnitHighlight(userId, unit);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyCreateUnitHighlight(userId, unit);
-                    break;
-                default:
-                    PacketNotifier126.NotifyCreateUnitHighlight(userId, unit);
-                    break;
-            }
+            PacketNotifier126.NotifyCreateUnitHighlight(userId, unit);
         }
 
         public static void RemoveUnitHighlightNotify(int userId, GameObject unit)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyRemoveUnitHighlight(userId, unit);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyRemoveUnitHighlight(userId, unit);
-                    break;
-                default:
-                    PacketNotifier126.NotifyRemoveUnitHighlight(userId, unit);
-                    break;
-            }
+            PacketNotifier126.NotifyRemoveUnitHighlight(userId, unit);
         }
 
         public static void EndGameNotify(TeamId winningTeam)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_EndGame(winningTeam);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_EndGame(winningTeam);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_EndGame(winningTeam);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_EndGame(winningTeam);
         }
 
         public static void SetGreyscaleEnabledWhenDeadNotify(ClientInfo client, bool enabled)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_SetGreyscaleEnabledWhenDead(client, enabled);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_SetGreyscaleEnabledWhenDead(client, enabled);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_SetGreyscaleEnabledWhenDead(client, enabled);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_SetGreyscaleEnabledWhenDead(client, enabled);
         }
 
         public static void MoveCameraToPointNotify(ClientInfo player, Vector3 startPosition, Vector3 endPosition, float travelTime = 0, bool startFromCurretPosition = true, bool unlockCamera = false)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_MoveCameraToPoint(player, startPosition, endPosition, travelTime, startFromCurretPosition, unlockCamera);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_MoveCameraToPoint(player, startPosition, endPosition, travelTime, startFromCurretPosition, unlockCamera);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_MoveCameraToPoint(player, startPosition, endPosition, travelTime, startFromCurretPosition, unlockCamera);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_MoveCameraToPoint(player, startPosition, endPosition, travelTime, startFromCurretPosition, unlockCamera);
         }
 
         public static void DisableHUDForEndOfGameNotify()
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_DisableHUDForEndOfGame();
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_DisableHUDForEndOfGame();
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_DisableHUDForEndOfGame();
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_DisableHUDForEndOfGame();
         }
 
         public static void TintNotify(TeamId team, bool enable, float speed, float maxWeight, CoTGEnumNetwork.Content.Color color)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyTint(team, enable, speed, maxWeight, color);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyTint(team, enable, speed, maxWeight, color);
-                    break;
-                default:
-                    PacketNotifier126.NotifyTint(team, enable, speed, maxWeight, color);
-                    break;
-            }
+            PacketNotifier126.NotifyTint(team, enable, speed, maxWeight, color);
         }
 
         public static void ShowHealthBarNotify(AttackableUnit unit, bool show, TeamId observerTeamId = TeamId.TEAM_UNKNOWN, bool changeHealthBarType = false, HealthBarType healthBarType = HealthBarType.Invalid)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_ShowHealthBar(unit, show, observerTeamId, changeHealthBarType, healthBarType);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ShowHealthBar(unit, show, observerTeamId, changeHealthBarType, healthBarType);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ShowHealthBar(unit, show, observerTeamId, changeHealthBarType, healthBarType);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ShowHealthBar(unit, show, observerTeamId, changeHealthBarType, healthBarType);
         }
 
         public static void ModifyDebugCircleRadiusNotify(int userId, uint sender, int objID, float newRadius)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyModifyDebugCircleRadius(userId, sender, objID, newRadius);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyModifyDebugCircleRadius(userId, sender, objID, newRadius);
-                    break;
-                default:
-                    PacketNotifier126.NotifyModifyDebugCircleRadius(userId, sender, objID, newRadius);
-                    break;
-            }
+            PacketNotifier126.NotifyModifyDebugCircleRadius(userId, sender, objID, newRadius);
         }
 
         public static void SetCircularMovementRestrictionNotify(ObjAIBase unit, Vector3 center, float radius, bool restrictcam = false)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySetCircularMovementRestriction(unit, center, radius, restrictcam);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySetCircularMovementRestriction(unit, center, radius, restrictcam);
-                    break;
-                default:
-                    PacketNotifier126.NotifySetCircularMovementRestriction(unit, center, radius, restrictcam);
-                    break;
-            }
+            PacketNotifier126.NotifySetCircularMovementRestriction(unit, center, radius, restrictcam);
         }
 
         public static void DisplayFloatingTextNotify(FloatingTextData floatTextData, TeamId team = 0, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyDisplayFloatingText(floatTextData, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyDisplayFloatingText(floatTextData, team, userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyDisplayFloatingText(floatTextData, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyDisplayFloatingText(floatTextData, team, userId);
         }
 
 
         public static void AttachCapturePointToIdleParticlesNotify(ObjAIBase unit, byte _ParticleFlexID, byte _CpIndex, uint _ParticleAttachType)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyAttachFlexParticle(unit, _ParticleFlexID, _CpIndex, _ParticleAttachType);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyAttachFlexParticle(unit, _ParticleFlexID, _CpIndex, _ParticleAttachType);
-                    break;
-                default:
-                    PacketNotifier126.NotifyAttachFlexParticle(unit, _ParticleFlexID, _CpIndex, _ParticleAttachType);
-                    break;
-            }
+            PacketNotifier126.NotifyAttachFlexParticle(unit, _ParticleFlexID, _CpIndex, _ParticleAttachType);
         }
 
         public static void InteractiveMusicCommandNotify(ObjAIBase unit, byte _MusicCommand, uint _MusicEventAudioEventID, uint _MusicParamAudioEventID)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.S2C_InteractiveMusicCommand(unit, _MusicCommand, _MusicEventAudioEventID, _MusicParamAudioEventID);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.S2C_InteractiveMusicCommand(unit, _MusicCommand, _MusicEventAudioEventID, _MusicParamAudioEventID);
-                    break;
-                default:
-                    PacketNotifier126.S2C_InteractiveMusicCommand(unit, _MusicCommand, _MusicEventAudioEventID, _MusicParamAudioEventID);
-                    break;
-            }
+            PacketNotifier126.S2C_InteractiveMusicCommand(unit, _MusicCommand, _MusicEventAudioEventID, _MusicParamAudioEventID);
         }
 
 
         public static void LoadScreenInfoNotify(int userId, TeamId team, List<ClientInfo> players)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyLoadScreenInfo(userId, team, players);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyLoadScreenInfo(userId, team, players);
-                    break;
-                default:
-                    PacketNotifier126.NotifyLoadScreenInfo(userId, team, players);
-                    break;
-            }
+            PacketNotifier126.NotifyLoadScreenInfo(userId, team, players);
         }
 
         public static void RequestRenameNotify(int userId, ClientInfo player)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyRequestRename(userId, player);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyRequestRename(userId, player);
-                    break;
-                default:
-                    PacketNotifier126.NotifyRequestRename(userId, player);
-                    break;
-            }
+            PacketNotifier126.NotifyRequestRename(userId, player);
         }
 
         public static void RequestReskinNotify(int userId, ClientInfo player)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyRequestReskin(userId, player);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyRequestReskin(userId, player);
-                    break;
-                default:
-                    PacketNotifier126.NotifyRequestReskin(userId, player);
-                    break;
-            }
+            PacketNotifier126.NotifyRequestReskin(userId, player);
         }
 
         public static void KeyCheckNotify(int clientID, long playerId, long _EncryptedPlayerID, bool broadcast = false)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyKeyCheck(clientID, playerId, _EncryptedPlayerID, broadcast);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyKeyCheck(clientID, playerId, _EncryptedPlayerID, broadcast);
-                    break;
-                default:
-                    PacketNotifier126.NotifyKeyCheck(clientID, playerId, _EncryptedPlayerID, broadcast);
-                    break;
-            }
+            PacketNotifier126.NotifyKeyCheck(clientID, playerId, _EncryptedPlayerID, broadcast);
         }
 
         public static void WorldSendGameNumberNotify()
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyWorldSendGameNumber();
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyWorldSendGameNumber();
-                    break;
-                default:
-                    PacketNotifier126.NotifyWorldSendGameNumber();
-                    break;
-            }
+            PacketNotifier126.NotifyWorldSendGameNumber();
         }
         public static void SynchVersionNotify(int userId, TeamId team, List<ClientInfo> players, string version, string gameMode, GameFeatures gameFeatures, int mapId, string[] mutators)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySynchVersion(userId, team, players, version, gameMode, gameFeatures, mapId, mutators);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySynchVersion(userId, team, players, version, gameMode, gameFeatures, mapId, mutators);
-                    break;
-                default:
-                    PacketNotifier126.NotifySynchVersion(userId, team, players, version, gameMode, gameFeatures, mapId, mutators);
-                    break;
-            }
+            PacketNotifier126.NotifySynchVersion(userId, team, players, version, gameMode, gameFeatures, mapId, mutators);
+
         }
         public static void SwapItemsNotify(Champion c, int sourceSlot, int destinationSlot)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySwapItemAns(c, sourceSlot, destinationSlot);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySwapItemAns(c, sourceSlot, destinationSlot);
-                    break;
-                default:
-                    PacketNotifier126.NotifySwapItemAns(c, sourceSlot, destinationSlot);
-                    break;
-            }
+            PacketNotifier126.NotifySwapItemAns(c, sourceSlot, destinationSlot);
         }
 
         public static void SwapItemsNotify(ClientInfo clientInfo, int userId, TeamId team, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_CreateHero(clientInfo, userId, team, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_CreateHero(clientInfo, userId, team, doVision);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_CreateHero(clientInfo, userId, team, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_CreateHero(clientInfo, userId, team, doVision);
         }
 
         public static void AvatarInfoNotify(ClientInfo client, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyAvatarInfo(client, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyAvatarInfo(client, userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyAvatarInfo(client, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyAvatarInfo(client, userId);
         }
 
         public static void BuyItemNotify(ObjAIBase gameObject, Item itemInstance)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyBuyItem(gameObject, itemInstance);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyBuyItem(gameObject, itemInstance);
-                    break;
-                default:
-                    PacketNotifier126.NotifyBuyItem(gameObject, itemInstance);
-                    break;
-            }
+            PacketNotifier126.NotifyBuyItem(gameObject, itemInstance);
         }
 
         public static void UseItemAnsNotify(ObjAIBase unit, byte slot, int itemsInSlot, int spellCharges = 0)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyUseItemAns(unit, slot, itemsInSlot, spellCharges);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyUseItemAns(unit, slot, itemsInSlot, spellCharges);
-                    break;
-                default:
-                    PacketNotifier126.NotifyUseItemAns(unit, slot, itemsInSlot, spellCharges);
-                    break;
-            }
+            PacketNotifier126.NotifyUseItemAns(unit, slot, itemsInSlot, spellCharges);
         }
 
         public static void RemoveItemNotify(ObjAIBase ai, int slot, int remaining)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyRemoveItem(ai, slot, remaining);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyRemoveItem(ai, slot, remaining);
-                    break;
-                default:
-                    PacketNotifier126.NotifyRemoveItem(ai, slot, remaining);
-                    break;
-            }
+            PacketNotifier126.NotifyRemoveItem(ai, slot, remaining);
         }
 
         public static void CHAR_SetCooldownNotify(ObjAIBase u, int slotId, float currentCd, float totalCd, int userId = -1, bool issummonerspell = false)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyCHAR_SetCooldown(u, slotId, currentCd, totalCd, userId, issummonerspell);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyCHAR_SetCooldown(u, slotId, currentCd, totalCd, userId, issummonerspell);
-                    break;
-                default:
-                    PacketNotifier126.NotifyCHAR_SetCooldown(u, slotId, currentCd, totalCd, userId, issummonerspell);
-                    break;
-            }
+            PacketNotifier126.NotifyCHAR_SetCooldown(u, slotId, currentCd, totalCd, userId, issummonerspell);
         }
 
         public static void NPC_UpgradeSpellAnsNotify(int userId, uint netId, int slot, int level, int points)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_UpgradeSpellAns(userId, netId, slot, level, points);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_UpgradeSpellAns(userId, netId, slot, level, points);
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_UpgradeSpellAns(userId, netId, slot, level, points);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_UpgradeSpellAns(userId, netId, slot, level, points);
         }
 
         public static void ToolTipVarsNotify(List<ToolTipData> data)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_ToolTipVars(data);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ToolTipVars(data);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ToolTipVars(data);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ToolTipVars(data);
         }
 
         public static void HeroReincarnateAliveNotify(Champion c, float parToRestore)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyHeroReincarnateAlive(c, parToRestore);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyHeroReincarnateAlive(c, parToRestore);
-                    break;
-                default:
-                    PacketNotifier126.NotifyHeroReincarnateAlive(c, parToRestore);
-                    break;
-            }
+            PacketNotifier126.NotifyHeroReincarnateAlive(c, parToRestore);
         }
 
-        public static void NPC_ForceDeadNotify(DeathData lastDeathData)
+        public static void NPC_ForceDeadNotify(CoTG.CoTGServer.GameObjects.AttackableUnits.DeathData lastDeathData)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_ForceDead(lastDeathData);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_ForceDead(lastDeathData);
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_ForceDead(lastDeathData);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_ForceDead(lastDeathData);
         }
 
-        public static void NPC_Hero_DieNotify(DeathData deathData)
+        public static void NPC_Hero_DieNotify(CoTG.CoTGServer.GameObjects.AttackableUnits.DeathData deathData)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_Hero_Die(deathData);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_Hero_Die(deathData);
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_Hero_Die(deathData);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_Hero_Die(deathData);
         }
 
         public static void TintPlayerNotify(Champion champ, bool enable, float speed, CoTGEnumNetwork.Content.Color color)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyTintPlayer(champ, enable, speed, color);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyTintPlayer(champ, enable, speed, color);
-                    break;
-                default:
-                    PacketNotifier126.NotifyTintPlayer(champ, enable, speed, color);
-                    break;
-            }
+            PacketNotifier126.NotifyTintPlayer(champ, enable, speed, color);
         }
 
 
         public static void S2C_IncrementPlayerScoreNotify(ScoreData scoreData)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_IncrementPlayerScore(scoreData);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_IncrementPlayerScore(scoreData);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_IncrementPlayerScore(scoreData);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_IncrementPlayerScore(scoreData);
         }
 
         public static void MinionSpawnedNotify(Minion minion, int userId, TeamId team, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyMinionSpawned(minion, userId, team, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyMinionSpawned(minion, userId, team, doVision);
-                    break;
-                default:
-                    PacketNotifier126.NotifyMinionSpawned(minion, userId, team, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifyMinionSpawned(minion, userId, team, doVision);
         }
 
         public static void NPC_LevelUpNotify(ObjAIBase obj)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_LevelUp(obj);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_LevelUp(obj);
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_LevelUp(obj);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_LevelUp(obj);
         }
 
         public static void OnReplicationUnitNotify(AttackableUnit u, int userId = -1, bool partial = true)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyOnReplication(u, userId, partial);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyOnReplication(u, userId, partial);
-                    break;
-                default:
-                    PacketNotifier126.NotifyOnReplication(u, userId, partial);
-                    break;
-            }
+            PacketNotifier126.NotifyOnReplication(u, userId, partial);
         }
 
 
@@ -1398,740 +430,190 @@ namespace PacketVersioning
 
         public static void LaneMinionSpawnedNotify(LaneMinion m, int userId, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyLaneMinionSpawned(m, userId, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyLaneMinionSpawned(m, userId, doVision);
-                    break;
-                default:
-                    PacketNotifier126.NotifyLaneMinionSpawned(m, userId, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifyLaneMinionSpawned(m, userId, doVision);
         }
 
         public static void CreateNeutralNotify(NeutralMinion monster, float time, int userId, TeamId team, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyCreateNeutral(monster, time, userId, team, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyCreateNeutral(monster, time, userId, team, doVision);
-                    break;
-                default:
-                    PacketNotifier126.NotifyCreateNeutral(monster, time, userId, team, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifyCreateNeutral(monster, time, userId, team, doVision);
         }
 
         public static void ModifyShieldNotify(AttackableUnit unit, bool physical, bool magical, float amount, bool stopShieldFade = false)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyModifyShield(unit, physical, magical, amount);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyModifyShield(unit, physical, magical, amount);
-                    break;
-                default:
-                    PacketNotifier126.NotifyModifyShield(unit, physical, magical, amount);
-                    break;
-            }
+            PacketNotifier126.NotifyModifyShield(unit, physical, magical, amount);
         }
 
         public static void WriteNavFlagsNotify(Vector2 position, float radius, NavigationGridCellFlags flags)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.Notify_WriteNavFlags(position, radius, flags);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.Notify_WriteNavFlags(position, radius, flags);
-                    break;
-                default:
-                    PacketNotifier126.Notify_WriteNavFlags(position, radius, flags);
-                    break;
-            }
+            PacketNotifier126.Notify_WriteNavFlags(position, radius, flags);
         }
 
         public static void EnterTeamVisionNotify(AttackableUnit u, int userId = -1, BasePacket? spawnPacket = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyEnterTeamVision(u, userId, spawnPacket);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyEnterTeamVision(u, userId, spawnPacket);
-                    break;
-                default:
-                    PacketNotifier126.NotifyEnterTeamVision(u, userId, spawnPacket);
-                    break;
-            }
+            PacketNotifier126.NotifyEnterTeamVision(u, userId, spawnPacket);
         }
 
         public static void EnterVisibilityClientNotify(GameObject o, int userId = -1, bool ignoreVision = false, List<BasePacket> packets = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyEnterVisibilityClient(o, userId, ignoreVision, packets);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyEnterVisibilityClient(o, userId, ignoreVision, packets);
-                    break;
-                default:
-                    PacketNotifier126.NotifyEnterVisibilityClient(o, userId, ignoreVision, packets);
-                    break;
-            }
+            PacketNotifier126.NotifyEnterVisibilityClient(o, userId, ignoreVision, packets);
         }
 
         public static void OnEnterTeamVisibilityNotify(GameObject o, TeamId team, int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyOnEnterTeamVisibility(o, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyOnEnterTeamVisibility(o, team, userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyOnEnterTeamVisibility(o, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyOnEnterTeamVisibility(o, team, userId);
         }
 
         public static void OnLeaveTeamVisibilityNotify(GameObject o, TeamId team, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyOnLeaveTeamVisibility(o, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyOnLeaveTeamVisibility(o, team, userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyOnLeaveTeamVisibility(o, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyOnLeaveTeamVisibility(o, team, userId);
         }
 
         public static void LeaveVisibilityClientNotify(GameObject o, TeamId team, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyLeaveVisibilityClient(o, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyLeaveVisibilityClient(o, team, userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyLeaveVisibilityClient(o, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyLeaveVisibilityClient(o, team, userId);
         }
 
         public static void HoldReplicationDataUntilOnReplicationNotify(AttackableUnit u, int userId, bool partial = true)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.HoldReplicationDataUntilOnReplicationNotification(u, userId, partial);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.HoldReplicationDataUntilOnReplicationNotification(u, userId, partial);
-                    break;
-                default:
-                    PacketNotifier126.HoldReplicationDataUntilOnReplicationNotification(u, userId, partial);
-                    break;
-            }
+            PacketNotifier126.HoldReplicationDataUntilOnReplicationNotification(u, userId, partial);
         }
         public static void HoldMovementDataUntilWaypointGroupNotify(AttackableUnit u, int userId, bool partial = true)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.HoldMovementDataUntilWaypointGroupNotification(u, userId, partial);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.HoldMovementDataUntilWaypointGroupNotification(u, userId, partial);
-                    break;
-                default:
-                    PacketNotifier126.HoldMovementDataUntilWaypointGroupNotification(u, userId, partial);
-                    break;
-            }
+            PacketNotifier126.HoldMovementDataUntilWaypointGroupNotification(u, userId, partial);
         }
 
         public static void UnitApplyDamageNotify(DamageData damageData, bool isGlobal = true)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyUnitApplyDamage(damageData, isGlobal);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyUnitApplyDamage(damageData, isGlobal);
-                    break;
-                default:
-                    PacketNotifier126.NotifyUnitApplyDamage(damageData, isGlobal);
-                    break;
-            }
+            PacketNotifier126.NotifyUnitApplyDamage(damageData, isGlobal);
         }
 
         public static void S2C_NPC_Die_MapViewNotify(DeathData data)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_NPC_Die_MapView(data);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_NPC_Die_MapView(data);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_NPC_Die_MapView(data);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_NPC_Die_MapView(data);
         }
 
         public static void DeathNotify(DeathData data)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyDeath(data);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyDeath(data);
-                    break;
-                default:
-                    PacketNotifier126.NotifyDeath(data);
-                    break;
-            }
+            PacketNotifier126.NotifyDeath(data);
         }
 
         public static void WaypointGroupWithSpeedNotify(AttackableUnit u)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyWaypointGroupWithSpeed(u);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyWaypointGroupWithSpeed(u);
-                    break;
-                default:
-                    PacketNotifier126.NotifyWaypointGroupWithSpeed(u);
-                    break;
-            }
+            PacketNotifier126.NotifyWaypointGroupWithSpeed(u);
         }
 
         public static void WaypointGroupNotify()
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyWaypointGroup();
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyWaypointGroup();
-                    break;
-                default:
-                    PacketNotifier126.NotifyWaypointGroup();
-                    break;
-            }
+            PacketNotifier126.NotifyWaypointGroup();
         }
 
         public static void SetAnimStatesNotify(AttackableUnit u, Dictionary<string, string> animationPairs)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_SetAnimStates(u, animationPairs);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_SetAnimStates(u, animationPairs);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_SetAnimStates(u, animationPairs);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_SetAnimStates(u, animationPairs);
         }
 
         public static void PingLoadInfoNotify(ClientInfo client, object packet)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyPingLoadInfo(client, packet as Crys.Game.C2S_Ping_Load_Info);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyPingLoadInfo(client, packet as Siph.Game.C2S_Ping_Load_Info);
-                    break;
-                default:
-                    PacketNotifier126.NotifyPingLoadInfo(client, packet as Siph.Game.C2S_Ping_Load_Info);
-                    break;
-            }
+            PacketNotifier126.NotifyPingLoadInfo(client, packet as Siph.Game.C2S_Ping_Load_Info);
         }
 
         public static void S2C_QueryStatusAnsNotify(int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_QueryStatusAns(userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_QueryStatusAns(userId);
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_QueryStatusAns(userId);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_QueryStatusAns(userId);
         }
 
         public static void DebugPacketNotify(int userId, byte[] data)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyDebugPacket(userId, data);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyDebugPacket(userId, data);
-                    break;
-                default:
-                    PacketNotifier126.NotifyDebugPacket(userId, data);
-                    break;
-            }
+            PacketNotifier126.NotifyDebugPacket(userId, data);
         }
         public static void SystemMessageNotify(ClientInfo sender, ChatType chatType, string message)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySystemMessage(sender, chatType, message);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySystemMessage(sender, chatType, message);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySystemMessage(sender, chatType, message);
-                    break;
-            }
+            PacketNotifier126.NotifySystemMessage(sender, chatType, message);
         }
 
         public static void ChatPacketNotify(ClientInfo sender, ChatType chatType, string message)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyChatPacket(sender, chatType, message);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyChatPacket(sender, chatType, message);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyChatPacket(sender, chatType, message);
-                    break;
-            }
+            PacketNotifier126.NotifyChatPacket(sender, chatType, message);
         }
 
         public static void Basic_AttackNotify(CoTG.CoTGServer.GameObjects.SpellNS.CastInfo castInfo)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyBasic_Attack(castInfo);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyBasic_Attack(castInfo);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyBasic_Attack(castInfo);
-                    break;
-            }
+            PacketNotifier126.NotifyBasic_Attack(castInfo);
         }
 
         public static void Basic_Attack_PosNotify(CoTG.CoTGServer.GameObjects.SpellNS.CastInfo castInfo)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyBasic_Attack_Pos(castInfo);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyBasic_Attack_Pos(castInfo);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyBasic_Attack_Pos(castInfo);
-                    break;
-            }
+            PacketNotifier126.NotifyBasic_Attack_Pos(castInfo);
         }
 
         public static void NPC_CastSpellAnsNotify(CoTG.CoTGServer.GameObjects.SpellNS.CastInfo castInfo)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_CastSpellAns(castInfo);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_CastSpellAns(castInfo);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_CastSpellAns(castInfo);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_CastSpellAns(castInfo);
         }
 
         public static void PausePacketNotify(ClientInfo player, int seconds, bool isTournament)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyPausePacket(player, seconds, isTournament);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyPausePacket(player, seconds, isTournament);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyPausePacket(player, seconds, isTournament);
-                    break;
-            }
+            PacketNotifier126.NotifyPausePacket(player, seconds, isTournament);
         }
 
         public static void ResumePacketNotify(Champion unpauser, ClientInfo player, bool isDelayed)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyResumePacket(unpauser, player, isDelayed);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyResumePacket(unpauser, player, isDelayed);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyResumePacket(unpauser, player, isDelayed);
-                    break;
-            }
+            PacketNotifier126.NotifyResumePacket(unpauser, player, isDelayed);
         }
 
         public static void SyncMissionStartTimeS2CNotify(int userId, float time)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySyncMissionStartTimeS2C(userId, time);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySyncMissionStartTimeS2C(userId, time);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySyncMissionStartTimeS2C(userId, time);
-                    break;
-            }
+            PacketNotifier126.NotifySyncMissionStartTimeS2C(userId, time);
         }
 
         public static void SpawnPetNotify(Pet pet, int userId, TeamId team, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySpawnPet(pet, userId, team, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySpawnPet(pet, userId, team, doVision);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySpawnPet(pet, userId, team, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifySpawnPet(pet, userId, team, doVision);
         }
 
         public static void TeamSurrenderStatusNotify(int userId, TeamId userTeam, TeamId surrendererTeam, SurrenderReason reason, int yesVotes, int noVotes)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyTeamSurrenderStatus(userId, userTeam, surrendererTeam, reason, yesVotes, noVotes);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyTeamSurrenderStatus(userId, userTeam, surrendererTeam, reason, yesVotes, noVotes);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyTeamSurrenderStatus(userId, userTeam, surrendererTeam, reason, yesVotes, noVotes);
-                    break;
-            }
+            PacketNotifier126.NotifyTeamSurrenderStatus(userId, userTeam, surrendererTeam, reason, yesVotes, noVotes);
         }
 
         public static void TeamSurrenderVoteNotify(Champion starter, bool open, bool votedYes, int yesVotes, int noVotes, int maxVotes, float timeOut)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyTeamSurrenderVote(starter, open, votedYes, yesVotes, noVotes, maxVotes, timeOut);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyTeamSurrenderVote(starter, open, votedYes, yesVotes, noVotes, maxVotes, timeOut);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyTeamSurrenderVote(starter, open, votedYes, yesVotes, noVotes, maxVotes, timeOut);
-                    break;
-            }
+            PacketNotifier126.NotifyTeamSurrenderVote(starter, open, votedYes, yesVotes, noVotes, maxVotes, timeOut);
         }
 
         public static void HandleQuestUpdateNotify(Quest _quest, byte _Command)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_HandleQuestUpdate(_quest, _Command);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_HandleQuestUpdate(_quest, _Command);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_HandleQuestUpdate(_quest, _Command);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_HandleQuestUpdate(_quest, _Command);
         }
 
         public static void FXCreateGroupNotify(Particle particle, string particleName, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyFXCreateGroup(particle, particleName, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyFXCreateGroup(particle, particleName, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyFXCreateGroup(particle, particleName, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyFXCreateGroup(particle, particleName, userId);
         }
 
         public static void FXEnterTeamVisibilityNotify(Particle particle, TeamId team, int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyFXEnterTeamVisibility(particle, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyFXEnterTeamVisibility(particle, team, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyFXEnterTeamVisibility(particle, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyFXEnterTeamVisibility(particle, team, userId);
         }
 
         public static void FXLeaveTeamVisibilityNotify(Particle particle, TeamId team, int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyFXLeaveTeamVisibility(particle, team, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyFXLeaveTeamVisibility(particle, team, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyFXLeaveTeamVisibility(particle, team, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyFXLeaveTeamVisibility(particle, team, userId);
         }
 
         public static void FXKillNotify(Particle particle)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyFXKill(particle);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyFXKill(particle);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyFXKill(particle);
-                    break;
-            }
+            PacketNotifier126.NotifyFXKill(particle);
         }
 
         public static void NPC_BuffAdd2Notify(Buff b, int stacks)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_BuffAdd2(b, stacks);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_BuffAdd2(b, stacks);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_BuffAdd2(b, stacks);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_BuffAdd2(b, stacks);
         }
 
         public static void NPC_BuffUpdateCountNotify(Buff b, int stacks)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_BuffUpdateCount(b, stacks);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_BuffUpdateCount(b, stacks);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_BuffUpdateCount(b, stacks);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_BuffUpdateCount(b, stacks);
         }
 
         public void NPC_BuffRemove2Notify2(Buff b)
@@ -2139,550 +621,138 @@ namespace PacketVersioning
             NPC_BuffRemove2Notify(b.TargetUnit, b.Slot, b.Name);
         }
 
-
         public static void NPC_BuffRemove2Notify(AttackableUnit owner, int slot, string name)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyNPC_BuffRemove2(owner, slot, name);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyNPC_BuffRemove2(owner, slot, name);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyNPC_BuffRemove2(owner, slot, name);
-                    break;
-            }
+            PacketNotifier126.NotifyNPC_BuffRemove2(owner, slot, name);
         }
 
         public static void S2C_SetFadeOut_PushNotify(GameObject o, float value, float time, int userId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_SetFadeOut_Push(o, value, time, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_SetFadeOut_Push(o, value, time, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_SetFadeOut_Push(o, value, time, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_SetFadeOut_Push(o, value, time, userId);
         }
 
         public static void SetTeamNotify(AttackableUnit unit)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySetTeam(unit);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySetTeam(unit);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySetTeam(unit);
-                    break;
-            }
+            PacketNotifier126.NotifySetTeam(unit);
         }
 
         public static void S2C_PlayAnimationNotify(GameObject obj, string animation, AnimationFlags flags = 0, float timeScale = 1.0f, float startTime = 0.0f, float speedScale = 1.0f)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_PlayAnimation(obj, animation, flags, timeScale, startTime, speedScale);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_PlayAnimation(obj, animation, flags, timeScale, startTime, speedScale);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_PlayAnimation(obj, animation, flags, timeScale, startTime, speedScale);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_PlayAnimation(obj, animation, flags, timeScale, startTime, speedScale);
         }
 
         public static void S2C_UnlockAnimationNotify(GameObject obj, string name)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_UnlockAnimation(obj, name);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_UnlockAnimation(obj, name);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_UnlockAnimation(obj, name);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_UnlockAnimation(obj, name);
         }
 
         public static void S2C_PauseAnimationNotify(GameObject obj, bool pause)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_PauseAnimation(obj, pause);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_PauseAnimation(obj, pause);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_PauseAnimation(obj, pause);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_PauseAnimation(obj, pause);
         }
 
         public static void S2C_StopAnimationNotify(GameObject obj, string animation, bool stopAll = false, bool fade = false, bool ignoreLock = true)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_StopAnimation(obj, animation, stopAll, fade, ignoreLock);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_StopAnimation(obj, animation, stopAll, fade, ignoreLock);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_StopAnimation(obj, animation, stopAll, fade, ignoreLock);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_StopAnimation(obj, animation, stopAll, fade, ignoreLock);
         }
 
         public static void FaceDirectionNotify(GameObject obj, Vector3 direction, bool isInstant = true, float turnTime = 0.0833f)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyFaceDirection(obj, direction, isInstant, turnTime);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyFaceDirection(obj, direction, isInstant, turnTime);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyFaceDirection(obj, direction, isInstant, turnTime);
-                    break;
-            }
+            PacketNotifier126.NotifyFaceDirection(obj, direction, isInstant, turnTime);
         }
 
         public static void SetFrequencyNotify(float number = 0.0833f)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    // PacketNotifier106.NotifySetFrequencyS2C(obj, direction, isInstant, turnTime);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySetFrequencyS2C(number);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySetFrequencyS2C(number);
-                    break;
-            }
+            PacketNotifier126.NotifySetFrequencyS2C(number);
         }
 
         public static void MissileReplicationNotify(SpellMissile m, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyMissileReplication(m, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyMissileReplication(m, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyMissileReplication(m, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyMissileReplication(m, userId);
         }
 
         public static void DestroyClientMissileNotify(SpellMissile m)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyDestroyClientMissile(m);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyDestroyClientMissile(m);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyDestroyClientMissile(m);
-                    break;
-            }
+            PacketNotifier126.NotifyDestroyClientMissile(m);
         }
 
         public static void Neutral_Camp_EmptyNotify(NeutralMinionCamp neutralCamp, ObjAIBase? killer = null, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_Neutral_Camp_Empty(neutralCamp, killer, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_Neutral_Camp_Empty(neutralCamp, killer, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_Neutral_Camp_Empty(neutralCamp, killer, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_Neutral_Camp_Empty(neutralCamp, killer, userId);
         }
 
         public static void ActivateMinionCampNotify(NeutralMinionCamp monsterCamp, int userId = -1)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_ActivateMinionCamp(monsterCamp, userId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ActivateMinionCamp(monsterCamp, userId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ActivateMinionCamp(monsterCamp, userId);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ActivateMinionCamp(monsterCamp, userId);
         }
 
         public static void CreateMinionCampNotify(NeutralMinionCamp monsterCamp, int userId, TeamId team)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_CreateMinionCamp(monsterCamp, userId, team);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_CreateMinionCamp(monsterCamp, userId, team);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_CreateMinionCamp(monsterCamp, userId, team);
-                    break;
-            }
-
-
+            PacketNotifier126.NotifyS2C_CreateMinionCamp(monsterCamp, userId, team);
         }
 
         public static void ChainMissileSyncNotify(SpellChainMissile p)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_ChainMissileSync(p);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ChainMissileSync(p);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ChainMissileSync(p);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ChainMissileSync(p);
         }
 
         public static void UnitAddEXPNotify(Champion champion, float experience)
         {
-            //  Console.ReadLine();
-
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyUnitAddEXP(champion, experience);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyUnitAddEXP(champion, experience);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyUnitAddEXP(champion, experience);
-                    break;
-            }
+            PacketNotifier126.NotifyUnitAddEXP(champion, experience);
         }
 
         public static void S2C_PlayEmoteNotify(Emotions type, uint netId)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_PlayEmote(type, netId);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_PlayEmote(type, netId);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_PlayEmote(type, netId);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_PlayEmote(type, netId);
         }
 
         public static void InhibitorStateNotify(Inhibitor inhibitor, DeathData? deathData = null)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyInhibitorState(inhibitor, deathData);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyInhibitorState(inhibitor, deathData);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyInhibitorState(inhibitor, deathData);
-                    break;
-            }
+            PacketNotifier126.NotifyInhibitorState(inhibitor, deathData);
         }
 
         public static void LineMissileHitListNotify(SpellLineMissile p, IEnumerable<AttackableUnit> units)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_LineMissileHitList(p, units);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_LineMissileHitList(p, units);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_LineMissileHitList(p, units);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_LineMissileHitList(p, units);
         }
 
         public static void UnitAddGoldNotify(Champion target, GameObject source, float gold)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyUnitAddGold(target, source, gold);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyUnitAddGold(target, source, gold);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyUnitAddGold(target, source, gold);
-                    break;
-            }
+            PacketNotifier126.NotifyUnitAddGold(target, source, gold);
         }
 
         public static void AddRegionNotify(Region region, int userId, TeamId team)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyAddRegion(region, userId, team);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyAddRegion(region, userId, team);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyAddRegion(region, userId, team);
-                    break;
-            }
+            PacketNotifier126.NotifyAddRegion(region, userId, team);
         }
 
         public static void RemoveRegionNotify(Region region)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyRemoveRegion(region);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyRemoveRegion(region);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyRemoveRegion(region);
-                    break;
-            }
+            PacketNotifier126.NotifyRemoveRegion(region);
         }
 
         public static void HandleTipUpdateNotify(int userId, string title, string text, string imagePath, int tipCommand, uint playerNetId, uint tipID)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_HandleTipUpdate(userId, title, text, imagePath, tipCommand, playerNetId, tipID);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_HandleTipUpdate(userId, title, text, imagePath, tipCommand, playerNetId, tipID);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_HandleTipUpdate(userId, title, text, imagePath, tipCommand, playerNetId, tipID);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_HandleTipUpdate(userId, title, text, imagePath, tipCommand, playerNetId, tipID);
         }
 
         public static void UnitSetMinimapIconNotify(int userId, AttackableUnit unit, bool changeIcon, bool changeBorder)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyS2C_UnitSetMinimapIcon(userId, unit, changeIcon, changeBorder);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_UnitSetMinimapIcon(userId, unit, changeIcon, changeBorder);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_UnitSetMinimapIcon(userId, unit, changeIcon, changeBorder);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_UnitSetMinimapIcon(userId, unit, changeIcon, changeBorder);
         }
 
         public static void CreateTurretNotify(LaneTurret turret, int userId, bool doVision)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifyCreateTurret(turret, userId, doVision);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyCreateTurret(turret, userId, doVision);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyCreateTurret(turret, userId, doVision);
-                    break;
-            }
+            PacketNotifier126.NotifyCreateTurret(turret, userId, doVision);
         }
 
         public static void SpawnLevelPropNotify(LevelProp levelProp, int userId, TeamId team)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    PacketNotifier106.NotifySpawnLevelProp(levelProp, userId, team);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifySpawnLevelProp(levelProp, userId, team);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifySpawnLevelProp(levelProp, userId, team);
-                    break;
-            }
+            PacketNotifier126.NotifySpawnLevelProp(levelProp, userId, team);
         }
         public static void S2C_ChangePARColorOverrideNotifier(Champion champ, byte r, byte g, byte b, byte a, byte fr, byte fg, byte fb, byte fa, int objID = 0)
         {
-            switch (Game.Config.VersionOfClient)
-            {
-                case "1.0.0.106":
-                case "0.9.22.14":
-                    //  PacketNotifier106.NotifyS2C_ChangePARColorOverride(champ, r, g, b, a, fr, fg, fb, fa, objID);
-                    break;
-                case "1.0.0.126":
-                case "1.0.0.131":
-                case "1.0.0.124":
-                    PacketNotifier126.NotifyS2C_ChangePARColorOverride(champ, r, g, b, a, fr, fg, fb, fa, objID);
-
-                    break;
-                default:
-                    PacketNotifier126.NotifyS2C_ChangePARColorOverride(champ, r, g, b, a, fr, fg, fb, fa, objID);
-                    break;
-            }
+            PacketNotifier126.NotifyS2C_ChangePARColorOverride(champ, r, g, b, a, fr, fg, fb, fa, objID);
         }
     }
-
-
 }
