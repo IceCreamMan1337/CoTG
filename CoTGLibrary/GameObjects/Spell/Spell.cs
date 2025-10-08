@@ -1029,7 +1029,7 @@ public partial class Spell : IEventSource
             {
                 NetId = NetIdManager.GenerateNewNetId(),
                 Spell = this,
-                SpellLevel = overridespelllevel > 0 ? level : 1,
+                SpellLevel = overridespelllevel > 0 ? overridespelllevel : level,
                 AttackSpeedModifier = Caster.Stats.AttackSpeedMultiplier.Total,
                 Caster = Caster,
                 SpellChainOwner = (Caster is Minion m && m.Owner != null) ? m.Owner : Caster,
