@@ -2,6 +2,7 @@
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
 using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
 using CoTG.CoTGServer.Logging;
+using CoTGEnumNetwork;
 using CoTGEnumNetwork.Enums;
 using CoTGEnumNetwork.NetInfo;
 using log4net;
@@ -180,16 +181,9 @@ namespace CoTG.CoTGServer
                 return pos;
             }
 
-            if (playerIndex < teamList.Count)
+            if (playerCount < teamList.Count && playerIndex < teamList[playerCount].Count)
             {
-                if (playerCount < teamList.Count() && playerIndex < teamList[playerCount].Count() && teamList[playerCount][playerIndex] != null)
-                {
-                    return pos + new Vector2(teamList[playerCount][playerIndex].PositionOffset.X, teamList[playerCount][playerIndex].PositionOffset.Z);
-                }
-                else
-                {
-                    return pos;
-                }
+                return pos + teamList[playerCount - 1][playerIndex].PositionOffset.ToVector2();
             }
 
             return pos;
