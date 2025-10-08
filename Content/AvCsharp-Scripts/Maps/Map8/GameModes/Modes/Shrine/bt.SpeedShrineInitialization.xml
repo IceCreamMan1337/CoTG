@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Shrine.SpeedShrineInitialization">
+    <Node Type="Sequence" Name="Init_the_speed_shrines">
+      <Parameters />
+      <Children>
+        <Node Type="GetWorldLocationByName" Name="GetWorldLocationByName">
+          <Parameters>
+            <Parameter Name="Input" Value="SpeedShrine01" VariableType="Value" />
+            <OutParameter Name="Output" Value="Shrine1Position" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="GetWorldLocationByName">
+          <Parameters>
+            <Parameter Name="Input" Value="SpeedShrine02" VariableType="Value" />
+            <OutParameter Name="Output" Value="Shrine2Position" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="GetWorldLocationByName">
+          <Parameters>
+            <Parameter Name="Input" Value="SigilB" VariableType="Value" />
+            <OutParameter Name="Output" Value="Shrine5Position" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="TimeShrine">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="SpeedShrine" VariableType="Value" />
+            <Parameter Name="Count" Value="" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="SpeedShrineID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SpawnNeutralCampFromEncounter" Name="SpawnNeutralCampFromEncounter">
+          <Parameters>
+            <Parameter Name="EncounterId" Value="SpeedShrineID" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="Position" Value="Shrine1Position" VariableType="Reference" ReferenceType="Vector" />
+            <Parameter Name="Icon" Value="Shrine" VariableType="Value" />
+            <Parameter Name="CampId" Value="102" VariableType="Value" />
+            <Parameter Name="ExistingSquadId" Value="" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="SquadName" Value="" VariableType="Reference" ReferenceType="String" />
+            <OutParameter Name="SquadId" Value="Shrine1SquadID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SpawnNeutralCampFromEncounter" Name="SpawnNeutralCampFromEncounter">
+          <Parameters>
+            <Parameter Name="EncounterId" Value="SpeedShrineID" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="Position" Value="Shrine2Position" VariableType="Reference" ReferenceType="Vector" />
+            <Parameter Name="Icon" Value="Shrine" VariableType="Value" />
+            <Parameter Name="CampId" Value="103" VariableType="Value" />
+            <Parameter Name="ExistingSquadId" Value="" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="SquadName" Value="" VariableType="Reference" ReferenceType="String" />
+            <OutParameter Name="SquadId" Value="Shrine1SquadID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SpawnNeutralCampFromEncounter" Name="SpawnNeutralCampFromEncounter">
+          <Parameters>
+            <Parameter Name="EncounterId" Value="SpeedShrineID" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="Position" Value="Shrine5Position" VariableType="Reference" ReferenceType="Vector" />
+            <Parameter Name="Icon" Value="Shrine" VariableType="Value" />
+            <Parameter Name="CampId" Value="104" VariableType="Value" />
+            <Parameter Name="ExistingSquadId" Value="" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="SquadName" Value="" VariableType="Reference" ReferenceType="String" />
+            <OutParameter Name="SquadId" Value="Shrine1SquadID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script SettingsName="Quest" Type="LevelScript" SubType="">
+  <Solution StaticName="Map8Dominion" QualifiedName="Layouts.OdinLayout.OdinScript" SolutionType="Quest" Validity="Valid" />
+  <BTInstance Type="PrimaryQuest" Name="CapturePointManager">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Layouts.OdinLayout.CapturePointManager" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="RemainingOrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="RemainingChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="CapturePointAOwner" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointBOwner" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointCOwner" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointDOwner" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointEOwner" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointPreviousOwnerA" Value="CapturePointPreviousOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointPreviousOwnerB" Value="CapturePointPreviousOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointPreviousOwnerC" Value="CapturePointPreviousOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointPreviousOwnerD" Value="CapturePointPreviousOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointPreviousOwnerE" Value="CapturePointPreviousOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousMinionSpawnTime_AB" Value="PreviousMinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_AE" Value="PreviousMinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_BA" Value="PreviousMinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_BC" Value="PreviousMinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_CB" Value="PreviousMinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_CD" Value="PreviousMinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_DC" Value="PreviousMinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_DE" Value="PreviousMinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_EA" Value="PreviousMinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="PreviousMinionSpawnTime_ED" Value="PreviousMinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="ChaosRespawnBonus" Value="ChaosRespawnBonus" VariableType="Reference" ReferenceType="Bool" />
+      <Parameter Name="OrderRespawnBonus" Value="OrderRespawnBonus" VariableType="Reference" ReferenceType="Bool" />
+      <Parameter Name="BombQuestID_Order" Value="BombQuestID_Order" VariableType="Reference" ReferenceType="Int" />
+      <Parameter Name="BombQuestID_Chaos" Value="BombQuestID_Chaos" VariableType="Reference" ReferenceType="Int" />
+      <Parameter Name="IsFirstBlood" Value="IsFirstBlood" VariableType="Reference" ReferenceType="Bool" />
+      <OutParameter Name="RemainingOrderScore" Value="OrderScore" ReferenceType="Float" />
+      <OutParameter Name="RemainingChaosScore" Value="ChaosScore" ReferenceType="Float" />
+      <OutParameter Name="CapturePointAOwner" Value="CapturePointOwnerA" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointBOwner" Value="CapturePointOwnerB" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointCOwner" Value="CapturePointOwnerC" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointDOwner" Value="CapturePointOwnerD" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointEOwner" Value="CapturePointOwnerE" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointPreviousOwnerA" Value="CapturePointPreviousOwnerA" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointPreviousOwnerB" Value="CapturePointPreviousOwnerB" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointPreviousOwnerC" Value="CapturePointPreviousOwnerC" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointPreviousOwnerD" Value="CapturePointPreviousOwnerD" ReferenceType="TeamEnum" />
+      <OutParameter Name="CapturePointPreviousOwnerE" Value="CapturePointPreviousOwnerE" ReferenceType="TeamEnum" />
+      <OutParameter Name="PreviousMinionSpawnTime_AB" Value="PreviousMinionSpawnTime_AB" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_AE" Value="PreviousMinionSpawnTime_AE" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_BA" Value="PreviousMinionSpawnTime_BA" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_BC" Value="PreviousMinionSpawnTime_BC" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_CB" Value="PreviousMinionSpawnTime_CB" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_CD" Value="PreviousMinionSpawnTime_CD" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_DC" Value="PreviousMinionSpawnTime_DC" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_DE" Value="PreviousMinionSpawnTime_DE" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_EA" Value="PreviousMinionSpawnTime_EA" ReferenceType="Float" />
+      <OutParameter Name="PreviousMinionSpawnTime_ED" Value="PreviousMinionSpawnTime_ED" ReferenceType="Float" />
+      <OutParameter Name="CCDelta" Value="CCDelta" ReferenceType="Int" />
+      <OutParameter Name="OrderRespawnBonus" Value="OrderRespawnBonus" ReferenceType="Bool" />
+      <OutParameter Name="ChaosRespawnBonus" Value="ChaosRespawnBonus" ReferenceType="Bool" />
+      <OutParameter Name="BombQuestID_Order" Value="BombQuestID_Order" ReferenceType="Int" />
+      <OutParameter Name="BombQuestID_Chaos" Value="BombQuestID_Chaos" ReferenceType="Int" />
+      <OutParameter Name="ScoringFloor" Value="ScoringFloor" ReferenceType="Float" />
+      <OutParameter Name="IsFirstBlood" Value="IsFirstBlood" ReferenceType="Bool" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="PrimaryQuest" Name="OdinOpeningCeremony">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.OdinOpeningCeremony" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="OrderNexusBeam_L1" Value="OrderNexusBeam_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_L2" Value="OrderNexusBeam_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_L3" Value="OrderNexusBeam_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_L4" Value="OrderNexusBeam_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_R1" Value="OrderNexusBeam_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_R2" Value="OrderNexusBeam_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_R3" Value="OrderNexusBeam_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeam_R4" Value="OrderNexusBeam_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusGlow_1" Value="OrderNexusGlow_1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusGlow_2" Value="OrderNexusGlow_2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusGlow_3" Value="OrderNexusGlow_3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusGlow_4" Value="OrderNexusGlow_4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_R1" Value="ChaosNexusBeam_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_R2" Value="ChaosNexusBeam_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_R3" Value="ChaosNexusBeam_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_R4" Value="ChaosNexusBeam_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_L1" Value="ChaosNexusBeam_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_L2" Value="ChaosNexusBeam_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_L3" Value="ChaosNexusBeam_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeam_L4" Value="ChaosNexusBeam_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusGlow_1" Value="ChaosNexusGlow_1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusGlow_2" Value="OrderNexusBeam_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusGlow_3" Value="ChaosNexusGlow_3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusGlow_4" Value="ChaosNexusGlow_4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusCrystal" Value="OrderNexusCrystal" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusCrystal" Value="ChaosNexusCrystal" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_L1" Value="ChaosNexusBeamRed_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_L2" Value="ChaosNexusBeamRed_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_L3" Value="ChaosNexusBeamRed_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_L4" Value="ChaosNexusBeamRed_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_R1" Value="ChaosNexusBeamRed_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_R2" Value="ChaosNexusBeamRed_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_R3" Value="ChaosNexusBeamRed_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="OrderNexusBeamRed_R4" Value="ChaosNexusBeamRed_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_L1" Value="ChaosNexusBeamRed_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_L2" Value="ChaosNexusBeamRed_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_L3" Value="ChaosNexusBeamRed_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_L4" Value="ChaosNexusBeamRed_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_R1" Value="ChaosNexusBeamRed_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_R2" Value="ChaosNexusBeamRed_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_R3" Value="ChaosNexusBeamRed_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="ChaosNexusBeamRed_R4" Value="ChaosNexusBeamRed_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_L1" Value="OrderNexusBeam_L1" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_L2" Value="OrderNexusBeam_L2" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_L3" Value="OrderNexusBeam_L3" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_L4" Value="OrderNexusBeam_L4" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_R1" Value="OrderNexusBeam_R1" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_R2" Value="OrderNexusBeam_R2" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_R3" Value="OrderNexusBeam_R3" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeam_R4" Value="OrderNexusBeam_R4" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusGlow_1" Value="OrderNexusGlow_1" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusGlow_2" Value="OrderNexusGlow_2" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusGlow_3" Value="OrderNexusGlow_3" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusGlow_4" Value="OrderNexusGlow_4" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_R1" Value="ChaosNexusBeam_R1" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_R2" Value="ChaosNexusBeam_R2" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_R3" Value="ChaosNexusBeam_R3" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_R4" Value="ChaosNexusBeam_R4" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_L1" Value="ChaosNexusBeam_L1" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_L2" Value="ChaosNexusBeam_L2" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_L3" Value="ChaosNexusBeam_L3" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeam_L4" Value="ChaosNexusBeam_L4" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusGlow_1" Value="ChaosNexusGlow_1" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusGlow_2" Value="ChaosNexusGlow_2" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusGlow_3" Value="ChaosNexusGlow_3" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusGlow_4" Value="ChaosNexusGlow_4" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusCrystal" Value="OrderNexusCrystal" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusCrystal" Value="ChaosNexusCrystal" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_L1" Value="OrderNexusBeamRed_L1" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_L2" Value="OrderNexusBeamRed_L2" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_L3" Value="OrderNexusBeamRed_L3" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_L4" Value="OrderNexusBeamRed_L4" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_R1" Value="OrderNexusBeamRed_R1" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_R2" Value="OrderNexusBeamRed_R2" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_R3" Value="OrderNexusBeamRed_R3" ReferenceType="DWORD" />
+      <OutParameter Name="OrderNexusBeamRed_R4" Value="OrderNexusBeamRed_R4" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_L1" Value="ChaosNexusBeamRed_L1" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_L2" Value="ChaosNexusBeamRed_L2" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_L3" Value="ChaosNexusBeamRed_L3" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_L4" Value="ChaosNexusBeamRed_L4" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_R1" Value="ChaosNexusBeamRed_R1" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_R2" Value="ChaosNexusBeamRed_R2" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_R3" Value="ChaosNexusBeamRed_R3" ReferenceType="DWORD" />
+      <OutParameter Name="ChaosNexusBeamRed_R4" Value="ChaosNexusBeamRed_R4" ReferenceType="DWORD" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="PrimaryQuest" Name="ThresholdAnnouncements">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Scoring.ThresholdAnnouncements" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+      <OutParameter Name="ActiveMusicCue" Value="ActiveMusicCue" ReferenceType="UnsignedInt" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="LevelScriptMinionDeath" Name="ScoreTracking_MinionKill">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Scoring.PersonalScore.PersonalScore_MinionKill" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="DeadUnit" Value="MinionDeath.Target" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="Killer" Value="MinionDeath.Attacker" VariableType="Reference" ReferenceType="AttackableUnit" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="LevelScriptChampionDeath" Name="ScoreTracking_ChampionDeath">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Scoring.PersonalScore.PersonalScore_Kills.PersonalScore_ChampionKill" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="DeadChampion" Value="ChampionDeath.Target" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="Killer" Value="ChampionDeath.Attacker" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="Assist" Value="ChampionDeath.Assisters" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+      <Parameter Name="CapturePointOwnerA" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointOwnerB" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointOwnerC" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointOwnerD" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="CapturePointOwnerE" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousOwner_A" Value="CapturePointPreviousOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousOwner_B" Value="CapturePointPreviousOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousOwner_C" Value="CapturePointPreviousOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousOwner_D" Value="CapturePointPreviousOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="PreviousOwner_E" Value="CapturePointPreviousOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+      <Parameter Name="Score_LastStand" Value="10" VariableType="Value" />
+      <Parameter Name="Score_ChampionKill" Value="15" VariableType="Value" />
+      <Parameter Name="Score_ChampionAssist" Value="5" VariableType="Value" />
+      <Parameter Name="Score_OffensiveKill" Value="15" VariableType="Value" />
+      <Parameter Name="Score_OffensiveAssist" Value="5" VariableType="Value" />
+      <Parameter Name="Score_DefensiveAssist" Value="5" VariableType="Value" />
+      <Parameter Name="Score_DefensiveKill" Value="15" VariableType="Value" />
+      <Parameter Name="Score_Ace" Value="25" VariableType="Value" />
+      <Parameter Name="Score_Duelist" Value="2" VariableType="Value" />
+      <Parameter Name="Score_Avenger" Value="2" VariableType="Value" />
+      <Parameter Name="Score_Guardian" Value="2" VariableType="Value" />
+      <Parameter Name="Score_Payback" Value="2" VariableType="Value" />
+      <Parameter Name="IsFirstBlood" Value="IsFirstBlood" VariableType="Reference" ReferenceType="Bool" />
+      <Parameter Name="Score_FirstBlood" Value="2" VariableType="Value" />
+      <Parameter Name="KillingSpreeBeforeDeath" Value="ChampionDeath.KillingSpreeCount" VariableType="Reference" ReferenceType="Int" />
+      <Parameter Name="Score_SpreeShutdown0" Value="3" VariableType="Value" />
+      <Parameter Name="Score_SpreeShutdown1" Value="3" VariableType="Value" />
+      <Parameter Name="Score_SpreeShutdown2" Value="5" VariableType="Value" />
+      <Parameter Name="EnableSecondaryCallout" Value="False" VariableType="Value" />
+      <OutParameter Name="IsFirstBlood" Value="IsFirstBlood" ReferenceType="Bool" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="LevelScriptChampionDeath" Name="AwardVPForChampKills">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Scoring.ChampKillPoints" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="Attacker" Value="ChampionDeath.Attacker" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="Victim" Value="ChampionDeath.Target" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+      <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="Tip" Name="Tips_Capture">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Tip" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="ActivationTime" Value="15" VariableType="Value" />
+      <Parameter Name="DeactivationTime" Value="80" VariableType="Value" />
+      <Parameter Name="TipString" Value="game_odin_tip_text_capture" VariableType="Value" />
+      <Parameter Name="TipTitle" Value="game_odin_tip_title_capture" VariableType="Value" />
+      <Parameter Name="BehaviorTreeToDisable" Value="Tips_Capture" VariableType="Value" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="Tip" Name="Tips_Interrupt">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Tip" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="ActivationTime" Value="30" VariableType="Value" />
+      <Parameter Name="DeactivationTime" Value="80" VariableType="Value" />
+      <Parameter Name="TipString" Value="game_odin_tip_text_interrupt" VariableType="Value" />
+      <Parameter Name="TipTitle" Value="game_odin_tip_title_interrupt" VariableType="Value" />
+      <Parameter Name="BehaviorTreeToDisable" Value="Tips_Interrupt" VariableType="Value" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="Tip" Name="Tips_Tickdown">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Tip" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="ActivationTime" Value="45" VariableType="Value" />
+      <Parameter Name="DeactivationTime" Value="80" VariableType="Value" />
+      <Parameter Name="TipString" Value="game_odin_tip_text_victory" VariableType="Value" />
+      <Parameter Name="TipTitle" Value="game_odin_tip_title_victory" VariableType="Value" />
+      <Parameter Name="BehaviorTreeToDisable" Value="Tips_Tickdown" VariableType="Value" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="LevelScriptMultikill" Name="ScoreTracking_MultiKill">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Scoring.PersonalScore.PersonalScore_Kills.PersonalScore_MultiKill" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="DeadUnit" Value="Multikill.Target" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="Killer" Value="Multikill.Attacker" VariableType="Reference" ReferenceType="AttackableUnit" />
+      <Parameter Name="NumberOfKills" Value="Multikill.MultikillCount" VariableType="Reference" ReferenceType="Int" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="PrimaryQuest" Name="LevelPropAnimations">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Layouts.OdinLayout.LevelPropAnimations" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters />
+  </BTInstance>
+  <BTInstance Type="LevelScriptPlayerReconnect" Name="ReconnectMusicCues">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.Reconnect.ReconnectMusicCues" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="CurrentMusicCue" Value="ActiveMusicCue" VariableType="Reference" ReferenceType="UnsignedInt" />
+      <Parameter Name="ReconnectingPlayer" Value="PlayerReconnect.Player" VariableType="Reference" ReferenceType="AttackableUnit" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="PrimaryQuest" Name="EndOfGameCeremony_ChaosWon">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.EndOfGame.EndOfGameCeremony" />
+      <Parameter Name="Enabled" Value="False" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="WinningTeam" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+      <Parameter Name="NexusCrystalParticle_L1" Value="OrderNexusBeam_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L2" Value="OrderNexusBeam_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L3" Value="OrderNexusBeam_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L4" Value="OrderNexusBeam_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R1" Value="OrderNexusBeam_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R2" Value="OrderNexusBeam_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R3" Value="OrderNexusBeam_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R4" Value="OrderNexusBeam_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="EndGameState" Value="EndGameState" VariableType="Reference" ReferenceType="Int" />
+      <Parameter Name="ScoreOrder" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="ScoreChaos" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="NexusCrystalGlow_1" Value="OrderNexusGlow_1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_2" Value="OrderNexusGlow_2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_3" Value="OrderNexusGlow_3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_4" Value="OrderNexusGlow_4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystal" Value="OrderNexusCrystal" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L1" Value="OrderNexusBeamRed_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L2" Value="OrderNexusBeamRed_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L3" Value="OrderNexusBeamRed_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L4" Value="OrderNexusBeamRed_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R1" Value="OrderNexusBeamRed_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R2" Value="OrderNexusBeamRed_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R3" Value="OrderNexusBeamRed_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R4" Value="OrderNexusBeamRed_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <OutParameter Name="EndGameState" Value="EndGameState" ReferenceType="Int" />
+    </Parameters>
+  </BTInstance>
+  <BTInstance Type="PrimaryQuest" Name="EndOfGameCeremony_OrderWon">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.Dominion.EndOfGame.EndOfGameCeremony" />
+      <Parameter Name="Enabled" Value="False" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters>
+      <Parameter Name="WinningTeam" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+      <Parameter Name="NexusCrystalParticle_L1" Value="ChaosNexusBeam_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L2" Value="ChaosNexusBeam_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L3" Value="ChaosNexusBeam_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_L4" Value="ChaosNexusBeam_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R1" Value="ChaosNexusBeam_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R2" Value="ChaosNexusBeam_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R3" Value="ChaosNexusBeam_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticle_R4" Value="ChaosNexusBeam_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="EndGameState" Value="EndGameState" VariableType="Reference" ReferenceType="Int" />
+      <Parameter Name="ScoreOrder" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="ScoreChaos" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+      <Parameter Name="NexusCrystalGlow_1" Value="ChaosNexusGlow_1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_2" Value="ChaosNexusGlow_2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_3" Value="ChaosNexusGlow_3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalGlow_4" Value="ChaosNexusGlow_4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystal" Value="ChaosNexusCrystal" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L1" Value="ChaosNexusBeamRed_L1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L2" Value="ChaosNexusBeamRed_L2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L3" Value="ChaosNexusBeamRed_L3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_L4" Value="ChaosNexusBeamRed_L4" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R1" Value="ChaosNexusBeamRed_R1" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R2" Value="ChaosNexusBeamRed_R2" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R3" Value="ChaosNexusBeamRed_R3" VariableType="Reference" ReferenceType="DWORD" />
+      <Parameter Name="NexusCrystalParticleRed_R4" Value="ChaosNexusBeamRed_R4" VariableType="Reference" ReferenceType="DWORD" />
+      <OutParameter Name="EndGameState" Value="EndGameState" ReferenceType="Int" />
+    </Parameters>
+  </BTInstance>
+</Script>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_QuestComplete">
+    <Parameters>
+      <Parameter Name="TeamCompleted" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointsToAward" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetChampionCollection" Name="Champions">
+          <Parameters>
+            <OutParameter Name="Output" Value="Champions" ReferenceType="Obj_AI_HeroCollection" />
+          </Parameters>
+        </Node>
+        <Node Type="IterateOverAllDecorator" Name="GivePoints">
+          <Parameters>
+            <Parameter Name="Collection" Value="Champions" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+            <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" />
+          </Parameters>
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="GetUnitTeam" Name="UnitTeam">
+                  <Parameters>
+                    <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <OutParameter Name="Output" Value="UnitTeam" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="EqualUnitTeam" Name="UnitTeam==TeamCompleted">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="UnitTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamCompleted" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                  <Parameters>
+                    <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                    <Parameter Name="ScoreEvent" Value="QUEST_COMPLETE" VariableType="Value" />
+                    <Parameter Name="Value" Value="PointsToAward" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="IncrementPlayerStat" Name="IncrementPlayerStat">
+                  <Parameters>
+                    <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="StatEvent" Value="TEAM_OBJECTIVE" VariableType="Value" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

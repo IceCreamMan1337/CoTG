@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution Name="OdinScript" SolutionType="Quest" DataPath="/paris" Validity="Valid">
+ <Namespaces>
+    <!-- Add any namespace-related elements or attributes here -->
+  </Namespaces>
+  <SolutionItem Type="PrimaryQuest" Name="CapturePointManager">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="ScoreboardPrototypeManager">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="OdinOpeningCeremony">
+    <Description></Description>
+  </SolutionItem>
+</Solution>

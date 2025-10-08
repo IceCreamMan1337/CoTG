@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Respawn.RespawnInitialization">
+    <Parameters>
+      <OutParameter Name="ChaosRespawnMutator" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderRespawnMutator" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdjustment_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdjustment_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="SetVarInt" Name="ChaosRespawnMutator=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="ChaosRespawnMutator" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="OrderRespawnMutator=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="OrderRespawnMutator" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RespawnWindowAdjustment_Chaos=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="RespawnWindowAdjustment_Chaos" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RespawnWindowAdjustment_Order=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="RespawnWindowAdjustment_Order" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

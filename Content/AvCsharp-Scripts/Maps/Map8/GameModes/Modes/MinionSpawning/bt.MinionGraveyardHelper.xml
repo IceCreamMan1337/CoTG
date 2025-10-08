@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+    <Parameters>
+      <Parameter Name="LaneOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="LaneGraveyardPosition" VariableType="Reference" ParameterType="Vector" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="KillRadius" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="SquadNameToIgnore_A" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="SquadNameToIgnore_B" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderShrineTurret" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetUnitsInTargetArea" Name="AllMinions">
+          <Parameters>
+            <Parameter Name="Unit" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="TargetLocation" Value="LaneGraveyardPosition" VariableType="Reference" ReferenceType="Vector" />
+            <Parameter Name="Radius" Value="KillRadius" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="SpellFlags" Value="AffectEnemies,AffectFriends,AffectMinions,AffectNotPet" VariableType="Value" />
+            <OutParameter Name="Output" Value="AllMinions" ReferenceType="AttackableUnitCollection" />
+          </Parameters>
+        </Node>
+        <Node Type="AddString" Name="SquadNameToIgnoreChaos_A">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="SquadNameToIgnore_A" VariableType="Reference" ReferenceType="String" />
+            <Parameter Name="RightHandSide" Value="_CHAOS" VariableType="Value" />
+            <OutParameter Name="Output" Value="SquadNameToIgnoreChaos_A" ReferenceType="String" />
+          </Parameters>
+        </Node>
+        <Node Type="AddString" Name="SquadNameToIgnoreOrder_A">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="SquadNameToIgnore_A" VariableType="Reference" ReferenceType="String" />
+            <Parameter Name="RightHandSide" Value="_ORDER" VariableType="Value" />
+            <OutParameter Name="Output" Value="SquadNameToIgnoreOrder_A" ReferenceType="String" />
+          </Parameters>
+        </Node>
+        <Node Type="AddString" Name="SquadNameToIgnoreChaos_B">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="SquadNameToIgnore_B" VariableType="Reference" ReferenceType="String" />
+            <Parameter Name="RightHandSide" Value="_CHAOS" VariableType="Value" />
+            <OutParameter Name="Output" Value="SquadNameToIgnoreChaos_B" ReferenceType="String" />
+          </Parameters>
+        </Node>
+        <Node Type="AddString" Name="SquadNameToIgnoreOrder_B">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="SquadNameToIgnore_B" VariableType="Reference" ReferenceType="String" />
+            <Parameter Name="RightHandSide" Value="_ORDER" VariableType="Value" />
+            <OutParameter Name="Output" Value="SquadNameToIgnoreOrder_B" ReferenceType="String" />
+          </Parameters>
+        </Node>
+        <Node Type="IterateOverAllDecorator" Name="IterateOverAllMinions">
+          <Parameters>
+            <Parameter Name="Collection" Value="AllMinions" VariableType="Reference" ReferenceType="AttackableUnitCollection" />
+            <OutParameter Name="Output" Value="Minion" ReferenceType="AttackableUnit" />
+          </Parameters>
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="GetSquadNameOfUnit" Name="SquadName">
+                  <Parameters>
+                    <Parameter Name="TargetUnit" Value="Minion" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <OutParameter Name="SquadName" Value="SquadName" ReferenceType="String" />
+                  </Parameters>
+                </Node>
+                <Node Type="NotEqualString" Name="SquandName!=&quot;&quot;">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="RightHandSide" Value="" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="NotEqualString" Name="SquandName!=SquadNameToIgnoreChaos_A">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="RightHandSide" Value="SquadNameToIgnoreChaos_A" VariableType="Reference" ReferenceType="String" />
+                  </Parameters>
+                </Node>
+                <Node Type="NotEqualString" Name="SquandName!=SquadNameToIgnoreChaos_B">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="RightHandSide" Value="SquadNameToIgnoreChaos_B" VariableType="Reference" ReferenceType="String" />
+                  </Parameters>
+                </Node>
+                <Node Type="NotEqualString" Name="SquandName!=SquadNameToIgnoreOrder_A">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="RightHandSide" Value="SquadNameToIgnoreOrder_A" VariableType="Reference" ReferenceType="String" />
+                  </Parameters>
+                </Node>
+                <Node Type="NotEqualString" Name="SquandName!=SquadNameToIgnoreOrder_B">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="RightHandSide" Value="SquadNameToIgnoreOrder_B" VariableType="Reference" ReferenceType="String" />
+                  </Parameters>
+                </Node>
+                <Node Type="GetUnitTeam" Name="MinionTeam">
+                  <Parameters>
+                    <Parameter Name="Unit" Value="Minion" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <OutParameter Name="Output" Value="MinionTeam" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="Selector" Name="Either_Chaos_Order">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="OwnerIsOrder">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualUnitTeam" Name="LaneOwner==Order">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="LaneOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="EqualUnitTeam" Name="MinionTeam==Order">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="MinionTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="OwnerIsChaos">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualUnitTeam" Name="LaneOwner==Chaos">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="LaneOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="EqualUnitTeam" Name="MinionTeam==Chaos">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="MinionTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="KillUnit" Name="KillUnit">
+                  <Parameters>
+                    <Parameter Name="Unit" Value="Minion" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="Killer" Value="Minion" VariableType="Reference" ReferenceType="AttackableUnit" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="GetGameTime" Name="CurrentTime">
+          <Parameters>
+            <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

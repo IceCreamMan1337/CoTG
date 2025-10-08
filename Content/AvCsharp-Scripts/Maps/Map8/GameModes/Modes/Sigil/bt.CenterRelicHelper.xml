@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Sigil.CenterRelicHelper">
+    <Parameters>
+      <Parameter Name="CenterRelicSpawnTime" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicSquadID" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RelicEncounterCenter" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicPosition" VariableType="Reference" ParameterType="Vector" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicParticleAttached" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicSquadName" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicTeam" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CenterRelicSpawnTime" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSquadID" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicParticleAttached" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetGameTime" Name="CurrentTime">
+              <Parameters>
+                <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="Selector" Name="Spawn_Or_CheckSpawn">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="Spawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="LessEqualFloat" Name="CenterRelicSpawnTime&lt;=CurrentTime">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CenterRelicSpawnTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddFloat" Name="CenterRelicSpawnTime=CurrentTime+50000">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="50000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="CenterRelicSpawnTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SpawnSquadFromEncounter" Name="SpawnSquadFromEncounter">
+                      <Parameters>
+                        <Parameter Name="EncounterId" Value="RelicEncounterCenter" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="Position" Value="CenterRelicPosition" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="Team" Value="CenterRelicTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SquadName" Value="CenterRelicSquadName" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="ExistingSquadId" Value="" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="SquadId" Value="CenterRelicSquadID" ReferenceType="Int" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="CenterRelicParticleAttached=False">
+                      <Parameters>
+                        <Parameter Name="Input" Value="False" VariableType="Value" />
+                        <OutParameter Name="Output" Value="CenterRelicParticleAttached" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="CheckSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="AddFloat" Name="UpperBound">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="25000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="UpperBound" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterFloat" Name="CenterRelicSpawnTime&gt;UpperBound">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CenterRelicSpawnTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="UpperBound" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterEqualInt" Name="CenterRelicSquadID&gt;=0">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CenterRelicSquadID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="TestSquadIsAlive" Name="TestNoRelic">
+                      <Parameters>
+                        <Parameter Name="SquadId" Value="CenterRelicSquadID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="ReturnSuccessIf" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarInt" Name="CenterRelicSquadID">
+                      <Parameters>
+                        <Parameter Name="Input" Value="-1" VariableType="Value" />
+                        <OutParameter Name="Output" Value="CenterRelicSquadID" ReferenceType="Int" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GenerateRandomFloat" Name="NewCenterRelicSpawnTime">
+                      <Parameters>
+                        <Parameter Name="MinValue" Value="180" VariableType="Value" />
+                        <Parameter Name="MaxValue" Value="180" VariableType="Value" />
+                        <OutParameter Name="Output" Value="NewCenterRelicSpawnTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddFloat" Name="CenterRelicSpawnTime=CurrentTime+NewCenterRelicSpawnTime">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="NewCenterRelicSpawnTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <OutParameter Name="Output" Value="CenterRelicSpawnTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="AttachParticles">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GreaterEqualInt" Name="CenterRelicSquadID&gt;=0">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CenterRelicSquadID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="EqualBool" Name="CenterRelicParticleAttached=False">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CenterRelicParticleAttached" VariableType="Reference" ReferenceType="Bool" />
+                        <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="TestSquadIsAlive" Name="TestSquadAlive">
+                      <Parameters>
+                        <Parameter Name="SquadId" Value="CenterRelicSquadID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GetTurret" Name="OrderShrineTurret">
+                      <Parameters>
+                        <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="Lane" Value="0" VariableType="Value" />
+                        <Parameter Name="Position" Value="1" VariableType="Value" />
+                        <OutParameter Name="Turret" Value="OrderShrineTurret" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GetUnitsInTargetArea" Name="GetUnitsInTargetArea">
+                      <Parameters>
+                        <Parameter Name="Unit" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="TargetLocation" Value="CenterRelicPosition" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="Radius" Value="300" VariableType="Value" />
+                        <Parameter Name="SpellFlags" Value="AffectEnemies,AffectFriends,AffectMinions,AffectUseable" VariableType="Value" />
+                        <OutParameter Name="Output" Value="UnitsToSearch" ReferenceType="AttackableUnitCollection" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IterateUntilSuccessDecorator" Name="IterateUntilSuccessDecorator">
+                      <Parameters>
+                        <Parameter Name="Collection" Value="UnitsToSearch" VariableType="Reference" ReferenceType="AttackableUnitCollection" />
+                        <OutParameter Name="Output" Value="Unit" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                      <Children>
+                        <Node Type="Sequence" Name="Sequence">
+                          <Parameters />
+                          <Children>
+                            <Node Type="GetSquadNameOfUnit" Name="UniSquadName">
+                              <Parameters>
+                                <Parameter Name="TargetUnit" Value="Unit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <OutParameter Name="SquadName" Value="UnitSquadName" ReferenceType="String" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="EqualString" Name="UnitSquadName==CenterRelicSquadName">
+                              <Parameters>
+                                <Parameter Name="LeftHandSide" Value="UnitSquadName" VariableType="Reference" ReferenceType="String" />
+                                <Parameter Name="RightHandSide" Value="CenterRelicSquadName" VariableType="Reference" ReferenceType="String" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="AttachPARToIdleParticles" Name="AttachPARToIdleParticles">
+                              <Parameters>
+                                <Parameter Name="LevelProp" Value="Unit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="FlexValueId" Value="0" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="SetVarBool" Name="CenterRelicParticleAttached=True">
+                              <Parameters>
+                                <Parameter Name="Input" Value="True" VariableType="Value" />
+                                <OutParameter Name="Output" Value="CenterRelicParticleAttached" ReferenceType="Bool" />
+                              </Parameters>
+                            </Node>
+                          </Children>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

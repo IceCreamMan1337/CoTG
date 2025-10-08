@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointManager">
+    <Parameters>
+      <Parameter Name="CapturePointOwnerA" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerB" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_AB" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_AE" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_BA" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_BC" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_CB" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_CD" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_DC" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_DE" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_ED" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnTime_EA" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosScore" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderScore" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_A" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_B" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_C" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_D" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_E" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoringFloor" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_PointCapture" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_PointNeutralized" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_PointAssist" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_Strategist" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_Opportunist" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_Vanguard" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointGuardian0" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointGuardian1" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointGuardian2" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointGuardian3" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointGuardian4" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnRate_Seconds" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="EnableSecondaryCallout" VariableType="Reference, Value" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CapturePointOwnerA" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointOwnerB" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointOwnerC" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointOwnerD" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointOwnerE" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_AB" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_AE" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_BA" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_BC" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_CB" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_CD" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_DC" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_DE" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_ED" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionSpawnTime_EA" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousOwner_A" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousOwner_B" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousOwner_C" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousOwner_D" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousOwner_E" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="Procedure" Name="GetCapturePointDelta" TreeQualifiedName="Modes.Dominion.CapturePoint.GetCapturePointDelta">
+          <Parameters>
+            <Parameter Name="CapturePointAOwner" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointBOwner" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointCOwner" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointDOwner" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointEOwner" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CCDelta" Value="CCDelta" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ObeliskCapturePointHelper_A" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+          <Parameters>
+            <Parameter Name="CapturePointOwner" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointIndex" Value="0" VariableType="Value" />
+            <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PreviousCapturePointOwner" Value="PreviousOwner_A" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointCapture" Value="Score_PointCapture" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointNeutralize" Value="Score_PointNeutralized" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointAssist" Value="Score_PointAssist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Strategist" Value="Score_Strategist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Opportunist" Value="Score_Opportunist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Guardian" Value="CapturePointGuardian0" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="EnableSecondaryCallouts" Value="EnableSecondaryCallout" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="ChaosShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="OrderShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="CapturePointOwner" Value="CapturePointOwnerA" ReferenceType="TeamEnum" />
+            <OutParameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_AB" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_AE" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_BA" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_EA" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="PreviousCapturePointOwner" Value="PreviousOwner_A" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ObeliskCapturePointHelper_B" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+          <Parameters>
+            <Parameter Name="CapturePointOwner" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointIndex" Value="1" VariableType="Value" />
+            <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PreviousCapturePointOwner" Value="PreviousOwner_B" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointCapture" Value="Score_PointCapture" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointNeutralize" Value="Score_PointNeutralized" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointAssist" Value="Score_PointAssist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Strategist" Value="Score_Strategist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Opportunist" Value="Score_Opportunist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Guardian" Value="CapturePointGuardian1" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="EnableSecondaryCallouts" Value="EnableSecondaryCallout" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="ChaosShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="OrderShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="CapturePointOwner" Value="CapturePointOwnerB" ReferenceType="TeamEnum" />
+            <OutParameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_BC" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_BA" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_CB" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_AB" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="PreviousCapturePointOwner" Value="PreviousOwner_B" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ObeliskCapturePointHelper_C" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+          <Parameters>
+            <Parameter Name="CapturePointOwner" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointIndex" Value="2" VariableType="Value" />
+            <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PreviousCapturePointOwner" Value="PreviousOwner_C" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointCapture" Value="Score_PointCapture" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointNeutralize" Value="Score_PointNeutralized" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointAssist" Value="Score_PointAssist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Strategist" Value="Score_Strategist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Opportunist" Value="Score_Opportunist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Guardian" Value="CapturePointGuardian2" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="EnableSecondaryCallouts" Value="EnableSecondaryCallout" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="ChaosShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="OrderShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="CapturePointOwner" Value="CapturePointOwnerC" ReferenceType="TeamEnum" />
+            <OutParameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_CD" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_CB" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_DC" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_BC" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="PreviousCapturePointOwner" Value="PreviousOwner_C" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ObeliskCapturePointHelper_D" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+          <Parameters>
+            <Parameter Name="CapturePointOwner" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointIndex" Value="3" VariableType="Value" />
+            <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PreviousCapturePointOwner" Value="PreviousOwner_D" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointCapture" Value="Score_PointCapture" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointNeutralize" Value="Score_PointNeutralized" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointAssist" Value="Score_PointAssist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Strategist" Value="Score_Strategist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Opportunist" Value="Score_Opportunist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Guardian" Value="CapturePointGuardian3" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="EnableSecondaryCallouts" Value="EnableSecondaryCallout" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="ChaosShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="OrderShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="CapturePointOwner" Value="CapturePointOwnerD" ReferenceType="TeamEnum" />
+            <OutParameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_DE" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_DC" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_ED" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_CD" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="PreviousCapturePointOwner" Value="PreviousOwner_D" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ObeliskCapturePointHelper_E" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+          <Parameters>
+            <Parameter Name="CapturePointOwner" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="CapturePointIndex" Value="4" VariableType="Value" />
+            <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PreviousCapturePointOwner" Value="PreviousOwner_E" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointCapture" Value="Score_PointCapture" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointNeutralize" Value="Score_PointNeutralized" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_PointAssist" Value="Score_PointAssist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Strategist" Value="Score_Strategist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Score_Opportunist" Value="Score_Opportunist" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="Guardian" Value="CapturePointGuardian4" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="EnableSecondaryCallouts" Value="EnableSecondaryCallout" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="ChaosShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="OrderShrineTurret" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="CapturePointOwner" Value="CapturePointOwnerE" ReferenceType="TeamEnum" />
+            <OutParameter Name="MinionSpawnTimeToLane1" Value="MinionSpawnTime_EA" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeToLane2" Value="MinionSpawnTime_ED" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane1" Value="MinionSpawnTime_AE" ReferenceType="Float" />
+            <OutParameter Name="MinionSpawnTimeFromLane2" Value="MinionSpawnTime_DE" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="PreviousCapturePointOwner" Value="PreviousOwner_E" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

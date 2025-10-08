@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_Kills.PersonalScore_KillingSpree">
+    <Parameters>
+      <Parameter Name="Killer" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="KillingSpree_x3_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="KillingSpree_x4_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="KillingSpree_x5_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetKillingSpreeNumber" Name="KillingSpreeNumber">
+              <Parameters>
+                <Parameter Name="Unit" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                <OutParameter Name="Output" Value="KillingSpreeNumber" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Selector" Name="Selector">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="KillingSpreeNumber=3">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualInt" Name="KillingSpreeNumber==3">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="3" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="KILLING_SPREE" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x3_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="KillingSpreeNumber=4">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualInt" Name="KillingSpreeNumber==4">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="4" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="RAMPAGE" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x3_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="KillingSpreeNumber=5">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualInt" Name="KillingSpreeNumber==5">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="5" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="UNSTOPPABLE" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x4_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="KillingSpreeNumber=6">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualInt" Name="KillingSpreeNumber==6">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="6" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="DOMINATING" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x4_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="KillingSpreeNumber=7">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualInt" Name="KillingSpreeNumber==7">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="7" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="GOD_LIKE" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x4_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="KillingSpreeNumber&gt;=8">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GreaterEqualInt" Name="KillingSpreeNumber&gt;=8">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="KillingSpreeNumber" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="8" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="LEGENDARY" VariableType="Value" />
+                        <Parameter Name="Value" Value="KillingSpree_x5_Value" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

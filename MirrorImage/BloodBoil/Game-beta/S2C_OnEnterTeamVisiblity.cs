@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Numerics;
+using System.Linq;
+using System.Collections.Generic;
+using BloodBoil.Game.Common;
+using MirrorImage;
+
+namespace BloodBoil.Game
+{
+    public sealed class S2C_OnEnterTeamVisiblity : GamePacket // 0x0EE
+    {
+        public override GamePacketID ID => GamePacketID.S2C_OnEnterTeamVisiblity;
+
+        public byte VisiblityTeam { get; set; } // at first in reply is 0 and 1 only 
+
+        internal override void ReadBody(ByteReader reader)
+        {
+            this.VisiblityTeam = reader.ReadByte();
+        }
+        internal override void WriteBody(ByteWriter writer)
+        {
+            writer.WriteByte(this.VisiblityTeam);
+        }
+    }
+}

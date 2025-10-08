@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script Type="AI" SubType="">
+  <BTInstance Type="BehaviourTree" Name="OdinTowerBehavior">
+    <BehaviourTreeParameters>
+      <Parameter Name="BehaviourTree" Value="OdinTowerBehavior" />
+      <Parameter Name="Enabled" Value="true" />
+      <Parameter Name="Default" Value="true" />
+	  <Parameter Name="TopicAry" Value="PUSHLANE,DEFEND,SUPPORT" />
+	  <Parameter Name="Category" Value="INDEPENDENT" />
+	  <Parameter Name="Type" Value="PROACTIVE" />
+    </BehaviourTreeParameters>
+  </BTInstance>
+</Script>

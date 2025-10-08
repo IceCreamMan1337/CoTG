@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Respawn.GetRespawnAdjustments_NexusHealth">
+    <Parameters>
+      <Parameter Name="ScoreOrder" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoreChaos" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="RespawnModifier_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnModifier_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdj_x10_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdj_x10_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="SubtractFloat" Name="PointsDiff=OrderPoints-ChaosPoints">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="ScoreOrder" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="ScoreChaos" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="PointsDiff" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="NotEqualFloat" Name="PointsDiff!=0">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="PointsDiff" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+          </Parameters>
+        </Node>
+        <Node Type="AbsFloat" Name="AbsPointDiff=ABS(PointsDiff)">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="PointsDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="AbsPointDiff" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="DivideFloat" Name="Modifier=AbsPointDiff/50">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="AbsPointDiff" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="50" VariableType="Value" />
+            <OutParameter Name="Output" Value="Modifier" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="NewModifier=Floor(Modifier)" TreeQualifiedName="Modes.Dominion.Respawn.RespawnFloor">
+          <Parameters>
+            <Parameter Name="ToFloor" Value="Modifier" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="FlooredInt" Value="NewModifier" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="AddInt" Name="NewModifier+=2">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="RightHandSide" Value="2" VariableType="Value" />
+            <OutParameter Name="Output" Value="NewModifier" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="MinInt" Name="NewModifier=Min(NewModifier, 5)">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="RightHandSide" Value="5" VariableType="Value" />
+            <OutParameter Name="Output" Value="NewModifier" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="MultiplyInt" Name="NegativeModifier=-NewModifier">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="RightHandSide" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="NegativeModifier" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="Selector" Name="Order_Chaos">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="OrderAhead_ChaosBehind">
+              <Parameters />
+              <Children>
+                <Node Type="GreaterEqualFloat" Name="OrderPoints&gt;=ChaosPoints">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="ScoreOrder" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="ScoreChaos" VariableType="Reference" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnModifier_Order=NegativeModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NegativeModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnModifier_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnModifier_Chaos=NewModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnModifier_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnWindowAdj_x10_Order=0">
+                  <Parameters>
+                    <Parameter Name="Input" Value="0" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnWindowAdj_x10_Chaos=NewModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="MultiplyInt" Name="RespawnWindowAdj_x10_Chaos*=10">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="RespawnWindowAdj_x10_Chaos" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="10" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="DivideInt" Name="RespawnWindowAdj_x10_Chaos/=2">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="RespawnWindowAdj_x10_Chaos" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="2" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="ChaosAhead_OrderBehind">
+              <Parameters />
+              <Children>
+                <Node Type="LessFloat" Name="OrderPoints&lt;ChaosPoints">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="ScoreOrder" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="ScoreChaos" VariableType="Reference" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnModifier_Order=NewModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnModifier_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnWindowAdj_x10_Order=NewModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NewModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="MultiplyInt" Name="RespawnWindowAdj_x10_Order*=10">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="RespawnWindowAdj_x10_Order" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="10" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="DivideInt" Name="RespawnWindowAdj_x10_Order/=2">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="RespawnWindowAdj_x10_Order" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="2" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Order" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnModifier_Chaos=NegativeModifier">
+                  <Parameters>
+                    <Parameter Name="Input" Value="NegativeModifier" VariableType="Reference" ReferenceType="Int" />
+                    <OutParameter Name="Output" Value="RespawnModifier_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarInt" Name="RespawnWindowAdj_x10_Chaos=0">
+                  <Parameters>
+                    <Parameter Name="Input" Value="0" VariableType="Value" />
+                    <OutParameter Name="Output" Value="RespawnWindowAdj_x10_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solutions>
+  <Solution StaticName="Manager" File=".\AIManager\sn.AIManager.xml">
+    <File Path=".\AIManager\bt.AIManager_Logic.xml" />
+    <File Path=".\AIManager\bt.Initialization.xml" />
+    <File Path=".\AIManager\bt.LevelNormalizer.xml" />
+    <File Path=".\AIManager\bt.PointEvaluation.xml" />
+    <File Path=".\AIManager\bt.ReferenceUpdateGlobal.xml" />
+    <File Path=".\AIManager\Common\bt.AssignToLane.xml" />
+    <File Path=".\AIManager\DifficultyScaling\bt.BeginnerOverrideDifficulty_TurretDestruction.xml" />
+    <File Path=".\AIManager\DifficultyScaling\bt.DifficultySetting.xml" />
+    <File Path=".\AIManager\DifficultyScaling\bt.WinLossState.xml" />
+    <File Path=".\AIManager\DisconnectAdjustments\bt.AssignBotToSquad.xml" />
+    <File Path=".\AIManager\DisconnectAdjustments\bt.DisconnectAdjustmentInitialization.xml" />
+    <File Path=".\AIManager\DisconnectAdjustments\bt.DisconnectAdjustmentManager.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.Lane_GetOptimalAssignment.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.Lane_OptimalDistribution.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.LanePresence.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.LanePriorityCalculation.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.LanePriorityPairingCalculation.xml" />
+    <File Path=".\AIManager\LaneDistribution\bt.StaticLaneDistribution.xml" />
+  </Solution>
+  <Solution StaticName="TutorialManager" File=".\BasicTutorialManager\sn.BasicTutorialManager.xml">
+    <File Path=".\BasicTutorialManager\bt.AssignToLane.xml" />
+    <File Path=".\BasicTutorialManager\bt.BasicTutorialManager_Logic.xml" />
+  </Solution>
+  <Solution StaticName="CustomGameManager" File=".\CustomGameAIManager\sn.CustomGameManager.xml">
+    <File Path=".\CustomGameAIManager\bt.CustomGameManager_Logic.xml" />
+    <File Path=".\CustomGameAIManager\bt.Initialization.xml" />
+    <File Path=".\CustomGameAIManager\bt.LevelNormalizer.xml" />
+    <File Path=".\CustomGameAIManager\bt.PointEvaluation.xml" />
+    <File Path=".\CustomGameAIManager\bt.ReferenceUpdateGlobal.xml" />
+    <File Path=".\CustomGameAIManager\Common\bt.AssignToLane.xml" />
+    <File Path=".\CustomGameAIManager\DifficultyScaling\bt.BeginnerOverrideDifficulty_TurretDestruction.xml" />
+    <File Path=".\CustomGameAIManager\DifficultyScaling\bt.DifficultySetting.xml" />
+    <File Path=".\CustomGameAIManager\DisconnectAdjustments\bt.DisconnectAdjustmentInitialization.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.ConformLanesToPlayers.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.CustomGameStaticLaneDistribution.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.Lane_GetOptimalAssignment.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.Lane_OptimalDistribution.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.LanePresence.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.LanePriorityCalculation.xml" />
+    <File Path=".\CustomGameAIManager\LaneDistribution\bt.LanePriorityPairingCalculation.xml" />
+  </Solution>
+  <Solution StaticName="CustomGameDominionAIManager" File=".\CustomGameDominionManager\sn.CustomGameDominionManager.xml">
+    <File Path=".\CustomGameDominionManager\bt.AssignMissions.xml" />
+    <File Path=".\CustomGameDominionManager\bt.CustomGameDominionAIManager_Logic.xml" />
+    <File Path=".\CustomGameDominionManager\bt.GetPriorityScore.xml" />
+    <File Path=".\CustomGameDominionManager\bt.GoldScaling.xml" />
+    <File Path=".\CustomGameDominionManager\bt.StrengthEvaluation.xml" />
+    <File Path=".\CustomGameDominionManager\CapturePoint\bt.CountCapturePointsOwned.xml" />
+    <File Path=".\CustomGameDominionManager\DynamicDistribution\bt.UpdateDistributionTime_Helper.xml" />
+    <File Path=".\CustomGameDominionManager\DynamicDistribution\bt.UpdateDistributionTime_Initialization.xml" />
+  </Solution>
+  <Solution StaticName="DominionAIManager" File=".\DominionManager\sn.DominionManager.xml">
+    <File Path=".\DominionManager\bt.AssignMissions.xml" />
+    <File Path=".\DominionManager\bt.DominionAIManager_Logic.xml" />
+    <File Path=".\DominionManager\bt.GetPriorityScore.xml" />
+    <File Path=".\DominionManager\bt.GoldScaling.xml" />
+    <File Path=".\DominionManager\bt.StrengthEvaluation.xml" />
+    <File Path=".\DominionManager\CapturePoint\bt.CountCapturePointsOwned.xml" />
+    <File Path=".\DominionManager\DynamicDistribution\bt.UpdateDistributionTime_Helper.xml" />
+    <File Path=".\DominionManager\DynamicDistribution\bt.UpdateDistributionTime_Initialization.xml" />
+  </Solution>
+  <Solution StaticName="OdinManager" File=".\OdinManager\sn.OdinManager.xml">
+    <File Path=".\OdinManager\bt.OdinManager_Logic.xml" />
+  </Solution>
+</Solutions>

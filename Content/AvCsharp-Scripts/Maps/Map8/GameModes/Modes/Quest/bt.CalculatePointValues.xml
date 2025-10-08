@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Quest.CalculatePointValues">
+    <Parameters>
+      <Parameter Name="CapturePointOwnerA" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerB" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ReferenceTeam" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointA_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointB_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointC_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointD_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointE_Value" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CalculatedValue_PointA" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CalculatedValue_PointB" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CalculatedValue_PointC" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CalculatedValue_PointD" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CalculatedValue_PointE" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="Procedure" Name="CalculatePointValues_HelperA" TreeQualifiedName="Modes.Dominion.Quest.CalculatePointValues_Helper">
+          <Parameters>
+            <Parameter Name="BasePointValue" Value="PointA_Value" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PointOwner" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ReferenceTeam" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CalculatedPointValue" Value="CalculatedValue_PointA" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="CalculatePointValues_HelperB" TreeQualifiedName="Modes.Dominion.Quest.CalculatePointValues_Helper">
+          <Parameters>
+            <Parameter Name="BasePointValue" Value="PointB_Value" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PointOwner" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ReferenceTeam" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CalculatedPointValue" Value="CalculatedValue_PointB" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="CalculatePointValues_HelperC" TreeQualifiedName="Modes.Dominion.Quest.CalculatePointValues_Helper">
+          <Parameters>
+            <Parameter Name="BasePointValue" Value="PointC_Value" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PointOwner" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ReferenceTeam" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CalculatedPointValue" Value="CalculatedValue_PointC" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="CalculatePointValues_HelperD" TreeQualifiedName="Modes.Dominion.Quest.CalculatePointValues_Helper">
+          <Parameters>
+            <Parameter Name="BasePointValue" Value="PointD_Value" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PointOwner" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ReferenceTeam" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CalculatedPointValue" Value="CalculatedValue_PointD" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="CalculatePointValues_HelperE" TreeQualifiedName="Modes.Dominion.Quest.CalculatePointValues_Helper">
+          <Parameters>
+            <Parameter Name="BasePointValue" Value="PointE_Value" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="PointOwner" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+            <Parameter Name="ReferenceTeam" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="CalculatedPointValue" Value="CalculatedValue_PointE" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

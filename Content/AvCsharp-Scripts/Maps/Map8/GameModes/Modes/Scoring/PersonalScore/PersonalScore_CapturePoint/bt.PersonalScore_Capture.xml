@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_CapturePoint.PersonalScore_Capture">
+    <Parameters>
+      <Parameter Name="Radius" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="AssistRadius" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturedGuardian" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PersonalScore_CaptureAssist" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PersonalScore_Capture" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PersonalScore_Strategist" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="EnableSecondaryCallouts" VariableType="Reference, Value" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetUnitPosition" Name="ReferencePosition">
+              <Parameters>
+                <Parameter Name="Unit" Value="CapturedGuardian" VariableType="Reference" ReferenceType="AttackableUnit" />
+                <OutParameter Name="Output" Value="ReferencePosition" ReferenceType="Vector" />
+              </Parameters>
+            </Node>
+            <Node Type="GetUnitsInTargetArea" Name="UnitsToGivePoints">
+              <Parameters>
+                <Parameter Name="Unit" Value="CapturedGuardian" VariableType="Reference" ReferenceType="AttackableUnit" />
+                <Parameter Name="TargetLocation" Value="ReferencePosition" VariableType="Reference" ReferenceType="Vector" />
+                <Parameter Name="Radius" Value="AssistRadius" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="SpellFlags" Value="AffectFriends,AffectHeroes" VariableType="Value" />
+                <OutParameter Name="Output" Value="UnitsToGivePoints" ReferenceType="AttackableUnitCollection" />
+              </Parameters>
+            </Node>
+            <Node Type="IterateOverAllDecorator" Name="GivePointsToEachUnit">
+              <Parameters>
+                <Parameter Name="Collection" Value="UnitsToGivePoints" VariableType="Reference" ReferenceType="AttackableUnitCollection" />
+                <OutParameter Name="Output" Value="ReferenceUnit" ReferenceType="AttackableUnit" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GetDistanceBetweenUnits" Name="Distance(ReferenceUnit,CapturedGuardian)">
+                      <Parameters>
+                        <Parameter Name="SourceUnit" Value="CapturedGuardian" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="DestinationUnit" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="Output" Value="Distance" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Selector" Name="Selector">
+                      <Parameters />
+                      <Children>
+                        <Node Type="Sequence" Name="Capture">
+                          <Parameters />
+                          <Children>
+                            <Node Type="LessEqualFloat" Name="Distance&lt;=Radius">
+                              <Parameters>
+                                <Parameter Name="LeftHandSide" Value="Distance" VariableType="Reference" ReferenceType="Float" />
+                                <Parameter Name="RightHandSide" Value="Radius" VariableType="Reference" ReferenceType="Float" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="TestUnitHasBuff" Name="HasOdinCaptureChannel">
+                              <Parameters>
+                                <Parameter Name="TargetUnit" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="CasterUnit" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="BuffName" Value="OdinCaptureChannel" VariableType="Value" />
+                                <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="GetGameTime" Name="CurrentTime">
+                              <Parameters>
+                                <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="Selector" Name="NinjaOrTideTurner_Augmentation">
+                              <Parameters />
+                              <Children>
+                                <Node Type="Sequence" Name="Ninja">
+                                  <Parameters />
+                                  <Children>
+                                    <Node Type="EqualBool" Name="EnableSecondaryCallouts==True">
+                                      <Parameters>
+                                        <Parameter Name="LeftHandSide" Value="EnableSecondaryCallouts" VariableType="Reference" ReferenceType="Bool" />
+                                        <Parameter Name="RightHandSide" Value="True" VariableType="Value" />
+                                      </Parameters>
+                                    </Node>
+                                    <Node Type="TestUnitHasBuff" Name="HasOdinScoreNinja">
+                                      <Parameters>
+                                        <Parameter Name="TargetUnit" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                        <Parameter Name="CasterUnit" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                        <Parameter Name="BuffName" Value="OdinScoreNinja" VariableType="Value" />
+                                        <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                                      </Parameters>
+                                    </Node>
+                                    <Node Type="AddFloat" Name="TotalPersonalScore=Capture+Strategist">
+                                      <Parameters>
+                                        <Parameter Name="LeftHandSide" Value="PersonalScore_Capture" VariableType="Reference" ReferenceType="Float" />
+                                        <Parameter Name="RightHandSide" Value="PersonalScore_Strategist" VariableType="Reference" ReferenceType="Float" />
+                                        <OutParameter Name="Output" Value="TotalPersonalScore" ReferenceType="Float" />
+                                      </Parameters>
+                                    </Node>
+                                    <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore_Strategist">
+                                      <Parameters>
+                                        <Parameter Name="Player" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                        <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                                        <Parameter Name="ScoreEvent" Value="STRATEGIST" VariableType="Value" />
+                                        <Parameter Name="Value" Value="TotalPersonalScore" VariableType="Reference" ReferenceType="Float" />
+                                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                                      </Parameters>
+                                    </Node>
+                                  </Children>
+                                </Node>
+                                <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore_RegularCapture">
+                                  <Parameters>
+                                    <Parameter Name="Player" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                    <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                                    <Parameter Name="ScoreEvent" Value="NODE_CAPTURE" VariableType="Value" />
+                                    <Parameter Name="Value" Value="PersonalScore_Capture" VariableType="Reference" ReferenceType="Float" />
+                                    <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                                  </Parameters>
+                                </Node>
+                              </Children>
+                            </Node>
+                            <Node Type="IncrementPlayerStat" Name="IncrementPlayerStat_Capture">
+                              <Parameters>
+                                <Parameter Name="Player" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="StatEvent" Value="NODE_CAPTURE" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                          </Children>
+                        </Node>
+                        <Node Type="Sequence" Name="Assist">
+                          <Parameters />
+                          <Children>
+                            <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore_CaptureAssist">
+                              <Parameters>
+                                <Parameter Name="Player" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                                <Parameter Name="ScoreEvent" Value="NODE_CAPTURE_ASSIST" VariableType="Value" />
+                                <Parameter Name="Value" Value="PersonalScore_CaptureAssist" VariableType="Reference" ReferenceType="Float" />
+                                <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="IncrementPlayerStat" Name="IncrementPlayerStat_CaptureAssist">
+                              <Parameters>
+                                <Parameter Name="Player" Value="ReferenceUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="StatEvent" Value="NODE_CAPTURE_ASSIST" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                          </Children>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

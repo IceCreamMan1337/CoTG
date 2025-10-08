@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.ChangeScoreFlatCap">
+    <Parameters>
+      <Parameter Name="OrderScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CanWin" VariableType="Reference, Value" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="FloorValue" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoreValue" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoringTeam" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="OrderScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ScoreChanged" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Selector" Name="OrderOrChaos">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="ChangeScoreForChaos">
+          <Parameters />
+          <Children>
+            <Node Type="SetVarBool" Name="ScoreChanged=False">
+              <Parameters>
+                <Parameter Name="Input" Value="False" VariableType="Value" />
+                <OutParameter Name="Output" Value="ScoreChanged" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+            <Node Type="EqualUnitTeam" Name="ScoringTeam==TeamOrder">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="ScoringTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="MaskFailure" Name="MaskFailure">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualBool" Name="CanWin==False">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CanWin" VariableType="Reference" ReferenceType="Bool" />
+                        <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterFloat" Name="GreaterFloat">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="FloorValue" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SubtractFloat" Name="ChaosScore-=ScoreValue">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="ScoreValue" VariableType="Reference" ReferenceType="Float" />
+                        <OutParameter Name="Output" Value="ChaosScore" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetGameScore" Name="SetGameScoreForChaos">
+                      <Parameters>
+                        <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                        <Parameter Name="Score" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="ScoreChanged=True">
+                      <Parameters>
+                        <Parameter Name="Input" Value="True" VariableType="Value" />
+                        <OutParameter Name="Output" Value="ScoreChanged" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="ChangeScoreForOrder">
+          <Parameters />
+          <Children>
+            <Node Type="SetVarBool" Name="ScoreChanged=False">
+              <Parameters>
+                <Parameter Name="Input" Value="False" VariableType="Value" />
+                <OutParameter Name="Output" Value="ScoreChanged" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+            <Node Type="EqualUnitTeam" Name="ScoringTeam==TeamChaos">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="ScoringTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="MaskFailure" Name="Check_For_Can_Win">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualBool" Name="CanWin==False">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CanWin" VariableType="Reference" ReferenceType="Bool" />
+                        <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterFloat" Name="GreaterFloat">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="FloorValue" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SubtractFloat" Name="OrderScore-=ScoreValue">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="ScoreValue" VariableType="Reference" ReferenceType="Float" />
+                        <OutParameter Name="Output" Value="OrderScore" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetGameScore" Name="SetGameScoreForOrder">
+                      <Parameters>
+                        <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="Score" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="ScoreChanged=True">
+                      <Parameters>
+                        <Parameter Name="Input" Value="True" VariableType="Value" />
+                        <OutParameter Name="Output" Value="ScoreChanged" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

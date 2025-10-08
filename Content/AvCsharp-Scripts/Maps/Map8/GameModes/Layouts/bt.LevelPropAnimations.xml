@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Layouts.OdinLayout.LevelPropAnimations">
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetPropByName" Name="GetPropByName">
+          <Parameters>
+            <Parameter Name="PropName" Value="LevelProp_SwainBeam1" VariableType="Value" />
+            <OutParameter Name="Output" Value="Bird1" ReferenceType="GameObject" />
+          </Parameters>
+        </Node>
+        <Node Type="PlayAnimationOnProp" Name="PlayAnimationOnProp">
+          <Parameters>
+            <Parameter Name="LevelProp" Value="Bird1" VariableType="Reference" ReferenceType="GameObject" />
+            <Parameter Name="Animation" Value="PeckA" VariableType="Value" />
+            <Parameter Name="Loop" Value="True" VariableType="Value" />
+            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="GetPropByName" Name="GetPropByName">
+          <Parameters>
+            <Parameter Name="PropName" Value="LevelProp_SwainBeam2" VariableType="Value" />
+            <OutParameter Name="Output" Value="Bird2" ReferenceType="GameObject" />
+          </Parameters>
+        </Node>
+        <Node Type="PlayAnimationOnProp" Name="PlayAnimationOnProp">
+          <Parameters>
+            <Parameter Name="LevelProp" Value="Bird2" VariableType="Reference" ReferenceType="GameObject" />
+            <Parameter Name="Animation" Value="PeckB" VariableType="Value" />
+            <Parameter Name="Loop" Value="True" VariableType="Value" />
+            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="GetPropByName" Name="GetPropByName">
+          <Parameters>
+            <Parameter Name="PropName" Value="LevelProp_SwainBeam3" VariableType="Value" />
+            <OutParameter Name="Output" Value="Bird3" ReferenceType="GameObject" />
+          </Parameters>
+        </Node>
+        <Node Type="PlayAnimationOnProp" Name="PlayAnimationOnProp">
+          <Parameters>
+            <Parameter Name="LevelProp" Value="Bird3" VariableType="Reference" ReferenceType="GameObject" />
+            <Parameter Name="Animation" Value="PeckC" VariableType="Value" />
+            <Parameter Name="Loop" Value="True" VariableType="Value" />
+            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="GetPropByName" Name="GetPropByName">
+          <Parameters>
+            <Parameter Name="PropName" Value="LevelProp_OdinRockSaw02" VariableType="Value" />
+            <OutParameter Name="Output" Value="Saw2" ReferenceType="GameObject" />
+          </Parameters>
+        </Node>
+        <Node Type="PlayAnimationOnProp" Name="PlayAnimationOnProp">
+          <Parameters>
+            <Parameter Name="LevelProp" Value="Saw2" VariableType="Reference" ReferenceType="GameObject" />
+            <Parameter Name="Animation" Value="Idle2" VariableType="Value" />
+            <Parameter Name="Loop" Value="True" VariableType="Value" />
+            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetBTInstanceStatus" Name="SetBTInstanceStatus">
+          <Parameters>
+            <Parameter Name="Enabled" Value="False" VariableType="Value" />
+            <Parameter Name="Name" Value="LevelPropAnimations" VariableType="Value" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

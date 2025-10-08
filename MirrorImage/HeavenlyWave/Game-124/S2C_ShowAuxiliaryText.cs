@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Numerics;
+using System.Linq;
+using System.Collections.Generic;
+using HeavenlyWave.Game.Common;
+using MirrorImage;
+
+namespace HeavenlyWave.Game
+{
+    public sealed class S2C_ShowAuxiliaryText : GamePacket // 0x0A8
+    {
+        public override GamePacketID ID => GamePacketID.S2C_ShowAuxiliaryText;
+
+        public string TextStringID { get; set; }
+
+        internal override void ReadBody(ByteReader reader)
+        {
+            this.TextStringID = reader.ReadZeroTerminatedString();
+        }
+        internal override void WriteBody(ByteWriter writer)
+        {
+            writer.WriteZeroTerminatedString(this.TextStringID);
+        }
+    }
+}

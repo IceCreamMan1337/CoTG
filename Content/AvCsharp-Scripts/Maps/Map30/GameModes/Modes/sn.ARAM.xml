@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script SettingsName="Quest" Type="LevelScript" SubType="">
+  <Solution StaticName="Map3ARAM" QualifiedName="Modes.ARAM.ARAM" SolutionType="Quest" Validity="Valid" />
+  <BTInstance Type="Tip" Name="StartingTips">
+    <BehaviorTreeParameters>
+      <Parameter Name="BehaviorTree" Value="Modes.ARAM.StartingTips" />
+      <Parameter Name="Enabled" Value="true" />
+    </BehaviorTreeParameters>
+    <MetaData />
+    <Parameters />
+  </BTInstance>
+</Script>

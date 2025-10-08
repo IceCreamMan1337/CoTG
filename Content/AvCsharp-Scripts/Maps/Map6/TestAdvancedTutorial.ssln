@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution Name="TestAdvancedTutorial" SolutionType="Quest" DataPath=".\LEVELS\Map1\Scripts\TestAdvancedTutorial.xml" Validity="Valid">
+  <SolutionItem Type="PrimaryQuest" Name="DebugQuest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="NodeTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="MinionKillCountTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="TipTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="FMODCallbackTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="CameraLockingTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="AreaTriggerTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="PrimaryQuest" Name="RespawnPointTest">
+    <Description></Description>
+  </SolutionItem>
+  <SolutionItem Type="Tip" Name="DynamicTestTree">
+    <Description></Description>
+  </SolutionItem>
+</Solution>

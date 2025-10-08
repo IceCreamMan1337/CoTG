@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.MinionSpawning.MinionGraveyardInitialization">
+    <Parameters>
+      <OutParameter Name="MinionGraveyardA" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardB" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardC" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardD" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardE" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalEncounter" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalID_A" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalID_B" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalID_C" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalID_D" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalID_E" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalStartTime_A" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalStartTime_B" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalStartTime_C" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalStartTime_D" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="MinionGraveyardPortalStartTime_E" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetWorldLocationByName" Name="MinionGraveyardA">
+          <Parameters>
+            <Parameter Name="Input" Value="MinionGraveyardA" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardA" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="MinionGraveyardB">
+          <Parameters>
+            <Parameter Name="Input" Value="MinionGraveyardB" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardB" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="MinionGraveyardC">
+          <Parameters>
+            <Parameter Name="Input" Value="MinionGraveyardC" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardC" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="MinionGraveyardD">
+          <Parameters>
+            <Parameter Name="Input" Value="MinionGraveyardD" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardD" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="MinionGraveyardE">
+          <Parameters>
+            <Parameter Name="Input" Value="MinionGraveyardE" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardE" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="CreateEncounterFromDefinition">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinMinionGraveyardPortal" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="MinionGraveyardPortalEncounter" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="MinionGraveyardPortalID_A=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalID_A" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="MinionGraveyardPortalID_B=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalID_B" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="MinionGraveyardPortalID_C=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalID_C" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="MinionGraveyardPortalID_D=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalID_D" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="MinionGraveyardPortalID_E=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalID_E" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarFloat" Name="MinionGraveyardPortalStartTime_A=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalStartTime_A" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarFloat" Name="MinionGraveyardPortalStartTime_B=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalStartTime_B" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarFloat" Name="MinionGraveyardPortalStartTime_C=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalStartTime_C" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarFloat" Name="MinionGraveyardPortalStartTime_D=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalStartTime_D" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarFloat" Name="MinionGraveyardPortalStartTime_E=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="MinionGraveyardPortalStartTime_E" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

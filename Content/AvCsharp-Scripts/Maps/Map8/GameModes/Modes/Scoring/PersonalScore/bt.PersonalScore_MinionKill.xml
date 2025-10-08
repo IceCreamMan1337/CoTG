@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_MinionKill">
+    <Parameters>
+      <Parameter Name="DeadUnit" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description>Minion that is killed</Description>
+      </Parameter>
+      <Parameter Name="Killer" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetUnitType" Name="DeadUnitType">
+          <Parameters>
+            <Parameter Name="Unit" Value="DeadUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="Output" Value="DeadUnitType" ReferenceType="UnitType" />
+          </Parameters>
+        </Node>
+        <Node Type="EqualUnitType" Name="DeadUnitType==Minion">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="DeadUnitType" VariableType="Reference" ReferenceType="UnitType" />
+            <Parameter Name="RightHandSide" Value="MINION_UNIT" VariableType="Value" />
+          </Parameters>
+        </Node>
+        <Node Type="GetUnitType" Name="KillerUnitType">
+          <Parameters>
+            <Parameter Name="Unit" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="Output" Value="KillerUnitType" ReferenceType="UnitType" />
+          </Parameters>
+        </Node>
+        <Node Type="EqualUnitType" Name="KillerUnitType==HERO">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="KillerUnitType" VariableType="Reference" ReferenceType="UnitType" />
+            <Parameter Name="RightHandSide" Value="HERO_UNIT" VariableType="Value" />
+          </Parameters>
+        </Node>
+        <Node Type="GetSquadNameOfUnit" Name="SquadName">
+          <Parameters>
+            <Parameter Name="TargetUnit" Value="DeadUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="SquadName" Value="SquadName" ReferenceType="String" />
+          </Parameters>
+        </Node>
+        <Node Type="NotEqualString" Name="SquandName!=&quot;&quot;">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+            <Parameter Name="RightHandSide" Value="" VariableType="Value" />
+          </Parameters>
+        </Node>
+        <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+          <Parameters>
+            <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+            <Parameter Name="ScoreEvent" Value="MINION_KILL" VariableType="Value" />
+            <Parameter Name="Value" Value="1" VariableType="Value" />
+            <Parameter Name="Show" Value="False" VariableType="Value" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

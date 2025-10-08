@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Sigil.RelicInitialization">
+    <Parameters>
+      <OutParameter Name="RelicSquad_A" ParameterType="Int">
+        <Description>squad ID </Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_B" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_C" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_A" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_B" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_C" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_D" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_E" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_D" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_E" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicEncounterShield" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_F" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_G" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_H" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_F" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_G" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_H" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_I" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSpawnTime_J" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_I" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicSquad_J" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionA" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionB" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionC" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionD" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionE" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionF" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionG" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionI" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionJ" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicPositionH" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetGameTime" Name="CurrentGameTime">
+          <Parameters>
+            <OutParameter Name="Output" Value="CurrentGameTime" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="GenerateRandomFloat" Name="RandomTimeDiff">
+          <Parameters>
+            <Parameter Name="MinValue" Value="120" VariableType="Value" />
+            <Parameter Name="MaxValue" Value="120" VariableType="Value" />
+            <OutParameter Name="Output" Value="RandomTimeDiff" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_A=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_A" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_B=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_B" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_C=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_C" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_D=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_D" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_E=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_E" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_F=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_F" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_G=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_G" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_H=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_H" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_I=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_I" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="RelicSpawnTime_J=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="RelicSpawnTime_J" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="RelicEncounterShield">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinShieldRelic" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="RelicEncounterShield" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_A=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_A" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_B=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_B" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_C=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_C" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_D=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_D" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_E=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_E" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_F=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_F" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_G=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_G" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_H=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_H" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_I=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_I" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="RelicSquad_J=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicSquad_J" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionA">
+          <Parameters>
+            <Parameter Name="Input" Value="RelicA" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionA" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionB">
+          <Parameters>
+            <Parameter Name="Input" Value="RelicB" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionB" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionC">
+          <Parameters>
+            <Parameter Name="Input" Value="RelicC" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionC" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionD">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic1" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionD" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionE">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic2" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionE" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionF">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic3" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionF" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionG">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic4" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionG" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionH">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic5" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionH" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionI">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic6" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionI" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="RelicPositionJ">
+          <Parameters>
+            <Parameter Name="Input" Value="LesserRelic7" VariableType="Value" />
+            <OutParameter Name="Output" Value="RelicPositionJ" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

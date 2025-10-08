@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Respawn.RespawnManager">
+    <Parameters>
+      <Parameter Name="OrderRespawnMutator" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosRespawnMutator" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosPoints" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderPoints" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RespawnWindowAdjustment_Chaos" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RespawnWindowAdjustment_Order" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="OrderRespawnMutator" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosRespawnMutator" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdjustment_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RespawnWindowAdjustment_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="Procedure" Name="GetRespawnAdjustments_NexusHealth" TreeQualifiedName="Modes.Dominion.Respawn.GetRespawnAdjustments_NexusHealth">
+              <Parameters>
+                <Parameter Name="ScoreOrder" Value="OrderPoints" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="ScoreChaos" Value="ChaosPoints" VariableType="Reference" ReferenceType="Float" />
+                <OutParameter Name="RespawnModifier_Order" Value="Cur_NH_RespawnMod_Order" ReferenceType="Int" />
+                <OutParameter Name="RespawnModifier_Chaos" Value="Cur_NH_RespawnMod_Chaos" ReferenceType="Int" />
+                <OutParameter Name="RespawnWindowAdj_x10_Order" Value="Cur_NH_WindowMod_x10_Order" ReferenceType="Int" />
+                <OutParameter Name="RespawnWindowAdj_x10_Chaos" Value="Cur_NH_WindowMod_x10_Chaos" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="GetRespawnAdjustments_Disconnect" TreeQualifiedName="Modes.Dominion.Respawn.GetRespawnAdjustments_Disconnect">
+              <Parameters>
+                <OutParameter Name="RespawnModifier_Order" Value="Cur_DC_RespawnMod_Order" ReferenceType="Int" />
+                <OutParameter Name="RespawnModifier_Chaos" Value="Cur_DC_RespawnMod_Chaos" ReferenceType="Int" />
+                <OutParameter Name="RespawnWindowAdj_x10_Order" Value="Cur_DC_WindowMod_x10_Order" ReferenceType="Int" />
+                <OutParameter Name="RespawnWindowAdj_x10_Chaos" Value="Cur_DC_WindowMod_x10_Chaos" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="AddInt" Name="TotalRespawnModOrder=Cur_DC_RespawnMod_Order+Cur_NH_RespawnMod_Order">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="Cur_DC_RespawnMod_Order" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="Cur_NH_RespawnMod_Order" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="TotalRespawnModOrder" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="AddInt" Name="TotalRespawnModChaos=Cur_DC_RespawnMod_Chaos+Cur_NH_RespawnMod_Chaos">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="Cur_DC_RespawnMod_Chaos" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="Cur_NH_RespawnMod_Chaos" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="TotalRespawnModChaos" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="AddInt" Name="TotalWindowModChaos=Cur_DC_WindowMod_x10_Chaos+Cur_NH_WindowMod_x10_Chaos">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="Cur_DC_WindowMod_x10_Chaos" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="Cur_NH_WindowMod_x10_Chaos" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="TotalWindowModChaos" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="AddInt" Name="TotalWindowModOrder=Cur_DC_WindowMod_x10_Order+Cur_NH_WindowMod_x10_Order">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="Cur_DC_WindowMod_x10_Order" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="Cur_NH_WindowMod_x10_Order" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="TotalWindowModOrder" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="OrderMutator" TreeQualifiedName="Modes.Dominion.Respawn.RespawnHelper">
+              <Parameters>
+                <Parameter Name="NewModifier" Value="TotalRespawnModOrder" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Modifier" Value="OrderRespawnMutator" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                <OutParameter Name="Modifier" Value="OrderRespawnMutator" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="ChaosMutator" TreeQualifiedName="Modes.Dominion.Respawn.RespawnHelper">
+              <Parameters>
+                <Parameter Name="NewModifier" Value="TotalRespawnModChaos" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Modifier" Value="ChaosRespawnMutator" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                <OutParameter Name="Modifier" Value="ChaosRespawnMutator" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="RespawnWindowAdjustment_Disconnect_Order" TreeQualifiedName="Modes.Dominion.Respawn.RespawnWindowAdjustment_Disconnect">
+              <Parameters>
+                <Parameter Name="WindowAdjustmentMutator" Value="RespawnWindowAdjustment_Order" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="NewWindowAdjustmentMutator" Value="TotalWindowModOrder" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                <OutParameter Name="WindowAdjustmentMutator" Value="RespawnWindowAdjustment_Order" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="RespawnWindowAdjustment_Disconnect_Chaos" TreeQualifiedName="Modes.Dominion.Respawn.RespawnWindowAdjustment_Disconnect">
+              <Parameters>
+                <Parameter Name="WindowAdjustmentMutator" Value="RespawnWindowAdjustment_Chaos" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="NewWindowAdjustmentMutator" Value="TotalRespawnModChaos" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                <OutParameter Name="WindowAdjustmentMutator" Value="RespawnWindowAdjustment_Chaos" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

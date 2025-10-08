@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Sigil.CenterRelicInitialization">
+    <Parameters>
+      <OutParameter Name="CenterRelicSpawnTime_A" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSpawnTime_B" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSquad_A" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSquad_B" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicEncounterCenter" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RelicEncounterCenter2" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicPositionB" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicPositionA" ParameterType="Vector">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicParticleAttached1" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicParticleAttached2" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetGameTime" Name="CurrentGameTime">
+          <Parameters>
+            <OutParameter Name="Output" Value="CurrentGameTime" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="GenerateRandomFloat" Name="RandomTimeDiff">
+          <Parameters>
+            <Parameter Name="MinValue" Value="180" VariableType="Value" />
+            <Parameter Name="MaxValue" Value="180" VariableType="Value" />
+            <OutParameter Name="Output" Value="RandomTimeDiff" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="CenterRelicSpawnTime_A=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="CenterRelicSpawnTime_A" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="AddFloat" Name="CenterRelicSpawnTime_B=CurrentGameTime+RNG">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="RightHandSide" Value="RandomTimeDiff" VariableType="Reference" ReferenceType="Float" />
+            <OutParameter Name="Output" Value="CenterRelicSpawnTime_B" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="RelicEncounterCenter">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinCenterRelic_Left" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="RelicEncounterCenter" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="RelicEncounterCenter2">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinCenterRelic_Right" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="RelicEncounterCenter2" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="CenterRelicSquad_A=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicSquad_A" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="CenterRelicSquad_B=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicSquad_B" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="MakeColor" Name="ChaosColor">
+          <Parameters>
+            <Parameter Name="R" Value="100" VariableType="Value" />
+            <Parameter Name="G" Value="0" VariableType="Value" />
+            <Parameter Name="B" Value="100" VariableType="Value" />
+            <Parameter Name="A" Value="150" VariableType="Value" />
+            <OutParameter Name="Color" Value="ChaosColor" ReferenceType="Color" />
+          </Parameters>
+        </Node>
+        <Node Type="MakeColor" Name="OrderColor">
+          <Parameters>
+            <Parameter Name="R" Value="10" VariableType="Value" />
+            <Parameter Name="G" Value="100" VariableType="Value" />
+            <Parameter Name="B" Value="10" VariableType="Value" />
+            <Parameter Name="A" Value="150" VariableType="Value" />
+            <OutParameter Name="Color" Value="OrderColor" ReferenceType="Color" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="CenterRelicPositionB">
+          <Parameters>
+            <Parameter Name="Input" Value="LargeRelic1" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicPositionB" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetWorldLocationByName" Name="CenterRelicPositionA">
+          <Parameters>
+            <Parameter Name="Input" Value="LargeRelic2" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicPositionA" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarBool" Name="CenterRelicParticleAttached1=False">
+          <Parameters>
+            <Parameter Name="Input" Value="False" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicParticleAttached1" ReferenceType="Bool" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarBool" Name="CenterRelicParticleAttached2=False">
+          <Parameters>
+            <Parameter Name="Input" Value="False" VariableType="Value" />
+            <OutParameter Name="Output" Value="CenterRelicParticleAttached2" ReferenceType="Bool" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

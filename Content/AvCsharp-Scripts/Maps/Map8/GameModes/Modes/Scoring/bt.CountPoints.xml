@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.CountPoints">
+    <Parameters>
+      <Parameter Name="CapturePointOwnerA" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerB" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="TeamToCountFor" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description>Team order / neutral / chaos to count the number of capture point for</Description>
+      </Parameter>
+      <OutParameter Name="Total" ParameterType="Int">
+        <Description>Total number of points owned by the team specified</Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="SetVarInt" Name="Total=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="MaskFailure" Name="CountForA">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamToCountFor" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="AddInt" Name="Total+=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Total" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="MaskFailure" Name="CountForB">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamToCountFor" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="AddInt" Name="Total+=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Total" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="MaskFailure" Name="CountForC">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamToCountFor" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="AddInt" Name="Total+=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Total" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="MaskFailure" Name="CountForD">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamToCountFor" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="AddInt" Name="Total+=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Total" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="MaskFailure" Name="CountForE">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TeamToCountFor" VariableType="Reference" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="AddInt" Name="Total+=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Total" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Total" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

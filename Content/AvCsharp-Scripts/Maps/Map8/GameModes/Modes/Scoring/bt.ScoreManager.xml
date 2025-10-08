@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.ScoreManager">
+    <Parameters>
+      <Parameter Name="CapturePointOwnerA" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerB" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OverTimeLimitWarning" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="PreviousTickTime" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CCDelta" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OverTimeLimitWarning" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="Update_Score">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Update_Global_Score">
+          <Parameters />
+          <Children>
+            <Node Type="Procedure" Name="CountPoints" TreeQualifiedName="Modes.Dominion.Scoring.CountPoints">
+              <Parameters>
+                <Parameter Name="CapturePointOwnerA" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerB" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerC" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerD" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerE" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="TeamToCountFor" Value="TEAM_ORDER" VariableType="Value" />
+                <OutParameter Name="Total" Value="TotalOrderPoints" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="CountPoints" TreeQualifiedName="Modes.Dominion.Scoring.CountPoints">
+              <Parameters>
+                <Parameter Name="CapturePointOwnerA" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerB" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerC" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerD" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="CapturePointOwnerE" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="TeamToCountFor" Value="TEAM_CHAOS" VariableType="Value" />
+                <OutParameter Name="Total" Value="TotalChaosPoints" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="SubtractInt" Name="CCDelta=TotalOrderPoints-TotalChaosPoints">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="TotalOrderPoints" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="TotalChaosPoints" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="CCDelta" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="MaskFailure" Name="BeyondTimeLimit">
+              <Parameters />
+              <Children>
+                <Node Type="Selector" Name="Selector">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="Warning">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualBool" Name="OverTimeLimitWarning==False">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="OverTimeLimitWarning" VariableType="Reference" ReferenceType="Bool" />
+                            <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GetGameTime" Name="GetGameTime">
+                          <Parameters>
+                            <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=5400">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="RightHandSide" Value="5400" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="Procedure" Name="DebugSayAll_SuddenDeath" TreeQualifiedName="Modes.Dominion.Debug.DebugSayAll">
+                          <Parameters>
+                            <Parameter Name="Msg" Value="Sudden Death" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarBool" Name="OverTimeLimitWarning=True">
+                          <Parameters>
+                            <Parameter Name="Input" Value="True" VariableType="Value" />
+                            <OutParameter Name="Output" Value="OverTimeLimitWarning" ReferenceType="Bool" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="PointTickDown">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualBool" Name="OverTimeLimitWarning==True">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="OverTimeLimitWarning" VariableType="Reference" ReferenceType="Bool" />
+                            <Parameter Name="RightHandSide" Value="True" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="Procedure" Name="ChangeScore" TreeQualifiedName="Modes.Dominion.Scoring.ChangeScore">
+                          <Parameters>
+                            <Parameter Name="ScoreValue" Value="1" VariableType="Value" />
+                            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="ScoringTeam" Value="TEAM_ORDER" VariableType="Value" />
+                            <Parameter Name="CanWin" Value="True" VariableType="Value" />
+                            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+                            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="Procedure" Name="ChangeScore" TreeQualifiedName="Modes.Dominion.Scoring.ChangeScore">
+                          <Parameters>
+                            <Parameter Name="ScoreValue" Value="1" VariableType="Value" />
+                            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="ScoringTeam" Value="TEAM_CHAOS" VariableType="Value" />
+                            <Parameter Name="CanWin" Value="True" VariableType="Value" />
+                            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+                            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Selector" Name="WhoIsWinning?">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="Order_Winning">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GreaterInt" Name="CCDelta&gt;0">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CCDelta" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="GetScoreFromPointDelta" TreeQualifiedName="Modes.Dominion.Scoring.GetScoreFromPointDelta">
+                      <Parameters>
+                        <Parameter Name="PointDelta" Value="CCDelta" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="ScoreChange" Value="ScoreChange" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ChangeScore" TreeQualifiedName="Modes.Dominion.Scoring.ChangeScore">
+                      <Parameters>
+                        <Parameter Name="ScoreValue" Value="ScoreChange" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ScoringTeam" Value="TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="CanWin" Value="True" VariableType="Value" />
+                        <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="Chaos_Winning">
+                  <Parameters />
+                  <Children>
+                    <Node Type="LessInt" Name="CCDelta&lt;0">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CCDelta" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="GetScoreFromPointDelta" TreeQualifiedName="Modes.Dominion.Scoring.GetScoreFromPointDelta">
+                      <Parameters>
+                        <Parameter Name="PointDelta" Value="CCDelta" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="ScoreChange" Value="ScoreChange" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ChangeScore" TreeQualifiedName="Modes.Dominion.Scoring.ChangeScore">
+                      <Parameters>
+                        <Parameter Name="ScoreValue" Value="ScoreChange" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ScoringTeam" Value="TEAM_CHAOS" VariableType="Value" />
+                        <Parameter Name="CanWin" Value="True" VariableType="Value" />
+                        <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.WinConditionChecker">
+    <Parameters>
+      <Parameter Name="RemainingOrderScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description></Parameter>
+      <Parameter Name="RemainingChaosScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description></Parameter>
+      <Parameter Name="FinalWinTeam" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description></Parameter>
+      <OutParameter Name="FinalWinTeam" ParameterType="TeamEnum">
+        <Description></Description></OutParameter></Parameters>
+    <Node Name="End_Game_Checker" Type="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Name="End_Game_Checker" Type="Sequence">
+          <Parameters />
+          <Children>
+            <Node Name="Selector" Type="Selector">
+              <Parameters />
+              <Children>
+                <Node Name="NotEqualUnitTeam" Type="NotEqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="FinalWinTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" /></Parameters></Node>
+                <Node Name="Order_Loses" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="RemainingOrderScore&lt;1" Type="LessFloat">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="1" VariableType="Value" /></Parameters></Node>
+                    <Node Name="MaskFailure" Type="MaskFailure">
+                      <Parameters />
+                      <Children>
+                        <Node Name="Sequence" Type="Sequence">
+                          <Parameters />
+                          <Children>
+                            <Node Name="GetChampionCollection" Type="GetChampionCollection">
+                              <Parameters>
+                                <OutParameter Name="Output" Value="AllChampions" ReferenceType="Obj_AI_HeroCollection" /></Parameters></Node>
+                            <Node Name="GivePoints" Type="IterateOverAllDecorator">
+                              <Parameters>
+                                <Parameter Name="Collection" Value="AllChampions" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                                <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" /></Parameters>
+                              <Children>
+                                <Node Name="Sequence" Type="Sequence">
+                                  <Parameters />
+                                  <Children>
+                                    <Node Name="ChampTeam" Type="GetUnitTeam">
+                                      <Parameters>
+                                        <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                        <OutParameter Name="Output" Value="ChampTeam" ReferenceType="TeamEnum" /></Parameters></Node>
+                                    <Node Name="ChampTeam==CHAOS" Type="EqualUnitTeam">
+                                      <Parameters>
+                                        <Parameter Name="LeftHandSide" Value="ChampTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                                        <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" /></Parameters></Node></Children></Node></Children></Node></Children></Node></Children></Node>
+                    <Node Name="WinningTeam=Chaos" Type="SetVarUnitTeam">
+                      <Parameters>
+                        <Parameter Name="Input" Value="TEAM_CHAOS" VariableType="Value" />
+                        <OutParameter Name="Output" Value="FinalWinTeam" ReferenceType="TeamEnum" /></Parameters></Node></Children></Node>
+                <Node Name="Chaos_Loses" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="RemainingChaosScore&lt;1" Type="LessFloat">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="1" VariableType="Value" /></Parameters></Node>
+                    <Node Name="MaskFailure" Type="MaskFailure">
+                      <Parameters />
+                      <Children>
+                        <Node Name="Sequence" Type="Sequence">
+                          <Parameters />
+                          <Children>
+                            <Node Name="GetChampionCollection" Type="GetChampionCollection">
+                              <Parameters>
+                                <OutParameter Name="Output" Value="AllChampions" ReferenceType="Obj_AI_HeroCollection" /></Parameters></Node>
+                            <Node Name="GivePoints" Type="IterateOverAllDecorator">
+                              <Parameters>
+                                <Parameter Name="Collection" Value="AllChampions" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                                <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" /></Parameters>
+                              <Children>
+                                <Node Name="Sequence" Type="Sequence">
+                                  <Parameters />
+                                  <Children>
+                                    <Node Name="ChampTeam" Type="GetUnitTeam">
+                                      <Parameters>
+                                        <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                        <OutParameter Name="Output" Value="ChampTeam" ReferenceType="TeamEnum" /></Parameters></Node>
+                                    <Node Name="ChampTeam==ORDER" Type="EqualUnitTeam">
+                                      <Parameters>
+                                        <Parameter Name="LeftHandSide" Value="ChampTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                                        <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" /></Parameters></Node></Children></Node></Children></Node></Children></Node></Children></Node>
+                    <Node Name="WinningTeam=Order" Type="SetVarUnitTeam">
+                      <Parameters>
+                        <Parameter Name="Input" Value="TEAM_ORDER" VariableType="Value" />
+                        <OutParameter Name="Output" Value="FinalWinTeam" ReferenceType="TeamEnum" /></Parameters></Node></Children></Node>
+                <Node Name="OrderSurrender" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="TestTeamSurrendered" Type="TestTeamSurrendered">
+                      <Parameters>
+                        <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                        <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" /></Parameters></Node>
+                    <Node Name="WinningTeam=Chaos" Type="SetVarUnitTeam">
+                      <Parameters>
+                        <Parameter Name="Input" Value="TEAM_CHAOS" VariableType="Value" />
+                        <OutParameter Name="Output" Value="FinalWinTeam" ReferenceType="TeamEnum" /></Parameters></Node></Children></Node>
+                <Node Name="ChaosSurrender" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="TestTeamSurrendered" Type="TestTeamSurrendered">
+                      <Parameters>
+                        <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                        <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" /></Parameters></Node>
+                    <Node Name="WinningTeam=Order" Type="SetVarUnitTeam">
+                      <Parameters>
+                        <Parameter Name="Input" Value="TEAM_ORDER" VariableType="Value" />
+                        <OutParameter Name="Output" Value="FinalWinTeam" ReferenceType="TeamEnum" /></Parameters></Node></Children></Node></Children></Node>
+            <Node Name="Selector" Type="Selector">
+              <Parameters />
+              <Children>
+                <Node Name="Sequence" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="FinalWinTeam==Order" Type="EqualUnitTeam">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="FinalWinTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" /></Parameters></Node>
+                    <Node Name="Start_EndOfGameCeremony_OrderWon" Type="SetBTInstanceStatus">
+                      <Parameters>
+                        <Parameter Name="Enabled" Value="True" VariableType="Value" />
+                        <Parameter Name="Name" Value="EndOfGameCeremony_OrderWon" VariableType="Value" /></Parameters></Node>
+                    <Node Name="CapturePointManager" Type="SetBTInstanceStatus">
+                      <Parameters>
+                        <Parameter Name="Enabled" Value="False" VariableType="Value" />
+                        <Parameter Name="Name" Value="CapturePointManager" VariableType="Value" /></Parameters></Node></Children></Node>
+                <Node Name="Sequence" Type="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Name="FinalWinTeam==Chaos" Type="EqualUnitTeam">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="FinalWinTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" /></Parameters></Node>
+                    <Node Name="Start_EndOfGameCeremony_ChaosWon" Type="SetBTInstanceStatus">
+                      <Parameters>
+                        <Parameter Name="Enabled" Value="True" VariableType="Value" />
+                        <Parameter Name="Name" Value="EndOfGameCeremony_ChaosWon" VariableType="Value" /></Parameters></Node>
+                    <Node Name="CapturePointManager" Type="SetBTInstanceStatus">
+                      <Parameters>
+                        <Parameter Name="Enabled" Value="False" VariableType="Value" />
+                        <Parameter Name="Name" Value="CapturePointManager" VariableType="Value" /></Parameters></Node></Children></Node></Children></Node></Children></Node></Children></Node></BehaviorTree></BehaviorTrees>

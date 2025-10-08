@@ -1,0 +1,33 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Numerics;
+using System.Linq;
+using System.Collections.Generic;
+using CrystalSlash.Game.Common;
+using MirrorImage;
+
+namespace CrystalSlash.Game
+{
+    public sealed class S2C_ChangeCharacterData : GamePacket // 0x09F
+    {
+        public override GamePacketID ID => GamePacketID.S2C_ChangeCharacterData;
+
+        public uint StackID { get; set; }
+        public bool UseSpells { get; set; }
+        public string SkinName { get; set; }
+
+        internal override void ReadBody(ByteReader reader)
+        {
+            this.StackID = reader.ReadUInt32();
+            this.UseSpells = reader.ReadBool();
+            this.SkinName = reader.ReadZeroTerminatedString();
+        }
+        internal override void WriteBody(ByteWriter writer)
+        {
+            writer.WriteUInt32(this.StackID);
+            writer.WriteBool(this.UseSpells);
+            writer.WriteZeroTerminatedString(this.SkinName);
+        }
+    }
+}

@@ -1,0 +1,1478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.OdinOpeningCeremony" StaticName="">
+    <Parameters>
+      <Parameter Name="OrderNexusBeam_L1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_L2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_L3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_L4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_R1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_R2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_R3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeam_R4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusGlow_1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusGlow_2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusGlow_3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusGlow_4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_R1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_R2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_R3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_R4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_L1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_L2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_L3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeam_L4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusGlow_1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusGlow_2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusGlow_3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusGlow_4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusCrystal" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusCrystal" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_L1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_L2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_L3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_L4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_R1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_R2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_R3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderNexusBeamRed_R4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_L1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_L2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_L3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_L4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_R1" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_R2" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_R3" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosNexusBeamRed_R4" VariableType="Reference" ParameterType="DWORD" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="OrderNexusBeam_L1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_L2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_L3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_L4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_R1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_R2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_R3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeam_R4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusGlow_1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusGlow_2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusGlow_3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusGlow_4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_R1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_R2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_R3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_R4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_L1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_L2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_L3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeam_L4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusGlow_1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusGlow_2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusGlow_3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusGlow_4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusCrystal" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusCrystal" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_L1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_L2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_L3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_L4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_R1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_R2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_R3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderNexusBeamRed_R4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_L1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_L2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_L3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_L4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_R1" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_R2" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_R3" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosNexusBeamRed_R4" ParameterType="DWORD">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetGameTime" Name="GetGameTime">
+          <Parameters>
+            <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="Selector" Name="Selector">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Initialization">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="EqualBool">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="__IsFirstRun" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="true" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarFloat" Name="SetBarrierRadius">
+                  <Parameters>
+                    <Parameter Name="Input" Value="400" VariableType="Value" />
+                    <OutParameter Name="Output" Value="SpawnBarrierRadius" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="GetWorldLocationByName" Name="GetOrderSpawn">
+                  <Parameters>
+                    <Parameter Name="Input" Value="OrderBarrier" VariableType="Value" />
+                    <OutParameter Name="Output" Value="OrderStartPoint" ReferenceType="Vector" />
+                  </Parameters>
+                </Node>
+                <Node Type="GetWorldLocationByName" Name="GetChaosSpawn">
+                  <Parameters>
+                    <Parameter Name="Input" Value="ChaosBarrier" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ChaosStartPoint" ReferenceType="Vector" />
+                  </Parameters>
+                </Node>
+                <Node Type="GetChampionCollection" Name="GetChampionCollection">
+                  <Parameters>
+                    <OutParameter Name="Output" Value="ChampionCollection" ReferenceType="Obj_AI_HeroCollection" />
+                  </Parameters>
+                </Node>
+                <Node Type="IterateOverAllDecorator" Name="IterateOverAllDecorator">
+                  <Parameters>
+                    <Parameter Name="Collection" Value="ChampionCollection" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                    <OutParameter Name="Output" Value="LocalHero" ReferenceType="AttackableUnit" />
+                  </Parameters>
+                  <Children>
+                    <Node Type="Selector" Name="Selector">
+                      <Parameters />
+                      <Children>
+                        <Node Type="Sequence" Name="TestForOrder">
+                          <Parameters />
+                          <Children>
+                            <Node Type="GetUnitTeam" Name="GetUnitTeam">
+                              <Parameters>
+                                <Parameter Name="Unit" Value="LocalHero" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <OutParameter Name="Output" Value="LocalHeroTeam" ReferenceType="TeamEnum" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                              <Parameters>
+                                <Parameter Name="LeftHandSide" Value="LocalHeroTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                                <Parameter Name="RightHandSide" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                            <Node Type="SetUnitCircularMovementRestriction" Name="LockToOrderSpawn">
+                              <Parameters>
+                                <Parameter Name="Player" Value="LocalHero" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="TargetPosition" Value="OrderStartPoint" VariableType="Reference" ReferenceType="Vector" />
+                                <Parameter Name="Radius" Value="SpawnBarrierRadius" VariableType="Reference" ReferenceType="Float" />
+                                <Parameter Name="Camera" Value="False" VariableType="Value" />
+                              </Parameters>
+                            </Node>
+                          </Children>
+                        </Node>
+                        <Node Type="SetUnitCircularMovementRestriction" Name="LockToChaosSpawn">
+                          <Parameters>
+                            <Parameter Name="Player" Value="LocalHero" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="TargetPosition" Value="ChaosStartPoint" VariableType="Reference" ReferenceType="Vector" />
+                            <Parameter Name="Radius" Value="SpawnBarrierRadius" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="Camera" Value="False" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="SetVarFloat" Name="ThirtySecondsAnnouncementTime=50">
+                  <Parameters>
+                    <Parameter Name="Input" Value="50" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ThirtySecondsAnnouncementTime" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarFloat" Name="WelcomeAnnouncementTime=30">
+                  <Parameters>
+                    <Parameter Name="Input" Value="30" VariableType="Value" />
+                    <OutParameter Name="Output" Value="WelcomeAnnouncementTime" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="MaskFailure" Name="Start Stairs Opening">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="Find Props And Animate">
+                      <Parameters />
+                      <Children>
+                        <Node Type="GetPropByName" Name="LevelProp_Odin_SoG_Order">
+                          <Parameters>
+                            <Parameter Name="PropName" Value="LevelProp_Odin_SoG_Order" VariableType="Value" />
+                            <OutParameter Name="Output" Value="OrderStairsProp" ReferenceType="GameObject" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GetPropByName" Name="LevelProp_Odin_SoG_Chaos">
+                          <Parameters>
+                            <Parameter Name="PropName" Value="LevelProp_Odin_SoG_Chaos" VariableType="Value" />
+                            <OutParameter Name="Output" Value="ChaosStairsProp" ReferenceType="GameObject" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="PlayAnimationOnProp" Name="Open">
+                          <Parameters>
+                            <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="Animation" Value="Open" VariableType="Value" />
+                            <Parameter Name="Loop" Value="true" VariableType="Value" />
+                            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="PlayAnimationOnProp" Name="Open">
+                          <Parameters>
+                            <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="Animation" Value="Open" VariableType="Value" />
+                            <Parameter Name="Loop" Value="true" VariableType="Value" />
+                            <Parameter Name="Duration" Value="" VariableType="Reference" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="CreateUnitParticle" Name="CreateUnitParticle">
+                          <Parameters>
+                            <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                            <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                            <Parameter Name="EffectName" Value="Odin_Crystal_blue.troy" VariableType="Value" />
+                            <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                            <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                            <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                            <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                            <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                            <Parameter Name="PersistsThroughReconnect" Value="true" VariableType="Value" />
+                            <OutParameter Name="EffectID" Value="OrderNexusCrystal" ReferenceType="DWORD" />
+                            <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="CreateUnitParticle" Name="CreateUnitParticle">
+                          <Parameters>
+                            <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                            <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                            <Parameter Name="EffectName" Value="Odin_Crystal_purple.troy" VariableType="Value" />
+                            <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                            <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                            <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                            <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                            <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                            <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                            <Parameter Name="PersistsThroughReconnect" Value="true" VariableType="Value" />
+                            <OutParameter Name="EffectID" Value="ChaosNexusCrystal" ReferenceType="DWORD" />
+                            <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_1=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_1" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_2=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_2" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_3=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_3" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_4=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_4" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_5=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_5" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_6=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_6" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect1=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect1" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect2=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect2" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect3=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect3" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect4=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect4" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="AnnouncementGiven=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="AnnouncementGiven" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="WelcomeAnnouncementGiven=False">
+                  <Parameters>
+                    <Parameter Name="Input" Value="False" VariableType="Value" />
+                    <OutParameter Name="Output" Value="WelcomeAnnouncementGiven" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateEncounterFromDefinition" Name="OdinOpeningBarrierEncounter">
+                  <Parameters>
+                    <Parameter Name="EncounterDefinition" Value="OdinOpeningBarrier" VariableType="Value" />
+                    <Parameter Name="Count" Value="1" VariableType="Value" />
+                    <Parameter Name="Tags" Value="" VariableType="Value" />
+                    <OutParameter Name="EncounterId" Value="OdinOpeningBarrierEncounter" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreatePositionParticle" Name="CreatePositionParticle">
+                  <Parameters>
+                    <Parameter Name="Position" Value="OrderStartPoint" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="EffectName" Value="Odin_Forcefield_blue.troy" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="true" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="EffectID" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreatePositionParticle" Name="CreatePositionParticle">
+                  <Parameters>
+                    <Parameter Name="Position" Value="ChaosStartPoint" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="EffectName" Value="Odin_Forcefield_purple.troy" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="true" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OtherTeamEffectID" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="ThirtySecondsGame">
+              <Parameters />
+              <Children>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=ThirtySecondsAnnouncementTime">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="ThirtySecondsAnnouncementTime" VariableType="Reference" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="Announcement_OnStartGame" Name="Announcement_OnStartGame">
+                  <Parameters>
+                    <Parameter Name="MessageNumber" Value="1" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarFloat" Name="ThirtySecondsAnnouncementTime=25000">
+                  <Parameters>
+                    <Parameter Name="Input" Value="25000" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ThirtySecondsAnnouncementTime" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="WelcomeAnnouncement">
+              <Parameters />
+              <Children>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=WelcomeAnnouncementTime">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="WelcomeAnnouncementTime" VariableType="Reference" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="EqualBool" Name="WelcomeAnnouncementGiven==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="WelcomeAnnouncementGiven" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="WelcomeAnnouncementGiven=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="WelcomeAnnouncementGiven" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="Announcement_OnStartGame" Name="Announcement_OnStartGame">
+                  <Parameters>
+                    <Parameter Name="MessageNumber" Value="3" VariableType="Value" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayClose1">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_1==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_1" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=1">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose1">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close1" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="17.5" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose1">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close1" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="17.5" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_1=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_1" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="CreateParticles_Set1">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="ParticleEffect1==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="ParticleEffect1" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=16">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="16" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_r_4_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_R1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_R1" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_l_4_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_L1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_L1" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_blue.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusGlow_1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_r_4_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_R1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_R1" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_l_4_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_L1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_L1" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_purple.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusGlow_1" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect1=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect1" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayClose2">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_2==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_2" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=21">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="21" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose2">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close2" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose2">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close2" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_2=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_2" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="CreateParticles_Set2">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="ParticleEffect2==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="ParticleEffect2" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=40">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="40" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_r_3_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_R2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_R2" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_l_3_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_L2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_L2" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_blue.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusGlow_2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_r_3_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_R2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_R2" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_l_3_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_L2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_L2" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_purple.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusGlow_2" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect2=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect2" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayClose3">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_3==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_3" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=41">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="41" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose3">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close3" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose3">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close3" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_3=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_3" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="CreateParticles_Set3">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="ParticleEffect3==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="ParticleEffect3" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=59.6">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="59.6" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_r_2_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_R3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_R3" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Order">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="Crystal_l_2_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusBeam_L3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_L3" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_blue.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="OrderNexusGlow_3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_r_2_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_R3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_R3" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Chaos">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="chaos_Crystal_l_2_aim" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusBeam_L3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_L3" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                  <Parameters>
+                    <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                    <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_purple.troy" VariableType="Value" />
+                    <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                    <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                    <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                    <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                    <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                    <OutParameter Name="EffectID" Value="ChaosNexusGlow_3" ReferenceType="DWORD" />
+                    <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="ParticleEffect3=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="ParticleEffect3" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayClose4">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_4==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_4" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=61">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="61" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose4">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close4" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayClose4">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Close4" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="20" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_4=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_4" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="Action_Start">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="AnnouncementGiven==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="AnnouncementGiven" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterFloat" Name="GreaterFloat">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="80" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="Announcement_OnStartGame" Name="Announcement_OnStartGame">
+                  <Parameters>
+                    <Parameter Name="MessageNumber" Value="2" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="RemoveParticle" Name="RemoveParticle">
+                  <Parameters>
+                    <Parameter Name="EffectID" Value="EffectID" VariableType="Reference" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="RemoveParticle" Name="RemoveParticle">
+                  <Parameters>
+                    <Parameter Name="EffectID" Value="OtherTeamEffectID" VariableType="Reference" ReferenceType="DWORD" />
+                  </Parameters>
+                </Node>
+                <Node Type="IterateOverAllDecorator" Name="IterateOverAllDecorator">
+                  <Parameters>
+                    <Parameter Name="Collection" Value="ChampionCollection" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                    <OutParameter Name="Output" Value="LocalHero" ReferenceType="AttackableUnit" />
+                  </Parameters>
+                  <Children>
+                    <Node Type="SetUnitCircularMovementRestriction" Name="LockToChaosSpawn">
+                      <Parameters>
+                        <Parameter Name="Player" Value="LocalHero" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="TargetPosition" Value="ChaosStartPoint" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="Radius" Value="0" VariableType="Value" />
+                        <Parameter Name="Camera" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="CreateParticles_Set4">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualBool" Name="ParticleEffect4==False">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="ParticleEffect4" VariableType="Reference" ReferenceType="Bool" />
+                        <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=79.5">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="79.5" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_green">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="Crystal_r_1_aim" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="OrderNexusBeam_R4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_R4" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_green">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="Crystal_l_1_aim" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="OrderNexusBeam_L4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="OrderNexusBeamRed_L4" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_blue.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="OrderNexusGlow_4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_green">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="chaos_Crystal_r_1_aim" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="ChaosNexusBeam_R4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_R4" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_green">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="chaos_Crystal_l_1_aim" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="odin_crystal_beam_red.troy" VariableType="Value" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_green.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="TeamId.TEAM_CHAOS" VariableType="Value" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="ChaosNexusBeam_L4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="ChaosNexusBeamRed_L4" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="CreateUnitParticle" Name="CreateUnitParticle_Glow">
+                      <Parameters>
+                        <Parameter Name="BindObject" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="BoneName" Value="center_crystal" VariableType="Value" />
+                        <Parameter Name="EffectNameForOtherTeam" Value="" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="EffectName" Value="Odin_crystal_beam_hit_purple.troy" VariableType="Value" />
+                        <Parameter Name="TargetObject" Value="" VariableType="Reference" ReferenceType="GameObject" />
+                        <Parameter Name="TargetBoneName" Value="" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="TargetPosition" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="OrientTowards" Value="" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="SpecificUnitOnly" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="SpecificTeamOnly" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="FOWVisibilityRadius" Value="0" VariableType="Value" />
+                        <Parameter Name="FOWTeam" Value="" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="SendIfOnScreenOrDiscard" Value="False" VariableType="Value" />
+                        <Parameter Name="PersistsThroughReconnect" Value="False" VariableType="Value" />
+                        <OutParameter Name="EffectID" Value="ChaosNexusGlow_4" ReferenceType="DWORD" />
+                        <OutParameter Name="OtherTeamEffectID" Value="" ReferenceType="DWORD" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="ParticleEffect4=true">
+                      <Parameters>
+                        <Parameter Name="Input" Value="true" VariableType="Value" />
+                        <OutParameter Name="Output" Value="ParticleEffect4" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="SetVarBool" Name="AnnouncementGiven=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="AnnouncementGiven" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayAnim_5">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_5==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_5" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=81">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="81" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayRaise">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Raise" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="6.7" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayRaise">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Raise" VariableType="Value" />
+                    <Parameter Name="Loop" Value="False" VariableType="Value" />
+                    <Parameter Name="Duration" Value="6.7" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_5=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_5" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="PlayAnim_6">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="PlayAnim_6==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PlayAnim_6" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="GreaterEqualFloat" Name="CurrentTime&gt;=87.7">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="RightHandSide" Value="87.7" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayRaise">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="OrderStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Raised_Idle" VariableType="Value" />
+                    <Parameter Name="Loop" Value="true" VariableType="Value" />
+                    <Parameter Name="Duration" Value="4.25" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayAnimationOnProp" Name="PlayRaise">
+                  <Parameters>
+                    <Parameter Name="LevelProp" Value="ChaosStairsProp" VariableType="Reference" ReferenceType="GameObject" />
+                    <Parameter Name="Animation" Value="Raised_Idle" VariableType="Value" />
+                    <Parameter Name="Loop" Value="true" VariableType="Value" />
+                    <Parameter Name="Duration" Value="4.25" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetVarBool" Name="PlayAnim_6=true">
+                  <Parameters>
+                    <Parameter Name="Input" Value="true" VariableType="Value" />
+                    <OutParameter Name="Output" Value="PlayAnim_6" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="SetBTInstanceStatus" Name="DeactivateOpeningCeremony">
+                  <Parameters>
+                    <Parameter Name="Enabled" Value="False" VariableType="Value" />
+                    <Parameter Name="Name" Value="OdinOpeningCeremony" VariableType="Value" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

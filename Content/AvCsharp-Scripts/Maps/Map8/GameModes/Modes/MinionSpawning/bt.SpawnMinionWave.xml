@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.MinionSpawning.SpawnMinionWave">
+    <Parameters>
+      <Parameter Name="StartingPosition" VariableType="Reference" ParameterType="Vector" Default="" Optional="false">
+        <Description>Position to start the minion wave spawn</Description>
+      </Parameter>
+      <Parameter Name="ControllingTeam" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description>TeamEnum representing the controlling team.</Description>
+      </Parameter>
+      <Parameter Name="EncounterID" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="LaneID" VariableType="Reference, Value" ParameterType="Int" Default="0" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ReverseMinionPath" VariableType="Reference, Value" ParameterType="Bool" Default="False" Optional="false">
+        <Description>Should the minion wave be reversed?</Description>
+      </Parameter>
+      <Parameter Name="SquadName" VariableType="Reference, Value" ParameterType="String" Default="EMPTY_STRING" Optional="false">
+        <Description>Name of the squad we're spawning.  Useful for identifying units later.</Description>
+      </Parameter>
+      <Parameter Name="NumOrderPoints" VariableType="Reference" ParameterType="Int" Default="0" Optional="false">
+        <Description>Number of Order Points controlled</Description>
+      </Parameter>
+      <Parameter Name="NumChaosPoints" VariableType="Reference" ParameterType="Int" Default="0" Optional="false">
+        <Description>Number of Chaos Points controlled</Description>
+      </Parameter>
+      <Parameter Name="OpposingPointController" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousSpawnTime" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description>The previous time, the lane spawned minions</Description>
+      </Parameter>
+      <Parameter Name="SpawnRate_Seconds" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description>How often should minions be spawning</Description>
+      </Parameter>
+      <Parameter Name="MinionSpawnPortalParticleEncounterID" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="PreviousSpawnTime" ParameterType="Float">
+        <Description>The previous time the lane spawned minions</Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="NotEqualUnitTeam" Name="NotEqualUnitTeam">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="NotEqualUnitTeam" Name="NotEqualUnitTeam">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="OpposingPointController" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="NotEqualUnitTeam" Name="NotEqualUnitTeam">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="OpposingPointController" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="GetGameTime" Name="CurrentGameTime">
+              <Parameters>
+                <OutParameter Name="Output" Value="CurrentGameTime" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="SubtractFloat" Name="TimePassed=CurrentGameTime-PreviousSpawnTime">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="PreviousSpawnTime" VariableType="Reference" ReferenceType="Float" />
+                <OutParameter Name="Output" Value="TimePassed" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="Selector" Name="FirstTimeSpawning_Or_RegularSpawning">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="RegularSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GreaterEqualFloat" Name="TimePassed&gt;=SpawnRate_Seconds">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="TimePassed" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="SpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="FreshSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="LessFloat" Name="TimePassed_&lt;_0">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="TimePassed" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="MultiplyFloat" Name="NegativeSpawnRate=_-SpawnRate_Seconds">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="SpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="-1" VariableType="Value" />
+                        <OutParameter Name="Output" Value="NegativeSpawnRate" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GreaterEqualFloat" Name="TimePassed&gt;=-SpawnRate_Seconds">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="TimePassed" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="NegativeSpawnRate" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="MutatorCalculations_CP_Variance">
+              <Parameters />
+              <Children>
+                <Node Type="Selector" Name="TeamCalculations">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="Order">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualUnitTeam" Name="ControllingTeam==Order">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SubtractInt" Name="PointDiff=NumChaosPoints-NumOrderPoints">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="NumChaosPoints" VariableType="Reference" ReferenceType="Int" />
+                            <Parameter Name="RightHandSide" Value="NumOrderPoints" VariableType="Reference" ReferenceType="Int" />
+                            <OutParameter Name="Output" Value="PointDiff" ReferenceType="Int" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="Chaos">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualUnitTeam" Name="ControllingTeam==Chaos">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SubtractInt" Name="PointDiff=NumOrderPoints-NumChaosPoints">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="NumOrderPoints" VariableType="Reference" ReferenceType="Int" />
+                            <Parameter Name="RightHandSide" Value="NumChaosPoints" VariableType="Reference" ReferenceType="Int" />
+                            <OutParameter Name="Output" Value="PointDiff" ReferenceType="Int" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="MaxInt" Name="CapturePointMutator=Max(0, PointDiff)">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="PointDiff" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                    <OutParameter Name="Output" Value="CapturePointMutator" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="UpdateMutator" Name="UpdateMutator">
+                  <Parameters>
+                    <Parameter Name="EncounterId" Value="EncounterID" VariableType="Reference" ReferenceType="Int" />
+                    <Parameter Name="MutatorDefinition" Value="CapturePointMutator" VariableType="Value" />
+                    <Parameter Name="MutationIndex" Value="CapturePointMutator" VariableType="Reference" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Selector" Name="UpdateLaneID_Name_With_Team">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualUnitTeam" Name="ControllingTeam==ORDER">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddString" Name="SquadName_Team=SquadName_ORDER">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="RightHandSide" Value="_ORDER" VariableType="Value" />
+                        <OutParameter Name="Output" Value="SquadName_Team" ReferenceType="String" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualUnitTeam" Name="ControllingTeam==CHAOS">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddString" Name="SquadName_Team=SquadName_CHAOS">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="SquadName" VariableType="Reference" ReferenceType="String" />
+                        <Parameter Name="RightHandSide" Value="_CHAOS" VariableType="Value" />
+                        <OutParameter Name="Output" Value="SquadName_Team" ReferenceType="String" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="SpawnSquadFromEncounter" Name="SpawnSquadFromEncounter">
+              <Parameters>
+                <Parameter Name="EncounterId" Value="EncounterID" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Position" Value="StartingPosition" VariableType="Reference" ReferenceType="Vector" />
+                <Parameter Name="Team" Value="ControllingTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="SquadName" Value="SquadName_Team" VariableType="Reference" ReferenceType="String" />
+                <Parameter Name="ExistingSquadId" Value="" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="SquadId" Value="SquadId3" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="SquadPushLane" Name="SquadPushLane">
+              <Parameters>
+                <Parameter Name="SquadId" Value="SquadId3" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Lane" Value="LaneID" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="Reverse" Value="ReverseMinionPath" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="PatrolMode" Value="True" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarFloat" Name="PreviousSpawnTime=CurrentGameTime">
+              <Parameters>
+                <Parameter Name="Input" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+                <OutParameter Name="Output" Value="PreviousSpawnTime" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

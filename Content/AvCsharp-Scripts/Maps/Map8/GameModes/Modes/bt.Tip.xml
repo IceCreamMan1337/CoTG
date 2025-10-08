@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Tip" StaticName="">
+    <Parameters>
+      <Parameter Name="ActivationTime" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="DeactivationTime" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="TipString" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="TipTitle" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="BehaviorTreeToDisable" VariableType="Reference, Value" ParameterType="String" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="ExecutePeriodically" Name="Every_Second">
+      <Parameters>
+        <Parameter Name="UseMissionTime" Value="true" VariableType="Value" />
+        <Parameter Name="ExecutionPeriod" Value="1" VariableType="Value" />
+      </Parameters>
+      <Children>
+        <Node Type="MaskFailure" Name="MaskFailure">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="GetGameTime" Name="GetGameTime">
+                  <Parameters>
+                    <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="Selector" Name="Selector">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="Initialization">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualBool" Name="IsFirstRun?">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="__IsFirstRun" VariableType="Reference" ReferenceType="Bool" />
+                            <Parameter Name="RightHandSide" Value="true" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarBool" Name="QuestActive=False">
+                          <Parameters>
+                            <Parameter Name="Input" Value="False" VariableType="Value" />
+                            <OutParameter Name="Output" Value="QuestActive" ReferenceType="Bool" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="Activate">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualBool" Name="QuestActive=False">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="QuestActive" VariableType="Reference" ReferenceType="Bool" />
+                            <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GreaterFloat" Name="CurrentTime&gt;ActivationTime">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="RightHandSide" Value="ActivationTime" VariableType="Reference" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarInt" Name="TipIndex=0">
+                          <Parameters>
+                            <Parameter Name="Input" Value="0" VariableType="Value" />
+                            <OutParameter Name="Output" Value="TipIndex" ReferenceType="Int" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GetChampionCollection" Name="AllChamps">
+                          <Parameters>
+                            <OutParameter Name="Output" Value="AllChamps" ReferenceType="Obj_AI_HeroCollection" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="IterateUntilSuccessDecorator" Name="IterateUntilSuccessDecorator">
+                          <Parameters>
+                            <Parameter Name="Collection" Value="AllChamps" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                            <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" />
+                          </Parameters>
+                          <Children>
+                            <Node Type="ActivateTip" Name="ActivateTip">
+                              <Parameters>
+                                <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                                <Parameter Name="TipName" Value="TipString" VariableType="Reference" ReferenceType="String" />
+                                <Parameter Name="TipCategory" Value="TipTitle" VariableType="Reference" ReferenceType="String" />
+                                <OutParameter Name="TipId" Value="TipID" ReferenceType="Int" />
+                              </Parameters>
+                            </Node>
+                          </Children>
+                        </Node>
+                        <Node Type="SetVarBool" Name="QuestActive=true">
+                          <Parameters>
+                            <Parameter Name="Input" Value="true" VariableType="Value" />
+                            <OutParameter Name="Output" Value="QuestActive" ReferenceType="Bool" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="Deactivate">
+                      <Parameters />
+                      <Children>
+                        <Node Type="EqualBool" Name="QuestActive=true">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="QuestActive" VariableType="Reference" ReferenceType="Bool" />
+                            <Parameter Name="RightHandSide" Value="true" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="GreaterFloat" Name="CurrentTime&gt;DeactivationTime">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="RightHandSide" Value="DeactivationTime" VariableType="Reference" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="RemoveTip" Name="RemoveTip">
+                          <Parameters>
+                            <Parameter Name="TipId" Value="TipID" VariableType="Reference" ReferenceType="Int" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetBTInstanceStatus" Name="Disable_BehaviorTreeToDisable">
+                          <Parameters>
+                            <Parameter Name="Enabled" Value="False" VariableType="Value" />
+                            <Parameter Name="Name" Value="BehaviorTreeToDisable" VariableType="Reference" ReferenceType="String" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

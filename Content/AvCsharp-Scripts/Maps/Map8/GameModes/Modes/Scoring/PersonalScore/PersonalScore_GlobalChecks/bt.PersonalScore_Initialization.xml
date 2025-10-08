@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_GlobalChecks.PersonalScore_Initialization">
+    <Parameters>
+      <OutParameter Name="IsFirstBlood" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="SetVarBool" Name="IsFirstBlood=True">
+          <Parameters>
+            <Parameter Name="Input" Value="True" VariableType="Value" />
+            <OutParameter Name="Output" Value="IsFirstBlood" ReferenceType="Bool" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

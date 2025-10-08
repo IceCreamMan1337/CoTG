@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_Kills.PersonalScore_Ace">
+    <Parameters>
+      <Parameter Name="Killer" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_Ace" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="DeadUnit" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetUnitTeam" Name="KillerTeam">
+              <Parameters>
+                <Parameter Name="Unit" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                <OutParameter Name="Output" Value="KillerTeam" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarInt" Name="EnemyTeamCount=0">
+              <Parameters>
+                <Parameter Name="Input" Value="0" VariableType="Value" />
+                <OutParameter Name="Output" Value="EnemyTeamCount" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="GetChampionCollection" Name="AllChampions">
+              <Parameters>
+                <OutParameter Name="Output" Value="AllChampions" ReferenceType="Obj_AI_HeroCollection" />
+              </Parameters>
+            </Node>
+            <Node Type="MaskFailure" Name="MaskFailure">
+              <Parameters />
+              <Children>
+                <Node Type="IterateUntilSuccessDecorator" Name="IterateUntilSuccessDecorator">
+                  <Parameters>
+                    <Parameter Name="Collection" Value="AllChampions" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                    <OutParameter Name="Output" Value="IndividualUnit" ReferenceType="AttackableUnit" />
+                  </Parameters>
+                  <Children>
+                    <Node Type="Sequence" Name="Sequence">
+                      <Parameters />
+                      <Children>
+                        <Node Type="GetUnitTeam" Name="UnitTeam">
+                          <Parameters>
+                            <Parameter Name="Unit" Value="IndividualUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <OutParameter Name="Output" Value="UnitTeam" ReferenceType="TeamEnum" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="NotEqualUnitTeam" Name="KillerTeam!=UnitTeam">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="KillerTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                            <Parameter Name="RightHandSide" Value="UnitTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="TestUnitCondition" Name="IsAlive">
+                          <Parameters>
+                            <Parameter Name="Unit" Value="IndividualUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="NotEqualUnit" Name="NotEqualUnit">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="DeadUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="RightHandSide" Value="IndividualUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="AddInt" Name="EnemyTeamCount++">
+                          <Parameters>
+                            <Parameter Name="LeftHandSide" Value="EnemyTeamCount" VariableType="Reference" ReferenceType="Int" />
+                            <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                            <OutParameter Name="Output" Value="EnemyTeamCount" ReferenceType="Int" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="LessEqualInt" Name="EnemyTeamCount&lt;=0">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="EnemyTeamCount" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="IncrementPlayerScore" Name="AceScore">
+              <Parameters>
+                <Parameter Name="Player" Value="Killer" VariableType="Reference" ReferenceType="AttackableUnit" />
+                <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                <Parameter Name="ScoreEvent" Value="ACE" VariableType="Value" />
+                <Parameter Name="Value" Value="Score_Ace" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

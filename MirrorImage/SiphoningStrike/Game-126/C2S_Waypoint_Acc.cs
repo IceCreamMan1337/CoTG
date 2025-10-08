@@ -1,0 +1,33 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Numerics;
+using System.Linq;
+using System.Collections.Generic;
+using SiphoningStrike.Game.Common;
+using MirrorImage;
+using System.Runtime.InteropServices;
+using MirrorImage;
+
+namespace SiphoningStrike.Game
+{
+
+    public sealed class C2S_Waypoint_Acc : GamePacket // 0x07A
+    {
+        public override GamePacketID ID => GamePacketID.C2S_Waypoint_Acc;
+
+        public int SyncID { get; set; }
+        public byte TeleportCount { get; set; }
+
+        internal override void ReadBody(ByteReader reader)
+        {
+            this.SyncID = reader.ReadInt32();
+            this.TeleportCount = reader.ReadByte();
+        }
+        internal override void WriteBody(ByteWriter writer)
+        {
+            writer.WriteInt32(this.SyncID);
+            writer.WriteByte(this.TeleportCount);
+        }
+    }
+}

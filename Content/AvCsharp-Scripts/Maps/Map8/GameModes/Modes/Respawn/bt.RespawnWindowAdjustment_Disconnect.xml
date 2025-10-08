@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Respawn.RespawnWindowAdjustment_Disconnect">
+    <Parameters>
+      <Parameter Name="WindowAdjustmentMutator" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="NewWindowAdjustmentMutator" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Team" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="WindowAdjustmentMutator" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="WindowAdjustment">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="NotEqualInt" Name="NewModifier!=OldModifier">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="NewWindowAdjustmentMutator" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="WindowAdjustmentMutator" VariableType="Reference" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="SubtractInt" Name="ModifierDiff=Modifier-NewModifier">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="NewWindowAdjustmentMutator" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="WindowAdjustmentMutator" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="ModifierDiff" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+            <Node Type="MultiplyFloat" Name="ModifierToSet=Float(ModifierDiff)">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="ModifierDiff" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                <OutParameter Name="Output" Value="ModifierToSet" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="DivideFloat" Name="ModifierToSet/=10">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="ModifierToSet" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="10" VariableType="Value" />
+                <OutParameter Name="Output" Value="ModifierToSet" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="AdjustWaveSpawnTime" Name="AdjustWaveSpawnTime">
+              <Parameters>
+                <Parameter Name="Delta" Value="ModifierToSet" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="Team" Value="Team" VariableType="Reference" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarInt" Name="WindowAdjustmentMutator=NewWindowAdjustmentMutator">
+              <Parameters>
+                <Parameter Name="Input" Value="NewWindowAdjustmentMutator" VariableType="Reference" ReferenceType="Int" />
+                <OutParameter Name="Output" Value="WindowAdjustmentMutator" ReferenceType="Int" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.ChampKillPoints">
+    <Parameters>
+      <Parameter Name="Attacker" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoringFloor" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Victim" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="ChaosScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetUnitTeam" Name="GetUnitTeam">
+          <Parameters>
+            <Parameter Name="Unit" Value="Attacker" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="Output" Value="KillerTeam" ReferenceType="TeamEnum" />
+          </Parameters>
+        </Node>
+        <Node Type="Procedure" Name="ChangeScoreFlatCap" TreeQualifiedName="Modes.Dominion.Scoring.ChangeScoreFlatCap">
+          <Parameters>
+            <Parameter Name="OrderScore" Value="OrderScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ChaosScore" Value="ChaosScore" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="CanWin" Value="False" VariableType="Value" />
+            <Parameter Name="FloorValue" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="ScoreValue" Value="2" VariableType="Value" />
+            <Parameter Name="ScoringTeam" Value="KillerTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+            <OutParameter Name="OrderScore" Value="OrderScore" ReferenceType="Float" />
+            <OutParameter Name="ChaosScore" Value="ChaosScore" ReferenceType="Float" />
+            <OutParameter Name="ScoreChanged" Value="ScoreChanged" ReferenceType="Bool" />
+          </Parameters>
+        </Node>
+        <Node Type="EqualBool" Name="ScoreChanged==True">
+          <Parameters>
+            <Parameter Name="LeftHandSide" Value="ScoreChanged" VariableType="Reference" ReferenceType="Bool" />
+            <Parameter Name="RightHandSide" Value="True" VariableType="Value" />
+          </Parameters>
+        </Node>
+        <Node Type="Selector" Name="Selector">
+          <Parameters />
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="KillerTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TEAM_ORDER" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayFloatingTextOnUnitForTeam" Name="Enemy Nexus -2">
+                  <Parameters>
+                    <Parameter Name="TargetObject" Value="Victim" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="String" Value="game_floating_friendly_kill" VariableType="Value" />
+                    <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="Param1" Value="-2" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayFloatingTextOnUnitForTeam" Name="Friendly Nexus -2">
+                  <Parameters>
+                    <Parameter Name="TargetObject" Value="Victim" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="String" Value="game_floating_enemy_kill" VariableType="Value" />
+                    <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="Param1" Value="-2" VariableType="Value" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="EqualUnitTeam" Name="EqualUnitTeam">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="KillerTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="RightHandSide" Value="TEAM_CHAOS" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayFloatingTextOnUnitForTeam" Name="Enemy Nexus -2">
+                  <Parameters>
+                    <Parameter Name="TargetObject" Value="Victim" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="String" Value="game_floating_friendly_kill" VariableType="Value" />
+                    <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                    <Parameter Name="Param1" Value="-2" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="PlayFloatingTextOnUnitForTeam" Name="Friendly Nexus -2">
+                  <Parameters>
+                    <Parameter Name="TargetObject" Value="Victim" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="String" Value="game_floating_enemy_kill" VariableType="Value" />
+                    <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                    <Parameter Name="Param1" Value="-2" VariableType="Value" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

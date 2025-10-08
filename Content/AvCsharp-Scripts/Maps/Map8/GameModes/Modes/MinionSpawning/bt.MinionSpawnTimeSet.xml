@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.MinionSpawning.MinionSpawnTimeSet">
+    <Parameters>
+      <Parameter Name="LaneFromOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description>The originator of the lane. </Description>
+      </Parameter>
+      <Parameter Name="LaneToOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description>The owner of the destination</Description>
+      </Parameter>
+      <Parameter Name="LaneSpawnPreviousTime" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="SpawnRate_Seconds" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="LaneSpawnPreviousTime" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Check_Owners_To_Determine_Time_To_Set">
+          <Parameters />
+          <Children>
+            <Node Type="GetGameTime" Name="CurrentTime">
+              <Parameters>
+                <OutParameter Name="Output" Value="CurrentTime" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="SubtractFloat" Name="TimePassed=CurrentTime-LaneSpawnPreviousTime">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="LaneSpawnPreviousTime" VariableType="Reference" ReferenceType="Float" />
+                <OutParameter Name="Output" Value="TimePassed" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="MultiplyFloat" Name="NegativeSpawnRate=-SpawnRate_Seconds">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="SpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="-1" VariableType="Value" />
+                <OutParameter Name="Output" Value="NegativeSpawnRate" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="Selector" Name="Check_Owners_To_Determine_Time_To_Set">
+              <Parameters />
+              <Children>
+                <Node Type="Sequence" Name="FromOwner_is_Neutral_Don'tSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualUnitTeam" Name="LaneFromOwner==Neutral">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="LaneFromOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddFloat" Name="LaneSpawnPreviousTime=CurrentTime+25000">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="25000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="LaneSpawnPreviousTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="Owners_Are_The_Same_Don'tSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualUnitTeam" Name="LaneFromOwner==LaneToOwner">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="LaneFromOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="LaneToOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddFloat" Name="LaneSpawnPreviousTime=CurrentTime+25000">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="25000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="LaneSpawnPreviousTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="ToOwner_is_Neutral_Don'tSpawn">
+                  <Parameters />
+                  <Children>
+                    <Node Type="EqualUnitTeam" Name="LaneToOwner==Neutral">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="LaneToOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="AddFloat" Name="LaneSpawnPreviousTime=CurrentTime+25000">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="25000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="LaneSpawnPreviousTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="Wasn't_Spawning_Before">
+                  <Parameters />
+                  <Children>
+                    <Node Type="LessFloat" Name="TimePassed&lt;-SpawnRate">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="TimePassed" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="NegativeSpawnRate" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SubtractFloat" Name="LaneSpawnPreviousTime=CurrentTime-25000">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="CurrentTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="25000" VariableType="Value" />
+                        <OutParameter Name="Output" Value="LaneSpawnPreviousTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Sequence" Name="IsAlreadySpawning_Continue">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GreaterEqualFloat" Name="TimePassed&gt;=-NegativeSpawnRate">
+                      <Parameters>
+                        <Parameter Name="LeftHandSide" Value="TimePassed" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RightHandSide" Value="NegativeSpawnRate" VariableType="Reference" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

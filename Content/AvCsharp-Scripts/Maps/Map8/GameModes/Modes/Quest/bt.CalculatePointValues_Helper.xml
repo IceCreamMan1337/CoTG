@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Quest.CalculatePointValues_Helper">
+    <Parameters>
+      <Parameter Name="BasePointValue" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PointOwner" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ReferenceTeam" VariableType="Reference, Value" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CalculatedPointValue" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Selector" Name="Selector">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Neutral">
+          <Parameters />
+          <Children>
+            <Node Type="EqualUnitTeam" Name="PointOwner==NEUTRAL">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="PointOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="TEAM_NEUTRAL" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="AddFloat" Name="CalculatedPointValue=BasePointValue+0">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="BasePointValue" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+                <OutParameter Name="Output" Value="CalculatedPointValue" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="PointOwner!=RefOwner">
+          <Parameters />
+          <Children>
+            <Node Type="NotEqualUnitTeam" Name="PointOwner!=ReferenceTeam">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="PointOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="AddFloat" Name="CalculatedPointValue=BasePointValue+1">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="BasePointValue" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+                <OutParameter Name="Output" Value="CalculatedPointValue" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="PointOwner==RefOwner">
+          <Parameters />
+          <Children>
+            <Node Type="EqualUnitTeam" Name="PointOwner==ReferenceTeam">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="PointOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                <Parameter Name="RightHandSide" Value="ReferenceTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="AddFloat" Name="CalculatedPointValue=BasePointValue-1">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="BasePointValue" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="RightHandSide" Value="-1" VariableType="Value" />
+                <OutParameter Name="Output" Value="CalculatedPointValue" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

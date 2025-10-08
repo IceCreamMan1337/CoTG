@@ -1,0 +1,198 @@
+using System.Collections.Generic;
+using System.Numerics;
+using System.Threading.Tasks;
+using ChildrenOfTheGraveEnumNetwork;
+using ChildrenOfTheGraveEnumNetwork.Enums;
+using ChildrenOfTheGraveEnumNetwork.Packets.Handlers;
+using ChildrenOfTheGrave.ChildrenOfTheGraveServer.GameObjects.AttackableUnits;
+using ChildrenOfTheGrave.ChildrenOfTheGraveServer.GameObjects.AttackableUnits.AI;
+using CrystalSlash.Game;
+
+namespace ChildrenOfTheGrave.ChildrenOfTheGraveServer.Packets.PacketHandlers
+{
+    public class Handle_C2S_NPC_IssueOrderReq_106 : PacketHandlerBase<C2S_NPC_IssueOrderReq>
+    {
+        public async Task ValidateAndFixWaypoints(List<Vector2> waypoints, ObjAIBase unit)
+        {
+            var nav = Game.Map.NavigationGrid;
+
+            //TODO: Find the nearest point on the path and discard everything before it
+            for (int i = 0; i < waypoints.Count - 1; i++)
+            {
+                if (await nav.CastCircleAsync(waypoints[i], waypoints[i + 1], unit.PathfindingRadius, true))
+                {
+                    var ithWaypoint = waypoints[i];
+                    var lastWaypoint = waypoints[waypoints.Count - 1];
+                    var path = nav.GetPath(ithWaypoint, lastWaypoint, unit);
+                    waypoints.RemoveRange(i, waypoints.Count - i);
+                    if (path != null)
+                    {
+                        waypoints.AddRange(path);
+                    }
+                    else
+                    {
+                        waypoints.Add(ithWaypoint);
+                    }
+
+
+
+                    break;
+                }
+            }
+        }
+        public override bool HandlePacket(int userId, C2S_NPC_IssueOrderReq req)
+        {
+            if (req.MovementData.Waypoints == null)
+            {
+                return false;
+            }
+
+            var peerInfo = Game.PlayerManager.GetPeerInfo(userId);
+            if (peerInfo == null || req == null)
+            {
+                return true;
+            }
+
+            var champion = peerInfo.Champion;
+            var nav = Game.Map.NavigationGrid;
+
+            var target = Game.ObjectManager.GetObjectById(req.TargetNetID) as AttackableUnit;
+            var pet = champion.GetPet();
+            List<Vector2> waypoints = null;
+            List<Vector2> waypoints2 = null;
+            ObjAIBase unit = champion;
+
+            var orderType = (OrderType)req.OrderType;
+
+
+            var waypointsList = new List<Vector2>(req.MovementData.Waypoints.Count);
+            foreach (var w in req.MovementData.Waypoints)
+            {
+                waypointsList.Add(new Vector2(w.X, w.Y));
+            }
+            var vector2Waypoints = waypointsList;
+
+            switch (orderType)
+            {
+                case OrderType.PetHardMove:
+                case OrderType.PetHardAttack:
+                case OrderType.PetHardReturn:
+                    unit = pet;
+                    goto case OrderType.MoveTo;
+                case OrderType.MoveTo:
+                case OrderType.AttackTo:
+                case OrderType.AttackMove:
+                case OrderType.Use:
+
+                    // if (unit.MovementParameters == null && req.MovementData.Waypoints != null && req.MovementData.Waypoints.Count > 0)
+                    // {
+                    //     waypoints = req.MovementData.Waypoints.ConvertAll(PacketExtensions.WaypointToVector2);
+                    //     for (int i = 0; i < waypoints.Count; i++)
+                    //     {
+                    //         waypoints[i] = PacketExtensions.TranslateFromCenteredCoordinates(waypoints[i], nav);
+                    //     }
+                    //     ValidateAndFixWaypoints(waypoints, unit);
+                    // }
+
+
+
+                    //  if (unit.MovementParameters == null && vector2Waypoints != null && vector2Waypoints.Count() > 0)
+                    //  {
+                    //      waypoints = new List<Vector2>();
+                    //      foreach (var w in vector2Waypoints)
+                    //      {
+                    //          waypoints.Add(TranslateFromCenteredCoordinates(w));
+                    //      }
+                    //      ValidateAndFixWaypoints(waypoints, unit);
+                    //      
+                    //  }
+                    unit.IssueOrDelayOrder(orderType, target, req.Position.ToVector2(), waypoints);
+                    break;
+                case OrderType.Taunt:
+                case OrderType.Stop:
+                    champion.IssueOrDelayOrder(orderType, null, Vector2.Zero);
+                    break;
+                case OrderType.PetHardStop:
+                    if (pet != null)
+                    {
+                        pet.UpdateMoveOrder(orderType, true);
+                    }
+                    break;
+            }
+
+            return true;
+        }
+        /*
+        public override bool HandlePacket(int userId, C2S_NPC_IssueOrderReq req)
+        {
+            if (req.MovementData.Waypoints == null)
+            {
+                return false;
+            }
+
+            var peerInfo = Game.PlayerManager.GetPeerInfo(userId);
+            if (peerInfo == null || req == null)
+            {
+                return true;
+            }
+
+            var champion = peerInfo.Champion;
+            var nav = Game.Map.NavigationGrid;
+
+            var target = Game.ObjectManager.GetObjectById(req.TargetNetID) as AttackableUnit;
+            var pet = champion.GetPet();
+            List<Vector2> waypoints = null;
+
+            ObjAIBase unit = champion;
+
+            var orderType = (OrderType)req.OrderType;
+
+            
+            var waypointsList2 = new List<Vector2>(req.MovementData.Waypoints.Length);
+            foreach (var w in req.MovementData.Waypoints)
+            {
+                waypointsList2.Add(new Vector2(w.X, w.Y));
+            }
+            var vector2Waypoints = waypointsList2;
+
+            switch (orderType)
+            {
+                case OrderType.PetHardMove:
+                case OrderType.PetHardAttack:
+                case OrderType.PetHardReturn:
+                    unit = pet;
+                    goto case OrderType.MoveTo;
+                case OrderType.MoveTo:
+                case OrderType.AttackTo:
+                case OrderType.AttackMove:
+                case OrderType.Use:
+                    if (unit.MovementParameters == null && vector2Waypoints != null && waypointsList2.Count > 0)
+                    {
+                        waypoints = new List<Vector2>(waypointsList2);//.Select(w => TranslateFromCenteredCoordinates(w)).ToList();
+                       // ValidateAndFixWaypoints(waypoints, unit);
+                    }
+                    unit.IssueOrDelayOrder(orderType, target, req.Position.ToVector2(), waypoints);
+                    break;
+                case OrderType.Taunt:
+                case OrderType.Stop:
+                    champion.IssueOrDelayOrder(orderType, null, Vector2.Zero);
+                    break;
+                case OrderType.PetHardStop:
+                    if (pet != null)
+                    {
+                        pet.UpdateMoveOrder(orderType, true);
+                    }
+                    break;
+            }
+
+            return true;
+        }*/
+
+        private Vector2 TranslateFromCenteredCoordinates(Vector2 vector)
+        {
+            // For some reason, League coordinates are translated into center-based coordinates (origin at the center of the map),
+            // so we have to translate them back into normal coordinates where the origin is at the bottom left of the map.
+            return (2 * vector) + Game.Map.NavigationGrid.MiddleOfMap;
+        }
+    }
+}

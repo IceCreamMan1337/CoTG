@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Quest.QuestInitialization">
+    <Parameters>
+      <OutParameter Name="PreviousQuestCompleteTime" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestID_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestID_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestObjective_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestObjective_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestGiver_EncounterID" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestIconEncounterID" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestIconSquadID_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestIconSquadID_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestIconEncounterID2" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestRewardsID_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="QuestRewardsID_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="SetVarFloat" Name="PreviousQuestCompleteTime=0">
+          <Parameters>
+            <Parameter Name="Input" Value="0" VariableType="Value" />
+            <OutParameter Name="Output" Value="PreviousQuestCompleteTime" ReferenceType="Float" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestID_Order=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestID_Order" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestID_Chaos=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestID_Chaos" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestObjective_Chaos=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestObjective_Chaos" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestObjective_Order=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestObjective_Order" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="CreateEncounterFromDefinition">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinQuestBuffGiver" VariableType="Value" />
+            <Parameter Name="Count" Value="" VariableType="Reference" ReferenceType="Int" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="QuestGiver_EncounterID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="CreateEncounterFromDefinition">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinQuestIcon" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="QuestIconEncounterID" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="CreateEncounterFromDefinition" Name="CreateEncounterFromDefinition">
+          <Parameters>
+            <Parameter Name="EncounterDefinition" Value="OdinQuestIcon_Chaos" VariableType="Value" />
+            <Parameter Name="Count" Value="1" VariableType="Value" />
+            <Parameter Name="Tags" Value="" VariableType="Value" />
+            <OutParameter Name="EncounterId" Value="QuestIconEncounterID2" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestIconSquadID_Chaos=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestIconSquadID_Chaos" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestIconSquadID_Order=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestIconSquadID_Order" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestRewardsID_Order=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestRewardsID_Order" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+        <Node Type="SetVarInt" Name="QuestRewardsID_Chaos=-1">
+          <Parameters>
+            <Parameter Name="Input" Value="-1" VariableType="Value" />
+            <OutParameter Name="Output" Value="QuestRewardsID_Chaos" ReferenceType="Int" />
+          </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

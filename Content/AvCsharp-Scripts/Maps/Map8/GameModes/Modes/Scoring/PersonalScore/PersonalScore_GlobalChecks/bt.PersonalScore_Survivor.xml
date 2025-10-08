@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_GlobalChecks.PersonalScore_Survivor">
+    <Parameters>
+      <Parameter Name="Score_Survivor" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetChampionCollection" Name="AllChamps">
+              <Parameters>
+                <OutParameter Name="Output" Value="AllChamps" ReferenceType="Obj_AI_HeroCollection" />
+              </Parameters>
+            </Node>
+            <Node Type="IterateOverAllDecorator" Name="IncScore">
+              <Parameters>
+                <Parameter Name="Collection" Value="AllChamps" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="TestUnitHasBuff" Name="IsSurvivor">
+                      <Parameters>
+                        <Parameter Name="TargetUnit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CasterUnit" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="BuffName" Value="OdinScoreSurvivor" VariableType="Value" />
+                        <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="IncrementPlayerScore" Name="Score_Survivor">
+                      <Parameters>
+                        <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="ScoreCategory" Value="CATEGORY_COMBAT" VariableType="Value" />
+                        <Parameter Name="ScoreEvent" Value="SURVIVOR" VariableType="Value" />
+                        <Parameter Name="Value" Value="Score_Survivor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SpellBuffClear" Name="SpellBuffClear_OdinScoreSurvivor">
+                      <Parameters>
+                        <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="BuffName" Value="OdinScoreSurvivor" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

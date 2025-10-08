@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution SolutionType="AI" DataPath=".\LEVELS\Map8\Scripts\OdinTower.xml" Validity="Valid">
+  <SolutionItem Type="BehaviourTree" Name="OdinTowerBehavior">
+    <Description></Description>
+  </SolutionItem>
+</Solution>

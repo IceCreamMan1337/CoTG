@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Sigil.CenterRelicManager">
+    <Parameters>
+      <Parameter Name="CenterRelicSpawnTime_A" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicSpawnTime_B" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicSquadID_A" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicSquadID_B" VariableType="Reference, Value" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RelicEncounterCenter" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RelicEncounterCenter2" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicPositionA" VariableType="Reference" ParameterType="Vector" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicPositionB" VariableType="Reference" ParameterType="Vector" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicParticleAttached1" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CenterRelicParticleAttached2" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CenterRelicSpawnTime_A" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSpawnTime_B" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSquadID_A" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicSquadID_B" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicParticleAttached1" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CenterRelicParticleAttached2" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="Procedure" Name="CenterRelicHelper_A" TreeQualifiedName="Modes.Dominion.Sigil.CenterRelicHelper">
+              <Parameters>
+                <Parameter Name="CenterRelicSpawnTime" Value="CenterRelicSpawnTime_A" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="CenterRelicSquadID" Value="CenterRelicSquadID_A" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RelicEncounterCenter" Value="RelicEncounterCenter" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="CenterRelicPosition" Value="CenterRelicPositionA" VariableType="Reference" ReferenceType="Vector" />
+                <Parameter Name="CenterRelicParticleAttached" Value="CenterRelicParticleAttached1" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="CenterRelicSquadName" Value="CenterRelic1" VariableType="Value" />
+                <Parameter Name="CenterRelicTeam" Value="TEAM_ORDER" VariableType="Value" />
+                <OutParameter Name="CenterRelicSpawnTime" Value="CenterRelicSpawnTime_A" ReferenceType="Float" />
+                <OutParameter Name="CenterRelicSquadID" Value="CenterRelicSquadID_A" ReferenceType="Int" />
+                <OutParameter Name="CenterRelicParticleAttached" Value="CenterRelicParticleAttached1" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="CenterRelicHelper_B" TreeQualifiedName="Modes.Dominion.Sigil.CenterRelicHelper">
+              <Parameters>
+                <Parameter Name="CenterRelicSpawnTime" Value="CenterRelicSpawnTime_B" VariableType="Reference" ReferenceType="Float" />
+                <Parameter Name="CenterRelicSquadID" Value="CenterRelicSquadID_B" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RelicEncounterCenter" Value="RelicEncounterCenter2" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="CenterRelicPosition" Value="CenterRelicPositionB" VariableType="Reference" ReferenceType="Vector" />
+                <Parameter Name="CenterRelicParticleAttached" Value="CenterRelicParticleAttached2" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="CenterRelicSquadName" Value="CenterRelic2" VariableType="Value" />
+                <Parameter Name="CenterRelicTeam" Value="TEAM_CHAOS" VariableType="Value" />
+                <OutParameter Name="CenterRelicSpawnTime" Value="CenterRelicSpawnTime_B" ReferenceType="Float" />
+                <OutParameter Name="CenterRelicSquadID" Value="CenterRelicSquadID_B" ReferenceType="Int" />
+                <OutParameter Name="CenterRelicParticleAttached" Value="CenterRelicParticleAttached2" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

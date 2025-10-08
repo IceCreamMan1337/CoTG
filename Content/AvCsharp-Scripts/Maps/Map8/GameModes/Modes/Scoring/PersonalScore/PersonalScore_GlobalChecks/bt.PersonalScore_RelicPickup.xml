@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_GlobalChecks.PersonalScore_RelicPickup">
+    <Parameters>
+      <Parameter Name="Score_SmallRelic" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="Score_BigRelic" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="MaskFailure" Name="MaskFailure">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Sequence">
+          <Parameters />
+          <Children>
+            <Node Type="GetChampionCollection" Name="AllChamps">
+              <Parameters>
+                <OutParameter Name="Output" Value="AllChamps" ReferenceType="Obj_AI_HeroCollection" />
+              </Parameters>
+            </Node>
+            <Node Type="IterateOverAllDecorator" Name="IterateOverAllDecorator">
+              <Parameters>
+                <Parameter Name="Collection" Value="AllChamps" VariableType="Reference" ReferenceType="Obj_AI_HeroCollection" />
+                <OutParameter Name="Output" Value="Champ" ReferenceType="AttackableUnit" />
+              </Parameters>
+              <Children>
+                <Node Type="Selector" Name="Selector">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Sequence" Name="SmallRelic">
+                      <Parameters />
+                      <Children>
+                        <Node Type="TestUnitHasBuff" Name="HasSmallRelic">
+                          <Parameters>
+                            <Parameter Name="TargetUnit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="CasterUnit" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="BuffName" Value="OdinScoreSmallRelic" VariableType="Value" />
+                            <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                          <Parameters>
+                            <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                            <Parameter Name="ScoreEvent" Value="SCAVENGER_HUNT" VariableType="Value" />
+                            <Parameter Name="Value" Value="Score_SmallRelic" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SpellBuffClear" Name="SpellBuffClear">
+                          <Parameters>
+                            <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="BuffName" Value="OdinScoreSmallRelic" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="Sequence" Name="BigRelic">
+                      <Parameters />
+                      <Children>
+                        <Node Type="TestUnitHasBuff" Name="HasBigRelic">
+                          <Parameters>
+                            <Parameter Name="TargetUnit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="CasterUnit" Value="" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="BuffName" Value="OdinScoreBigRelic" VariableType="Value" />
+                            <Parameter Name="ReturnSuccessIf" Value="True" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                          <Parameters>
+                            <Parameter Name="Player" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="ScoreCategory" Value="CATEGORY_OBJECTIVE" VariableType="Value" />
+                            <Parameter Name="ScoreEvent" Value="MAJOR_RELIC_PICKUP" VariableType="Value" />
+                            <Parameter Name="Value" Value="Score_BigRelic" VariableType="Reference" ReferenceType="Float" />
+                            <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SpellBuffClear" Name="SpellBuffClear">
+                          <Parameters>
+                            <Parameter Name="Unit" Value="Champ" VariableType="Reference" ReferenceType="AttackableUnit" />
+                            <Parameter Name="BuffName" Value="OdinScoreBigRelic" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

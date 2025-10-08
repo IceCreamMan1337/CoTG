@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.Scoring.PersonalScore.PersonalScore_Increment">
+    <Parameters>
+      <Parameter Name="ScoreCategory" VariableType="Reference, Value" ParameterType="ScoreCategory" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoreEvent" VariableType="Reference, Value" ParameterType="ScoreEvent" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ScoreValue" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="StatEvent" VariableType="Reference, Value" ParameterType="StatEvent" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RefEnemyTarget" VariableType="Reference" ParameterType="AttackableUnit" Default="" Optional="false">
+        <Description>The Target that was successfully assaulted, usually an enemy</Description>
+      </Parameter>
+      <Parameter Name="Radius" VariableType="Reference, Value" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+    </Parameters>
+    <Node Type="Sequence" Name="Sequence">
+      <Parameters />
+      <Children>
+        <Node Type="GetUnitPosition" Name="TargetLocation">
+          <Parameters>
+            <Parameter Name="Unit" Value="RefEnemyTarget" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <OutParameter Name="Output" Value="TargetLocation" ReferenceType="Vector" />
+          </Parameters>
+        </Node>
+        <Node Type="GetUnitsInTargetArea" Name="Unit=ToGivePoints">
+          <Parameters>
+            <Parameter Name="Unit" Value="RefEnemyTarget" VariableType="Reference" ReferenceType="AttackableUnit" />
+            <Parameter Name="TargetLocation" Value="TargetLocation" VariableType="Reference" ReferenceType="Vector" />
+            <Parameter Name="Radius" Value="Radius" VariableType="Reference" ReferenceType="Float" />
+            <Parameter Name="SpellFlags" Value="AffectEnemies,AffectHeroes" VariableType="Value" />
+            <OutParameter Name="Output" Value="ToGivePoints" ReferenceType="AttackableUnitCollection" />
+          </Parameters>
+        </Node>
+        <Node Type="IterateOverAllDecorator" Name="IterateOverAllDecorator">
+          <Parameters>
+            <Parameter Name="Collection" Value="ToGivePoints" VariableType="Reference" ReferenceType="AttackableUnitCollection" />
+            <OutParameter Name="Output" Value="IndividualPointUnit" ReferenceType="AttackableUnit" />
+          </Parameters>
+          <Children>
+            <Node Type="Sequence" Name="Sequence">
+              <Parameters />
+              <Children>
+                <Node Type="IncrementPlayerScore" Name="IncrementPlayerScore">
+                  <Parameters>
+                    <Parameter Name="Player" Value="IndividualPointUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="ScoreCategory" Value="ScoreCategory" VariableType="Reference" ReferenceType="ScoreCategory" />
+                    <Parameter Name="ScoreEvent" Value="ScoreEvent" VariableType="Reference" ReferenceType="ScoreEvent" />
+                    <Parameter Name="Value" Value="ScoreValue" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="Show" Value="" VariableType="Reference" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="IncrementPlayerStat" Name="IncrementPlayerStat">
+                  <Parameters>
+                    <Parameter Name="Player" Value="IndividualPointUnit" VariableType="Reference" ReferenceType="AttackableUnit" />
+                    <Parameter Name="StatEvent" Value="StatEvent" VariableType="Reference" ReferenceType="StatEvent" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Modes.Dominion.CapturePoint.CapturePointOwnerByIndex">
+    <Parameters>
+      <Parameter Name="CapturePointIndex" VariableType="Reference, Value" ParameterType="Int" Default="" Optional="false">
+        <Description>0 to 4, representing the capture point </Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerA" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerB" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_A" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_B" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_C" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_D" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousOwner_E" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="CapturePointOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePoint_PreviousOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Selector" Name="Selector">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="A">
+          <Parameters />
+          <Children>
+            <Node Type="EqualInt" Name="CapturePointIndex=0">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CapturePointIndex" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="0" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePointOwner=CapturePointOwnerA">
+              <Parameters>
+                <Parameter Name="Input" Value="CapturePointOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePointOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CApturePoint_PreviousOwner=PreviousOwner_A">
+              <Parameters>
+                <Parameter Name="Input" Value="PreviousOwner_A" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePoint_PreviousOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="B">
+          <Parameters />
+          <Children>
+            <Node Type="EqualInt" Name="CapturePointIndex=1">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CapturePointIndex" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="1" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePointOwner=CapturePointOwnerB">
+              <Parameters>
+                <Parameter Name="Input" Value="CapturePointOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePointOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePoint_PreviousOwner=PreviousOwner_B">
+              <Parameters>
+                <Parameter Name="Input" Value="PreviousOwner_B" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePoint_PreviousOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="C">
+          <Parameters />
+          <Children>
+            <Node Type="EqualInt" Name="CapturePointIndex=2">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CapturePointIndex" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="2" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePointOwner=CapturePointOwnerC">
+              <Parameters>
+                <Parameter Name="Input" Value="CapturePointOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePointOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePoint_PreviousOwner=PreviousOwner_C">
+              <Parameters>
+                <Parameter Name="Input" Value="PreviousOwner_C" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePoint_PreviousOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="D">
+          <Parameters />
+          <Children>
+            <Node Type="EqualInt" Name="CapturePointIndex=3">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CapturePointIndex" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="3" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePointOwner=CapturePointOwnerD">
+              <Parameters>
+                <Parameter Name="Input" Value="CapturePointOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePointOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePoint_PreviousOwner=PreviousOwner_D">
+              <Parameters>
+                <Parameter Name="Input" Value="PreviousOwner_D" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePoint_PreviousOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="E">
+          <Parameters />
+          <Children>
+            <Node Type="EqualInt" Name="CapturePointIndex=4">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="CapturePointIndex" VariableType="Reference" ReferenceType="Int" />
+                <Parameter Name="RightHandSide" Value="4" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePointOwner=CapturePointOwnerE">
+              <Parameters>
+                <Parameter Name="Input" Value="CapturePointOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePointOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarUnitTeam" Name="CapturePoint_PreviousOwner=PreviousOwner_E">
+              <Parameters>
+                <Parameter Name="Input" Value="PreviousOwner_E" VariableType="Reference" ReferenceType="TeamEnum" />
+                <OutParameter Name="Output" Value="CapturePoint_PreviousOwner" ReferenceType="TeamEnum" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

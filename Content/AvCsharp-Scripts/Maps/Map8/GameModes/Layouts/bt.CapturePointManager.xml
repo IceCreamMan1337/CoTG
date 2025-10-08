@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTrees>
+  <BehaviorTree Name="Layouts.OdinLayout.CapturePointManager">
+    <Parameters>
+      <Parameter Name="RemainingOrderScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="RemainingChaosScore" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointAOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointBOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointCOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointDOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointEOwner" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointPreviousOwnerA" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointPreviousOwnerB" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointPreviousOwnerC" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointPreviousOwnerD" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="CapturePointPreviousOwnerE" VariableType="Reference" ParameterType="TeamEnum" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_AB" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_AE" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_BA" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_BC" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_CB" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_CD" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_DC" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_DE" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_EA" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="PreviousMinionSpawnTime_ED" VariableType="Reference" ParameterType="Float" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="ChaosRespawnBonus" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="OrderRespawnBonus" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="BombQuestID_Order" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="BombQuestID_Chaos" VariableType="Reference" ParameterType="Int" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <Parameter Name="IsFirstBlood" VariableType="Reference" ParameterType="Bool" Default="" Optional="false">
+        <Description></Description>
+      </Parameter>
+      <OutParameter Name="RemainingOrderScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="RemainingChaosScore" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointAOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointBOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointCOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointDOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointEOwner" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointPreviousOwnerA" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointPreviousOwnerB" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointPreviousOwnerC" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointPreviousOwnerD" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CapturePointPreviousOwnerE" ParameterType="TeamEnum">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_AB" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_AE" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_BA" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_BC" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_CB" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_CD" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_DC" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_DE" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_EA" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="PreviousMinionSpawnTime_ED" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="CCDelta" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="OrderRespawnBonus" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ChaosRespawnBonus" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="BombQuestID_Order" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="BombQuestID_Chaos" ParameterType="Int">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="ScoringFloor" ParameterType="Float">
+        <Description></Description>
+      </OutParameter>
+      <OutParameter Name="IsFirstBlood" ParameterType="Bool">
+        <Description></Description>
+      </OutParameter>
+    </Parameters>
+    <Node Type="Selector" Name="Selector">
+      <Parameters />
+      <Children>
+        <Node Type="Sequence" Name="Initialization_Pre">
+          <Parameters />
+          <Children>
+            <Node Type="EqualBool" Name="__IsFirstRun==True">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="__IsFirstRun" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="RightHandSide" Value="True" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarBool" Name="GuardianInit=False">
+              <Parameters>
+                <Parameter Name="Input" Value="False" VariableType="Value" />
+                <OutParameter Name="Output" Value="GuardianInit" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+            <Node Type="SetVarBool" Name="Initialization=False">
+              <Parameters>
+                <Parameter Name="Input" Value="False" VariableType="Value" />
+                <OutParameter Name="Output" Value="Initialization" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+            <Node Type="Sequence" Name="Actual_Initialization">
+              <Parameters />
+              <Children>
+                <Node Type="EqualBool" Name="Initialization==False">
+                  <Parameters>
+                    <Parameter Name="LeftHandSide" Value="Initialization" VariableType="Reference" ReferenceType="Bool" />
+                    <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="MinionSpawnInitialization" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionSpawnInitialization">
+                  <Parameters>
+                    <OutParameter Name="PreviousMinionSpawnTime_AB" Value="PreviousMinionSpawnTime_AB" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_AE" Value="PreviousMinionSpawnTime_AE" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_BA" Value="PreviousMinionSpawnTime_BA" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_BC" Value="PreviousMinionSpawnTime_BC" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_CB" Value="PreviousMinionSpawnTime_CB" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_CD" Value="PreviousMinionSpawnTime_CD" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_DC" Value="PreviousMinionSpawnTime_DC" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_DE" Value="PreviousMinionSpawnTime_DE" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_EA" Value="PreviousMinionSpawnTime_EA" ReferenceType="Float" />
+                    <OutParameter Name="PreviousMinionSpawnTime_ED" Value="PreviousMinionSpawnTime_ED" ReferenceType="Float" />
+                    <OutParameter Name="MinionWaveEncounterID" Value="WaveEncounterID" ReferenceType="Int" />
+                    <OutParameter Name="MutationProgressionIndex" Value="MutationProgressionIndex" ReferenceType="Int" />
+                    <OutParameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" ReferenceType="Float" />
+                    <OutParameter Name="MinionSpawnPoint_A1" Value="MinionSpawnPoint_A1" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_A2" Value="MinionSpawnPoint_A2" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_B1" Value="MinionSpawnPoint_B1" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_B2" Value="MinionSpawnPoint_B2" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_C1" Value="MinionSpawnPoint_C1" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_C2" Value="MinionSpawnPoint_C2" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_D1" Value="MinionSpawnPoint_D1" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_D2" Value="MinionSpawnPoint_D2" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_E1" Value="MinionSpawnPoint_E1" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPoint_E2" Value="MinionSpawnPoint_E2" ReferenceType="Vector" />
+                    <OutParameter Name="MinionSpawnPortalParticleEncounterID" Value="MinionSpawnPortalParticleEncounterID" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="CapturePointInitialization" TreeQualifiedName="Modes.Dominion.CapturePoint.CapturePointInitialization">
+                  <Parameters>
+                    <OutParameter Name="CapturePointPreviousOwnerA" Value="CapturePointPreviousOwnerA" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointPreviousOwnerB" Value="CapturePointPreviousOwnerB" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointPreviousOwnerC" Value="CapturePointPreviousOwnerC" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointPreviousOwnerD" Value="CapturePointPreviousOwnerD" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointPreviousOwnerE" Value="CapturePointPreviousOwnerE" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointOwnerA" Value="CapturePointAOwner" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointOwnerB" Value="CapturePointBOwner" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointOwnerC" Value="CapturePointCOwner" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointOwnerD" Value="CapturePointDOwner" ReferenceType="TeamEnum" />
+                    <OutParameter Name="CapturePointOwnerE" Value="CapturePointEOwner" ReferenceType="TeamEnum" />
+                  </Parameters>
+                </Node>
+                <Node Type="Sequence" Name="Variable_Initialization">
+                  <Parameters />
+                  <Children>
+                    <Node Type="GetTurret" Name="OrderShrineTurret">
+                      <Parameters>
+                        <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                        <Parameter Name="Lane" Value="0" VariableType="Value" />
+                        <Parameter Name="Position" Value="1" VariableType="Value" />
+                        <OutParameter Name="Turret" Value="OrderShrineTurret" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GetTurret" Name="ChaosShrineTurret">
+                      <Parameters>
+                        <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                        <Parameter Name="Lane" Value="0" VariableType="Value" />
+                        <Parameter Name="Position" Value="1" VariableType="Value" />
+                        <OutParameter Name="Turret" Value="ChaosShrineTurret" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="GetGameTime" Name="GetGameTime">
+                      <Parameters>
+                        <OutParameter Name="Output" Value="CurrentGameTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Sequence" Name="VictoryPoints">
+                      <Parameters />
+                      <Children>
+                        <Node Type="SetVarFloat" Name="OrderStartScore=500">
+                          <Parameters>
+                            <Parameter Name="Input" Value="500" VariableType="Value" />
+                            <OutParameter Name="Output" Value="RemainingOrderScore" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarFloat" Name="ChaosStartScore=500">
+                          <Parameters>
+                            <Parameter Name="Input" Value="500" VariableType="Value" />
+                            <OutParameter Name="Output" Value="RemainingChaosScore" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetGameScore" Name="Order=500">
+                          <Parameters>
+                            <Parameter Name="Team" Value="TEAM_ORDER" VariableType="Value" />
+                            <Parameter Name="Score" Value="500" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetGameScore" Name="Chaos=500">
+                          <Parameters>
+                            <Parameter Name="Team" Value="TEAM_CHAOS" VariableType="Value" />
+                            <Parameter Name="Score" Value="500" VariableType="Value" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarFloat" Name="Scoring_PreviousUpdateTime">
+                          <Parameters>
+                            <Parameter Name="Input" Value="CurrentGameTime" VariableType="Reference" ReferenceType="Float" />
+                            <OutParameter Name="Output" Value="Scoring_PreviousUpdateTime" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                        <Node Type="SetVarFloat" Name="ScoringFloor=125">
+                          <Parameters>
+                            <Parameter Name="Input" Value="125" VariableType="Value" />
+                            <OutParameter Name="Output" Value="ScoringFloor" ReferenceType="Float" />
+                          </Parameters>
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node Type="SetVarBool" Name="GuardianInit=False">
+                      <Parameters>
+                        <Parameter Name="Input" Value="False" VariableType="Value" />
+                        <OutParameter Name="Output" Value="GuardianInit" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="OverTimeLimitWarning=False">
+                      <Parameters>
+                        <Parameter Name="Input" Value="False" VariableType="Value" />
+                        <OutParameter Name="Output" Value="OverTimeLimitWarning" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="Procedure" Name="GuardianCapturePointInitialization" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GuardianCapturePointInitialization">
+                  <Parameters />
+                </Node>
+                <Node Type="Procedure" Name="RelicInitialization" TreeQualifiedName="Modes.Dominion.Sigil.RelicInitialization">
+                  <Parameters>
+                    <OutParameter Name="RelicSquad_A" Value="RelicSquad_A" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_B" Value="RelicSquad_B" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_C" Value="RelicSquad_C" ReferenceType="Int" />
+                    <OutParameter Name="RelicSpawnTime_A" Value="RelicSpawnTime_A" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_B" Value="RelicSpawnTime_B" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_C" Value="RelicSpawnTime_C" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_D" Value="RelicSpawnTime_D" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_E" Value="RelicSpawnTime_E" ReferenceType="Float" />
+                    <OutParameter Name="RelicSquad_D" Value="RelicSquad_D" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_E" Value="RelicSquad_E" ReferenceType="Int" />
+                    <OutParameter Name="RelicEncounterShield" Value="RelicEncounterShield" ReferenceType="Int" />
+                    <OutParameter Name="RelicSpawnTime_F" Value="RelicSpawnTime_F" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_G" Value="RelicSpawnTime_G" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_H" Value="RelicSpawnTime_H" ReferenceType="Float" />
+                    <OutParameter Name="RelicSquad_F" Value="RelicSquad_F" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_G" Value="RelicSquad_G" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_H" Value="RelicSquad_H" ReferenceType="Int" />
+                    <OutParameter Name="RelicSpawnTime_I" Value="RelicSpawnTime_I" ReferenceType="Float" />
+                    <OutParameter Name="RelicSpawnTime_J" Value="RelicSpawnTime_J" ReferenceType="Float" />
+                    <OutParameter Name="RelicSquad_I" Value="RelicSquad_I" ReferenceType="Int" />
+                    <OutParameter Name="RelicSquad_J" Value="RelicSquad_J" ReferenceType="Int" />
+                    <OutParameter Name="RelicPositionA" Value="RelicPositionA" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionB" Value="RelicPositionB" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionC" Value="RelicPositionC" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionD" Value="RelicPositionD" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionE" Value="RelicPositionE" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionF" Value="RelicPositionF" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionG" Value="RelicPositionG" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionI" Value="RelicPositionI" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionJ" Value="RelicPositionJ" ReferenceType="Vector" />
+                    <OutParameter Name="RelicPositionH" Value="RelicPositionH" ReferenceType="Vector" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="CenterRelicInitialization" TreeQualifiedName="Modes.Dominion.Sigil.CenterRelicInitialization">
+                  <Parameters>
+                    <OutParameter Name="CenterRelicSpawnTime_A" Value="CenterRelicSpawnTime_A" ReferenceType="Float" />
+                    <OutParameter Name="CenterRelicSpawnTime_B" Value="CenterRelicSpawnTime_B" ReferenceType="Float" />
+                    <OutParameter Name="CenterRelicSquad_A" Value="CenterRelicSquad_A" ReferenceType="Int" />
+                    <OutParameter Name="CenterRelicSquad_B" Value="CenterRelicSquad_B" ReferenceType="Int" />
+                    <OutParameter Name="RelicEncounterCenter" Value="RelicEncounterCenter" ReferenceType="Int" />
+                    <OutParameter Name="RelicEncounterCenter2" Value="RelicEncounterCenter2" ReferenceType="Int" />
+                    <OutParameter Name="CenterRelicPositionB" Value="CenterRelicPositionB" ReferenceType="Vector" />
+                    <OutParameter Name="CenterRelicPositionA" Value="CenterRelicPositionA" ReferenceType="Vector" />
+                    <OutParameter Name="CenterRelicParticleAttached1" Value="CenterRelicParticleAttached1" ReferenceType="Bool" />
+                    <OutParameter Name="CenterRelicParticleAttached2" Value="CenterRelicParticleAttached2" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="RespawnInitialization" TreeQualifiedName="Modes.Dominion.Respawn.RespawnInitialization">
+                  <Parameters>
+                    <OutParameter Name="ChaosRespawnMutator" Value="ChaosRespawnMutator" ReferenceType="Int" />
+                    <OutParameter Name="OrderRespawnMutator" Value="OrderRespawnMutator" ReferenceType="Int" />
+                    <OutParameter Name="RespawnWindowAdjustment_Order" Value="RespawnWindowAdjustment_Order" ReferenceType="Int" />
+                    <OutParameter Name="RespawnWindowAdjustment_Chaos" Value="RespawnWindowAdjustment_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="PersonalScore_Initialization" TreeQualifiedName="Modes.Dominion.Scoring.PersonalScore.PersonalScore_GlobalChecks.PersonalScore_Initialization">
+                  <Parameters>
+                    <OutParameter Name="IsFirstBlood" Value="IsFirstBlood" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="SpeedShrineInitialization" TreeQualifiedName="Modes.Dominion.Shrine.SpeedShrineInitialization">
+                  <Parameters />
+                </Node>
+                <Node Type="Procedure" Name="MinionGraveyardInitialization" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardInitialization">
+                  <Parameters>
+                    <OutParameter Name="MinionGraveyardA" Value="MinionGraveyardA" ReferenceType="Vector" />
+                    <OutParameter Name="MinionGraveyardB" Value="MinionGraveyardB" ReferenceType="Vector" />
+                    <OutParameter Name="MinionGraveyardC" Value="MinionGraveyardC" ReferenceType="Vector" />
+                    <OutParameter Name="MinionGraveyardD" Value="MinionGraveyardD" ReferenceType="Vector" />
+                    <OutParameter Name="MinionGraveyardE" Value="MinionGraveyardE" ReferenceType="Vector" />
+                    <OutParameter Name="MinionGraveyardPortalEncounter" Value="MinionGraveyardPortalEncounter" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalID_A" Value="MinionGraveyardPortalID_A" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalID_B" Value="MinionGraveyardPortalID_B" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalID_C" Value="MinionGraveyardPortalID_C" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalID_D" Value="MinionGraveyardPortalID_D" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalID_E" Value="MinionGraveyardPortalID_E" ReferenceType="Int" />
+                    <OutParameter Name="MinionGraveyardPortalStartTime_A" Value="MinionGraveyardPortalStartTime_A" ReferenceType="Float" />
+                    <OutParameter Name="MinionGraveyardPortalStartTime_B" Value="MinionGraveyardPortalStartTime_B" ReferenceType="Float" />
+                    <OutParameter Name="MinionGraveyardPortalStartTime_C" Value="MinionGraveyardPortalStartTime_C" ReferenceType="Float" />
+                    <OutParameter Name="MinionGraveyardPortalStartTime_D" Value="MinionGraveyardPortalStartTime_D" ReferenceType="Float" />
+                    <OutParameter Name="MinionGraveyardPortalStartTime_E" Value="MinionGraveyardPortalStartTime_E" ReferenceType="Float" />
+                  </Parameters>
+                </Node>
+                <Node Type="Procedure" Name="QuestInitialization" TreeQualifiedName="Modes.Dominion.Quest.QuestInitialization">
+                  <Parameters>
+                    <OutParameter Name="PreviousQuestCompleteTime" Value="PreviousQuestCompleteTime" ReferenceType="Float" />
+                    <OutParameter Name="QuestID_Order" Value="QuestID_Order" ReferenceType="Int" />
+                    <OutParameter Name="QuestID_Chaos" Value="QuestID_Chaos" ReferenceType="Int" />
+                    <OutParameter Name="QuestObjective_Order" Value="QuestObjective_Order" ReferenceType="Int" />
+                    <OutParameter Name="QuestObjective_Chaos" Value="QuestObjective_Chaos" ReferenceType="Int" />
+                    <OutParameter Name="QuestGiver_EncounterID" Value="QuestGiver_EncounterID" ReferenceType="Int" />
+                    <OutParameter Name="QuestIconEncounterID" Value="QuestIconEncounterID" ReferenceType="Int" />
+                    <OutParameter Name="QuestIconSquadID_Order" Value="QuestIconSquadID_Order" ReferenceType="Int" />
+                    <OutParameter Name="QuestIconSquadID_Chaos" Value="QuestIconSquadID_Chaos" ReferenceType="Int" />
+                    <OutParameter Name="QuestIconEncounterID2" Value="QuestIconEncounterID2" ReferenceType="Int" />
+                    <OutParameter Name="QuestRewardsID_Order" Value="QuestRewardsID_Order" ReferenceType="Int" />
+                    <OutParameter Name="QuestRewardsID_Chaos" Value="QuestRewardsID_Chaos" ReferenceType="Int" />
+                  </Parameters>
+                </Node>
+                <Node Type="Sequence" Name="EndOfGameInit">
+                  <Parameters />
+                  <Children>
+                    <Node Type="SetVarFloat" Name="GameEndTime">
+                      <Parameters>
+                        <Parameter Name="Input" Value="0" VariableType="Value" />
+                        <OutParameter Name="Output" Value="GameEndTime" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarBool" Name="EndCeremonyBool=True">
+                      <Parameters>
+                        <Parameter Name="Input" Value="True" VariableType="Value" />
+                        <OutParameter Name="Output" Value="EndCeremonyBool" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarInt" Name="EndOfGameState=-1">
+                      <Parameters>
+                        <Parameter Name="Input" Value="-1" VariableType="Value" />
+                        <OutParameter Name="Output" Value="EndOfGameState" ReferenceType="Int" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="SetVarUnitTeam" Name="FinalWinTeam=Neutral">
+                      <Parameters>
+                        <Parameter Name="Input" Value="TEAM_NEUTRAL" VariableType="Value" />
+                        <OutParameter Name="Output" Value="FinalWinTeam" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+                <Node Type="SetVarBool" Name="Initialization=True">
+                  <Parameters>
+                    <Parameter Name="Input" Value="True" VariableType="Value" />
+                    <OutParameter Name="Output" Value="Initialization" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="Point_Logic">
+          <Parameters />
+          <Children>
+            <Node Type="EqualBool" Name="GuardianInit==True">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="GuardianInit" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="RightHandSide" Value="True" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="GetGameTime" Name="GetGameTime">
+              <Parameters>
+                <OutParameter Name="Output" Value="CurrentGameTime" ReferenceType="Float" />
+              </Parameters>
+            </Node>
+            <Node Type="ExecutePeriodically" Name="Every_0.2">
+              <Parameters>
+                <Parameter Name="UseMissionTime" Value="True" VariableType="Value" />
+                <Parameter Name="ExecutionPeriod" Value="0.2" VariableType="Value" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Procedure" Name="ObeliskCapturePointHelper_A" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwner" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointIndex" Value="0" VariableType="Value" />
+                        <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerA" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Score_PointCapture" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointNeutralize" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointAssist" Value="10" VariableType="Value" />
+                        <Parameter Name="Score_Strategist" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Opportunist" Value="5" VariableType="Value" />
+                        <Parameter Name="Guardian" Value="Guardian0" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="EnableSecondaryCallouts" Value="False" VariableType="Value" />
+                        <Parameter Name="ChaosShrineTurret" Value="ChaosShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="CapturePointOwner" Value="CapturePointAOwner" ReferenceType="TeamEnum" />
+                        <OutParameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_AB" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_AE" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_BA" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_EA" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerA" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ObeliskCapturePointHelper_B" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwner" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointIndex" Value="1" VariableType="Value" />
+                        <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerB" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Score_PointCapture" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointNeutralize" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointAssist" Value="10" VariableType="Value" />
+                        <Parameter Name="Score_Strategist" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Opportunist" Value="5" VariableType="Value" />
+                        <Parameter Name="Guardian" Value="Guardian1" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="EnableSecondaryCallouts" Value="False" VariableType="Value" />
+                        <Parameter Name="ChaosShrineTurret" Value="ChaosShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="CapturePointOwner" Value="CapturePointBOwner" ReferenceType="TeamEnum" />
+                        <OutParameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_BC" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_BA" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_CB" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_AB" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerB" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ObeliskCapturePointHelper_C" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwner" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointIndex" Value="2" VariableType="Value" />
+                        <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerC" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Score_PointCapture" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointNeutralize" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointAssist" Value="10" VariableType="Value" />
+                        <Parameter Name="Score_Strategist" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Opportunist" Value="5" VariableType="Value" />
+                        <Parameter Name="Guardian" Value="Guardian2" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="EnableSecondaryCallouts" Value="False" VariableType="Value" />
+                        <Parameter Name="ChaosShrineTurret" Value="ChaosShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="CapturePointOwner" Value="CapturePointCOwner" ReferenceType="TeamEnum" />
+                        <OutParameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_CD" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_CB" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_DC" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_BC" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerC" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ObeliskCapturePointHelper_D" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwner" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointIndex" Value="3" VariableType="Value" />
+                        <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerD" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Score_PointCapture" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointNeutralize" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointAssist" Value="10" VariableType="Value" />
+                        <Parameter Name="Score_Strategist" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Opportunist" Value="5" VariableType="Value" />
+                        <Parameter Name="Guardian" Value="Guardian3" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="EnableSecondaryCallouts" Value="False" VariableType="Value" />
+                        <Parameter Name="ChaosShrineTurret" Value="ChaosShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="CapturePointOwner" Value="CapturePointDOwner" ReferenceType="TeamEnum" />
+                        <OutParameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_DE" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_DC" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_ED" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_CD" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerD" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="ObeliskCapturePointHelper_E" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.ObeliskCapturePointHelper">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwner" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointIndex" Value="4" VariableType="Value" />
+                        <Parameter Name="AdjacentCapturePointOwner1" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="AdjacentCapturePointOwner2" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerE" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="ScoringFloor" Value="ScoringFloor" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Score_PointCapture" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointNeutralize" Value="40" VariableType="Value" />
+                        <Parameter Name="Score_PointAssist" Value="10" VariableType="Value" />
+                        <Parameter Name="Score_Strategist" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Opportunist" Value="5" VariableType="Value" />
+                        <Parameter Name="Guardian" Value="Guardian4" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="EnableSecondaryCallouts" Value="False" VariableType="Value" />
+                        <Parameter Name="ChaosShrineTurret" Value="ChaosShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <OutParameter Name="CapturePointOwner" Value="CapturePointEOwner" ReferenceType="TeamEnum" />
+                        <OutParameter Name="MinionSpawnTimeToLane1" Value="PreviousMinionSpawnTime_EA" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeToLane2" Value="PreviousMinionSpawnTime_ED" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane1" Value="PreviousMinionSpawnTime_AE" ReferenceType="Float" />
+                        <OutParameter Name="MinionSpawnTimeFromLane2" Value="PreviousMinionSpawnTime_DE" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="PreviousCapturePointOwner" Value="CapturePointPreviousOwnerE" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="ExecutePeriodically" Name="Every_0.4">
+              <Parameters>
+                <Parameter Name="UseMissionTime" Value="True" VariableType="Value" />
+                <Parameter Name="ExecutionPeriod" Value="0.4" VariableType="Value" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Procedure" Name="MinionGraveyardHelperA" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+                      <Parameters>
+                        <Parameter Name="LaneOwner" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="LaneGraveyardPosition" Value="MinionGraveyardA" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="KillRadius" Value="150" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_A" Value="AB" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_B" Value="AE" VariableType="Value" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="MinionGraveyardHelperB" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+                      <Parameters>
+                        <Parameter Name="LaneOwner" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="LaneGraveyardPosition" Value="MinionGraveyardB" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="KillRadius" Value="150" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_A" Value="BA" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_B" Value="BC" VariableType="Value" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="MinionGraveyardHelperC" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+                      <Parameters>
+                        <Parameter Name="LaneOwner" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="LaneGraveyardPosition" Value="MinionGraveyardC" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="KillRadius" Value="150" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_A" Value="CB" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_B" Value="CD" VariableType="Value" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="MinionGraveyardHelperD" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+                      <Parameters>
+                        <Parameter Name="LaneOwner" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="LaneGraveyardPosition" Value="MinionGraveyardD" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="KillRadius" Value="150" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_A" Value="DC" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_B" Value="DE" VariableType="Value" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="MinionGraveyardHelperE" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionGraveyardHelper">
+                      <Parameters>
+                        <Parameter Name="LaneOwner" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="LaneGraveyardPosition" Value="MinionGraveyardE" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="KillRadius" Value="150" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_A" Value="EA" VariableType="Value" />
+                        <Parameter Name="SquadNameToIgnore_B" Value="ED" VariableType="Value" />
+                        <Parameter Name="OrderShrineTurret" Value="OrderShrineTurret" VariableType="Reference" ReferenceType="AttackableUnit" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="ExecutePeriodically" Name="Every_1.1">
+              <Parameters>
+                <Parameter Name="UseMissionTime" Value="True" VariableType="Value" />
+                <Parameter Name="ExecutionPeriod" Value="1.1" VariableType="Value" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Procedure" Name="MinionSpawnManager" TreeQualifiedName="Modes.Dominion.MinionSpawning.MinionSpawnManager">
+                      <Parameters>
+                        <Parameter Name="MutationIndex" Value="MutationProgressionIndex" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="WaveEncounterID" Value="WaveEncounterID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="Definition_Ranged" Value="RangedWaveProgression" VariableType="Value" />
+                        <Parameter Name="Definition_Melee" Value="MeleeWaveProgression" VariableType="Value" />
+                        <Parameter Name="CapturePointOwnerA" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerB" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerC" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerD" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerE" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="PreviousMinionSpawnTime_AB" Value="PreviousMinionSpawnTime_AB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_AE" Value="PreviousMinionSpawnTime_AE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_BA" Value="PreviousMinionSpawnTime_BA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_BC" Value="PreviousMinionSpawnTime_BC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_CB" Value="PreviousMinionSpawnTime_CB" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_CD" Value="PreviousMinionSpawnTime_CD" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_DC" Value="PreviousMinionSpawnTime_DC" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_DE" Value="PreviousMinionSpawnTime_DE" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_EA" Value="PreviousMinionSpawnTime_EA" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="PreviousMinionSpawnTime_ED" Value="PreviousMinionSpawnTime_ED" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="SpawnRate_Seconds" Value="MinionSpawnRate_Seconds" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="Definition_Superminion" Value="SuperminionProgression" VariableType="Value" />
+                        <Parameter Name="CapturePointGuardian0" Value="Guardian0" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian1" Value="Guardian1" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian2" Value="Guardian2" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian3" Value="Guardian3" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian4" Value="Guardian4" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="MinionSpawnPoint_A1" Value="MinionSpawnPoint_A1" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_A2" Value="MinionSpawnPoint_A2" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_B1" Value="MinionSpawnPoint_B1" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_B2" Value="MinionSpawnPoint_B2" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_C1" Value="MinionSpawnPoint_C1" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_C2" Value="MinionSpawnPoint_C2" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_D1" Value="MinionSpawnPoint_D1" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_D2" Value="MinionSpawnPoint_D2" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_E1" Value="MinionSpawnPoint_E1" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPoint_E2" Value="MinionSpawnPoint_E2" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="MinionSpawnPortalParticleEncounterID" Value="MinionSpawnPortalParticleEncounterID" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="MutationIndex" Value="MutationProgressionIndex" ReferenceType="Int" />
+                        <OutParameter Name="PreviousMinionSpawnTime_AB" Value="PreviousMinionSpawnTime_AB" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_AE" Value="PreviousMinionSpawnTime_AE" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_BA" Value="PreviousMinionSpawnTime_BA" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_BC" Value="PreviousMinionSpawnTime_BC" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_CB" Value="PreviousMinionSpawnTime_CB" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_CD" Value="PreviousMinionSpawnTime_CD" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_DC" Value="PreviousMinionSpawnTime_DC" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_DE" Value="PreviousMinionSpawnTime_DE" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_EA" Value="PreviousMinionSpawnTime_EA" ReferenceType="Float" />
+                        <OutParameter Name="PreviousMinionSpawnTime_ED" Value="PreviousMinionSpawnTime_ED" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="PersonalScore_Manager" TreeQualifiedName="Modes.Dominion.Scoring.PersonalScore.PersonalScore_GlobalChecks.PersonalScore_Manager">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwnerA" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerB" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerC" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerD" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerE" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="Score_SmallRelic" Value="2" VariableType="Value" />
+                        <Parameter Name="Score_BigRelic" Value="3" VariableType="Value" />
+                        <Parameter Name="Score_Interrupt" Value="5" VariableType="Value" />
+                        <Parameter Name="Score_Survivor" Value="2" VariableType="Value" />
+                        <Parameter Name="Score_Angel" Value="1" VariableType="Value" />
+                        <Parameter Name="Score_ArchAngel" Value="2" VariableType="Value" />
+                        <Parameter Name="EnableSecondaryCallout" Value="False" VariableType="Value" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="RespawnManager" TreeQualifiedName="Modes.Dominion.Respawn.RespawnManager">
+                      <Parameters>
+                        <Parameter Name="OrderRespawnMutator" Value="OrderRespawnMutator" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="ChaosRespawnMutator" Value="ChaosRespawnMutator" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="ChaosPoints" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="OrderPoints" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RespawnWindowAdjustment_Chaos" Value="RespawnWindowAdjustment_Chaos" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RespawnWindowAdjustment_Order" Value="RespawnWindowAdjustment_Order" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="OrderRespawnMutator" Value="OrderRespawnMutator" ReferenceType="Int" />
+                        <OutParameter Name="ChaosRespawnMutator" Value="ChaosRespawnMutator" ReferenceType="Int" />
+                        <OutParameter Name="RespawnWindowAdjustment_Chaos" Value="RespawnWindowAdjustment_Chaos" ReferenceType="Int" />
+                        <OutParameter Name="RespawnWindowAdjustment_Order" Value="RespawnWindowAdjustment_Order" ReferenceType="Int" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="QuestManager" TreeQualifiedName="Modes.Dominion.Quest.QuestManager">
+                      <Parameters>
+                        <Parameter Name="CapturePointOwnerA" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerB" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerC" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerD" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="CapturePointOwnerE" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <Parameter Name="QuestID_Chaos" Value="QuestID_Chaos" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestID_Order" Value="QuestID_Order" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="PreviousQuestCompleteTime" Value="PreviousQuestCompleteTime" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="QuestObjective_Order" Value="QuestObjective_Order" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestObjective_Chaos" Value="QuestObjective_Chaos" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="CapturePointGuardian0" Value="Guardian0" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian1" Value="Guardian1" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian2" Value="Guardian2" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian3" Value="Guardian3" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="CapturePointGuardian4" Value="Guardian4" VariableType="Reference" ReferenceType="AttackableUnit" />
+                        <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="QuestBuffGiverEncounterID" Value="QuestGiver_EncounterID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestIconEncounterID" Value="QuestIconEncounterID" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestIconSquadID_Order" Value="QuestIconSquadID_Order" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestIconSquadID_Chaos" Value="QuestObjective_Chaos" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestIconEncounterID2" Value="QuestIconEncounterID2" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestRewardsID_Chaos" Value="QuestRewardsID_Chaos" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="QuestRewardsID_Order" Value="QuestRewardsID_Order" VariableType="Reference" ReferenceType="Int" />
+                        <OutParameter Name="QuestID_Chaos" Value="QuestID_Chaos" ReferenceType="Int" />
+                        <OutParameter Name="QuestID_Order" Value="QuestID_Order" ReferenceType="Int" />
+                        <OutParameter Name="PreviousQuestCompleteTime" Value="PreviousQuestCompleteTime" ReferenceType="Float" />
+                        <OutParameter Name="QuestObjective_Order" Value="QuestObjective_Order" ReferenceType="Int" />
+                        <OutParameter Name="QuestObjective_Chaos" Value="QuestObjective_Chaos" ReferenceType="Int" />
+                        <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                        <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                        <OutParameter Name="QuestIconSquadID_Order" Value="QuestIconSquadID_Order" ReferenceType="Int" />
+                        <OutParameter Name="QuestIconSquadID_Chaos" Value="QuestIconSquadID_Chaos" ReferenceType="Int" />
+                        <OutParameter Name="QuestRewardsID_Chaos" Value="QuestRewardsID_Chaos" ReferenceType="Int" />
+                        <OutParameter Name="QuestRewardsID_Order" Value="QuestRewardsID_Order" ReferenceType="Int" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="ExecutePeriodically" Name="Every_1.3">
+              <Parameters>
+                <Parameter Name="UseMissionTime" Value="True" VariableType="Value" />
+                <Parameter Name="ExecutionPeriod" Value="1.3" VariableType="Value" />
+              </Parameters>
+              <Children>
+                <Node Type="Sequence" Name="Sequence">
+                  <Parameters />
+                  <Children>
+                    <Node Type="Procedure" Name="RelicManager" TreeQualifiedName="Modes.Dominion.Sigil.RelicManager">
+                      <Parameters>
+                        <Parameter Name="RelicSquadID_A" Value="RelicSquad_A" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_B" Value="RelicSquad_B" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_C" Value="RelicSquad_C" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSpawnTime_A" Value="RelicSpawnTime_A" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_B" Value="RelicSpawnTime_B" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_C" Value="RelicSpawnTime_C" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_D" Value="RelicSpawnTime_D" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_E" Value="RelicSpawnTime_E" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSquadID_D" Value="RelicSquad_D" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_E" Value="RelicSquad_E" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicEncounterShield" Value="RelicEncounterShield" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSpawnTime_F" Value="RelicSpawnTime_F" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_G" Value="RelicSpawnTime_G" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_H" Value="RelicSpawnTime_H" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSquadID_F" Value="RelicSquad_F" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_G" Value="RelicSquad_G" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_H" Value="RelicSquad_H" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_I" Value="RelicSquad_I" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSquadID_J" Value="RelicSquad_J" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicSpawnTime_I" Value="RelicSpawnTime_I" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicSpawnTime_J" Value="RelicSpawnTime_J" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RelicPositionA" Value="RelicPositionA" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionB" Value="RelicPositionB" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionC" Value="RelicPositionC" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionD" Value="RelicPositionD" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionE" Value="RelicPositionE" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionF" Value="RelicPositionF" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionG" Value="RelicPositionG" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionH" Value="RelicPositionH" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionI" Value="RelicPositionI" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="RelicPositionJ" Value="RelicPositionJ" VariableType="Reference" ReferenceType="Vector" />
+                        <OutParameter Name="RelicSpawnTime_A" Value="RelicSpawnTime_A" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_B" Value="RelicSpawnTime_B" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_C" Value="RelicSpawnTime_C" ReferenceType="Float" />
+                        <OutParameter Name="RelicSquadID_A" Value="RelicSquad_A" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_B" Value="RelicSquad_B" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_C" Value="RelicSquad_C" ReferenceType="Int" />
+                        <OutParameter Name="RelicSpawnTime_D" Value="RelicSpawnTime_D" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_E" Value="RelicSpawnTime_E" ReferenceType="Float" />
+                        <OutParameter Name="RelicSquadID_D" Value="RelicSquad_D" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_E" Value="RelicSquad_E" ReferenceType="Int" />
+                        <OutParameter Name="RelicSpawnTime_F" Value="RelicSpawnTime_F" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_G" Value="RelicSpawnTime_G" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_H" Value="RelicSpawnTime_H" ReferenceType="Float" />
+                        <OutParameter Name="RelicSquadID_F" Value="RelicSquad_F" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_G" Value="RelicSquad_G" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_H" Value="RelicSquad_H" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_I" Value="RelicSquad_I" ReferenceType="Int" />
+                        <OutParameter Name="RelicSquadID_J" Value="RelicSquad_J" ReferenceType="Int" />
+                        <OutParameter Name="RelicSpawnTime_I" Value="RelicSpawnTime_I" ReferenceType="Float" />
+                        <OutParameter Name="RelicSpawnTime_J" Value="RelicSpawnTime_J" ReferenceType="Float" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="CenterRelicManager" TreeQualifiedName="Modes.Dominion.Sigil.CenterRelicManager">
+                      <Parameters>
+                        <Parameter Name="CenterRelicSpawnTime_A" Value="CenterRelicSpawnTime_A" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="CenterRelicSpawnTime_B" Value="CenterRelicSpawnTime_B" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="CenterRelicSquadID_A" Value="CenterRelicSquad_A" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="CenterRelicSquadID_B" Value="CenterRelicSquad_B" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicEncounterCenter" Value="RelicEncounterCenter" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="RelicEncounterCenter2" Value="RelicEncounterCenter2" VariableType="Reference" ReferenceType="Int" />
+                        <Parameter Name="CenterRelicPositionA" Value="CenterRelicPositionA" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="CenterRelicPositionB" Value="CenterRelicPositionB" VariableType="Reference" ReferenceType="Vector" />
+                        <Parameter Name="CenterRelicParticleAttached1" Value="CenterRelicParticleAttached1" VariableType="Reference" ReferenceType="Bool" />
+                        <Parameter Name="CenterRelicParticleAttached2" Value="CenterRelicParticleAttached2" VariableType="Reference" ReferenceType="Bool" />
+                        <OutParameter Name="CenterRelicSpawnTime_A" Value="CenterRelicSpawnTime_A" ReferenceType="Float" />
+                        <OutParameter Name="CenterRelicSpawnTime_B" Value="CenterRelicSpawnTime_B" ReferenceType="Float" />
+                        <OutParameter Name="CenterRelicSquadID_A" Value="CenterRelicSquad_A" ReferenceType="Int" />
+                        <OutParameter Name="CenterRelicSquadID_B" Value="CenterRelicSquad_B" ReferenceType="Int" />
+                        <OutParameter Name="CenterRelicParticleAttached1" Value="CenterRelicParticleAttached1" ReferenceType="Bool" />
+                        <OutParameter Name="CenterRelicParticleAttached2" Value="CenterRelicParticleAttached2" ReferenceType="Bool" />
+                      </Parameters>
+                    </Node>
+                    <Node Type="Procedure" Name="WinConditionChecker" TreeQualifiedName="Modes.Dominion.Scoring.WinConditionChecker">
+                      <Parameters>
+                        <Parameter Name="RemainingOrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="RemainingChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                        <Parameter Name="FinalWinTeam" Value="FinalWinTeam" VariableType="Reference" ReferenceType="TeamEnum" />
+                        <OutParameter Name="FinalWinTeam" Value="FinalWinTeam" ReferenceType="TeamEnum" />
+                      </Parameters>
+                    </Node>
+                  </Children>
+                </Node>
+              </Children>
+            </Node>
+            <Node Type="ExecutePeriodically" Name="Every_1.85">
+              <Parameters>
+                <Parameter Name="UseMissionTime" Value="True" VariableType="Value" />
+                <Parameter Name="ExecutionPeriod" Value="1.85" VariableType="Value" />
+              </Parameters>
+              <Children>
+                <Node Type="Procedure" Name="ScoreManager" TreeQualifiedName="Modes.Dominion.Scoring.ScoreManager">
+                  <Parameters>
+                    <Parameter Name="CapturePointOwnerA" Value="CapturePointAOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="CapturePointOwnerB" Value="CapturePointBOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="CapturePointOwnerC" Value="CapturePointCOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="CapturePointOwnerD" Value="CapturePointDOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="CapturePointOwnerE" Value="CapturePointEOwner" VariableType="Reference" ReferenceType="TeamEnum" />
+                    <Parameter Name="ChaosScore" Value="RemainingChaosScore" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="OrderScore" Value="RemainingOrderScore" VariableType="Reference" ReferenceType="Float" />
+                    <Parameter Name="OverTimeLimitWarning" Value="OverTimeLimitWarning" VariableType="Reference" ReferenceType="Bool" />
+                    <OutParameter Name="PreviousTickTime" Value="Scoring_PreviousUpdateTime" ReferenceType="Float" />
+                    <OutParameter Name="OrderScore" Value="RemainingOrderScore" ReferenceType="Float" />
+                    <OutParameter Name="ChaosScore" Value="RemainingChaosScore" ReferenceType="Float" />
+                    <OutParameter Name="CCDelta" Value="CCDelta" ReferenceType="Int" />
+                    <OutParameter Name="OverTimeLimitWarning" Value="OverTimeLimitWarning" ReferenceType="Bool" />
+                  </Parameters>
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node Type="Sequence" Name="Initialize_Guardians">
+          <Parameters />
+          <Children>
+            <Node Type="EqualBool" Name="GuardianInit==False">
+              <Parameters>
+                <Parameter Name="LeftHandSide" Value="GuardianInit" VariableType="Reference" ReferenceType="Bool" />
+                <Parameter Name="RightHandSide" Value="False" VariableType="Value" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="Guardian0" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GetGuardian">
+              <Parameters>
+                <Parameter Name="GuardianIndexToFind" Value="0" VariableType="Value" />
+                <OutParameter Name="Guardian" Value="Guardian0" ReferenceType="AttackableUnit" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="Guardian1" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GetGuardian">
+              <Parameters>
+                <Parameter Name="GuardianIndexToFind" Value="1" VariableType="Value" />
+                <OutParameter Name="Guardian" Value="Guardian1" ReferenceType="AttackableUnit" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="Guardian2" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GetGuardian">
+              <Parameters>
+                <Parameter Name="GuardianIndexToFind" Value="2" VariableType="Value" />
+                <OutParameter Name="Guardian" Value="Guardian2" ReferenceType="AttackableUnit" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="Guardian3" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GetGuardian">
+              <Parameters>
+                <Parameter Name="GuardianIndexToFind" Value="3" VariableType="Value" />
+                <OutParameter Name="Guardian" Value="Guardian3" ReferenceType="AttackableUnit" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="Guardian4" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.GetGuardian">
+              <Parameters>
+                <Parameter Name="GuardianIndexToFind" Value="4" VariableType="Value" />
+                <OutParameter Name="Guardian" Value="Guardian4" ReferenceType="AttackableUnit" />
+              </Parameters>
+            </Node>
+            <Node Type="Procedure" Name="InitializeGuardianParticles" TreeQualifiedName="Modes.Dominion.GuardianCaptureMechanic.InitializeGuardianParticles">
+              <Parameters />
+            </Node>
+            <Node Type="SetVarBool" Name="GuardianInit=True">
+              <Parameters>
+                <Parameter Name="Input" Value="True" VariableType="Value" />
+                <OutParameter Name="Output" Value="GuardianInit" ReferenceType="Bool" />
+              </Parameters>
+            </Node>
+          </Children>
+        </Node>
+      </Children>
+    </Node>
+  </BehaviorTree>
+</BehaviorTrees>

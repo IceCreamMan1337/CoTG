@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solutions>
+  <Solution StaticName="BasicTutorialPushMission" File=".\BasicTutorialPushMission\sn.BasicTutorialPushMission.xml">
+    <File Path=".\BasicTutorialPushMission\bt.MissionPush_Evaluator.xml" />
+    <File Path=".\BasicTutorialPushMission\bt.MissionPush_Logic.xml" />
+  </Solution>
+  <Solution StaticName="CapturePointMission" File=".\CapturePointMission\sn.CapturePointMission.xml">
+    <File Path=".\CapturePointMission\bt.CapturePointMission_Evaluator.xml" />
+    <File Path=".\CapturePointMission\bt.CapturePointMission_Logic.xml" />
+    <File Path=".\CapturePointMission\bt.SubMission_ReturnToBase.xml" />
+    <File Path=".\CapturePointMission\SubMission_DirectAssault\bt.SubMission_DirectAssaultManager.xml" />
+    <File Path=".\CapturePointMission\SubMission_DirectAssault\bt.SubMission_PushToCapture.xml" />
+    <File Path=".\CapturePointMission\SubMission_DirectAssault\bt.ValidateAdjacentPointsAndMinions.xml" />
+    <File Path=".\Common\bt.AssignTaskWithPosition.xml" />
+    <File Path=".\Common\Dominion\bt.CapturePointIndexToString.xml" />
+    <File Path=".\Common\Dominion\bt.GetAdjacentCapturePoint.xml" />
+    <File Path=".\Common\Dominion\bt.GetAssaultRendezvousPosition.xml" />
+    <File Path=".\Common\Dominion\bt.GetCapturePoint.xml" />
+    <File Path=".\Common\Dominion\bt.GetCapturePointPositions.xml" />
+    <File Path=".\Common\Dominion\bt.GetCapturePoints.xml" />
+    <File Path=".\Common\Dominion\bt.GetDefendersAtPoint.xml" />
+    <File Path=".\Common\Dominion\bt.GetMinionSquadName.xml" />
+    <File Path=".\Common\Dominion\bt.GetNearestCapturePoint.xml" />
+    <File Path=".\Common\Evaluation\bt.StrengthEvaluation_ChampionHealth.xml" />
+  </Solution>
+  <Solution StaticName="KillChampionMission" File=".\KillChampionMission\sn.KillChampionMission.xml">
+    <File Path=".\KillChampionMission\bt.KillChampionMission_Evaluator.xml" />
+    <File Path=".\KillChampionMission\bt.KillChampionMission_Logic.xml" />
+  </Solution>
+  <Solution StaticName="NeutralMinion" File=".\Mission_NeutralMinion\sn.Mission_NeutralMinion.xml">
+    <File Path=".\Mission_NeutralMinion\bt.MissionKillNeutralBoss_Evaluator.xml" />
+    <File Path=".\Mission_NeutralMinion\bt.MissionKillNeutralBoss_Logic.xml" />
+  </Solution>
+  <Solution StaticName="Jungling" File=".\MissionJungling\sn.MissionJungling.xml">
+    <File Path=".\MissionJungling\bt.MissionJungling_Chaos_PositionDefinition.xml" />
+    <File Path=".\MissionJungling\bt.MissionJungling_Evaluator.xml" />
+    <File Path=".\MissionJungling\bt.MissionJungling_Logic.xml" />
+  </Solution>
+  <Solution StaticName="OdinGuardianMission" File=".\OdinGuardianMission\sn.OdinGuardianMission.xml">
+    <File Path=".\OdinGuardianMission\bt.OdinGuardianMission.xml" />
+    <File Path=".\OdinGuardianMission\bt.OdinGuardianMissionEvaluation.xml" />
+  </Solution>
+  <Solution StaticName="PushMission" File=".\PushMission\sn.PushMission.xml">
+    <File Path=".\PushMission\bt.FindFurthestUnitOrTurretInLane.xml" />
+    <File Path=".\PushMission\bt.MissionPush_Evaluator.xml" />
+    <File Path=".\PushMission\bt.MissionPush_Logic.xml" />
+  </Solution>
+  <Solution StaticName="ReturnToBaseMission" File=".\ReturnToBaseMission\sn.ReturnToBaseMission.xml">
+    <File Path=".\ReturnToBaseMission\bt.ReturnToBaseMission_Evaluator.xml" />
+    <File Path=".\ReturnToBaseMission\bt.ReturnToBaseMission_Logic.xml" />
+  </Solution>
+  <Solution StaticName="WaitInBase" File=".\WaitInBase\sn.WaitInBase.xml">
+    <File Path=".\WaitInBase\bt.WaitInBase_Evaluator.xml" />
+    <File Path=".\WaitInBase\bt.WaitInBase_Logic.xml" />
+  </Solution>
+</Solutions>
