@@ -1,4 +1,8 @@
-﻿namespace CoTG.CoTGServer.Packets.PacketHandlers
+﻿using CoTGEnumNetwork.Packets.Handlers;
+using SiphoningStrike.Game;
+using SiphoningStrike.Game.Cheat;
+
+namespace CoTG.CoTGServer.Packets.PacketHandlers
 {
 #if DEBUG_AB || RELEASE_AB
     public class Handle_UNK_Cheat : PacketHandlerBase<UNK_Cheat>

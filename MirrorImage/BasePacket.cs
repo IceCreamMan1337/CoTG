@@ -10,7 +10,7 @@ namespace MirrorImage
 
     public interface IBasePacket
     {
-        
+
     }
     public abstract class BasePacket : IBasePacket
     {
@@ -27,27 +27,9 @@ namespace MirrorImage
             this.BytesLeft = reader.ReadBytesLeft();
         }
 
-       public static string GetVersioning()
+        public static string GetVersioning()
         {
-             string filePath = @".\Settings\GameInfo.json";
-            if (!File.Exists(filePath))
-            {
-                string ClientVersion = "1.0.0.126";
-                Console.WriteLine("filenotfound default version = 1.0.0.126");
-                return ClientVersion;
-            }
-            else{
-                string jsonContent = File.ReadAllText(filePath);
-
-                JObject jsonObject = JObject.Parse(jsonContent);
-
-
-                string ClientVersion = jsonObject["gameInfo"]["CLIENT_VERSION"].Value<string>();
-
-
-                return ClientVersion;
-            }
-            
+            return "1.0.0.126";
         }
 
         private static BasePacket Construct(byte[] data, ChannelID channel)
@@ -83,7 +65,7 @@ namespace MirrorImage
                         return GamePacket.Lookup[SiphoningStrikeGameID]();
                     }
                     return new UnknownPacket();
-              
+
                 case ChannelID.Chat:
                     return new ChatPacket();
 
