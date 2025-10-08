@@ -1228,15 +1228,7 @@ public class AttackableUnit : GameObject, IGoldOwner
         {
             _statusBeforeApplyingBuffEfects &= ~status;
         }
-        Status = (
-            (
-                _statusBeforeApplyingBuffEfects
-                & ~_buffEffectsToDisable
-            )
-            | _buffEffectsToEnable
-        )
-        & ~_dashEffectsToDisable;
-
+        Status = ((_statusBeforeApplyingBuffEfects & ~_buffEffectsToDisable)| _buffEffectsToEnable) & ~_dashEffectsToDisable;
         UpdateActionState();
     }
 

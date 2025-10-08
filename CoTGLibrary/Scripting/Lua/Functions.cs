@@ -168,7 +168,6 @@ public static partial class Functions
         {
             skin = "TestCubeRender";
         }
-
         var m = new Minion(
             owner, pos.ToVector2(),
             model: skin, name, team, skinId: 0,
@@ -655,36 +654,13 @@ public static partial class Functions
         string className = callerMethod.DeclaringType.Name; // classname 
         Spell spellsource = Game.SpellManager.GetSpellByName(className);
         // Display or use the name of the class that called ApplyDamage
-        //  
-        //hack : in league, sometimes the testcube is killed too much rapidly,  this will avoid problem
-        if (target.Model.Contains("TestCube") || target.Model.Contains("XerathArcaneBarrageLauncher"))
-        {
-            _ = Task.Run(async () =>
-
-
-            {
-
-                await Task.Delay(500);
-                target.TakeDamage(
-                 attacker,
-                 totaldamage, damageType, sourceDamageType,
-                 ignoreDamageIncreaseMods,
-                 ignoreDamageCrit,
-                 spellsource
-                 );
-            });
-        }
-        else
-        {
-            target.TakeDamage(
+        target.TakeDamage(
            attacker,
            totaldamage, damageType, sourceDamageType,
            ignoreDamageIncreaseMods,
            ignoreDamageCrit,
            spellsource
-       );
-        }
-
+        );
     }
 
     [BBFunc]
