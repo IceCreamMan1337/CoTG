@@ -92,6 +92,7 @@ namespace CoTG.CoTGServer.API
         public static DataOnlyDispatcher<ObjAIBase, DamageData> OnHitUnit = new();
         public static DataOnlyDispatcher<Champion, ScoreData> OnIncrementChampionScore = new();
         public static DataOnlyDispatcher<AttackableUnit, DeathData> OnKill = new();
+        public static DataOnlyDispatcher<AttackableUnit, DeathData> OnNearbyDeath = new();
         public static Dispatcher<ObjAIBase, Spell, AttackableUnit> OnLaunchAttack = new();
         /// <summary>
         /// Called immediately after the rocket is added to the scene. *NOTE*: At the time of the call, the rocket has not yet been spawned for players.

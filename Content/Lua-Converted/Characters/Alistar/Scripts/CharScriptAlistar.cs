@@ -7,7 +7,7 @@
         {
             charVars.BaseBlockAmount = effect0[level - 1];
         }
-        public override void OnAssist(ObjAIBase attacker, AttackableUnit target)
+        public override void OnNearbyDeath(ObjAIBase attacker, AttackableUnit target)
         {
             int level = GetSlotSpellLevel(owner, 2, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots);
             if (level >= 1)

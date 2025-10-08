@@ -274,5 +274,9 @@ public class CScript : CScriptBase
         {
             ApiEventManager.OnMoveSuccess.AddListener(this, owner, (unit) => OnMoveSuccess());
         }
+        if(this.OnNearbyDeath != base.OnNearbyDeath)
+        {
+            ApiEventManager.OnNearbyDeath.AddListener(this, owner, (data) => OnNearbyDeath((data.Killer as ObjAIBase)!, data.Unit));
+        }
     }
 }

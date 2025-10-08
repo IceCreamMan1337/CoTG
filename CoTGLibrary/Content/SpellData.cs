@@ -275,10 +275,8 @@ namespace CoTG.CoTGServer.Content
         {
         }
 
-        public SpellData(string file)
+        public SpellData(string name)
         {
-            string name = file;
-
             RFile? f = Cache.GetFile(Path.Join(ContentManager.SpellsPath, name + ".ini"));
             if (f is null)
             {

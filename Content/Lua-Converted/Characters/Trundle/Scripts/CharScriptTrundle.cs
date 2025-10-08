@@ -17,7 +17,7 @@
             float tTVar = damagess * scaling;
             SetSpellToolTipVar(tTVar, 1, 0, SpellSlotType.SpellSlots, SpellbookType.SPELLBOOK_CHAMPION, owner);
         }
-        public override void OnAssist(ObjAIBase attacker, AttackableUnit target)
+        public override void OnNearbyDeath(ObjAIBase attacker, AttackableUnit target)
         {
             if (owner.Team != target.Team && target is ObjAIBase && target is not LaneTurret)
             {
