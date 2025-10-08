@@ -840,7 +840,7 @@ public class ObjAIBase : AttackableUnit
     /// <returns>Random auto attack spell.</returns>
     private Spell GetNewAutoAttack()
     {
-        if (IsNextAutoCrit)
+        if (IsNextAutoCrit && Spells[(int)BasicAttackTypes.SPELLS_BASICATTACK_CRITICAL_SLOT] is not null)
         {
             return Spells[(int)BasicAttackTypes.SPELLS_BASICATTACK_CRITICAL_SLOT];
         }
