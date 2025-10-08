@@ -511,6 +511,8 @@ internal class ContentManager
         for (int i = 1; ; i++)
         {
             string? sectionName = contentFile.GetValue("System", $"GroupPart{i}", null!);
+            //Some dumbass at riot typo'd for garen's W particle (HuntersCall_eff2).
+            sectionName ??= contentFile.GetValue("System", $"'GroupPart{i}", null!);
 
             if (sectionName is null)
             {
@@ -1304,9 +1306,13 @@ internal class ContentManager
         if (File.Exists(path) || File.Exists(path + "bin"))
         {
             ProcessParticleFile(path, "", -1);
-            return DoStuffWithParticleData(ParticlesData[name], characters);
+            if(ParticlesData.TryGetValue(name, out list))
+            {
+                return DoStuffWithParticleData(list, characters);
+            }
         }
 
+        _logger.WarnFormat("Could not find or load ParticleData for particle {0}!", name);
         return null;
     }
 
