@@ -432,16 +432,9 @@ namespace CoTG.CoTGServer
         /// Gets a new Dictionary of all NetID,GameObject pairs present in the dictionary of objects in ObjectManager.
         /// </summary>
         /// <returns>Dictionary of NetIDs and the GameObjects that they refer to.</returns>
-        public Dictionary<uint, GameObject> GetObjects()
+        public IReadOnlyDictionary<uint, GameObject> GetObjects()
         {
-            var ret = new Dictionary<uint, GameObject>();
-            // Create a safe copy to avoid concurrent modification during iteration
-            foreach (var obj in _objects)
-            {
-                ret.Add(obj.Key, obj.Value);
-            }
-
-            return ret;
+            return _objects;
         }
 
         /// <summary>
