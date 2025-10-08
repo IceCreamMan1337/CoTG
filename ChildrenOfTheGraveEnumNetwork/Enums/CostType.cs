@@ -1,8 +1,0 @@
-﻿namespace ChildrenOfTheGraveEnumNetwork.Enums
-{
-    public enum CostType : byte
-    {
-        Flat = 0,
-        Multiply = 1,
-    }
-}

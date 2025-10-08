@@ -1,0 +1,50 @@
+namespace BehaviourTrees.all;
+
+
+class GlobalAbilitiesClass : AI_Characters
+{
+
+
+    public bool GlobalAbilities(
+            out float __CastSpellTimeThreshold,
+     out float __PreviousSpellCastTime,
+     out int _CurrentSpellCast,
+     out AttackableUnit _CurrentSpellCastTarget,
+     out bool __SpellStall,
+     AttackableUnit Self,
+     int PreviousSpellCast,
+     AttackableUnit PreviousSpellCastTarget,
+     float CastSpellTimeThreshold,
+     float PreviousSpellCastTime,
+     bool IssuedAttack,
+     AttackableUnit IssuedAttackTarget,
+     bool SpellStall)
+    {
+
+        float _PreviousSpellCastTime = PreviousSpellCastTime;
+        float _CastSpellTimeThreshold = CastSpellTimeThreshold;
+        int CurrentSpellCast = default;
+        AttackableUnit CurrentSpellCastTarget = default;
+        bool _SpellStall = SpellStall;
+
+        bool result =
+                  // Sequence name :ReturnFailure
+
+                  SetVarBool(
+                        out Run,
+                        false) &&
+                  Run == true
+
+            ;
+
+
+        __PreviousSpellCastTime = _PreviousSpellCastTime;
+        __CastSpellTimeThreshold = _CastSpellTimeThreshold;
+        _CurrentSpellCast = CurrentSpellCast;
+        _CurrentSpellCastTarget = CurrentSpellCastTarget;
+        __SpellStall = _SpellStall;
+
+        return result;
+    }
+}
+

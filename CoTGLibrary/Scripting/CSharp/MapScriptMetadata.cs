@@ -1,0 +1,17 @@
+﻿namespace CoTG.CoTGServer.Scripting.CSharp
+{
+    public class MapScriptMetadata
+    {
+        public float ChampionBaseGoldValue { get; set; } = 300.0f;
+        public float ChampionMaxGoldValue { get; set; } = 500.0f;
+        public float ChampionMinGoldValue { get; set; } = 50.0f;
+        public float FirstBloodExtraGold { get; set; } = 100.0f;
+        public byte InitialLevel { get; set; } = 1;
+        public bool IsKillGoldRewardReductionActive { get; set; } = true;
+        public bool MinionSpawnEnabled { get; set; } = false;
+        public string NavGridOverride { get; set; } = string.Empty;
+        public bool OverrideSpawnPoints { get; set; } = false;
+        public int RecallSpellItemId { get; set; } = 2001;
+        public long SpawnInterval { get; set; } = 30 * 1000;
+    }
+}

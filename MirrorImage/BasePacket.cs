@@ -18,19 +18,6 @@ namespace MirrorImage
     }
     public abstract class BasePacket : IBasePacket
     {
-        /// <summary>
-        /// here is an string for choose version of packet 
-        /// </summary>
-
-
-
-
-        /// 
-        ///
-        /// 
-
-       
-
         public byte[] BytesLeft { get; set; } = new byte[0];
 
         internal BasePacket() { }
@@ -46,7 +33,6 @@ namespace MirrorImage
 
        public static string GetVersioning()
         {
-          //  string filePath = @"..\ChildrenOfTheGraveServerConsole\bin\Debug\net9.0\Settings\GameInfo.json"; // Remplacez par le chemin de votre fichier JSON
              string filePath = @".\Settings\GameInfo.json";
             if (!File.Exists(filePath))
             {
