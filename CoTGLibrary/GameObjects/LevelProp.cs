@@ -10,7 +10,7 @@ using static PacketVersioning.PktVersioning;
 namespace CoTG.CoTGServer.GameObjects;
 
 //Requires further research
-public class LevelProp : ObjAIBase
+public class LevelProp : GameObject
 {
     public byte NetNodeID { get; set; }
     public float Height { get; set; }
@@ -22,7 +22,7 @@ public class LevelProp : ObjAIBase
     string CurrentAnimationName { get; set; }
     string SkinName { get; set; }
     public override bool IsAffectedByFoW => false;
-
+    public string Model;
     //?
     uint CurrentAnimationFlags { get; set; }
     string IdleAnimation;
@@ -45,10 +45,9 @@ public class LevelProp : ObjAIBase
         byte rank = 0,
         byte type = 2,
         uint netId = 64
-    ) : base(model, name, new Vector2(position.X, position.Y), 0, skinId, netId, TeamId.TEAM_NEUTRAL)
+    ) : base(new Vector2(position.X, position.Y), name, 0, 0, 0, netId, TeamId.TEAM_NEUTRAL)
     {
         NetNodeID = netNodeId;
-        SkinID = skinId;
         Height = position.Y;
         Direction = direction;
         PositionOffset = posOffset;
@@ -76,26 +75,5 @@ public class LevelProp : ObjAIBase
 
     internal override void LateUpdate()
     {
-    }
-
-    internal override float GetAttackRatioWhenAttackingTurret()
-    {
-        return GlobalData.DamageRatios.BuildingToBuilding;
-    }
-    internal override float GetAttackRatioWhenAttackingMinion()
-    {
-        return GlobalData.DamageRatios.BuildingToUnit;
-    }
-    internal override float GetAttackRatioWhenAttackingChampion()
-    {
-        return GlobalData.DamageRatios.BuildingToHero;
-    }
-    internal override float GetAttackRatioWhenAttackingBuilding()
-    {
-        return GlobalData.DamageRatios.BuildingToBuilding;
-    }
-    internal override float GetAttackRatio(AttackableUnit attackingUnit)
-    {
-        return attackingUnit.GetAttackRatioWhenAttackingTurret();
     }
 }
