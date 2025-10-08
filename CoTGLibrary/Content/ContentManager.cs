@@ -362,88 +362,11 @@ internal class ContentManager
             }
         }
 
-        _logger.Info("Loading Character Data...");
-        Parallel.ForEach(Directory.EnumerateDirectories(CharactersPath), LoadCharacter);
-
-        _logger.Info("Loading Spell Data...");
-        //First loads spells in Data/Spells and Data/Shared/Spells
-        // Pseudocode:
-        // - Use Directory.EnumerateFiles with SearchOption.AllDirectories for SpellsPath
-        // - Filter files to those ending with ".ini" or ".inibin" (case-insensitive)
-        // - Use Parallel.ForEach to process each file
-
-        Parallel.ForEach(Directory.EnumerateFiles(SpellsPath, "*", SearchOption.AllDirectories),
-            file =>
-            {
-                if (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) ||
-                    file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
-                {
-                    ProcessSpellFile(Path.GetFileNameWithoutExtension(file));
-                }
-            });
-
-        _logger.Info("Loading Item Data...");
-        Parallel.ForEach(Directory.EnumerateFiles(ItemsPath, "*"), (file) =>
-        {
-            if (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) ||
-                file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
-            {
-                string fileName = Path.GetFileNameWithoutExtension(file);
-                if (!int.TryParse(fileName, out _))
-                {
-                    return;
-                }
-
-                ItemData data = new(fileName);
-                lock (ItemsData)
-                {
-                    ItemsData.TryAdd(data.Id, data);
-                }
-            }
-        });
-
-        _logger.Info("Loading Talent Data...");
-        Parallel.ForEach(Directory.EnumerateFiles(TalentsPath, "*.ini"), (file) =>
-        {
-            string fileName = Path.GetFileNameWithoutExtension(file);
-            if (!int.TryParse(fileName, out _))
-            {
-                return;
-            }
-
-            TalentData data = new(file);
-            lock (TalentsData)
-            {
-                TalentsData.TryAdd(data.Id, data);
-            }
-        });
-
-        // DATA/Particles
-        // DATA/Shared/Particles
-        // DATA/Characters/{Character}
-        // DATA/Characters/{Character}/skins/{Skin}
-        // DATA/Characters/{Character}/Skins/{Skin}
-        // DATA/Characters/{Character}/Skins/{Skin}/Particles
-
-        _logger.Info("Loading Particles...");
-        Parallel.ForEach(Directory.EnumerateFiles(ParticlesPath, "*"), (file) =>
-        {
-            if (!file.EndsWith(".troy", StringComparison.OrdinalIgnoreCase) &&
-                !file.EndsWith(".troybin", StringComparison.OrdinalIgnoreCase))
-            {
-                return;
-            }
-            string fileName = Path.GetFileNameWithoutExtension(file);
-
-            ProcessParticleFile(fileName, "", -1);
-        });
-
         // ============================================================================
         // CHARGEMENT DES FICHIERS .DAT DE CONFIGURATION AI
         // ============================================================================
         _logger.Info("Loading AI Configuration Data Files...");
         LoadAiConfigurationData();
-
     }
 
     //TODO: Refactor or add another method that only loads assets for a specific character skin
@@ -575,7 +498,7 @@ internal class ContentManager
     /// <param name="skin"></param>
     private static void ProcessParticleFile(string file, string model, int skin)
     {
-        RFile? contentFile = Cache.GetFile(Path.Join(ParticlesPath, file + ".troy"));
+        RFile? contentFile = Cache.GetFile(Path.Join(ParticlesPath, file));
         var fileName = Path.GetFileNameWithoutExtension(file).ToLowerInvariant() + ".troy";
 
         if (contentFile is null)
@@ -621,7 +544,6 @@ internal class ContentManager
             string name = Path.GetFileNameWithoutExtension(fileName);
             lock (ParticlesData)
             {
-
                 var particleDataList = ParticlesData.GetValueOrDefault(name) ?? (ParticlesData[name] = []);
                 particleDataList.Add(new ParticleData(model, skin, maxEffectLifetime, pbindtoemitter));
             }
@@ -1315,16 +1237,23 @@ internal class ContentManager
     /// <returns></returns>
     internal static CharData? GetCharData(string characterName)
     {
+        if (string.IsNullOrEmpty(characterName))
+        {
+            return null;
+        }
+
         if (CharactersData.TryGetValue(characterName.ToLowerInvariant(), out var charData))
         {
             return charData;
         }
 
-        if (!string.IsNullOrEmpty(characterName))
+        string path = Path.Join(CharactersPath, characterName, characterName + ".ini");
+        if (File.Exists(path) || File.Exists(path + "bin"))
         {
-            _logger.Error($"Could not find CharData for Character \"{characterName}\"!");
+            CharactersData[characterName] = new(characterName);
+            return CharactersData[characterName];
         }
-
+        _logger.Error($"Could not find CharData for Character \"{characterName}\"!");
         return null;
     }
 
@@ -1347,6 +1276,13 @@ internal class ContentManager
             return spellData;
         }
 
+        string path = Path.Join(SpellsPath, spellName + ".ini");
+        if (File.Exists(path) || File.Exists(path + "bin"))
+        {
+            SpellsData[spellName] = new(spellName);
+            return SpellsData[spellName];
+        }
+
         _logger.Error($"Could not find SpellData for Spell \"{spellName}\"!");
         return null;
     }
@@ -1359,11 +1295,23 @@ internal class ContentManager
     /// <returns></returns>
     internal static ParticleData? GetParticleData(string name, params GameObject[] characters)
     {
-        if (!ParticlesData.TryGetValue(name.ToLower(), out var list) || list.Count <= 0)
+        if (ParticlesData.TryGetValue(name.ToLower(), out List<ParticleData>? list) || list?.Count <= 0)
         {
-            return null;
+            return DoStuffWithParticleData(list, characters);
         }
 
+        string path = Path.Join(ParticlesPath, name + ".troy");
+        if (File.Exists(path) || File.Exists(path + "bin"))
+        {
+            ProcessParticleFile(path, "", -1);
+            return DoStuffWithParticleData(ParticlesData[name], characters);
+        }
+
+        return null;
+    }
+
+    private static ParticleData? DoStuffWithParticleData(List<ParticleData> list, params GameObject[] characters)
+    {
         ParticleData? particleData;
         foreach (var character in characters)
         {
@@ -1395,7 +1343,6 @@ internal class ContentManager
         {
             return list.First();
         }
-
         return null;
     }
 
@@ -1409,6 +1356,13 @@ internal class ContentManager
         if (TalentsData.TryGetValue(id, out var data))
         {
             return data;
+        }
+
+        string path = Path.Join(TalentsPath, id + ".ini");
+        if (File.Exists(path) || File.Exists(path + "bin"))
+        {
+            TalentsData[id] = new(path);
+            return TalentsData[id];
         }
 
         _logger.Error($"Could not find TalentData for Talent \"{id}\"!");
@@ -1425,6 +1379,13 @@ internal class ContentManager
         if (ItemsData.TryGetValue(id, out var data))
         {
             return data;
+        }
+
+        string path = Path.Join(ItemsPath, id + ".ini");
+        if (File.Exists(path) || File.Exists(path + "bin"))
+        {
+            ItemsData[id] = new(id.ToString());
+            return ItemsData[id];
         }
 
         _logger.Error($"Could not find ItemData for Item \"{id}\"!");
