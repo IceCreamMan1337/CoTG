@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Numerics;
 using CoTG.CoTGServer.Content.FileSystem;
 //using System.Text.Json.Serialization;
@@ -278,7 +279,7 @@ namespace CoTG.CoTGServer.Content
         {
             string name = file;
 
-            RFile? f = Cache.GetFile($"{ContentManager.SpellsPath}/{name}.ini");
+            RFile? f = Cache.GetFile(Path.Join(ContentManager.SpellsPath, name + ".ini"));
             if (f is null)
             {
                 return;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using CoTG.CoTGServer.Content.FileSystem;
 using CoTG.CoTGServer.Logging;
@@ -118,7 +119,7 @@ public class CharData
 
     public CharData(string name)
     {
-        RFile? file = Cache.GetFile($"{ContentManager.CharactersPath}/{name}/{name}.ini");
+        RFile? file = Cache.GetFile(Path.Join(ContentManager.CharactersPath, name, name + ".ini"));
         if (file is null)
         {
             return;

@@ -62,7 +62,7 @@ internal static class Cache
         string fullPath = fileName;
         //fullPath = CreateFullPath(fileName);
         FileSysHelper.ParseFileSpecification(fullPath, out string folder, out string name, out string extension);
-        string keyVal = $"{folder}/defaults/{name}.{extension}";
+        string keyVal = Path.Join(folder, "defaults", name + "." + extension);
         file = new(Path.GetFileName(fileName), fullPath, keyVal);
 
         lock (FileNameToFile)

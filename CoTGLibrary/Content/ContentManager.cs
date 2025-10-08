@@ -45,17 +45,6 @@ internal class ContentManager
     internal static string LocationPath { get; private set; }
 
     /// <summary>
-    /// Path to the primary script package directory that contains server side game logic
-    /// </summary>
-    internal static string ScriptsPath { get; private set; }
-
-    /// <summary>
-    /// Path to the secondary script package used if thee primary ones are not present.
-    /// Hardcoded to AvLua-Converted at the moment.
-    /// </summary>
-    internal static string ScriptsPathSecondary { get; private set; }
-
-    /// <summary>
     /// Path to the Talents directory within the DATA directory.
     /// </summary>
     internal static string TalentsPath { get; private set; }
@@ -260,15 +249,13 @@ internal class ContentManager
     static ContentManager()
     {
         ContentPath = string.Empty;
-        ScriptsPath = string.Empty;
-        ScriptsPathSecondary = "Lua-Converted";
         DataPath = "GameClient";
-        TalentsPath = "DATA/Talents";
-        SpellsPath = "DATA/Spells";
-        CharactersPath = "DATA/Characters";
-        ItemsPath = "DATA/Items";
-        ParticlesPath = "DATA/Particles";
-        MapPath = "LEVELS/Map";
+        TalentsPath = Path.Join("DATA", "Talents");
+        SpellsPath = Path.Join("DATA", "Spells");
+        CharactersPath = Path.Join("DATA", "Characters");
+        ItemsPath = Path.Join("DATA", "Items");
+        ParticlesPath = Path.Join("DATA", "Particles");
+        MapPath = Path.Join("LEVELS", "Map");
         ScenePath = "Scene";
         EncounterPath = "Encounters";
         MutatorPath = "Mutators";
@@ -283,8 +270,6 @@ internal class ContentManager
     {
         var contentPath = Path.Join(config.ContentPath);
         ContentPath = contentPath;
-        ScriptsPath = Path.Join(contentPath, "CSharp-Scripts");
-        ScriptsPathSecondary = Path.Join(contentPath, ScriptsPathSecondary);
         DataPath = Path.Join(contentPath, DataPath);
         TalentsPath = Path.Join(DataPath, TalentsPath);
         SpellsPath = Path.Join(DataPath, SpellsPath);
@@ -295,7 +280,7 @@ internal class ContentManager
         ScenePath = Path.Join(MapPath, ScenePath);
         EncounterPath = Path.Join(MapPath, EncounterPath);
         MutatorPath = Path.Join(EncounterPath, MutatorPath);
-        MapConfig = Cache.GetFile(Path.Join(ScenePath, "CFG/ObjectCFG.cfg"));
+        MapConfig = Cache.GetFile(Path.Join(ScenePath, "CFG", "ObjectCFG.cfg"))!;
 
         LocationPath = MapPath;
 
@@ -304,8 +289,6 @@ internal class ContentManager
                      ContentPath,
                      DataPath,
                      MapPath,
-                     ScriptsPath,
-                     ScriptsPathSecondary,
                      TalentsPath,
                      ItemsPath,
                      SpellsPath,
@@ -338,8 +321,8 @@ internal class ContentManager
                 section = $"Chaos{size}";
             }
 
-            Cache.GetValue(out Vector3 offset, CharactersPath + "/HeroSpawnOffsets.ini", section, $"Pos{spawnPos}");
-            Cache.GetValue(out float facing, CharactersPath + "/HeroSpawnOffsets.ini", section, $"Facing{spawnPos}");
+            Cache.GetValue(out Vector3 offset, Path.Join(CharactersPath, "HeroSpawnOffsets.ini"), section, $"Pos{spawnPos}");
+            Cache.GetValue(out float facing, Path.Join(CharactersPath, "HeroSpawnOffsets.ini"), section, $"Facing{spawnPos}");
             return new(offset, facing);
         }
 
@@ -353,7 +336,7 @@ internal class ContentManager
     private void LoadContent()
     {
         _logger.Info("Loading Spawn Offsets...");
-        RFile spawnOffset = Cache.GetFile($"{CharactersPath}/HeroSpawnOffsets.ini");
+        RFile spawnOffset = Cache.GetFile(Path.Join(CharactersPath, "HeroSpawnOffsets.ini"));
 
         //Hack
         for (int teamPlayerCount = 1; teamPlayerCount <= 5; teamPlayerCount++)
@@ -380,7 +363,6 @@ internal class ContentManager
         }
 
         _logger.Info("Loading Character Data...");
-        _logger.Info(CharactersPath);
         Parallel.ForEach(Directory.EnumerateDirectories(CharactersPath), LoadCharacter);
 
         _logger.Info("Loading Spell Data...");
@@ -393,34 +375,30 @@ internal class ContentManager
         Parallel.ForEach(Directory.EnumerateFiles(SpellsPath, "*", SearchOption.AllDirectories),
             file =>
             {
-                if (!file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) &&
-                    !file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
+                if (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) ||
+                    file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
                 {
-                    return;
+                    ProcessSpellFile(Path.GetFileNameWithoutExtension(file));
                 }
-                ProcessSpellFile(Path.GetFileNameWithoutExtension(file));
             });
-
 
         _logger.Info("Loading Item Data...");
         Parallel.ForEach(Directory.EnumerateFiles(ItemsPath, "*"), (file) =>
         {
-            if (!file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) &&
-                !file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
+            if (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) ||
+                file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase))
             {
-                return;
-            }
+                string fileName = Path.GetFileNameWithoutExtension(file);
+                if (!int.TryParse(fileName, out _))
+                {
+                    return;
+                }
 
-            string fileName = Path.GetFileNameWithoutExtension(file);
-            if (!int.TryParse(fileName, out _))
-            {
-                return;
-            }
-
-            ItemData data = new(fileName);
-            lock (ItemsData)
-            {
-                ItemsData.TryAdd(data.Id, data);
+                ItemData data = new(fileName);
+                lock (ItemsData)
+                {
+                    ItemsData.TryAdd(data.Id, data);
+                }
             }
         });
 
@@ -487,22 +465,20 @@ internal class ContentManager
             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file).ToLowerInvariant();
 
             // Comparer les noms de fichiers sans tenir compte de la casse et s'assurer que l'extension est .ini
-            if (!string.Equals(fileNameWithoutExtension, characterName, StringComparison.OrdinalIgnoreCase) ||
-                (!file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) &&
-                !file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase)))
+            if (string.Equals(fileNameWithoutExtension, characterName, StringComparison.OrdinalIgnoreCase) ||
+                (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) &&
+                file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase)))
             {
-                return;
-            }
-
-            var data = new CharData(fileNameWithoutExtension);
-            lock (CharactersData)
-            {
-                CharactersData.TryAdd(fileNameWithoutExtension, data);
+                var data = new CharData(fileNameWithoutExtension);
+                lock (CharactersData)
+                {
+                    CharactersData.TryAdd(fileNameWithoutExtension, data);
+                }
             }
         });
 
         // Load Character spells
-        var spellsPath = $"{characterPath}/Spells";
+        var spellsPath = Path.Join(characterPath, "Spells");
         if (Directory.Exists(spellsPath))
         {
             Parallel.ForEach(Directory.EnumerateFiles(spellsPath, "*.ini", SearchOption.AllDirectories), x =>
@@ -514,13 +490,13 @@ internal class ContentManager
         // Loading all skins until selective loading is setup
         // Load Character particles
         var skinsPath = "";
-        if (Directory.Exists($"{characterPath}/Skins"))
+        if (Directory.Exists(Path.Join(characterPath, "Skins")))
         {
-            skinsPath = $"{characterPath}/Skins";
+            skinsPath = Path.Join(characterPath, "Skins");
         }
-        else if (Directory.Exists($"{characterPath}/skins"))
+        else if (Directory.Exists(Path.Join(characterPath, "skins")))
         {
-            skinsPath = $"{characterPath}/skins";
+            skinsPath = Path.Join(characterPath, "skins");
         }
 
         if (string.IsNullOrEmpty(skinsPath))
@@ -599,7 +575,7 @@ internal class ContentManager
     /// <param name="skin"></param>
     private static void ProcessParticleFile(string file, string model, int skin)
     {
-        RFile? contentFile = Cache.GetFile($"{ParticlesPath}/{file}.troy");
+        RFile? contentFile = Cache.GetFile(Path.Join(ParticlesPath, file + ".troy"));
         var fileName = Path.GetFileNameWithoutExtension(file).ToLowerInvariant() + ".troy";
 
         if (contentFile is null)
@@ -666,7 +642,7 @@ internal class ContentManager
             }
 
             //Loads a Map Object from the Map's Scene folder
-            var lines = File.ReadAllLines($"{ScenePath}/{name}.sco").ToList();
+            var lines = File.ReadAllLines(Path.Join(ScenePath, name + ".sco")).ToList();
             var positionStr = lines.Find(x => x.StartsWith("CentralPoint"))!.Split('=')[1];
             var coords = positionStr.Split(' ');
             Vector3 pos = new()
@@ -685,7 +661,7 @@ internal class ContentManager
             return;
         }
 
-        string fileName = $"{MapPath}/Locations.dat";
+        string fileName = Path.Join(MapPath, "Locations.dat");
         if (File.Exists(fileName))
         {
             foreach (var line in File.ReadAllLines(fileName))
@@ -695,7 +671,7 @@ internal class ContentManager
                     continue;
                 }
 
-                string[] parts = line.Split(new char[] { '\t', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = line.Split(['\t', ' '], StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length is not 2)
                 {
                     continue;
@@ -723,10 +699,10 @@ internal class ContentManager
             return toReturnMapData;
         }
 
-        if (File.Exists($"{ScenePath}/MapObjects.mob"))
+        if (File.Exists(Path.Join(ScenePath, "MapObjects.mob")))
         {
-            MobFile mobFile = new($"{ScenePath}/MapObjects.mob");
-            toReturnMapData.MapObjects = new(mobFile.MapObjects);
+            MobFile mobFile = new(Path.Join(ScenePath, "MapObjects.mob"));
+            toReturnMapData.MapObjects = mobFile.MapObjects;
         }
 
         string[] filesToLoad = Directory.GetFiles(ScenePath, "*.sco");
@@ -740,7 +716,7 @@ internal class ContentManager
             }
 
             //Loads a Map Object from the Map's Scene folder
-            var lines = File.ReadAllLines($"{ScenePath}/{name}.sco").ToList();
+            var lines = File.ReadAllLines(Path.Join(ScenePath, name + ".sco")).ToList();
             var positionStr = lines.Find(x => x.StartsWith("CentralPoint"))!.Split('=')[1];
             var coords = positionStr.Split(' ');
             Vector3 pos = new()
@@ -757,19 +733,19 @@ internal class ContentManager
 
         toReturnMapData.MapObjects.RemoveAll(x => x.Name.Contains("AIPath"));
 
-        RFile contentFile = Cache.GetFile($"{MapPath}/DeathTimes.ini");
+        RFile? contentFile = Cache.GetFile(Path.Join(MapPath, "DeathTimes.ini"));
         float defaultVal = 0;
         for (int i = 1; i <= 18; i++)
         {
-            float val = contentFile.GetValue("TimeDeadPerLevel", $"Level{i:D2}", defaultVal);
+            float val = contentFile?.GetValue("TimeDeadPerLevel", $"Level{i:D2}", defaultVal) ?? defaultVal;
             toReturnMapData.DeathTimes.Add(val);
             defaultVal = val;
         }
 
-        contentFile = Cache.GetFile($"{MapPath}/Items.ini");
+        contentFile = Cache.GetFile(Path.Join(MapPath, "Items.ini"));
         for (int i = 0; ; i++)
         {
-            int val = contentFile.GetValue("ItemInclusionList", $"Item{i}", -1);
+            int val = contentFile?.GetValue("ItemInclusionList", $"Item{i}", -1) ?? -1;
             if (val is -1)
             {
                 break;
@@ -780,7 +756,7 @@ internal class ContentManager
 
         for (int i = 0; ; i++)
         {
-            int val = contentFile.GetValue("UnpurchasableItemList", $"Item{i}", -1);
+            int val = contentFile?.GetValue("UnpurchasableItemList", $"Item{i}", -1) ?? -1;
             if (val is -1)
             {
                 break;
@@ -790,9 +766,9 @@ internal class ContentManager
         }
 
         //TODO: ConstData class
-        if (File.Exists($"{MapPath}/Constants.var"))
+        if (File.Exists(Path.Join(MapPath, "Constants.var")))
         {
-            foreach (var line in File.ReadAllLines($"{MapPath}/Constants.var"))
+            foreach (var line in File.ReadAllLines(Path.Join(MapPath, "Constants.var")))
             {
                 if (line.StartsWith(';') || string.IsNullOrEmpty(line))
                 {
@@ -807,16 +783,16 @@ internal class ContentManager
             }
         }
 
-        if (File.Exists($"{MapPath}/Locations.dat"))
+        if (File.Exists(Path.Join(MapPath, "Locations.dat")))
         {
-            foreach (var line in File.ReadAllLines($"{MapPath}/Locations.dat"))
+            foreach (var line in File.ReadAllLines(Path.Join(MapPath, "Locations.dat")))
             {
                 if (line.StartsWith(';') || string.IsNullOrEmpty(line))
                 {
                     continue;
                 }
 
-                string[] parts = line.Split(new char[] { '\t', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = line.Split(['\t', ' '], StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length == 2)
                 {
                     var foundObject = toReturnMapData.MapObjects.Find(x => x.Name == parts[1]);
@@ -893,7 +869,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiConfigurationData()
     {
-        string scriptsPath = $"{MapPath}/Scripts";
+        string scriptsPath = Path.Join(MapPath, "Scripts");
 
         if (!Directory.Exists(scriptsPath))
         {
@@ -939,7 +915,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiManagerDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/AiManagerDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "AiManagerDataFile.dat");
         if (File.Exists(filePath))
         {
             string currentGameMode = "";
@@ -983,7 +959,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiMissionDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/AiMissionDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "AiMissionDataFile.dat");
         if (File.Exists(filePath))
         {
             foreach (var line in File.ReadAllLines(filePath))
@@ -1008,7 +984,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiTaskDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/AiTaskDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "AiTaskDataFile.dat");
         if (File.Exists(filePath))
         {
             foreach (var line in File.ReadAllLines(filePath))
@@ -1033,7 +1009,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiEntityDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/AiEntityDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "AiEntityDataFile.dat");
         if (File.Exists(filePath))
         {
             string currentSection = "";
@@ -1096,7 +1072,7 @@ internal class ContentManager
     /// </summary>
     private void LoadAiFuzzyDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/AiFuzzyDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "AiFuzzyDataFile.dat");
         if (File.Exists(filePath))
         {
             string currentGameMode = "";
@@ -1139,7 +1115,7 @@ internal class ContentManager
     /// </summary>
     private void LoadLevelScriptDataFile(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/LevelScriptDataFile.dat";
+        string filePath = Path.Join(scriptsPath, "LevelScriptDataFile.dat");
         if (File.Exists(filePath))
         {
             string currentGameMode = "";
@@ -1175,7 +1151,7 @@ internal class ContentManager
     /// </summary>
     private void LoadLevelScriptDataFileServer(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/LevelScriptDataFileServer.dat";
+        string filePath = Path.Join(scriptsPath, "LevelScriptDataFileServer.dat");
         if (File.Exists(filePath))
         {
             foreach (var line in File.ReadAllLines(filePath))
@@ -1199,7 +1175,7 @@ internal class ContentManager
     /// </summary>
     private void LoadLevelScriptDataFileClient(string scriptsPath)
     {
-        string filePath = $"{scriptsPath}/LevelScriptDataFileClient.dat";
+        string filePath = Path.Join(scriptsPath, "LevelScriptDataFileClient.dat");
         if (File.Exists(filePath))
         {
             foreach (var line in File.ReadAllLines(filePath))
@@ -1238,7 +1214,7 @@ internal class ContentManager
     /// </summary>
     private void LoadTeamMissionFile(string scriptsPath, string fileName, Dictionary<string, string> targetDict)
     {
-        string filePath = $"{scriptsPath}/{fileName}";
+        string filePath = Path.Join(scriptsPath, fileName);
         if (File.Exists(filePath))
         {
             string currentGameMode = "";
@@ -1298,7 +1274,7 @@ internal class ContentManager
     /// </summary>
     private void LoadTeamTaskFile(string scriptsPath, string fileName, Dictionary<string, string> targetDict)
     {
-        string filePath = $"{scriptsPath}/{fileName}";
+        string filePath = Path.Join(scriptsPath, fileName);
         if (File.Exists(filePath))
         {
             string currentGameMode = "";
@@ -1468,7 +1444,7 @@ internal class ContentManager
             navGridName = map.GameMode.MapScriptMetadata.NavGridOverride;
         }
 
-        return new NavigationGrid($"{MapPath}/{navGridName}.aimesh_ngrid");
+        return new NavigationGrid(Path.Join(MapPath, navGridName + ".aimesh_ngrid"));
     }
 
     /// <summary>
@@ -1484,7 +1460,7 @@ internal class ContentManager
             navGridName = map.GameMode.MapScriptMetadata.NavGridOverride;
         }
 
-        return new NaviMeshTest($"{MapPath}/{navGridName}.aimesh");
+        return new NaviMeshTest(Path.Join(MapPath, navGridName + ".aimesh"));
     }
 
 }

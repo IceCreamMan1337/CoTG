@@ -74,7 +74,7 @@ namespace CoTGEnumNetwork.Packets.Handlers
         private static bool Getlogstatus()
         {
             //check this one is broken 
-            string filePath = @".\Settings\GameInfo.json"; // Remplacez par le chemin de votre fichier JSON
+            string filePath = Path.Join(".", "Settings", "GameInfo.json"); // Remplacez par le chemin de votre fichier JSON
 
             if (!File.Exists(filePath))
             {

@@ -24,7 +24,8 @@ internal static class FileSysHelper
 
     internal static void FormatPath(ref string path)
     {
-        path = path.Replace('\\', '/');
+        path = path.Replace('\\', Path.DirectorySeparatorChar);
+        path = path.Replace('/', Path.DirectorySeparatorChar);
     }
 
     internal static void ReplaceCharacter(ref string path, char from, char to)

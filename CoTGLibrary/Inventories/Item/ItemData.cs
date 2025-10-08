@@ -30,7 +30,7 @@ namespace CoTG.CoTGServer.Inventory
 
         public ItemData(string itemName)
         {
-            RFile? file = Cache.GetFile($"{ContentManager.ItemsPath}/{itemName}.ini");
+            RFile? file = Cache.GetFile(Path.Join(ContentManager.ItemsPath, itemName + ".ini"));
             if (file is null)
             {
                 Name = "";
