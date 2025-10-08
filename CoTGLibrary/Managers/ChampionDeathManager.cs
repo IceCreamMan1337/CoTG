@@ -1,12 +1,13 @@
-﻿using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
+﻿using CoTG.CoTGServer;
+using CoTG.CoTGServer.API;
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
+using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
 using CoTG.CoTGServer.Handlers;
-using System.Collections.Generic;
-using CoTG.CoTGServer;
-using System.Linq;
-using System;
 //need implement event in function of version of game 
 using SiphoningStrike.Game.Events;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using static PacketVersioning.PktVersioning;
 
 namespace CoTGLibrary.Managers
@@ -113,7 +114,7 @@ namespace CoTGLibrary.Managers
             NotifyAssistEvent(assists, data);
             NotifyDeathEvent(data, assistObjArray);
             //NotifyChampionKillEvent(data);
-            ProcessKillRewards(killed, killer, assistObjArray, data.GoldReward);
+            ProcessKillRewards(killed, killer, assistObjArray, data.GoldReward, data);
             UpdateKillerStats(killer);
             killed.ChampionStatistics.CurrentKillingSpree = 0;
             killed.ChampionStats.DeathSpree++;
@@ -158,7 +159,7 @@ namespace CoTGLibrary.Managers
             }
         }
 
-        internal static void ProcessKillRewards(Champion killed, Champion killer, ObjAIBase[] assists, float gold)
+        internal static void ProcessKillRewards(Champion killed, Champion killer, ObjAIBase[] assists, float gold, DeathData data)
         {
             float xpShareFactor = assists.Length + 1;
 
@@ -172,6 +173,7 @@ namespace CoTGLibrary.Managers
                 {
                     c.Experience.AddEXP(c.Experience.GetEXPGrantedFromChampion(killed) / xpShareFactor);
                 }
+                ApiEventManager.OnAssist.Publish(obj, data);
             }
 
             killer.GoldOwner.AddGold(gold);

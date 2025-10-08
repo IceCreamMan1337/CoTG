@@ -1039,25 +1039,14 @@ public class AttackableUnit : GameObject, IGoldOwner
     {
         Stats.IsDead = true;
 
-
-        foreach (AttackableUnit unit in FCS.GetUnitsInArea(data.Unit, data.Unit.Position3D, 1000, SpellDataFlags.AffectEnemies | SpellDataFlags.AffectHeroes | SpellDataFlags.NotAffectSelf, default, true))
-        {
-            ApiEventManager.OnAssist.Publish(unit, data);
-        }
-
         Game.ObjectManager.StopTargeting(this);
 
         if (!IsToRemove())
         {
             S2C_NPC_Die_MapViewNotify(data);
         }
-
         SetToRemove();
-
         ApiEventManager.OnDeath.Publish(data.Unit, data);
-
-
-
 
         //Move this to Minion
         if (data.Unit?.Team != data.Killer?.Team)
