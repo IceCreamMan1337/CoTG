@@ -3,7 +3,6 @@ namespace BehaviourTrees;
 
 class ScoreManagerClass : OdinLayout
 {
-
     private DebugSayAllClass debugSayAll = new();
     private CountPointsClass countPoints = new();
     private ChangeScoreClass changeScore = new();
