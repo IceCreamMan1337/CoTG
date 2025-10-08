@@ -582,7 +582,7 @@ internal static class LuaScriptEngine
                 }
             }
 
-            if (Files.TryGetValue(luaName, out var luaPath))
+            if (Files.TryGetValue(Path.GetFileName(luaName), out var luaPath))
             {
                 //Console.WriteLine($"{nameof(Script.LoadFile)}(\"{luaPath}\", {nameof(globals)})");
 
@@ -602,7 +602,8 @@ internal static class LuaScriptEngine
                 result = Script.Call(c);
             }
 
-            if (!found) _logger.Error($"{luaName} not found");
+            if (!found) 
+                _logger.Error($"{luaName} not found");
         }
 
         return result;
