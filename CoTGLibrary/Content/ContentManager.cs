@@ -19,6 +19,7 @@ using CoTG.CoTGServer.Inventory;
 using CoTG.CoTGServer.Logging;
 using log4net;
 using MoonSharp.Interpreter;
+using Dropbox.Api.Paper;
 
 namespace CoTG.CoTGServer.Content;
 
@@ -132,22 +133,22 @@ internal class ContentManager
     /// <summary>
     /// Character data that the server has currently loaded.
     /// </summary>
-    private static Dictionary<string, CharData> CharactersData { get; } = new();
+    private static Dictionary<string, CharData?> CharactersData { get; } = new();
 
     /// <summary>
     /// Spell data that server has currently loaded.
     /// </summary>
-    private static Dictionary<string, SpellData> SpellsData { get; } = new();
+    private static Dictionary<string, SpellData?> SpellsData { get; } = new();
 
     /// <summary>
     /// Item data that server has currently loaded.
     /// </summary>
-    private static Dictionary<int, ItemData> ItemsData { get; } = new();
+    private static Dictionary<int, ItemData?> ItemsData { get; } = new();
 
     /// <summary>
     /// Talents data that server has currently loaded.
     /// </summary>
-    private static Dictionary<string, TalentData> TalentsData { get; } = new();
+    private static Dictionary<string, TalentData?> TalentsData { get; } = new();
 
     /// <summary>
     /// Particle data that server has currently loaded.
@@ -369,127 +370,6 @@ internal class ContentManager
         LoadAiConfigurationData();
     }
 
-    //TODO: Refactor or add another method that only loads assets for a specific character skin
-    /// <summary>
-    /// Iterates over the parsed server-side lol_game_client Characters directory loading related assets:
-    /// - Character ini file
-    /// - Spell ini files from from the Spells directory if its present
-    /// - Particle troy files from ALL skin directories in the Skins directory if they are present.
-    /// </summary>
-    private void LoadCharacter(string characterPath)
-    {
-        // Loads Character.ini -> Spells folder -> Skins\Particles folder
-        // Load Character ini
-        var characterName = Path.GetFileName(characterPath).ToLowerInvariant();
-
-        // Rechercher les fichiers dans characterPath, et uniquement ceux qui se terminent par ".ini", sans tenir compte de la casse
-        Parallel.ForEach(Directory.EnumerateFiles(characterPath), (file) =>
-        {
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file).ToLowerInvariant();
-
-            // Comparer les noms de fichiers sans tenir compte de la casse et s'assurer que l'extension est .ini
-            if (string.Equals(fileNameWithoutExtension, characterName, StringComparison.OrdinalIgnoreCase) ||
-                (file.EndsWith(".ini", StringComparison.OrdinalIgnoreCase) &&
-                file.EndsWith(".inibin", StringComparison.OrdinalIgnoreCase)))
-            {
-                var data = new CharData(fileNameWithoutExtension);
-                lock (CharactersData)
-                {
-                    CharactersData.TryAdd(fileNameWithoutExtension, data);
-                }
-            }
-        });
-
-        // Load Character spells
-        var spellsPath = Path.Join(characterPath, "Spells");
-        if (Directory.Exists(spellsPath))
-        {
-            Parallel.ForEach(Directory.EnumerateFiles(spellsPath, "*.ini", SearchOption.AllDirectories), x =>
-            {
-                ProcessSpellFile(Path.GetFileNameWithoutExtension(x));
-            });
-        }
-
-        // Loading all skins until selective loading is setup
-        // Load Character particles
-        var skinsPath = "";
-        if (Directory.Exists(Path.Join(characterPath, "Skins")))
-        {
-            skinsPath = Path.Join(characterPath, "Skins");
-        }
-        else if (Directory.Exists(Path.Join(characterPath, "skins")))
-        {
-            skinsPath = Path.Join(characterPath, "skins");
-        }
-
-        if (string.IsNullOrEmpty(skinsPath))
-        {
-            return;
-        }
-
-        Parallel.ForEach(Directory.EnumerateDirectories(skinsPath), (skinDir) =>
-        {
-            string skinName = Path.GetFileName(skinDir).ToLowerInvariant();
-            int skinId;
-
-            if (skinName is "base")
-            {
-                skinId = 0;
-            }
-            else if (Regex.IsMatch(skinName, @"^skin(\d+)$"))
-            {
-                // 4 for skipping the initial "skin" in the name
-                skinId = int.Parse(skinName[4..]);
-            }
-            else
-            {
-                return;
-            }
-
-            foreach (var file in Directory.EnumerateFiles(skinDir, "*.troy"))
-            {
-                ProcessParticleFile(file, characterName, skinId);
-            }
-
-            string partDirPath = Path.Join(skinDir, "Particles");
-            if (!Directory.Exists(partDirPath))
-            {
-                return;
-            }
-
-            foreach (string file in Directory.EnumerateFiles(partDirPath, "*.troy"))
-            {
-                ProcessParticleFile(file, characterName, skinId);
-            }
-        });
-    }
-
-
-    // Process file(s)
-
-    /// <summary>
-    /// Parses the Spell .ini file for spell info,
-    /// </summary>
-    /// <param name="file"></param>
-    private static void ProcessSpellFile(string file)
-    {
-        string name = Path.GetFileNameWithoutExtension(file);
-
-        SpellData data = new(name);
-
-        name = name.ToLowerInvariant();
-        // 126Fix
-        //SpellFlagsMarker.SwitchFlagsIfNeeded(data);
-
-        if (!SpellsData.ContainsKey(name))
-        {
-            lock (SpellsData)
-            {
-                SpellsData[name] = data;
-            }
-        }
-    }
-
     /// <summary>
     /// Parses the Particle .troy file for particle info.
     /// </summary>
@@ -498,7 +378,7 @@ internal class ContentManager
     /// <param name="skin"></param>
     private static void ProcessParticleFile(string file, string model, int skin)
     {
-        RFile? contentFile = Cache.GetFile(Path.Join(ParticlesPath, file));
+        RFile? contentFile = Cache.GetFile(file);
         var fileName = Path.GetFileName(file).ToLowerInvariant();
 
         if (contentFile is null)
@@ -1232,6 +1112,21 @@ internal class ContentManager
         }
     }
 
+    private static string? FindFileCaseInsensitive(string directory, string fileName)
+    {
+        if (!Directory.Exists(directory))
+            return null;
+        string[] files = Directory.GetFiles(directory);
+        return files.FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
+    }
+    private static string? FindDirectoryCaseInsensitive(string directory, string fileName)
+    {
+        if (!Directory.Exists(directory))
+            return null;
+        string[] directories = Directory.GetDirectories(directory);
+        return directories.FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
+    }
+
     /// <summary>
     /// Returns the CharData for a given Character
     /// </summary>
@@ -1244,19 +1139,33 @@ internal class ContentManager
             return null;
         }
 
-        if (CharactersData.TryGetValue(characterName.ToLowerInvariant(), out var charData))
+        characterName = characterName.ToLowerInvariant();
+        if (CharactersData.TryGetValue(characterName, out var charData))
         {
             return charData;
         }
 
-        string path = Path.Join(CharactersPath, characterName, characterName + ".ini");
-        if (File.Exists(path) || File.Exists(path + "bin"))
+        string? directoryPath = FindDirectoryCaseInsensitive(CharactersPath, characterName);
+        if (directoryPath is null)
         {
-            CharactersData[characterName] = new(characterName);
-            return CharactersData[characterName];
+            _logger.ErrorFormat("Could not find directory for CharData for Character {0}!", characterName);
+            return CharactersData[characterName] = null;
         }
-        _logger.Error($"Could not find CharData for Character \"{characterName}\"!");
-        return null;
+
+        string? path = FindFileCaseInsensitive(directoryPath, characterName + ".ini");
+        if (path is null)
+        {
+            path = FindFileCaseInsensitive(directoryPath, characterName + ".inibin");
+            if (path is null)
+            {
+                _logger.ErrorFormat("Could not find CharData for Character {0}!", characterName);
+                return CharactersData[characterName] = null;
+            }
+            path = path[..^3]; //remove "bin" from the end
+        }
+
+        CharactersData[characterName] = new(characterName, path);
+        return CharactersData[characterName];
     }
 
     /// <summary>
@@ -1272,21 +1181,26 @@ internal class ContentManager
             //_logger.Error($"Provided spell name is null or empty.");
             return null;
         }
-
-        if (SpellsData.TryGetValue(spellName.ToLowerInvariant(), out var spellData))
+        spellName = spellName.ToLowerInvariant();
+        if (SpellsData.TryGetValue(spellName, out var spellData))
         {
             return spellData;
         }
 
-        string path = Path.Join(SpellsPath, spellName + ".ini");
-        if (File.Exists(path) || File.Exists(path + "bin"))
+        string? path = FindFileCaseInsensitive(SpellsPath, spellName + ".ini");
+        if (path is null)
         {
-            SpellsData[spellName] = new(spellName);
-            return SpellsData[spellName];
+            path = FindFileCaseInsensitive(SpellsPath, spellName + ".inibin");
+            if (path is null)
+            {
+                _logger.ErrorFormat($"Could not find SpellData for Spell {0}!", spellName);
+                return SpellsData[spellName] = null;
+            }
+            path = path[..^3]; //remove "bin" from the end
         }
 
-        _logger.Error($"Could not find SpellData for Spell \"{spellName}\"!");
-        return null;
+        SpellsData[spellName] = new(spellName, path);
+        return SpellsData[spellName];
     }
 
     /// <summary>
@@ -1302,14 +1216,23 @@ internal class ContentManager
             return DoStuffWithParticleData(list, characters);
         }
 
-        string path = Path.Join(ParticlesPath, name + ".troy");
-        if (File.Exists(path) || File.Exists(path + "bin"))
+        string? path = FindFileCaseInsensitive(ParticlesPath, name + ".troy");
+        if (path is null)
         {
-            ProcessParticleFile(path, "", -1);
-            if(ParticlesData.TryGetValue(name, out list))
+            path = FindFileCaseInsensitive(ParticlesPath, name + ".troybin");
+            if (path is null)
             {
-                return DoStuffWithParticleData(list, characters);
+                _logger.ErrorFormat("Could not find ParticleData for particle {0}!", name);
+                ParticlesData[name] = [];
+                return null!;
             }
+            path = path[..^3]; //remove "bin" from the end
+        }
+
+        ProcessParticleFile(path, "", -1);
+        if (ParticlesData.TryGetValue(name, out list))
+        {
+            return DoStuffWithParticleData(list, characters);
         }
 
         _logger.WarnFormat("Could not find or load ParticleData for particle {0}!", name);
@@ -1364,15 +1287,20 @@ internal class ContentManager
             return data;
         }
 
-        string path = Path.Join(TalentsPath, id + ".ini");
-        if (File.Exists(path) || File.Exists(path + "bin"))
+        string? path = FindFileCaseInsensitive(TalentsPath, id + ".ini");
+        if (path is null)
         {
-            TalentsData[id] = new(path);
-            return TalentsData[id];
+            path = FindFileCaseInsensitive(TalentsPath, id + ".inibin");
+            if (path is null)
+            {
+                _logger.ErrorFormat("Could not find TalentData for Talent {0}!", id);
+                return TalentsData[id] = null;
+            }
+            path = path[..^3]; //remove "bin" from the end
         }
 
-        _logger.Error($"Could not find TalentData for Talent \"{id}\"!");
-        return null;
+        TalentsData[id] = new(path);
+        return TalentsData[id];
     }
 
     /// <summary>
@@ -1387,15 +1315,20 @@ internal class ContentManager
             return data;
         }
 
-        string path = Path.Join(ItemsPath, id + ".ini");
-        if (File.Exists(path) || File.Exists(path + "bin"))
+        string? path = FindFileCaseInsensitive(ItemsPath, id + ".ini");
+        if (path is null)
         {
-            ItemsData[id] = new(id.ToString());
-            return ItemsData[id];
+            path = FindFileCaseInsensitive(ItemsPath, id + ".inibin");
+            if (path is null)
+            {
+                _logger.ErrorFormat("Could not find ItemData for Item {0}!", id);
+                return ItemsData[id] = null;
+            }
+            path = path[..^3]; //remove "bin" from the end
         }
 
-        _logger.Error($"Could not find ItemData for Item \"{id}\"!");
-        return null;
+        ItemsData[id] = new(id, path);
+        return ItemsData[id];
     }
 
     /// <summary>
@@ -1429,5 +1362,4 @@ internal class ContentManager
 
         return new NaviMeshTest(Path.Join(MapPath, navGridName + ".aimesh"));
     }
-
 }

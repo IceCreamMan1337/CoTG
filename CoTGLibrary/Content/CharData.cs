@@ -117,9 +117,9 @@ public class CharData
     {
     }
 
-    public CharData(string name)
+    public CharData(string name, string path)
     {
-        RFile? file = Cache.GetFile(Path.Join(ContentManager.CharactersPath, name, name + ".ini"));
+        RFile? file = Cache.GetFile(path);
         if (file is null)
         {
             return;
