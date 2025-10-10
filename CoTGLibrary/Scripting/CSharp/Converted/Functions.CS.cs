@@ -71,6 +71,11 @@ public static class Functions_CS
         return random.Next(min, max);
     }
 
+    public static bool HasBuff(AttackableUnit target, string buffName)
+    {
+        return target.HasBuff(buffName);
+    }
+
     /*
     //TODO: Replace all occurrences with foreach(GetUnitsInArea)+AddBuff
     public static void AddBuffToEachUnitInArea(

@@ -1,4 +1,6 @@
-﻿namespace CharScripts
+﻿using Buffs;
+
+namespace CharScripts
 {
     public class CharScriptJax : CharScript
     {
@@ -32,12 +34,20 @@
             bonusAD += bonusADAP;
             SetSpellToolTipVar(bonusAP, 1, 3, SpellSlotType.SpellSlots, SpellbookType.SPELLBOOK_CHAMPION, owner);
             SetSpellToolTipVar(bonusAD, 2, 3, SpellSlotType.SpellSlots, SpellbookType.SPELLBOOK_CHAMPION, owner);
+            if (!HasBuff(owner, "CounterStrikeDodgeUp"))
+            {
+                if (GetSlotSpellLevel(owner, 2, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots) > 0)
+                {
+                    AddBuff(owner, owner, new Buffs.CounterStrikeDodgeUp(), 1, 1, 25000, tickRate: 0.25f);
+                }
+            }
         }
         public override void OnActivate()
         {
             AddBuff(owner, owner, new Buffs.JaxPassive(), 1, 1, 25000, BuffAddType.RENEW_EXISTING, BuffType.AURA, 0, true, false, false);
             AddBuff(owner, owner, new Buffs.ChampionChampionDelta(), 1, 1, 25000, BuffAddType.REPLACE_EXISTING, BuffType.INTERNAL, 0, true, false, false);
             AddBuff(owner, owner, new Buffs.APBonusDamageToTowers(), 1, 1, 25000, BuffAddType.RENEW_EXISTING, BuffType.INTERNAL, 0, true, false, false);
+
             charVars.NumSwings = 0;
             charVars.LastHitTime = 0;
             charVars.UltStacks = 6;

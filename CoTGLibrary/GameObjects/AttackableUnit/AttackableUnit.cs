@@ -807,6 +807,16 @@ public class AttackableUnit : GameObject, IGoldOwner
         return data.DamageSource is DamageSource.DAMAGE_SOURCE_INTERNALRAW or DamageSource.DAMAGE_SOURCE_RAW ? originalDamage : damage;
     }
 
+    private static readonly Random rand = new();
+    bool Dodged()
+    {
+        if (rand.NextSingle() <= Stats.DodgeChance.Total)
+        {
+            return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Applies damage to this unit.
     /// </summary>
@@ -814,11 +824,23 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <param name="sourceScript">EventSource for hash</param>
     public virtual void TakeDamage(DamageData damageData, IEventSource sourceScript = null)
     {
+        if(damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK && Stats.DodgeChance.Total > 0 && Dodged()) 
+        {
+            ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
+            ApiEventManager.OnBeingDodged.Publish(damageData.Target, damageData.Attacker);
+            damageData.Damage = 0;
+            damageData.DamageResultType = DamageResultType.RESULT_DODGE;
+
+            UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
+            return;
+        }
+
         var originalDamage = damageData.Damage;
         damageData.Damage *= GetAttackRatio(damageData.Attacker);
 
         LastTimeGetHit = Game.Time.GameTime;
         LastPersonwhohavehitthistarget = damageData.Attacker as ObjAIBase;
+
         //Raw damage does not get mitigated
         if (damageData.DamageResultType is DamageResultType.RESULT_CRITICAL && damageData.Target is BaseTurret or ObjAnimatedBuilding)
         {

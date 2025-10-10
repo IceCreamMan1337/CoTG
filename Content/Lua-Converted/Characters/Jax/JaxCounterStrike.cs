@@ -55,18 +55,6 @@ namespace Buffs
         {
             IncFlatDodgeMod(owner, 100);
         }
-        /*
-        public override void OnBeingHit(ObjAIBase attacker, float damageAmount, DamageType damageType, DamageSource damageSource, HitResult hitResult)
-        {
-            if(attacker is Champion)
-            {
-            }
-            if(damageType == DamageSource.DAMAGE_SOURCE_ATTACK)
-            {
-                DebugSay(owner, "YO!");
-            }
-        }
-        */
         public override void OnDodge(AttackableUnit attacker)
         {
             int level = GetSlotSpellLevel((ObjAIBase)owner, 2, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots);
