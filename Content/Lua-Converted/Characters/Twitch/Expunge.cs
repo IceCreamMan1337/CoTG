@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Expunge : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deadlyvenom");
+            PreloadParticle("expunge_tar_02.troy");
+        }
+    }
+}

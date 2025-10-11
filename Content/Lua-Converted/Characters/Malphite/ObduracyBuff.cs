@@ -66,3 +66,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ObduracyBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("malphite_enrage_glow.troy");
+            PreloadSpell("root");
+            PreloadParticle("malphite_enrage_buf.troy");
+        }
+    }
+}

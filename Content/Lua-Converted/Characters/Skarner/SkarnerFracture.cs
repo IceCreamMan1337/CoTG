@@ -38,3 +38,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class SkarnerFracture : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("skarner_fracture_cas.troy");
+        }
+    }
+}

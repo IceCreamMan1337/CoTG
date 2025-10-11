@@ -61,3 +61,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenRecoupDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenrecoupdebuff");
+            PreloadSpell("garenrecouperate1");
+        }
+    }
+}

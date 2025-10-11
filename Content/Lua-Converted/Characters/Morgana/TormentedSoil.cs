@@ -78,3 +78,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TormentedSoil : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tormentedsoil_green_tar.troy");
+            PreloadParticle("tormentedsoil_red_tar.troy");
+            PreloadSpell("tormentedsoildebuff");
+            PreloadParticle("firefeet_buf.troy");
+            PreloadCharacter("testcube");
+        }
+    }
+}

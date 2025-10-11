@@ -89,3 +89,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonPreExecute : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("renekton_ruthlesspredator_obd-sound.troy");
+            PreloadSpell("renektonunlockanimation");
+        }
+    }
+}

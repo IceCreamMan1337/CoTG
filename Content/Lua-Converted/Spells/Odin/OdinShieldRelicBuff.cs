@@ -61,3 +61,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShieldRelicBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("regen_rune_buf.troy");
+        }
+    }
+}

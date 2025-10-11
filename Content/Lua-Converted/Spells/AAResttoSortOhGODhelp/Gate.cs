@@ -135,3 +135,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Gate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cardmasterteleport_green.troy");
+            PreloadParticle("cardmasterteleport_red.troy");
+            PreloadSpell("destiny_marker");
+            PreloadParticle("gatemarker_green.troy");
+            PreloadParticle("gatemarker_red.troy");
+        }
+    }
+}

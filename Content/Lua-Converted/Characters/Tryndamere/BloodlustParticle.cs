@@ -29,3 +29,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BloodlustParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("bloodlust_flame.troy");
+        }
+    }
+}

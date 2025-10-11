@@ -59,3 +59,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaHitenStyle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_hitenstyle_passive.troy");
+            PreloadParticle("irelia_hitenstlye_passive_glow.troy");
+            PreloadSpell("ireliahitenstyle");
+            PreloadSpell("ireliahitenstylecharged");
+        }
+    }
+}

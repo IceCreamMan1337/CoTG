@@ -103,3 +103,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InsanityPotion : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("insanitypotion_buf.troy");
+            PreloadParticle("insanitypotion_steam.troy");
+        }
+    }
+}

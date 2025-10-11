@@ -51,3 +51,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGangplank : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("raisemoraleteambuff");
+            PreloadSpell("raisemorale");
+            PreloadSpell("piratescurvy");
+            PreloadSpell("scurvy");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("ispirate");
+        }
+    }
+}

@@ -38,3 +38,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GateMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("gatemarker.troy");
+        }
+    }
+}

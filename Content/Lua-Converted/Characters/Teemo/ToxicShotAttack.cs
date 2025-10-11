@@ -33,3 +33,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ToxicShotAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("toxicshotapplicator");
+        }
+    }
+}

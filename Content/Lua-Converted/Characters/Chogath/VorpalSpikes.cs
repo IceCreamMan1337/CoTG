@@ -40,4 +40,14 @@ namespace Buffs
 
     }
 }
-//
+//    
+namespace PreLoads
+{
+    public class VorpalSpikes : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vorpalspikes");
+        }
+    }
+}

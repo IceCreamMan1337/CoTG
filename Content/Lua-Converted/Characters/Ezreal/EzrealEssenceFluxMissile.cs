@@ -65,3 +65,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class EzrealEssenceFluxMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ezrealrisingspellforce");
+            PreloadParticle("ezreal_essenceflux_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("ezrealessenceflux");
+            PreloadSpell("ezrealessencefluxmissile");
+        }
+    }
+}

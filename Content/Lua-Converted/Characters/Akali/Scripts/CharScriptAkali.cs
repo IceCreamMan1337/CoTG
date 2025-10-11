@@ -106,3 +106,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAkali : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("akalishadowdance");
+            PreloadSpell("akalitwindisciplines");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("isninja");
+        }
+    }
+}

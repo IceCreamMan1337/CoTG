@@ -71,3 +71,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Disintegrate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pyromania_particle");
+            PreloadSpell("pyromania");
+            PreloadParticle("disintegratehit_tar_frost.troy");
+            PreloadParticle("disintegrate_hit_frost.troy");
+            PreloadParticle("disintegratehit_tar.troy");
+            PreloadParticle("disintegrate_hit.troy");
+        }
+    }
+}

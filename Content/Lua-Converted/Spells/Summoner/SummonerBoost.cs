@@ -126,3 +126,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerBoost : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_boost.troy");
+        }
+    }
+}

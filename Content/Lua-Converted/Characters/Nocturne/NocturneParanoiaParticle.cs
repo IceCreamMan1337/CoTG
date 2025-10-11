@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoiaParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nocturneparanoiaparticle");
+        }
+    }
+}

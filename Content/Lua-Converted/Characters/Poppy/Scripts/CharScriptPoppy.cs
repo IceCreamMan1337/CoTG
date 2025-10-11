@@ -20,3 +20,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptPoppy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("poppyvaliantfighter");
+            PreloadSpell("poppyparagonmanager");
+        }
+    }
+}

@@ -18,3 +18,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinQuestIndicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianbuff");
+            PreloadSpell("odinquestindicator");
+            PreloadCharacter("odinquestindicator");
+            PreloadSpell("odinquestparticleremover");
+        }
+    }
+}

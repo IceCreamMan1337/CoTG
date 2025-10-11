@@ -58,3 +58,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Scurvy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("scurvystrikeparticle");
+            PreloadSpell("scurvystrike");
+        }
+    }
+}

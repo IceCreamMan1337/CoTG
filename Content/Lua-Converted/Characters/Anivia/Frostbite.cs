@@ -30,3 +30,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Frostbite : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("chilled");
+            PreloadParticle("cryo_frostbite_chilled_tar.troy");
+        }
+    }
+}

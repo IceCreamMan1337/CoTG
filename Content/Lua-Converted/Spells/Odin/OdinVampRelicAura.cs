@@ -52,3 +52,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinVampRelicAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("regen_rune_buf.troy");
+            PreloadSpell("odinvamprelicaura");
+            PreloadSpell("odinvamprelicbuff");
+        }
+    }
+}

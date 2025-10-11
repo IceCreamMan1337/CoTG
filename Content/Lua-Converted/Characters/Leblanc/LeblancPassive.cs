@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancpassivecooldown");
+            PreloadSpell("leblancmiapplicator");
+        }
+    }
+}

@@ -143,3 +143,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirSanguinePool : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vladsanguinepool_buf.troy");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("slow");
+            PreloadParticle("empty.troy");
+        }
+    }
+}

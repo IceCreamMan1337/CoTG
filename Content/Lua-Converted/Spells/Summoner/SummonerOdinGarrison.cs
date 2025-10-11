@@ -158,3 +158,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerOdinGarrison : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_ally_capture_buf_01.troy");
+            PreloadParticle("summoner_ally_capture_buf_02.troy");
+            PreloadParticle("summoner_capture_pulse.troy");
+            PreloadSpell("odincapturechannel");
+            PreloadParticle("ezreal_essenceflux_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("summonerodingarrison");
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("odinguardianbuff");
+            PreloadSpell("summonerodingarrisondebuff");
+        }
+    }
+}

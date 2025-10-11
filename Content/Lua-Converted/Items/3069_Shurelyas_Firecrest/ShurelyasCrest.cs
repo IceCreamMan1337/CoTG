@@ -73,3 +73,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShurelyasCrest : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shurelyasspell");
+            PreloadParticle("shurelyascrest_cas.troy");
+            PreloadSpell("haste");
+        }
+    }
+}

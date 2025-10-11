@@ -51,3 +51,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class DeathsCaressFull : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deathscaress");
+        }
+    }
+}

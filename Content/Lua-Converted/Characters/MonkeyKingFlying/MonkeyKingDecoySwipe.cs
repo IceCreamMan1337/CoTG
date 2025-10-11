@@ -40,3 +40,13 @@ namespace Spells
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDecoySwipe : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("monkeyking");
+        }
+    }
+}

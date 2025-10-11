@@ -43,3 +43,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Incinerate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pyromania_particle");
+            PreloadSpell("pyromania");
+            PreloadParticle("incinerate_buf_frost.troy");
+            PreloadParticle("incinerate_buf.troy");
+        }
+    }
+}

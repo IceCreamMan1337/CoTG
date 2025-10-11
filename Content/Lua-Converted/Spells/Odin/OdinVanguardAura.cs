@@ -46,3 +46,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinVanguardAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_flash.troy");
+            PreloadSpell("odinvanguardaurabuff");
+        }
+    }
+}

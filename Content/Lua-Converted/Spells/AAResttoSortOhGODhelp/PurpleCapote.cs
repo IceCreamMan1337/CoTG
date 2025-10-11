@@ -105,3 +105,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PurpleCapote : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("purplecapote");
+        }
+    }
+}

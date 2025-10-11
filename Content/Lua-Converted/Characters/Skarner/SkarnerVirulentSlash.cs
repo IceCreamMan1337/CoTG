@@ -79,3 +79,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerVirulentSlash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("skarnervirulentslashenergy1");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("skarnervirulentslash");
+            PreloadParticle("skarner_crystal_slash_mini_nova.troy");
+            PreloadParticle("skarner_crystal_slash_buf.troy");
+            PreloadParticle("chogath_basic_attack_01.troy");
+            PreloadParticle("skarner_crystal_slash_tar.troy");
+            PreloadSpell("skarnervirulentslashslow");
+        }
+    }
+}

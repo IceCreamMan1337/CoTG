@@ -111,3 +111,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCOTGPetBuff2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordekeiser_cotg_skin.troy");
+            PreloadParticle("mordekaiser_cotg_ring.troy");
+            PreloadSpell("mordekaisercotgself");
+            PreloadSpell("mordekaisercotgpetbuff");
+            PreloadSpell("mordekaisercotgpetdmg");
+        }
+    }
+}

@@ -73,3 +73,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptCaitlyn : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("caitlynheadshot");
+            PreloadSpell("caitlynheadshotcount");
+            PreloadSpell("cantattack");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("caitlynheadshotpassive");
+        }
+    }
+}

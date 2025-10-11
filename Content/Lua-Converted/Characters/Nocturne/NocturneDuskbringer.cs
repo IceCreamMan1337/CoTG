@@ -209,3 +209,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneDuskbringer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneduskbringer_path_frost_green.troy");
+            PreloadParticle("nocturneduskbringer_path_frost_red.troy");
+            PreloadParticle("nocturneduskbringer_path_green.troy");
+            PreloadParticle("nocturneduskbringer_path_red.troy");
+            PreloadSpell("nocturneduskbringerhaste");
+            PreloadCharacter("testcube");
+            PreloadSpell("nocturneduskbringertrail");
+            PreloadParticle("nocturneduskbringer_tar.troy");
+            PreloadParticle("nocturneduskbringer_frost_buf.troy");
+            PreloadParticle("nocturneduskbringer_buf.troy");
+        }
+    }
+}

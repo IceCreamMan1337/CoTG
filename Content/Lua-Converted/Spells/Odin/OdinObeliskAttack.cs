@@ -49,3 +49,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinObeliskAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odingrdobelisksuppression");
+        }
+    }
+}

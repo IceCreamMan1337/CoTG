@@ -133,3 +133,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrTigerStance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("udyrtiger");
+            PreloadParticle("tigerpelt.troy");
+            PreloadSpell("udyrtigerpunch");
+            PreloadSpell("udyrtigershred");
+            PreloadSpell("udyrtigerpunchbleed");
+            PreloadSpell("udyrbearstance");
+            PreloadSpell("udyrphoenixstance");
+            PreloadSpell("udyrturtlestance");
+            PreloadParticle("tigerstance.troy");
+        }
+    }
+}

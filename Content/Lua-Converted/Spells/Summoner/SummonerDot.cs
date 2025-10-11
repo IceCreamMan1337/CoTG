@@ -82,3 +82,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerDot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_dot.troy");
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("internal_50ms");
+            PreloadSpell("grievouswound");
+        }
+    }
+}

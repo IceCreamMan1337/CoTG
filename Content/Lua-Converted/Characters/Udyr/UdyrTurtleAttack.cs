@@ -20,3 +20,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrTurtleAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("itemlifesteal.troy");
+            PreloadParticle("globalhit_physical.troy");
+            PreloadSpell("globaldrainmana");
+        }
+    }
+}

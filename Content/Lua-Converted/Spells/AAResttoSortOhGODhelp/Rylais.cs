@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Rylais : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("chilled");
+        }
+    }
+}

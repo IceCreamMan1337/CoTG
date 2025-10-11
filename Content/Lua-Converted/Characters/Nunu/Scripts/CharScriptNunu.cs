@@ -22,3 +22,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptNunu : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("visionary");
+            PreloadSpell("visionary_counter");
+            PreloadSpell("visionary_marker");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

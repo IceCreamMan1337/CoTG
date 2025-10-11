@@ -18,3 +18,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaHymnofValorCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonapowerchordready_blue.troy");
+            PreloadSpell("sonaariaofperseverancecheck");
+            PreloadSpell("sonasongofdiscordcheck");
+            PreloadSpell("sonahymnofvalorattackupgrade");
+        }
+    }
+}

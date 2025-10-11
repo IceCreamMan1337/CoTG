@@ -39,3 +39,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaTwinFang : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cassiotwinfang_refreshsound.troy");
+        }
+    }
+}

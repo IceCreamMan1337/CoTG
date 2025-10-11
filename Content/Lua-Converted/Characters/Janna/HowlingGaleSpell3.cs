@@ -70,3 +70,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class HowlingGaleSpell3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("move");
+        }
+    }
+}

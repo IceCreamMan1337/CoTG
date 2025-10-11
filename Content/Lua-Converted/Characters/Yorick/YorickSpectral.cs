@@ -93,3 +93,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickSpectral : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yoricksummonspectral");
+            PreloadParticle("yorick_spectralghoul_attack_buf_tar.troy");
+            PreloadSpell("yorickspectralprimarytarget");
+            PreloadSpell("yorickspectral");
+            PreloadSpell("yorickspectralunlock");
+        }
+    }
+}

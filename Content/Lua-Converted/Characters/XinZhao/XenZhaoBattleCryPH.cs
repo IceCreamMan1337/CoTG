@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoBattleCryPH : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xenzhaobattlecrypassive");
+        }
+    }
+}

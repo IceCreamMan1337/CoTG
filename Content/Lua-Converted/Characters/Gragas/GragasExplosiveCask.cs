@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasExplosiveCask : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

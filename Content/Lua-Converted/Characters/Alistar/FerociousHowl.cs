@@ -61,3 +61,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FerociousHowl : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alistartrample");
+        }
+    }
+}

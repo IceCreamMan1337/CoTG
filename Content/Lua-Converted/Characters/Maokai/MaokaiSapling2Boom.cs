@@ -31,3 +31,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiSapling2Boom : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maoki_sapling_unit_tar.troy");
+            PreloadCharacter("maokaisproutling");
+            PreloadSpell("maokaisaplingmine");
+        }
+    }
+}

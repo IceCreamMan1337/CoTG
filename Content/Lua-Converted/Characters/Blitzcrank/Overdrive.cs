@@ -102,3 +102,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Overdrive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("steamgolem_piltover_overdrive.troy");
+            PreloadParticle("overdrive_buf.troy");
+            PreloadParticle("steamgolem_piltover_overdrive_tires.troy");
+        }
+    }
+}

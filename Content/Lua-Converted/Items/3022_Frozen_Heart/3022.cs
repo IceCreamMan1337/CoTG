@@ -37,3 +37,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3022 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_30slow");
+            PreloadSpell("judicatorrighteousfury");
+            PreloadSpell("internal_40slow");
+            PreloadSpell("itemslow");
+        }
+    }
+}

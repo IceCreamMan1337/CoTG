@@ -75,3 +75,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RunePrison : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("runeprison_tar.troy");
+            PreloadSpell("desperatepower");
+            PreloadParticle("desperatepower_aoe.troy");
+            PreloadParticle("manaleach_tar.troy");
+        }
+    }
+}

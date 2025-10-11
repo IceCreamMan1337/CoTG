@@ -66,3 +66,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RedCard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("card_red_tag.troy");
+            PreloadParticle("pulverize_cas.troy");
+            PreloadSpell("slow");
+        }
+    }
+}

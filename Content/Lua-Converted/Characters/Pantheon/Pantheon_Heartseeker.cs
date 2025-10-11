@@ -121,3 +121,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_Heartseeker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_heartseekersound");
+            PreloadSpell("pantheon_heartseeker");
+            PreloadSpell("pantheon_heartseekerchannel");
+            PreloadSpell("pantheon_aegisshield2");
+            PreloadSpell("pantheon_aegisshield");
+            PreloadSpell("pantheon_aegis_counter");
+        }
+    }
+}

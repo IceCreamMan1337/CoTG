@@ -51,3 +51,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandConflagration : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandconflagration_buf_frost.troy");
+            PreloadParticle("brandconflagration_buf.troy");
+            PreloadSpell("brandablaze");
+        }
+    }
+}

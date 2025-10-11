@@ -33,3 +33,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ChampionChampionDelta : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("positivechampiondelta");
+            PreloadSpell("negativechampiondelta");
+        }
+    }
+}

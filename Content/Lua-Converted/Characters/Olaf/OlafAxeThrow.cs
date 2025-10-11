@@ -99,3 +99,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OlafAxeThrow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("olafaxe");
+            PreloadSpell("olafaxeexpirationtimer");
+            PreloadSpell("olafslow");
+            PreloadSpell("olafaxethrowdamage");
+        }
+    }
+}

@@ -59,3 +59,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MoltenShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("anniesparks.troy");
+            PreloadSpell("pyromania_particle");
+            PreloadSpell("pyromania");
+        }
+    }
+}

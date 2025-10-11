@@ -40,3 +40,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaPowerChord : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonahymnofvalorcheck");
+            PreloadSpell("sonaariaofperseverancecheck");
+            PreloadSpell("sonasongofdiscordcheck");
+            PreloadSpell("sonaariaofperseverance");
+            PreloadSpell("sonahymnofvalor");
+            PreloadSpell("sonasongofdiscord");
+        }
+    }
+}

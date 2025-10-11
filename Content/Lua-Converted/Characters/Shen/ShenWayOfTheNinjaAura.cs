@@ -29,3 +29,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenWayOfTheNinjaAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_kistrike_ready_indicator.troy");
+        }
+    }
+}

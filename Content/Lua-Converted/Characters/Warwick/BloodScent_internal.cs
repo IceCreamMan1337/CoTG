@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BloodScent_internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bloodscent_target");
+            PreloadSpell("bloodscent");
+        }
+    }
+}

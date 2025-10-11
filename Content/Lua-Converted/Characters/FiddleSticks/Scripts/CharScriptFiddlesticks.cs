@@ -36,3 +36,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptFiddlesticks : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("paranoiamisschance");
+            PreloadSpell("paranoia");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

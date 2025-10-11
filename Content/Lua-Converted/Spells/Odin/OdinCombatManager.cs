@@ -57,3 +57,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCombatManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odincombatactive");
+        }
+    }
+}

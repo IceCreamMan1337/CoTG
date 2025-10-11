@@ -36,3 +36,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRiven : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("rivenpassive");
+        }
+    }
+}

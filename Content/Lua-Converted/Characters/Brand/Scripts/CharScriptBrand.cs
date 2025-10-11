@@ -20,3 +20,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptBrand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("brandpassive");
+            PreloadSpell("brandpassivesound");
+        }
+    }
+}

@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenDoubleStrikeCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennendoublestrikeproc");
+            PreloadSpell("kennendoublestrikeindicator");
+        }
+    }
+}

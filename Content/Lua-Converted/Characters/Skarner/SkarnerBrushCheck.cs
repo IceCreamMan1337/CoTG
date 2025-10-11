@@ -45,3 +45,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerBrushCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("skarnerbrushsound");
+            PreloadSpell("skarnerbrushcheck");
+        }
+    }
+}

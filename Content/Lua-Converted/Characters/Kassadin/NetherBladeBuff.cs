@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NetherBladeBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kassadin_netherblade.troy");
+        }
+    }
+}

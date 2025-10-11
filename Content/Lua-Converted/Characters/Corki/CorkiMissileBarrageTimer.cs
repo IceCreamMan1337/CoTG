@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CorkiMissileBarrageTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missilebarrage");
+        }
+    }
+}

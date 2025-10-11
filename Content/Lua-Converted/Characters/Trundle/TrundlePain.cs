@@ -64,3 +64,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundlePain : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundleultparticle.troy");
+            PreloadSpell("trundlepainbuff");
+            PreloadSpell("trundlepain");
+        }
+    }
+}

@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CardmasterBlueCardMana : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("soraka_infuse_ally_tar.troy");
+        }
+    }
+}

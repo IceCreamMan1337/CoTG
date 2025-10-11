@@ -53,3 +53,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathMageChains : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xerath_magechains_buf.troy");
+            PreloadSpell("xerathmagechainsroot");
+            PreloadParticle("xerath_bolt_hit_tar.troy");
+            PreloadSpell("xerathmagechains");
+        }
+    }
+}

@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaIdleParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_ult_energy_ready.troy");
+        }
+    }
+}

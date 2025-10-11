@@ -175,3 +175,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PowerBall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("defensiveballcurl");
+            PreloadCharacter("rammuspb");
+            PreloadParticle("powerballstop.troy");
+            PreloadParticle("powerballhit.troy");
+            PreloadSpell("powerballslow");
+            PreloadSpell("powerballstun");
+            PreloadSpell("powerball");
+        }
+    }
+}

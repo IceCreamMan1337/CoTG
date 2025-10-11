@@ -35,3 +35,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneScattershot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunescatteraoe");
+            PreloadCharacter("spellbook1");
+            PreloadSpell("missfortunescatterparticle");
+        }
+    }
+}

@@ -37,3 +37,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RallyingBannerAuraSelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

@@ -79,3 +79,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdynsVeil : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odynsveil_cas.troy");
+        }
+    }
+}

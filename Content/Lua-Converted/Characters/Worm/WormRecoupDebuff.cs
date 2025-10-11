@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WormRecoupDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wormrecouperate1");
+            PreloadSpell("wormrecoupdebuff");
+        }
+    }
+}

@@ -48,3 +48,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class bandagetossFling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bandagetossflingcaster");
+        }
+    }
+}

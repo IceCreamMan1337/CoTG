@@ -30,3 +30,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaMantraSBHaste : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("karma_spiritbond_speed_buf.troy");
+            PreloadSpell("root");
+        }
+    }
+}

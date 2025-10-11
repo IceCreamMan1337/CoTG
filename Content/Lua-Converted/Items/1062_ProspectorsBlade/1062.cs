@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_1062 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("dorant2health");
+        }
+    }
+}

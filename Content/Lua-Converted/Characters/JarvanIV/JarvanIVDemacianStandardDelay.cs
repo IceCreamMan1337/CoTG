@@ -68,3 +68,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDemacianStandardDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvandemacianstandard_tar_green.troy");
+            PreloadParticle("jarvandemacianstandard_tar_red.troy");
+            PreloadParticle("jarvandemacianstandard_hit.troy");
+            PreloadCharacter("jarvanivstandard");
+            PreloadSpell("jarvanivdemacianstandard");
+        }
+    }
+}

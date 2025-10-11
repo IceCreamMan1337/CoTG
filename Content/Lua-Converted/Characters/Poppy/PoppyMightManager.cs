@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyMightManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppymightofdemacia");
+            PreloadParticle("poppydam_buf.troy");
+        }
+    }
+}

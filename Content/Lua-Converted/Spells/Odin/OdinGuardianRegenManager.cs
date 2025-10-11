@@ -46,3 +46,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianRegenManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianregen");
+        }
+    }
+}

@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDragonStrikeSound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvandemacianstandard_flag_hit.troy");
+        }
+    }
+}

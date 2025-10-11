@@ -22,3 +22,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserNukeOfTheBeast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordakaiser_maceofspades_tar2.troy");
+            PreloadSpell("mordekaisernukeofthebeastdmg");
+        }
+    }
+}

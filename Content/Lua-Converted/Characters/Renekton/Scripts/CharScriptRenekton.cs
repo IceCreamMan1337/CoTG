@@ -75,3 +75,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRenekton : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("renektonpredator");
+        }
+    }
+}

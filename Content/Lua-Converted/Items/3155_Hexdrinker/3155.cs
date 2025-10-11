@@ -38,3 +38,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3155 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hexdrinkertimer");
+            PreloadSpell("hexdrinker");
+            PreloadParticle("hextech_dmg_shield_birth.troy");
+            PreloadParticle("hextech_dmg_shield_onhit_01.troy");
+            PreloadParticle("hextech_dmg_shield_onhit_02.troy");
+        }
+    }
+}

@@ -41,3 +41,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ShenKiAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("globalhit_red.troy");
+            PreloadSpell("shenwayoftheninjaaura");
+        }
+    }
+}

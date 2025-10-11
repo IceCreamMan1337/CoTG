@@ -54,3 +54,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainShadowGraspRoot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("swainmetamorphism");
+            PreloadParticle("swainshadowgrasproottemp.troy");
+            PreloadParticle("swain_shadowgrasp_magic.troy");
+        }
+    }
+}

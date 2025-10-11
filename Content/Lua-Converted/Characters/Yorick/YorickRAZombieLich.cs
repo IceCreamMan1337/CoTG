@@ -98,3 +98,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRAZombieLich : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_ult_03_teamid_green.troy");
+            PreloadParticle("yorick_ult_03_teamid_red.troy");
+        }
+    }
+}

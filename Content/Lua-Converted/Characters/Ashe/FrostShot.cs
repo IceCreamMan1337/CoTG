@@ -66,3 +66,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FrostShot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("frostshot");
+        }
+    }
+}

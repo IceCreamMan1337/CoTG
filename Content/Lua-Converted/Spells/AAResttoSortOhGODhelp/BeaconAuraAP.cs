@@ -48,3 +48,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BeaconAuraAP : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_flash.troy");
+            PreloadSpell("beaconauranoparticleap");
+        }
+    }
+}

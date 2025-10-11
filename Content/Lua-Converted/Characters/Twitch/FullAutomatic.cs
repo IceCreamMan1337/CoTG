@@ -66,3 +66,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FullAutomatic : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("twitchsprayandpray");
+        }
+    }
+}

@@ -71,3 +71,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleHeatSystem : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumbleheatingup");
+            PreloadSpell("rumbleheatingup2");
+            PreloadSpell("rumbleoverheat");
+            PreloadSpell("rumbledangerzone");
+        }
+    }
+}

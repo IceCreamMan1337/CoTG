@@ -117,3 +117,33 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSona : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonahymnofvalor");
+            PreloadSpell("sonahymnofvaloraura");
+            PreloadSpell("sonaariaofperseverance");
+            PreloadSpell("sonaariaofperseveranceaura");
+            PreloadSpell("sonasongofdiscord");
+            PreloadSpell("sonasongofdiscordaura");
+            PreloadSpell("sonasoundoff");
+            PreloadSpell("sonahymnofvalorsound");
+            PreloadSpell("sonaariaofperseverancesound");
+            PreloadSpell("sonasongofdiscordsound");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("sonapowerchord");
+            PreloadSpell("sonapowerchordcount");
+            PreloadSpell("sonaariaofperseverancecheck");
+            PreloadSpell("sonahymnofvalorcheck");
+            PreloadSpell("sonasongofdiscordcheck");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("sonahymnofvaloraurab");
+            PreloadSpell("sonaariaofperseveranceaurab");
+            PreloadSpell("sonasongofdiscordaurab");
+        }
+    }
+}

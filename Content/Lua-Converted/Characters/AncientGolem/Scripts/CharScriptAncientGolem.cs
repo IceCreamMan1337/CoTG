@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAncientGolem : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("crestoftheancientgolem");
+            PreloadSpell("hpbyplayerlevel");
+        }
+    }
+}

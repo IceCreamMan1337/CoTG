@@ -94,3 +94,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerFortify : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("fortifybuff");
+        }
+    }
+}

@@ -75,3 +75,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenSlash3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_descisivestrike_indicator.troy");
+            PreloadParticle("garen_descisivestrike_indicator_02.troy");
+            PreloadSpell("garenslash3");
+            PreloadSpell("garenfastmove");
+        }
+    }
+}

@@ -48,3 +48,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainDampeningFieldMana : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf.troy");
+        }
+    }
+}

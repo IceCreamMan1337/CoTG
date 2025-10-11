@@ -45,3 +45,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Waypoint : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tutorial_waypoint_yellow.troy");
+        }
+    }
+}

@@ -76,3 +76,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class BrandBlazeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("brandsearparticle");
+            PreloadSpell("brandablaze");
+        }
+    }
+}

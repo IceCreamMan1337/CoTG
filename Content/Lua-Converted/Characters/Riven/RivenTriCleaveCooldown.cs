@@ -31,3 +31,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleaveCooldown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("riventricleave");
+            PreloadSpell("riventricleavecooldown");
+        }
+    }
+}

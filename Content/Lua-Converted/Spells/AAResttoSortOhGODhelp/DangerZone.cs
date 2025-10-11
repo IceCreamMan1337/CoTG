@@ -80,3 +80,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DangerZone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_valkrie_impact_cas.troy");
+            PreloadParticle("corki_fire_buf.troy");
+            PreloadSpell("dangerzonetarget");
+        }
+    }
+}

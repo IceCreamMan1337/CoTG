@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Soulsteal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mejaissoulstealer_itm.troy");
+        }
+    }
+}

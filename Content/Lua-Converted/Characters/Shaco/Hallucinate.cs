@@ -72,3 +72,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class Hallucinate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hallucinate");
+            PreloadSpell("hallucinatefull");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("backstab");
+        }
+    }
+}

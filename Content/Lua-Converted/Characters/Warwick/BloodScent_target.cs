@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BloodScent_target : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("wolfman_bloodscent_marker.troy");
+        }
+    }
+}

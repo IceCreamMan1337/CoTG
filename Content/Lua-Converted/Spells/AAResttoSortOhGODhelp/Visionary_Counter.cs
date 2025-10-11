@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Visionary_Counter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("visionary_counter");
+            PreloadSpell("visionary");
+        }
+    }
+}

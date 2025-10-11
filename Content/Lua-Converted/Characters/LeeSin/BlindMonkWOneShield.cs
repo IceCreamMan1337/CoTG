@@ -73,3 +73,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkWOneShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_w_shield_self_deactivate.troy");
+            PreloadParticle("blindmonk_w_shield_block.troy");
+        }
+    }
+}

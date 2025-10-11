@@ -44,3 +44,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssaultBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonhaste");
+            PreloadParticle("talon_ult_sound.troy");
+            PreloadSpell("talonshadowassaultmisone");
+            PreloadSpell("talonshadowassaultbuff");
+        }
+    }
+}

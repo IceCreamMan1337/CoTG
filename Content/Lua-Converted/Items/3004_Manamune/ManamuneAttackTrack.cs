@@ -33,3 +33,13 @@
         */
     }
 }
+namespace PreLoads
+{
+    public class ManamuneAttackTrack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tearofthegoddess_itm.troy");
+        }
+    }
+}

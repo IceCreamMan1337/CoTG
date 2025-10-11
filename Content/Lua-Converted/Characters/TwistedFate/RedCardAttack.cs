@@ -52,3 +52,16 @@
 
     }
 }
+namespace PreLoads
+{
+    public class RedCardAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pickacard");
+            PreloadSpell("redcardpreattack");
+            PreloadParticle("pickacard_red_tar.troy");
+            PreloadSpell("cardmasterslow");
+        }
+    }
+}

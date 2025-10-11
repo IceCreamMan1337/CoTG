@@ -101,3 +101,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotTerrorCapacitorActive2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotterrorcapacitor_buf.troy");
+            PreloadSpell("urgotslow");
+        }
+    }
+}

@@ -121,3 +121,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HowlingGale : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("howlinggale_cas.troy");
+            PreloadCharacter("testcube");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("howlinggalespell");
+            PreloadSpell("howlinggalespell1");
+            PreloadSpell("howlinggalespell2");
+            PreloadSpell("howlinggalespell3");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("howlinggale");
+        }
+    }
+}

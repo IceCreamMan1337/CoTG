@@ -35,3 +35,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDemacianStandardBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvandemacianstandard_shield.troy");
+        }
+    }
+}

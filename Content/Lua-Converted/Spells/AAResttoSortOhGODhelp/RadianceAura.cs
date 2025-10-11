@@ -59,3 +59,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RadianceAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("taric_gemstorm_aura.troy");
+        }
+    }
+}

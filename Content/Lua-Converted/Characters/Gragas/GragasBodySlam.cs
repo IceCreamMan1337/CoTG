@@ -144,3 +144,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasBodySlam : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("gragasbodyslamholder");
+            PreloadParticle("gragas_bodyslam_cas.troy");
+            PreloadSpell("gragasbodyslam");
+            PreloadParticle("gragas_bodyslam_cas_02.troy");
+            PreloadParticle("gragas_bodyslam_cas_03.troy");
+            PreloadParticle("gragas_bodyslam_unit_tar_02.troy");
+            PreloadParticle("gragas_bodyslam_unit_tar.troy");
+            PreloadSpell("gragasbodyslamtargetslow");
+        }
+    }
+}

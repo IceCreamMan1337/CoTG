@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandScorchCount : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("brandscorchcount");
+            PreloadSpell("brandscorch");
+        }
+    }
+}

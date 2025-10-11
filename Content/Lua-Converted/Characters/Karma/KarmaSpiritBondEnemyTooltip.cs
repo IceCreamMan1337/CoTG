@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaSpiritBondEnemyTooltip : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmaspiritbondc");
+        }
+    }
+}

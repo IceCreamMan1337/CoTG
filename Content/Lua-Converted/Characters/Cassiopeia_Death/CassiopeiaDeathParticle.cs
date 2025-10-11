@@ -32,3 +32,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cassiopeiadeath.troy");
+            PreloadParticle("cassdeathdust.troy");
+            PreloadCharacter("cassiopeia_death");
+        }
+    }
+}

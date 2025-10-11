@@ -57,3 +57,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PhosphorusBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_phosphorous_bomb_tar.troy");
+        }
+    }
+}

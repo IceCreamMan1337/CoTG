@@ -145,3 +145,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Bushwhack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nidalee_bushwhack_set_02.troy");
+            PreloadParticle("nidalee_bushwhack_trigger_01.troy");
+            PreloadParticle("nidalee_bushwhack_trigger_02.troy");
+            PreloadSpell("bushwhackdebuff");
+            PreloadSpell("destealth");
+            PreloadParticle("nidalee_trap_team_id_green.troy");
+            PreloadParticle("empty.troy");
+            PreloadCharacter("nidalee_spear");
+        }
+    }
+}

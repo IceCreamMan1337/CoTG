@@ -25,3 +25,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinShieldRelic : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinshieldrelic");
+            PreloadSpell("odinshieldrelicaura");
+            PreloadSpell("odinshieldrelicbuff");
+            PreloadSpell("odinshieldrelicbuffheal");
+        }
+    }
+}

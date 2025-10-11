@@ -135,3 +135,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSlideM : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancslidereturnm");
+            PreloadParticle("leblanc_displacement_blink_indicator_ult.troy");
+            PreloadParticle("leblanc_displacement_cas.troy");
+            PreloadParticle("leblanc_displacement_blink_return_trigger.troy");
+            PreloadSpell("leblancslide");
+            PreloadSpell("leblancslidewallfixm");
+            PreloadParticle("leblanc_displacement_cas_ult.troy");
+            PreloadSpell("leblancslidemovem");
+        }
+    }
+}

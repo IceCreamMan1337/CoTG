@@ -45,3 +45,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcanopulseDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender10vision");
+            PreloadSpell("xeratharcanopulsepartfix");
+            PreloadSpell("xeratharcanopulsepartfix2");
+            PreloadSpell("xeratharcanopulsedeath");
+            PreloadSpell("expirationtimer");
+            PreloadParticle("xerathr_beam.troy");
+            PreloadParticle("xerath_beam_hit.troy");
+            PreloadParticle("xerath_magechains_consume.troy");
+            PreloadSpell("xerathmagechainsroot");
+        }
+    }
+}

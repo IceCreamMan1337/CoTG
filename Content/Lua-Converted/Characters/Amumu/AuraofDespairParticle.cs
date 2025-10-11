@@ -35,3 +35,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AuraofDespairParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("auraofdespairdrainlife");
+        }
+    }
+}

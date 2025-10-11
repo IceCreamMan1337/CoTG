@@ -38,3 +38,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxPrismaticWaveMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxprismaticwaveshieldself");
+            PreloadSpell("luxprismaticwaveshield");
+        }
+    }
+}

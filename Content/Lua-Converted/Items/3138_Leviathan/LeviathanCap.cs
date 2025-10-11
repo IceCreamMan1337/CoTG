@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeviathanCap : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leviathanstats");
+            PreloadSpell("leviathancheck");
+        }
+    }
+}

@@ -61,3 +61,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CrestOfNaturesFury : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("regen_rune_buf.troy");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+        }
+    }
+}

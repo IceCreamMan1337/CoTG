@@ -167,3 +167,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVCataclysm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvancataclysm_sound.troy");
+            PreloadSpell("jarvanivcataclysm");
+            PreloadSpell("jarvanivcataclysmattack");
+            PreloadSpell("unstoppableforcemarker");
+            PreloadSpell("jarvanivcataclysmvisibility");
+            PreloadParticle("jarvancataclysm_tar.troy");
+            PreloadCharacter("jarvanivwall");
+            PreloadSpell("crystallizepush");
+        }
+    }
+}

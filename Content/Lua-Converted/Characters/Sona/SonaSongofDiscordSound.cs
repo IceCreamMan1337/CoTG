@@ -89,3 +89,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaSongofDiscordSound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonasoundoff");
+        }
+    }
+}

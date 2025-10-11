@@ -20,3 +20,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleCarpetBombSound1 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rumblecarpetbombsoundstart.troy");
+        }
+    }
+}

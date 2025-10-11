@@ -112,3 +112,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharNetherGrasp : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("suppression");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("alzaharvoidlingcount");
+            PreloadSpell("alzaharnethergraspsound");
+            PreloadParticle("alzaharnethergrasp_beam.troy");
+            PreloadSpell("root");
+            PreloadSpell("alzaharnethergrasp");
+        }
+    }
+}

@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MalzaharVoidlingBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("malzahar");
+        }
+    }
+}

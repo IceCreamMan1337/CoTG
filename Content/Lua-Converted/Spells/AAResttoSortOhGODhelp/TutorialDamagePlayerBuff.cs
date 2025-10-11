@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TutorialDamagePlayerBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("fallenone_nova.troy");
+        }
+    }
+}

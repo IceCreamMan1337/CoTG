@@ -37,3 +37,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonRageReady : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("renekton_rage_state.troy");
+        }
+    }
+}

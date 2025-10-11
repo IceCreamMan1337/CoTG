@@ -29,3 +29,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RebirthCooldown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rebirthready");
+        }
+    }
+}

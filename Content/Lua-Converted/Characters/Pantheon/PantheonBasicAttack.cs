@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PantheonBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_certaindeath");
+        }
+    }
+}

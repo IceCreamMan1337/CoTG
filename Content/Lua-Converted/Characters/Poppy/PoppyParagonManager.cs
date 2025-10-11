@@ -43,3 +43,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyParagonManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppyparagonstats");
+            PreloadSpell("poppyparagonicon");
+            PreloadSpell("poppyparagonparticle");
+            PreloadParticle("poppydam_buf.troy");
+            PreloadParticle("poppydef_buf.troy");
+        }
+    }
+}

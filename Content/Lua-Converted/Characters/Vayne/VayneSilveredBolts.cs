@@ -85,3 +85,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneSilveredBolts : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vaynesilvereddebuff");
+            PreloadParticle("vayne_w_tar.troy");
+        }
+    }
+}

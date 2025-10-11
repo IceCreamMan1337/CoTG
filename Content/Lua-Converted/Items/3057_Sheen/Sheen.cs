@@ -66,3 +66,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Sheen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sheendelay");
+            PreloadSpell("sheen");
+        }
+    }
+}

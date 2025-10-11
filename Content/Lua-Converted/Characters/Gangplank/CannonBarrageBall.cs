@@ -183,3 +183,17 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class CannonBarrageBall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("pirate_cannonbarrage_point.troy");
+            PreloadCharacter("gangplank");
+            PreloadParticle("pirate_cannonbarrage_tar.troy");
+            PreloadCharacter("testcube");
+        }
+    }
+}

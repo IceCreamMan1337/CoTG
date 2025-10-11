@@ -89,3 +89,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InfiniteDuressChannel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("infiniteduress_tar.troy");
+            PreloadSpell("suppression");
+            PreloadSpell("infiniteduresssound");
+            PreloadSpell("infiniteduresschannel");
+        }
+    }
+}

@@ -70,3 +70,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkWTwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_w_ironwill_armor.troy");
+            PreloadSpell("blindmonkwmanager");
+        }
+    }
+}

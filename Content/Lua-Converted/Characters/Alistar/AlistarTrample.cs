@@ -62,3 +62,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlistarTrample : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("alistar_trample_01.troy");
+            PreloadParticle("alistar_nose_puffs.troy");
+            PreloadParticle("alistar_trample_head.troy");
+            PreloadParticle("alistar_trample_hand.troy");
+        }
+    }
+}

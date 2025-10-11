@@ -80,3 +80,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SpellFlux : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spellflux_tar2.troy");
+            PreloadSpell("desperatepower");
+            PreloadParticle("desperatepower_aoe.troy");
+            PreloadParticle("manaleach_tar.troy");
+        }
+    }
+}

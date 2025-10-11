@@ -95,3 +95,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioBulwark : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_bullwark_target_shield_01.troy");
+            PreloadParticle("galio_bullwark_target_shield_01_self.troy");
+            PreloadSpell("galiobulwarkheal");
+            PreloadParticle("galio_bullwark_shield_activate_self.troy");
+            PreloadParticle("galio_bullwark_shield_activate.troy");
+        }
+    }
+}

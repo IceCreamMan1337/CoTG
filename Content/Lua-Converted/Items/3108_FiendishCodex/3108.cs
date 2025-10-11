@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3108 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fiendishcodex");
+        }
+    }
+}

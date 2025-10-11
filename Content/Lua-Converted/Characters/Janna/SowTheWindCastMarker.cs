@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SowTheWindCastMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sowthewind");
+            PreloadSpell("sowthewindcastmarker");
+        }
+    }
+}

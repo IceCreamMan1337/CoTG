@@ -41,3 +41,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasExplosiveCaskBoom : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("gragas_caskboom_classy.troy");
+            PreloadParticle("gragas_caskboom.troy");
+            PreloadSpell("moveawaycollision");
+            PreloadParticle("gragas_caskwine_tar.troy");
+        }
+    }
+}

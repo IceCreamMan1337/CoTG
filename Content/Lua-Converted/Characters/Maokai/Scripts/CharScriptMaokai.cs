@@ -80,3 +80,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMaokai : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maokaisapmagic");
+            PreloadSpell("maokaisapmagicchaos");
+            PreloadSpell("maokaisapmagicmelee");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("maokaisapmagicpass");
+        }
+    }
+}

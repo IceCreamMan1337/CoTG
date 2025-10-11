@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaPowerChordCount : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonapowerchordcount");
+            PreloadSpell("sonapowerchord");
+        }
+    }
+}

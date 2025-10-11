@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandSearParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandblazefrost_tar.troy");
+            PreloadParticle("brandblaze_tar.troy");
+        }
+    }
+}

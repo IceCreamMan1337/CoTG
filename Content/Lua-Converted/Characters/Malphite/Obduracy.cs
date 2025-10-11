@@ -29,3 +29,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class Obduracy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("obduracybuff");
+        }
+    }
+}

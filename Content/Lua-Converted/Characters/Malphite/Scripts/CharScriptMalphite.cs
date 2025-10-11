@@ -37,3 +37,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMalphite : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("malphiteshieldbeenhit");
+            PreloadSpell("malphiteshieldeffect");
+            PreloadSpell("malphitecleave");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("malphiteshield");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

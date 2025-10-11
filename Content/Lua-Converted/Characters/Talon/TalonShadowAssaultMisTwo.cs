@@ -52,3 +52,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssaultMisTwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonshadowassaultmistwo");
+            PreloadParticle("talon_ult_tar.troy");
+            PreloadParticle("bowmaster_basicattack_tar.troy");
+        }
+    }
+}

@@ -43,3 +43,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ManaBarrierIcon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("manabarrier");
+            PreloadSpell("manabarriercooldown");
+            PreloadParticle("steamgolemshield_hit.troy");
+        }
+    }
+}

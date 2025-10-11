@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ArmsmasterRelentlessMR : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jaxrelentlessassaultshield_hit.troy");
+        }
+    }
+}

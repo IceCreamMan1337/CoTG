@@ -59,3 +59,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DebilitatingPoison : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deadlyvenom");
+        }
+    }
+}

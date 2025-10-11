@@ -33,3 +33,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenSword : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("marthswordblue.troy");
+        }
+    }
+}

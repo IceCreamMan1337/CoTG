@@ -100,3 +100,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RocketGrabMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("fistreturn_mis.troy");
+            PreloadSpell("rocketgrab2");
+        }
+    }
+}

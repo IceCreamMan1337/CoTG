@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3089 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("zhonyasring");
+        }
+    }
+}

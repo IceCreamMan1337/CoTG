@@ -19,3 +19,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptChaosTurretNormal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretbonus");
+            PreloadSpell("turretbonushealth");
+            PreloadSpell("turretchampiondelta");
+            PreloadSpell("turretassistmanager");
+            PreloadSpell("turretdamagemanager");
+        }
+    }
+}

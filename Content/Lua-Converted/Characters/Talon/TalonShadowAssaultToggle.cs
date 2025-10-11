@@ -27,3 +27,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssaultToggle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonshadowassaultbuff");
+            PreloadSpell("talonshadowassaultmisone");
+        }
+    }
+}

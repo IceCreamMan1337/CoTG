@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShellBash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("defensiveballcurl");
+            PreloadSpell("powerball");
+        }
+    }
+}

@@ -20,3 +20,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSummoner_Rider_Chaos : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretshield");
+            PreloadParticle("feelnopain_eff.troy");
+        }
+    }
+}

@@ -63,3 +63,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class KarmaHeavenlyWaveC : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("karma_heavenlywave_self_heal.troy");
+            PreloadParticle("karma_heavenlywave_ally_heal.troy");
+            PreloadParticle("karma_heavenlywave_unit_tar.troy");
+        }
+    }
+}

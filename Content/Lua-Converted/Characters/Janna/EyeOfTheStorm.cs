@@ -89,3 +89,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class EyeOfTheStorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eyeofthestorm_buf.troy");
+            PreloadSpell("jannaeotsbuff");
+        }
+    }
+}

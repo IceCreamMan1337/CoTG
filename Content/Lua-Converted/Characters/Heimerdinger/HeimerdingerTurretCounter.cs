@@ -49,3 +49,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerdingerTurretCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("heimerdingerturrettimer");
+            PreloadSpell("heimerdingerturretready");
+        }
+    }
+}

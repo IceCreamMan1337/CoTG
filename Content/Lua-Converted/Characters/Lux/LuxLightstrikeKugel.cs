@@ -94,3 +94,22 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class LuxLightstrikeKugel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxlightstriketoggle");
+            PreloadParticle("luxlightstrike_mis.troy");
+            PreloadParticle("luxlightstrike_tar_green.troy");
+            PreloadParticle("luxlightstrike_tar_red.troy");
+            PreloadParticle("globalhit_mana.troy");
+            PreloadSpell("luxilluminatingfraulein");
+            PreloadSpell("luxlightstrikekugel");
+            PreloadParticle("luxblitz_nova.troy");
+            PreloadSpell("slow");
+        }
+    }
+}

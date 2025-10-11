@@ -34,3 +34,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcaneBarrageWrapperExt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xeratharcanebarragebarrage");
+            PreloadSpell("xeratharcanebarragewrapper");
+        }
+    }
+}

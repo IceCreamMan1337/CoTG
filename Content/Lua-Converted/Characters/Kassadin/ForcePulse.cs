@@ -46,3 +46,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ForcePulse : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("forcepulsecancast");
+            PreloadSpell("forcepulsecounter");
+            PreloadSpell("slow");
+        }
+    }
+}

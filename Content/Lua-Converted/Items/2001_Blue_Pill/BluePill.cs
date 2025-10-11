@@ -66,3 +66,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BluePill : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teleporthome.troy");
+            PreloadParticle("teleportarrive.troy");
+        }
+    }
+}

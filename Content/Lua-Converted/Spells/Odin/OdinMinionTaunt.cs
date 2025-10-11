@@ -60,3 +60,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinMinionTaunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianbuff");
+        }
+    }
+}

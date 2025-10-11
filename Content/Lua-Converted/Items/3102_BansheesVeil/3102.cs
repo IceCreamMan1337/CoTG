@@ -47,3 +47,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3102 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bansheesveiltimer");
+            PreloadSpell("bansheesveil");
+        }
+    }
+}

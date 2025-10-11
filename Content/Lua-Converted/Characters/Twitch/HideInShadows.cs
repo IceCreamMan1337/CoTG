@@ -128,3 +128,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HideInShadows : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hideinshadowsbuff");
+            PreloadSpell("hideinshadows");
+            PreloadSpell("hideinshadows_internal");
+            PreloadParticle("twitch_invis_cas.troy");
+        }
+    }
+}

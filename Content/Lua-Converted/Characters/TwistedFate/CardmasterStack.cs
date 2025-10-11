@@ -64,3 +64,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CardmasterStack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cardmasterstackparticle");
+            PreloadParticle("cardmasterstackattack_tar.troy");
+            PreloadSpell("cardmasterstackholder");
+        }
+    }
+}

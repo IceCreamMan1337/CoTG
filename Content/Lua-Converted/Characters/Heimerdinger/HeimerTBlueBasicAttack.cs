@@ -24,3 +24,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerTBlueBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+            PreloadSpell("chilled");
+        }
+    }
+}

@@ -62,3 +62,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasDrunkenRage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gragasdrunkenrage");
+            PreloadSpell("gragasbodyslamselfslow");
+            PreloadSpell("gragasdrunkenrageself");
+        }
+    }
+}

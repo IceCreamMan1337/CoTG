@@ -22,3 +22,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UrAniumRounds : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+            PreloadSpell("uraniumroundshit");
+            PreloadSpell("upgradeslow");
+            PreloadParticle("absolutezero_tar.troy");
+        }
+    }
+}

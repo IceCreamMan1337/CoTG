@@ -36,3 +36,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinPortal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinportalmovecheck");
+            PreloadSpell("odinportalchannel");
+            PreloadSpell("odinportalteleport");
+        }
+    }
+}

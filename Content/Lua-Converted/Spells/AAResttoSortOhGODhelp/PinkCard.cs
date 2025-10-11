@@ -48,3 +48,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PinkCard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("card_yellow_tag.troy");
+            PreloadParticle("deathscaress_nova.troy");
+        }
+    }
+}

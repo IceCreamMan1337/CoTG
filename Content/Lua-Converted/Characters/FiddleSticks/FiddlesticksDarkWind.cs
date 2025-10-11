@@ -61,3 +61,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class FiddlesticksDarkWind : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fiddlesticksdarkwindmissile");
+            PreloadSpell("darkwind");
+        }
+    }
+}

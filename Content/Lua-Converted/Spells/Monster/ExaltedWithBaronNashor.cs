@@ -44,3 +44,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ExaltedWithBaronNashor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nashor_rune_buf.troy");
+            PreloadParticle("innervatinglocket_itm.troy");
+        }
+    }
+}

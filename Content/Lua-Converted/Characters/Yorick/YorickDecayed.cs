@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDecayed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yoricksummondecayed");
+        }
+    }
+}

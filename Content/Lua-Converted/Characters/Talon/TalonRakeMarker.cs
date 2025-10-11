@@ -13,3 +13,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonRakeMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("bladergoue_bladeaoe_temp.troy");
+            PreloadSpell("root");
+        }
+    }
+}

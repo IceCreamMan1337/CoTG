@@ -27,3 +27,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WallOfPainBeam : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("wallofpain_new_post_green.troy");
+            PreloadParticle("wallofpain_new_post_red.troy");
+            PreloadParticle("wallofpain__new_beam.troy");
+        }
+    }
+}

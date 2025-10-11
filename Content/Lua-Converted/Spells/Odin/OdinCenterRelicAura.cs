@@ -74,3 +74,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCenterRelicAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_blue_defense.troy");
+            PreloadParticle("potionofgiantstrength_itm.troy");
+            PreloadParticle("placeholdershield.troy");
+            PreloadParticle("potionofelusiveness_itm.troy");
+            PreloadSpell("odincenterrelicaura");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("odincenterrelicbuff");
+            PreloadSpell("odinscorebigrelic");
+        }
+    }
+}

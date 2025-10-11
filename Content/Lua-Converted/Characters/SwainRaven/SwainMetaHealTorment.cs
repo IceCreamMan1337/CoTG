@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainMetaHealTorment : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swain_heal.troy");
+        }
+    }
+}

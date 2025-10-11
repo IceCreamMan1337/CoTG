@@ -29,3 +29,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandConflagrationMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandconflagration_tar_frost.troy");
+            PreloadParticle("brandconflagration_tar.troy");
+            PreloadSpell("brandablaze");
+        }
+    }
+}

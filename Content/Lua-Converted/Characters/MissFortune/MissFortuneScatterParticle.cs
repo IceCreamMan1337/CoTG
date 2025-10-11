@@ -41,3 +41,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneScatterParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("missfortune_makeitrain_tar_green.troy");
+            PreloadParticle("missfortune_makeitrain_tar_red.troy");
+            PreloadParticle("missfortune_makeitrain_incoming.troy");
+            PreloadParticle("missfortune_makeitrain_incoming_02.troy");
+            PreloadParticle("missfortune_makeitrain_incoming_03.troy");
+            PreloadParticle("missfortune_makeitrain_incoming_04.troy");
+        }
+    }
+}

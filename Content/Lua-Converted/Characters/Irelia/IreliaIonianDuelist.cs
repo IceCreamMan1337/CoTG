@@ -43,3 +43,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaIonianDuelist : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ireliaionianduelist");
+            PreloadParticle("irelia_new_passive_01.troy");
+            PreloadParticle("irelia_new_passive_02.troy");
+            PreloadParticle("irelia_new_passive_03.troy");
+        }
+    }
+}

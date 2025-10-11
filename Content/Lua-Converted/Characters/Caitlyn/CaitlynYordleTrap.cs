@@ -111,3 +111,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynYordleTrap : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("caitlyn_yordletrap_idle_green.troy");
+            PreloadParticle("caitlyn_yordletrap_idle_red.troy");
+            PreloadParticle("caitlyn_yordletrap_trigger_sound.troy");
+            PreloadParticle("caitlyn_yordletrap_trigger_02.troy");
+            PreloadSpell("caitlynyordletrapdebuff");
+            PreloadSpell("caitlynyordletrapsight");
+            PreloadSpell("caitlynyordletrap");
+            PreloadCharacter("caitlyntrap");
+        }
+    }
+}

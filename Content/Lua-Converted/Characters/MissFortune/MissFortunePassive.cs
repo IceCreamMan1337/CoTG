@@ -35,3 +35,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortunePassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunepassivestack");
+            PreloadParticle("missfortune_passive_tar_indicator.troy");
+        }
+    }
+}

@@ -72,3 +72,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaDissonanceCountdown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("yomughost");
+            PreloadSpell("yomughostminion");
+            PreloadParticle("urgotheatseekingindicator.troy");
+            PreloadSpell("yomudissonance");
+        }
+    }
+}

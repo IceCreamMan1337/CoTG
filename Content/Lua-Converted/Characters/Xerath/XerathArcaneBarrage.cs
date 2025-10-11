@@ -75,3 +75,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcaneBarrage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xerath_e_cas_green.troy");
+            PreloadParticle("xerath_e_cas_red.troy");
+            PreloadParticle("xerath_e_tar.troy");
+            PreloadParticle("xerath_barrage_tar.troy");
+            PreloadSpell("xerathmagechainsroot");
+            PreloadParticle("xerath_e_cas.troy");
+            PreloadCharacter("xeratharcanebarragelauncher");
+            PreloadSpell("xeratharcanebarrage");
+            PreloadSpell("xeratharcanebarragevision");
+        }
+    }
+}

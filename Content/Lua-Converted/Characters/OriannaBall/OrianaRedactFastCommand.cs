@@ -94,3 +94,20 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class OrianaRedactFastCommand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("unlockanimation");
+            PreloadSpell("yomuglobalcooldown");
+            PreloadSpell("yomuredacttarget");
+            PreloadSpell("yomughost");
+            PreloadSpell("yomughostself");
+            PreloadSpell("yomuredactshield");
+            PreloadSpell("yomuredact");
+            PreloadSpell("yomudesperatepower");
+        }
+    }
+}

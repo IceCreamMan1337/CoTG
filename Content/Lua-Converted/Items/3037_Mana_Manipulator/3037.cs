@@ -66,3 +66,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3037 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("manamanipulatorauraself");
+            PreloadSpell("manamanipulatoraurafriend");
+            PreloadParticle("zettasmanamanipulator_itm.troy");
+        }
+    }
+}

@@ -83,3 +83,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class RumbleGrenadeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumblegrenadedz");
+            PreloadSpell("rumblegrenadedebuff");
+            PreloadSpell("rumblegrenadezapeffect");
+            PreloadSpell("rumblegrenadeslow");
+            PreloadParticle("rumble_taze_tar.troy");
+        }
+    }
+}

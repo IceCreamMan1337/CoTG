@@ -34,3 +34,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcanopulseWPartFix2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender10vision");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

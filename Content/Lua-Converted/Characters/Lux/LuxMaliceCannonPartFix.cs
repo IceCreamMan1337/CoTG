@@ -33,3 +33,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxMaliceCannonPartFix : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

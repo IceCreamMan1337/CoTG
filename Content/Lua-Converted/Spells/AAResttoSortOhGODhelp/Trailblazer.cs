@@ -38,3 +38,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Trailblazer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("trailblazerapplicator");
+        }
+    }
+}

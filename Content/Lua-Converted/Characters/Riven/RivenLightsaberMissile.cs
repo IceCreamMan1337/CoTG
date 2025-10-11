@@ -40,3 +40,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class RivenLightsaberMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rivenlightsabermissiledebuff");
+        }
+    }
+}

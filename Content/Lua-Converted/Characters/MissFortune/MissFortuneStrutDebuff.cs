@@ -63,3 +63,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneStrutDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunestrutdebuff");
+            PreloadSpell("missfortunestrut");
+        }
+    }
+}

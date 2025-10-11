@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3183 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("prilisasblessing");
+        }
+    }
+}

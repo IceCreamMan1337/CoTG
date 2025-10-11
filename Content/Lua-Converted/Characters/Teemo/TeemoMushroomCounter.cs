@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TeemoMushroomCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("teemomushrooms");
+        }
+    }
+}

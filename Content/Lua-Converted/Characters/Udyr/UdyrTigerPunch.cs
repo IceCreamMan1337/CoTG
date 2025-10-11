@@ -31,3 +31,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrTigerPunch : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("udyrtigerstance");
+        }
+    }
+}

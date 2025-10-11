@@ -98,3 +98,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinPlantedObeliskBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardiansuppression");
+            PreloadSpell("odinguardianbuff");
+        }
+    }
+}

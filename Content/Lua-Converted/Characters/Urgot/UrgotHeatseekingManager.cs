@@ -41,3 +41,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotHeatseekingManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("urgotheatseekingammo");
+        }
+    }
+}

@@ -83,3 +83,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Carnivore : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eternalthirst_buf.troy");
+            PreloadSpell("feast");
+        }
+    }
+}

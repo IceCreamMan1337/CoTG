@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AbponsPaperFan : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stun");
+        }
+    }
+}

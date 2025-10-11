@@ -72,3 +72,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaSoundOff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonasoundoff");
+            PreloadSpell("sonaariaofperseverancesound");
+            PreloadSpell("sonahymnofvalorsound");
+            PreloadSpell("sonasongofdiscordsound");
+        }
+    }
+}

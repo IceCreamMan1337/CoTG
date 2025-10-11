@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3010 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("catalystheal");
+        }
+    }
+}

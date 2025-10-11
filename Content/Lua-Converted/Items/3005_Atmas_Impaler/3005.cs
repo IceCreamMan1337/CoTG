@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3005 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("atmasimpaler");
+        }
+    }
+}

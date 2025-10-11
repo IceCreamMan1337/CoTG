@@ -60,3 +60,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaLightningWall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("manaleach_tar2.troy");
+            PreloadSpell("orianadot");
+        }
+    }
+}

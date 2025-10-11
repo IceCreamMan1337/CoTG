@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundlePainBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundleult_self_buf.troy");
+        }
+    }
+}

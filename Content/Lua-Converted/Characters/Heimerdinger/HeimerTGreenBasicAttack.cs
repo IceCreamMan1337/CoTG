@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerTGreenBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+        }
+    }
+}

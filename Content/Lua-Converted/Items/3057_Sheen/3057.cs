@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3057 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sheendelay");
+            PreloadSpell("sheen");
+        }
+    }
+}

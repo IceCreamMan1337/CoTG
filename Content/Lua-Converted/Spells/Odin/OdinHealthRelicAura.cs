@@ -50,3 +50,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinHealthRelicAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odinhealthrelic.troy");
+            PreloadSpell("odinhealthrelicaura");
+            PreloadSpell("odinhealthrelicbuff");
+        }
+    }
+}

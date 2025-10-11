@@ -29,3 +29,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptredDragon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hpbyplayerlevel");
+            PreloadSpell("burning");
+        }
+    }
+}

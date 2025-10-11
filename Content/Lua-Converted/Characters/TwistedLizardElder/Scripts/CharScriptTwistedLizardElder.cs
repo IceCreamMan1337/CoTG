@@ -21,3 +21,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTwistedLizardElder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blessingofthelizardelder");
+            PreloadSpell("hpbyplayerlevel");
+        }
+    }
+}

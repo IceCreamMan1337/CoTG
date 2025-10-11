@@ -66,3 +66,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKayle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("judicatorholyfervordebuff");
+            PreloadSpell("judicatorreckoning");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("judicatorholyfervor");
+        }
+    }
+}

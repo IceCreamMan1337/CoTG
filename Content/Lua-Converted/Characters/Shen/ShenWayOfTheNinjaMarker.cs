@@ -68,3 +68,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenWayOfTheNinjaMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shenwayoftheninjaaura");
+        }
+    }
+}

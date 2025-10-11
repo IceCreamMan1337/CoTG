@@ -68,3 +68,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoia2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nocturneparanoia");
+            PreloadSpell("nocturneparanoiatargeting");
+            PreloadSpell("unstoppableforcemarker");
+            PreloadParticle("nocturneparanoiateamtarget.troy");
+            PreloadSpell("nocturneparanoiadash");
+        }
+    }
+}

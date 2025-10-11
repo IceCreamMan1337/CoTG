@@ -135,3 +135,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenFengShuiEngine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_ult_blade_swap_base.troy");
+            PreloadParticle("exile_ult_attack_buf.troy");
+            PreloadSpell("rivenwindslashready");
+            PreloadSpell("rivenizunablade");
+            PreloadSpell("rivenfengshuiengine");
+        }
+    }
+}

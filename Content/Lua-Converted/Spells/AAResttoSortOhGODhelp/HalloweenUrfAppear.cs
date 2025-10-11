@@ -39,3 +39,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HalloweenUrfAppear : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("halloweenurfcd");
+            PreloadParticle("ghosturf.troy");
+        }
+    }
+}

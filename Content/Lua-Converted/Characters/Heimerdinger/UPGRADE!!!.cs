@@ -57,3 +57,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UPGRADEùùù : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("h28gevolutionturret");
+            PreloadSpell("upgradeslow");
+            PreloadSpell("upgradebuff");
+        }
+    }
+}

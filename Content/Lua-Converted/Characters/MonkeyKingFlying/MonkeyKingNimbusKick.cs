@@ -64,3 +64,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingNimbusKick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeyking_q_self_mis.troy");
+            PreloadSpell("monkeykingnimbuskick");
+            PreloadSpell("monkeykingnimbuskickfx");
+            PreloadSpell("monkeykingnimbusas");
+        }
+    }
+}

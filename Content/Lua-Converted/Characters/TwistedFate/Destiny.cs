@@ -56,3 +56,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Destiny : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("destiny_marker");
+            PreloadSpell("gate");
+        }
+    }
+}

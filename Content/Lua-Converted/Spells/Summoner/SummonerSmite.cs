@@ -47,3 +47,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerSmite : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+        }
+    }
+}

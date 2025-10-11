@@ -89,3 +89,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SiphoningStrikeNew : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nassus_siphonstrike_beam_buf.troy");
+            PreloadParticle("nassus_siphonstrike_tar.troy");
+            PreloadSpell("siphoningstrike");
+            PreloadSpell("siphoningstrikenew");
+        }
+    }
+}

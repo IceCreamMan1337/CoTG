@@ -70,3 +70,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaSongofDiscord : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonahymnofvalor");
+            PreloadSpell("sonaariaofperseverance");
+            PreloadSpell("sonapowerchord");
+            PreloadSpell("sonasongofdiscord");
+            PreloadSpell("sonasongofdiscordcheck");
+            PreloadSpell("sonasongofdiscordhaste");
+            PreloadSpell("sonasongofdiscordaura");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

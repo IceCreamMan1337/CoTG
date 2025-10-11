@@ -44,3 +44,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3027 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rodofages_itm.troy");
+            PreloadSpell("catalystheal");
+        }
+    }
+}

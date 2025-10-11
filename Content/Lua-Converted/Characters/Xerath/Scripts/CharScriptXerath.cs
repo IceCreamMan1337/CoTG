@@ -35,3 +35,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptXerath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xerathlocusofpower");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("xerathparticlebuff");
+            PreloadSpell("xerathascended");
+        }
+    }
+}

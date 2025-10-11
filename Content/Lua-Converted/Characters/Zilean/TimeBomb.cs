@@ -102,3 +102,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TimeBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("timebomb_green.troy");
+            PreloadParticle("timebomb_red.troy");
+            PreloadParticle("timebombexplo.troy");
+            PreloadSpell("timebombcountdown");
+            PreloadSpell("timebomb");
+            PreloadCharacter("zilean");
+        }
+    }
+}

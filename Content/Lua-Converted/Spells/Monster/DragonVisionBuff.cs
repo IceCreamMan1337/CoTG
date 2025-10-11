@@ -47,3 +47,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DragonVisionBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("twistedtreelineclairvoyance.troy");
+            PreloadSpell("dragonvisionbuff");
+        }
+    }
+}

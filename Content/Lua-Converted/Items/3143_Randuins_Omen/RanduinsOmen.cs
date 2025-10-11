@@ -87,3 +87,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RanduinsOmen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+            PreloadSpell("cripple");
+            PreloadParticle("randuinsomen_cas.troy");
+            PreloadSpell("blackomen");
+        }
+    }
+}

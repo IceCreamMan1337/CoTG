@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVCataclysmSelfCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jarvanivcataclysm");
+        }
+    }
+}

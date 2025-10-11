@@ -38,6 +38,7 @@
             AddBuff(owner, owner, new Buffs.JaxPassive(), 1, 1, 25000, BuffAddType.RENEW_EXISTING, BuffType.AURA, 0, true, false, false);
             AddBuff(owner, owner, new Buffs.ChampionChampionDelta(), 1, 1, 25000, BuffAddType.REPLACE_EXISTING, BuffType.INTERNAL, 0, true, false, false);
             AddBuff(owner, owner, new Buffs.APBonusDamageToTowers(), 1, 1, 25000, BuffAddType.RENEW_EXISTING, BuffType.INTERNAL, 0, true, false, false);
+
             charVars.NumSwings = 0;
             charVars.LastHitTime = 0;
             charVars.UltStacks = 6;
@@ -45,6 +46,21 @@
         public override void OnDisconnect()
         {
             SpellCast(owner, owner, owner.Position3D, owner.Position3D, 6, SpellSlotType.InventorySlots, 1, true, false, false, false, false, false);
+        }
+    }
+}
+namespace PreLoads
+{
+    public class CharScriptJax : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("equipmentmastery");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("counterstrikedodgeup");
+            PreloadSpell("relentlessassault");
+            PreloadSpell("counterstrikecancast");
+            PreloadSpell("championchampiondelta");
         }
     }
 }

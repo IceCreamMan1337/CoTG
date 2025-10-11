@@ -109,3 +109,22 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRAPetBuff2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_ult_revive_tar.troy");
+            PreloadParticle("yorick_ult_02.troy");
+            PreloadParticle("yorick_revive_skin_teamid_green.troy");
+            PreloadParticle("yorick_revive_skin_teamid_red.troy");
+            PreloadSpell("leblancpassive");
+            PreloadSpell("yorickreviveallyself");
+            PreloadParticle("yorickrevenantdeathsound.troy");
+            PreloadSpell("yorickraself");
+            PreloadSpell("kogmawicathiansurprise");
+            PreloadSpell("kogmawicathiansurpriseready");
+        }
+    }
+}

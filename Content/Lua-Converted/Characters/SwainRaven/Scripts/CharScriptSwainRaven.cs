@@ -28,3 +28,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSwainRaven : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rebirthready");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("swaintorment");
+        }
+    }
+}

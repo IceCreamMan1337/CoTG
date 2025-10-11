@@ -90,3 +90,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class JavelinToss : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nidalee_javelintoss_tar.troy");
+        }
+    }
+}

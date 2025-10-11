@@ -36,3 +36,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NidaleeTakedownAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nidalee_cougar_takedown_tar.troy");
+            PreloadSpell("takedown");
+        }
+    }
+}

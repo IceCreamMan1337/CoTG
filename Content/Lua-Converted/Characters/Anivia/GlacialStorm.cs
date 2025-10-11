@@ -143,3 +143,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GlacialStorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cryo_storm_green_team.troy");
+            PreloadParticle("cryo_storm_red_team.troy");
+            PreloadSpell("chilled");
+            PreloadSpell("glacialstorm");
+        }
+    }
+}

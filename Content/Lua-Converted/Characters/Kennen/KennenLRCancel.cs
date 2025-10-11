@@ -29,3 +29,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class KennenLRCancel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenlightningrush");
+            PreloadSpell("kennenlightningrushdamage");
+        }
+    }
+}

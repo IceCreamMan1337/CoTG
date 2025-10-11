@@ -71,3 +71,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3105 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("aegisofthelegionauraself");
+            PreloadSpell("aegisofthelegionaurafriend");
+            PreloadParticle("zettasmanamanipulator_itm.troy");
+        }
+    }
+}

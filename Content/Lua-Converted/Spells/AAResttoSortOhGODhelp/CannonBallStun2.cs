@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CannonBallStun2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cannonballstun");
+        }
+    }
+}

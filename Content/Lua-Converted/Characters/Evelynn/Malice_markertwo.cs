@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Malice_markertwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("silentkiller");
+        }
+    }
+}

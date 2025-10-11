@@ -38,3 +38,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptLeeSin : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blindmonkrroot");
+            PreloadSpell("blindmonkpassive");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

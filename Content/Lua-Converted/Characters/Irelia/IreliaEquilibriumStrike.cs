@@ -45,3 +45,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class IreliaEquilibriumStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_equilibriumstrike_tar_01.troy");
+            PreloadSpell("slow");
+            PreloadParticle("irelia_equilibriumstrike_tar_02.troy");
+        }
+    }
+}

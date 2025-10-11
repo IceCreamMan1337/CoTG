@@ -85,3 +85,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaChakra : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmaheavenlywavec");
+            PreloadSpell("karmaspiritbondc");
+            PreloadSpell("karmasoulshieldc");
+            PreloadSpell("karmachakra");
+            PreloadSpell("karmaheavenlywave");
+            PreloadSpell("karmaspiritbond");
+            PreloadSpell("karmasoulshield");
+            PreloadSpell("karmachakracharge");
+            PreloadSpell("karmatwomantraparticle");
+            PreloadSpell("karmaonemantraparticle");
+            PreloadSpell("karmachakratimer");
+        }
+    }
+}

@@ -46,3 +46,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrDoubleStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("globalhit_yellow_tar.troy");
+        }
+    }
+}

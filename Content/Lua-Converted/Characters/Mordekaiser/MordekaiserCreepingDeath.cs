@@ -99,3 +99,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCreepingDeath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordekaiser_creepingdeath_auragold.troy");
+            PreloadParticle("mordekaiser_creepingdeath_aurared.troy");
+            PreloadParticle("mordekaiser_creepingdeath_aura.troy");
+            PreloadParticle("mordekaiser_creepingdeath_tar.troy");
+            PreloadSpell("mordekaisercreepingdeathcheck");
+            PreloadSpell("mordekaisercreepingdeathdebuff");
+        }
+    }
+}

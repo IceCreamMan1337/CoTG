@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotdeath.troy");
+        }
+    }
+}

@@ -54,3 +54,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class OlafRecklessStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("olaf_recklessswing_tar_02.troy");
+            PreloadParticle("olaf_recklessstrike_axe_charge.troy");
+            PreloadParticle("olaf_recklessswing_tar_04.troy");
+            PreloadParticle("olaf_recklessswing_tar_05.troy");
+            PreloadParticle("olaf_recklessswing_tar_03.troy");
+        }
+    }
+}

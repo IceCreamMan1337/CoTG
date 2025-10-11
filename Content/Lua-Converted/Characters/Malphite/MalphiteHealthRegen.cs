@@ -30,3 +30,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MalphiteHealthRegen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

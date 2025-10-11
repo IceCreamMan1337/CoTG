@@ -40,3 +40,14 @@
         */
     }
 }
+namespace PreLoads
+{
+    public class WitsEnd : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("witsendbuff");
+            PreloadSpell("witsendcounter");
+        }
+    }
+}

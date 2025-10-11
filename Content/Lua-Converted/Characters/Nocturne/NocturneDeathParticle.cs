@@ -8,3 +8,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturnedeath.troy");
+            PreloadSpell("root");
+        }
+    }
+}

@@ -38,3 +38,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class AlZaharCalloftheVoidMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("silence");
+        }
+    }
+}

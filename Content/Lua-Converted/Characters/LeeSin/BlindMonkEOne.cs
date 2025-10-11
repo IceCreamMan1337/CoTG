@@ -69,3 +69,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkEOne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_thundercrash_impact_cas.troy");
+            PreloadParticle("blindmonk_thundercrash_impact_02.troy");
+            PreloadParticle("blindmonk_e_cas.troy");
+            PreloadSpell("sharedwardbuff");
+            PreloadParticle("blindmonk_thundercrash_impact_unit_tar.troy");
+            PreloadParticle("blindmonk_e_thundercrash_tar.troy");
+            PreloadParticle("blindmonk_e_thundercrash_unit_tar_blood.troy");
+            PreloadSpell("blindmonkemanager");
+        }
+    }
+}

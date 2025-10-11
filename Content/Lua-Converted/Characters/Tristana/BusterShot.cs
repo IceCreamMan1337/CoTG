@@ -99,3 +99,15 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class BusterShot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("drawabead");
+            PreloadParticle("tristana_bustershot_unit_impact.troy");
+        }
+    }
+}

@@ -69,3 +69,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirHemoplagueDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vladhemoplague_proc.troy");
+        }
+    }
+}

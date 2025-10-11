@@ -82,3 +82,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserChildrenOfTheGrave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordekeiser_cotg_tar.troy");
+            PreloadSpell("mordekaisercotgdot");
+            PreloadSpell("mordekaisercotgrevive");
+        }
+    }
+}

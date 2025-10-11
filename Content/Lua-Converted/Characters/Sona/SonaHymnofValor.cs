@@ -114,3 +114,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaHymnofValor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonaariaofperseverance");
+            PreloadSpell("sonasongofdiscord");
+            PreloadSpell("sonapowerchord");
+            PreloadSpell("sonahymnofvalor");
+            PreloadSpell("sonahymnofvalorcheck");
+            PreloadSpell("sonahymnofvaloraura");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

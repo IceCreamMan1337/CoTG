@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrTurtleActivation : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("turtlestance.troy");
+            PreloadParticle("turtlestance_buf.troy");
+        }
+    }
+}

@@ -31,3 +31,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaMantraSBSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("karma_spiritbond_slow_trigger.troy");
+        }
+    }
+}

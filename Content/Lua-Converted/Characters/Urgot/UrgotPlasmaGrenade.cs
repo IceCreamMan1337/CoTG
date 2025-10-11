@@ -21,3 +21,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotPlasmaGrenade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

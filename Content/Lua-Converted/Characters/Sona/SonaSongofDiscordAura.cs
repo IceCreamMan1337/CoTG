@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaSongofDiscordAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonasongofdiscord_aura.troy");
+            PreloadSpell("sonasongofdiscordaurab");
+        }
+    }
+}

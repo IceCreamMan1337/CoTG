@@ -28,3 +28,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ExecutionersCalling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_50ms");
+            PreloadSpell("grievouswound");
+        }
+    }
+}

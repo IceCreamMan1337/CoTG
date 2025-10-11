@@ -29,3 +29,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOrianna : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yomuspellsword");
+            PreloadSpell("yomughostself");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("yomushockorb");
+        }
+    }
+}

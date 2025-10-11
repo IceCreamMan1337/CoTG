@@ -29,3 +29,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TeleportCancel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("summonerteleport");
+        }
+    }
+}

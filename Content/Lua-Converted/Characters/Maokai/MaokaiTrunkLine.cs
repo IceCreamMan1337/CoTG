@@ -90,3 +90,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MaokaiTrunkLine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maoki_trunksmash_cas.troy");
+            PreloadSpell("maokaitrunkline");
+            PreloadParticle("powerballhit.troy");
+            PreloadSpell("slow");
+            PreloadSpell("maokaitrunklinestun");
+        }
+    }
+}

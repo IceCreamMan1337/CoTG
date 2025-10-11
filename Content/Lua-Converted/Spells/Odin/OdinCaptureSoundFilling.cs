@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCaptureSoundFilling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin-capture-filling.troy");
+        }
+    }
+}

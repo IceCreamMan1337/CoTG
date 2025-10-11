@@ -136,3 +136,26 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainBeam : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swain_disintegrationbeam_beam.troy");
+            PreloadParticle("swain_disintegrationbeam_tar.troy");
+            PreloadParticle("swain_disintegrationbeam_beam_idle.troy");
+            PreloadSpell("swainbeamdamage");
+            PreloadParticle("swain_disintegrationbeam_cas_end.troy");
+            PreloadSpell("swainbeamexpirationtimer");
+            PreloadSpell("slow");
+            PreloadSpell("swainbeamdamageminion");
+            PreloadSpell("swainbeam");
+            PreloadCharacter("swainbeam");
+            PreloadSpell("swainbeamself");
+            PreloadSpell("resistantskin");
+            PreloadSpell("swainbeamdamageminionnashor");
+            PreloadSpell("swainbeamminion");
+        }
+    }
+}

@@ -154,3 +154,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyHeroicCharge : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("heroiccharge_cas.troy");
+            PreloadSpell("poppyheroicchargepart2");
+            PreloadSpell("poppyheroicchargepoppyfix");
+            PreloadParticle("heroiccharge_tar.troy");
+        }
+    }
+}

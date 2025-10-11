@@ -34,3 +34,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WujuStyleSuperCharged : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("masteryiwujudeactivated");
+        }
+    }
+}

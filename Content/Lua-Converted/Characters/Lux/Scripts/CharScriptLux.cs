@@ -35,3 +35,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptLux : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("luxdeath");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("luxilluminationpassive");
+            PreloadSpell("luxdeathparticle");
+        }
+    }
+}

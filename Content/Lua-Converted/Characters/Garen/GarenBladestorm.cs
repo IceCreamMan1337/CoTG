@@ -155,3 +155,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenBladestorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_bladestorm_cas_02.troy");
+            PreloadParticle("garen_weapon_glow_01.troy");
+            PreloadSpell("garenbladestorm");
+            PreloadParticle("garen_bladestormcrit_tar.troy");
+            PreloadParticle("garen_keeper0fpeace_tar_01.troy");
+            PreloadSpell("garenbladestormleave");
+        }
+    }
+}

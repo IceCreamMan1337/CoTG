@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Dragonbuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fireofthegreatdragon");
+        }
+    }
+}

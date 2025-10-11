@@ -58,3 +58,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Fling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("fling_land.troy");
+            PreloadSpell("root");
+        }
+    }
+}

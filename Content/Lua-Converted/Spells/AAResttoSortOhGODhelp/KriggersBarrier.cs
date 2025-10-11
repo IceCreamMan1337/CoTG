@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KriggersBarrier : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blackshield");
+        }
+    }
+}

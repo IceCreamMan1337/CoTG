@@ -54,3 +54,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FrostArcherIceArrowAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("frostarrow");
+        }
+    }
+}

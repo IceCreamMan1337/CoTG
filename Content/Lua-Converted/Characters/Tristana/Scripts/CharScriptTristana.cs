@@ -34,3 +34,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTristana : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("detonatingshot");
+            PreloadSpell("drawabead");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

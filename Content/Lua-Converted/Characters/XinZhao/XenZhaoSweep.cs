@@ -105,3 +105,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoSweep : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_audaciouscharge_self_trail_01.troy");
+            PreloadParticle("xenziou_audaciouscharge_tar_unit_instant.troy");
+            PreloadSpell("xenzhaosweep");
+            PreloadSpell("slow");
+        }
+    }
+}

@@ -56,3 +56,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShieldRelicAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_heal_rune.troy");
+            PreloadSpell("odinshieldrelicaura");
+            PreloadSpell("odinshieldrelicbuffheal");
+            PreloadSpell("odinscoresmallrelic");
+        }
+    }
+}

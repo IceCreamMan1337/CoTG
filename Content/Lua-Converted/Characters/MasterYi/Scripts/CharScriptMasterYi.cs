@@ -53,3 +53,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMasterYi : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wujustyle");
+            PreloadSpell("doublestrikeicon");
+            PreloadSpell("doublestrike");
+            PreloadSpell("alphastrike");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("masteryiwujudeactivated");
+        }
+    }
+}

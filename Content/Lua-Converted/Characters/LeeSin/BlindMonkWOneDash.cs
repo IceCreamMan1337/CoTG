@@ -60,3 +60,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkWOneDash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_w_self_mis.troy");
+            PreloadSpell("blindmonkwonedash");
+            PreloadSpell("blindmonkwoneshield");
+        }
+    }
+}

@@ -79,3 +79,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundleDesecrate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundledesecrate_green.troy");
+            PreloadParticle("trundledesecrate_red.troy");
+            PreloadSpell("trundlediseaseoverseer");
+            PreloadSpell("trundledesecratebuffs");
+            PreloadCharacter("testcube");
+            PreloadSpell("trundledesecrate");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

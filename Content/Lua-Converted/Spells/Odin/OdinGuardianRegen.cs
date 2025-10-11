@@ -50,3 +50,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianRegen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_heal.troy");
+        }
+    }
+}

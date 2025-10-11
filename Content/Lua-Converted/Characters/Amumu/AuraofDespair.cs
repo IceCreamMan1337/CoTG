@@ -84,3 +84,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AuraofDespair : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("auraofdespair");
+        }
+    }
+}

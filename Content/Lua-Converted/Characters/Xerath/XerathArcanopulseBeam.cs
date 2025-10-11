@@ -13,3 +13,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcanopulseBeam : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xerathr_beam_warning_green.troy");
+            PreloadParticle("xerathr_beam_warning_red.troy");
+        }
+    }
+}

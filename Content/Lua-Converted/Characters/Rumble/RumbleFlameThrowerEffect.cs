@@ -44,3 +44,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleFlameThrowerEffect : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumbleflamethrowerbuff");
+            PreloadParticle("rumble_gun_cas_02.troy");
+            PreloadParticle("rumble_gun_lite.troy");
+            PreloadParticle("rumble_gun_cas.troy");
+        }
+    }
+}

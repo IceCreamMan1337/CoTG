@@ -23,3 +23,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AsheSpiritOfTheHawkBubble : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("bowmaster_frosthawk_terminate.troy");
+            PreloadParticle("bowmaster_frosthawk_terminate_02.troy");
+        }
+    }
+}

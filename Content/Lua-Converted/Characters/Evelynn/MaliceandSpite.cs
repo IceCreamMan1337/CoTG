@@ -42,3 +42,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaliceandSpite : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("evelynnunlockanimation");
+            PreloadSpell("maliceandspite");
+        }
+    }
+}

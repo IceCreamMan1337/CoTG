@@ -41,3 +41,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancMIApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leblanc_mirrorimagepoof.troy");
+            PreloadSpell("leblancmi");
+            PreloadSpell("leblancpassivecooldown");
+            PreloadSpell("leblancmifull");
+        }
+    }
+}

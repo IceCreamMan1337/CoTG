@@ -71,3 +71,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptCorki : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("corkideathparticle");
+            PreloadSpell("rapidreload");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("missilebarrage");
+            PreloadSpell("corkimissilebarragenc");
+        }
+    }
+}

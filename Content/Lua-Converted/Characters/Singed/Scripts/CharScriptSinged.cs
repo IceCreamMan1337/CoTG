@@ -14,3 +14,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSinged : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("empoweredbulwark");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

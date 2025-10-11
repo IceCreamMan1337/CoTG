@@ -16,3 +16,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3154 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wrigglelantern");
+            PreloadSpell("madredsrazors");
+        }
+    }
+}

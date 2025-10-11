@@ -83,3 +83,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioRighteousGust : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("galiorighteousgustmissile");
+            PreloadCharacter("galio");
+            PreloadParticle("galio_windtunnel_unit_tar.troy");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("galiorighteousgusthaste");
+        }
+    }
+}

@@ -53,3 +53,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneBulletsClone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunebulletholder");
+            PreloadSpell("missfortuneplaceholder");
+            PreloadParticle("missfortune_bullettime_tar.troy");
+        }
+    }
+}

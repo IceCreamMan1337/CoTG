@@ -25,3 +25,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMorgana : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("empathizeaura");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

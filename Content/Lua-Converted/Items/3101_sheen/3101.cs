@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3101 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sting");
+        }
+    }
+}

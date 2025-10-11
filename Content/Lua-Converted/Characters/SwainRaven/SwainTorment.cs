@@ -65,3 +65,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainTorment : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swain_torment_tar.troy");
+            PreloadParticle("swain_torment_marker.troy");
+            PreloadParticle("swain_torment_dot.troy");
+        }
+    }
+}

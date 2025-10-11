@@ -46,3 +46,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class XerathArcaneBarrageMinion : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xerath_e_tar.troy");
+            PreloadParticle("xerath_barrage_tar.troy");
+            PreloadParticle("xerath_magechains_consume.troy");
+            PreloadSpell("xerathmagechainsroot");
+        }
+    }
+}

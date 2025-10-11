@@ -42,3 +42,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandScorchGround : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandphscorchground.troy");
+            PreloadSpell("brandablaze");
+        }
+    }
+}

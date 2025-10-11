@@ -55,3 +55,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoComboTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_chainattack_indicator.troy");
+        }
+    }
+}

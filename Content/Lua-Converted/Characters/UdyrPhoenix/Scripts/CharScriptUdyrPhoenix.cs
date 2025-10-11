@@ -19,3 +19,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptUdyrPhoenix : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("udyrmonkeyagility");
+        }
+    }
+}

@@ -43,3 +43,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineHealBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("meditate_eff.troy");
+        }
+    }
+}

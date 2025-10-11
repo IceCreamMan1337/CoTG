@@ -31,3 +31,16 @@
     }
 
 }
+namespace PreLoads
+{
+    public class MordekaiserSyphonOfDestruction : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisersyphondmg");
+            PreloadSpell("mordekaisersyphonparticle");
+            PreloadParticle("mordakaiser_siphonofdestruction_tar_02.troy");
+            PreloadParticle("mordakaiser_siphonofdestruction_tar.troy");
+        }
+    }
+}

@@ -39,3 +39,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GGun : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_gatlin_cas.troy");
+        }
+    }
+}

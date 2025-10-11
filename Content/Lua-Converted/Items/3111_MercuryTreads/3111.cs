@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3111 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hardening");
+            PreloadSpell("mercurytreads");
+        }
+    }
+}

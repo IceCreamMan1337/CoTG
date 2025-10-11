@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JackInTheBoxDamageSensor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jackintheboxhardlock");
+        }
+    }
+}

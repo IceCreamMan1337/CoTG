@@ -91,3 +91,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaSoulShieldC : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("karma_soulshield_buf.troy");
+            PreloadParticle("karmasoulshieldsound.troy");
+            PreloadSpell("karmasoulshieldanim");
+            PreloadParticle("karma_soulshield_buf_mantra.troy");
+            PreloadParticle("karma_souldshiled_ult_unit_tar.troy");
+        }
+    }
+}

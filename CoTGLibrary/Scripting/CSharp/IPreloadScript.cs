@@ -1,6 +1,6 @@
 ﻿namespace CoTG.CoTGServer.Scripting.CSharp;
 
-public interface IPreloadScript
+public interface IPreLoadScript
 {
     void Preload();
 }

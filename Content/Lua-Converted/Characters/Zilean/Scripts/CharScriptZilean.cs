@@ -27,3 +27,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptZilean : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("heightenedlearning");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

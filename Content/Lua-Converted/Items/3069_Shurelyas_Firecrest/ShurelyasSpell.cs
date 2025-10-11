@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShurelyasSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("haste_proc.troy");
+        }
+    }
+}

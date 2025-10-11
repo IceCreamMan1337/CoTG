@@ -98,3 +98,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WallOfPain : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wallofpaintarget");
+            PreloadSpell("wallofpainextra");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("wallofpainbeam");
+        }
+    }
+}

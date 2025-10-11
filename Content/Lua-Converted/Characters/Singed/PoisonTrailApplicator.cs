@@ -48,3 +48,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoisonTrailApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poisontrailmarker");
+            PreloadSpell("poisontrailtarget");
+        }
+    }
+}

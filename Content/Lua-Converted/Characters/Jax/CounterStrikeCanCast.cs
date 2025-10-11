@@ -75,3 +75,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CounterStrikeCanCast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("counterstrike_ready.troy");
+            PreloadParticle("counterstrike_dodged.troy");
+        }
+    }
+}

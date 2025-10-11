@@ -69,3 +69,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaNoxiousBlast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cassnoxioussnakeplane_green.troy");
+            PreloadParticle("cassnoxioussnakeplane_red.troy");
+            PreloadParticle("cassnoxious_tar.troy");
+            PreloadSpell("cassiopeianoxiousblastpoison");
+            PreloadSpell("cassiopeianoxiousblasthaste");
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

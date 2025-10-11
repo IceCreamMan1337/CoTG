@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdin_Blue_Minion_Caster : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinminion");
+        }
+    }
+}

@@ -64,3 +64,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerMana : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_mana.troy");
+        }
+    }
+}

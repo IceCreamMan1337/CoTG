@@ -65,3 +65,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InfiniteDuress : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("suppression");
+            PreloadSpell("infiniteduresschannel");
+            PreloadSpell("infiniteduresssound");
+        }
+    }
+}

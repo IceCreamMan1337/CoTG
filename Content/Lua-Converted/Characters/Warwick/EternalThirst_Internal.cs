@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class EternalThirst_Internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("eternalthirst");
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

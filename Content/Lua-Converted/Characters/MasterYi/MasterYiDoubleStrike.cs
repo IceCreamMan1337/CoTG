@@ -38,3 +38,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MasterYiDoubleStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("globalhit_yellow_tar.troy");
+            PreloadSpell("doublestrikeicon");
+        }
+    }
+}

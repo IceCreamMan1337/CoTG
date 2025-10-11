@@ -16,3 +16,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleaveUnlock : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("unlockanimation");
+            PreloadSpell("marthtricleaveunlock");
+        }
+    }
+}

@@ -112,3 +112,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoParry : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_selfshield_01_magic.troy");
+            PreloadParticle("xenziou_ult_cas.troy");
+            PreloadParticle("xenziou_utl_tar_02.troy");
+            PreloadParticle("xenziou_utl_tar.troy");
+            PreloadParticle("xenziou_utl_tar_03.troy");
+            PreloadSpell("xenzhaosweeparmor");
+        }
+    }
+}

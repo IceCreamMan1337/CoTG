@@ -132,3 +132,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShadowWalk : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wasstealthed");
+            PreloadSpell("shadowwalk");
+            PreloadSpell("shadowwalk_internal");
+            PreloadParticle("evelyn_invis_cas.troy");
+        }
+    }
+}

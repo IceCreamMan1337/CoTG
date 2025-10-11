@@ -72,3 +72,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxPrismaticWaveShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_feint_self_deactivate.troy");
+            PreloadParticle("spelleffect_proc.troy");
+        }
+    }
+}

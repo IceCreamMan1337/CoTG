@@ -41,3 +41,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaSunlightPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leonasolarbarriertracker");
+            PreloadSpell("leonasunlight");
+        }
+    }
+}

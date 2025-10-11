@@ -94,3 +94,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptNidalee_Cougar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vorpalspikes");
+            PreloadSpell("feast");
+            PreloadSpell("feastmarker");
+            PreloadParticle("eternalthirst_buf.troy");
+            PreloadSpell("carnivore");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

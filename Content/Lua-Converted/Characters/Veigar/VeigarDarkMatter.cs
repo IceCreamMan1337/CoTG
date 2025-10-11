@@ -71,3 +71,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VeigarDarkMatter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("permission_dark_matter_cas.troy");
+            PreloadParticle("permission_dark_matter_tar_leprechaun.troy");
+            PreloadParticle("permission_dark_matter_tar.troy");
+            PreloadCharacter("testcube");
+        }
+    }
+}

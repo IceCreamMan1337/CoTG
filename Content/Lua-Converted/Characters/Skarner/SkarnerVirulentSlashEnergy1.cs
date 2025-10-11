@@ -22,3 +22,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerVirulentSlashEnergy1 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("skarner_crystal_slash_activate_l.troy");
+            PreloadParticle("skarner_crystal_slash_activate_r.troy");
+        }
+    }
+}

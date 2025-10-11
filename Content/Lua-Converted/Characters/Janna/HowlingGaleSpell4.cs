@@ -41,3 +41,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class HowlingGaleSpell4 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("move");
+        }
+    }
+}

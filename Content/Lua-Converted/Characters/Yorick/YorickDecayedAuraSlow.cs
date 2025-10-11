@@ -36,3 +36,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDecayedAuraSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickdecayedslow");
+        }
+    }
+}

@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynPlaceholder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_mark_impact_tar.troy");
+        }
+    }
+}

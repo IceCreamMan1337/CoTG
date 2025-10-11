@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenShurikenThrow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenmarkofstorm");
+        }
+    }
+}

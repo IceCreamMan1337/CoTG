@@ -83,3 +83,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class EzrealArcaneShift : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("ezreal_arcaneshift_cas.troy");
+            PreloadParticle("ezreal_arcaneshift_flash.troy");
+        }
+    }
+}

@@ -99,3 +99,15 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class Cannibalism : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eternalthirst_buf.troy");
+            PreloadSpell("cannibalism");
+        }
+    }
+}

@@ -39,3 +39,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneRShotExtra : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("missfortune_richochet_tar_second_02.troy");
+            PreloadParticle("missfortune_richochet_tar_second.troy");
+        }
+    }
+}

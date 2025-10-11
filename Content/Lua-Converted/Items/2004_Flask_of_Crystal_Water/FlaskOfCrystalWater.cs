@@ -42,3 +42,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FlaskOfCrystalWater : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("flaskofcrystalwater");
+            PreloadSpell("potion_internal");
+        }
+    }
+}

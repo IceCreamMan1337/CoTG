@@ -175,3 +175,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiSaplingMine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maoki_sapling_detonate.troy");
+            PreloadSpell("maokaisapling2");
+            PreloadParticle("maokai_sapling_rdy_indicator_green.troy");
+            PreloadParticle("maokai_sapling_rdy_indicator_red.troy");
+            PreloadParticle("maokai_sapling_team_id_green.troy");
+            PreloadParticle("maokai_sapling_team_id_red.troy");
+        }
+    }
+}

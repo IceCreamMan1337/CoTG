@@ -43,3 +43,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynAceintheHoleMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("caitlyn_ace_tar.troy");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("caitlynaceinthehole");
+        }
+    }
+}

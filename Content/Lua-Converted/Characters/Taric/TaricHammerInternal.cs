@@ -35,3 +35,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TaricHammerInternal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("taric_hammerinternal.troy");
+        }
+    }
+}

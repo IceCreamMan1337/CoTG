@@ -35,3 +35,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrTigerShred : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("udyr_tiger_buf.troy");
+            PreloadParticle("udyr_tiger_buf_r.troy");
+            PreloadSpell("udyrtigerpunchbleed");
+            PreloadSpell("udyrtigershred");
+        }
+    }
+}

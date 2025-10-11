@@ -52,3 +52,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CH1ConcussionGrenade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

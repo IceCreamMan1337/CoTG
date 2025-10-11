@@ -36,3 +36,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoThrust3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_chainattack_03.troy");
+            PreloadSpell("xenzhaocomboautofinish");
+            PreloadSpell("xenzhaoknockup");
+        }
+    }
+}

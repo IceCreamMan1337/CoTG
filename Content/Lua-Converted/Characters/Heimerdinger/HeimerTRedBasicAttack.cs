@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerTRedBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+        }
+    }
+}

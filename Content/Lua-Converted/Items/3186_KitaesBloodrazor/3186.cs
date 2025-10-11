@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3186 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("OdinBloodrazor");
+        }
+    }
+}

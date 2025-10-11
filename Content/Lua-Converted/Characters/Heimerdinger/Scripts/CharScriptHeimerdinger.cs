@@ -35,3 +35,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptHeimerdinger : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("heimerdingerturretdetonation");
+            PreloadSpell("techmaturgicalicon");
+            PreloadSpell("heimerdingerturretready");
+        }
+    }
+}

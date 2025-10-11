@@ -21,3 +21,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandScorchAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("spellbook1");
+            PreloadSpell("brandscorchground");
+            PreloadSpell("brandscorch");
+        }
+    }
+}

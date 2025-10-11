@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("lux_death.troy");
+        }
+    }
+}

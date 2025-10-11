@@ -52,3 +52,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class EzrealRisingSpellForce : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ezrealrisingspellforce");
+            PreloadParticle("ezreal_glow1.troy");
+            PreloadParticle("ezreal_glow2.troy");
+            PreloadParticle("ezreal_glow3.troy");
+            PreloadParticle("ezreal_glow4.troy");
+            PreloadParticle("ezreal_glow5.troy");
+        }
+    }
+}

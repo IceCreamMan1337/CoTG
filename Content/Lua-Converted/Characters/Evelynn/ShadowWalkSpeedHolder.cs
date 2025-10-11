@@ -69,3 +69,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShadowWalkSpeedHolder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shadowwalkspeedholder");
+            PreloadSpell("shadowwalkspeed");
+        }
+    }
+}

@@ -63,3 +63,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliTwinDisciplines : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("akalitwinap");
+            PreloadSpell("akalitwindmg");
+        }
+    }
+}

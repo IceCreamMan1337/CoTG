@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenCommand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_commandingpresence_unit_buf_self.troy");
+            PreloadParticle("garen_command_cas.troy");
+        }
+    }
+}

@@ -71,3 +71,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShadowStep : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("katarina_shadowstep_cas.troy");
+            PreloadParticle("katarina_shadowstep_return.troy");
+            PreloadSpell("killerinstinct");
+            PreloadSpell("shadowstepdodge");
+            PreloadParticle("katarina_shadowstep_tar.troy");
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("destealth");
+        }
+    }
+}

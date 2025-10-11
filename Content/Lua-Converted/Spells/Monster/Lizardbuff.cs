@@ -9,3 +9,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Lizardbuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blessingofthelizardelder");
+            PreloadParticle("neutralmonster_buf.troy");
+        }
+    }
+}

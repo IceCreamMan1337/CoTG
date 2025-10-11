@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiUnstableGrowthRoot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maokai_elementaladvance_root_01.troy");
+            PreloadParticle("maokai_elementaladvance_root_02.troy");
+        }
+    }
+}

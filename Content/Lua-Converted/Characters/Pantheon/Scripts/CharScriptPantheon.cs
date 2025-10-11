@@ -43,3 +43,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptPantheon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_certaindeath");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("pantheon_aegis");
+        }
+    }
+}

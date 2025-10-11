@@ -58,3 +58,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirTidesofBloodNuke : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vladimirtidesofbloodcost");
+        }
+    }
+}

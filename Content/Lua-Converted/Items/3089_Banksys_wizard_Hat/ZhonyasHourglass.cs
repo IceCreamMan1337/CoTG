@@ -46,3 +46,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ZhonyasHourglass : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gate");
+            PreloadSpell("zhonyasringshield");
+        }
+    }
+}

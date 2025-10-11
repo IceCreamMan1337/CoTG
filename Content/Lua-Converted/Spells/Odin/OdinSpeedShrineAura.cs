@@ -117,3 +117,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinSpeedShrineAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_shrine_time.troy");
+            PreloadSpell("odinshrinebombbuff");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("odinspeedshrinebuff");
+        }
+    }
+}

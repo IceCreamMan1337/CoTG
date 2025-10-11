@@ -104,3 +104,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleCarpetBombEffect : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rumble_ult_impact.troy");
+            PreloadParticle("rumble_ult_impact_burn_cannon_ball_team_id_green.troy");
+            PreloadParticle("rumble_ult_impact_burn_cannon_ball_team_id_red.troy");
+            PreloadParticle("rumble_ult_impact_burn_pineapple_team_id_green.troy");
+            PreloadParticle("rumble_ult_impact_burn_pineapple_team_id_red.troy");
+            PreloadParticle("rumble_ult_impact_burn_teamid_green.troy");
+            PreloadParticle("rumble_ult_impact_burn_teamid_red.troy");
+            PreloadSpell("rumblecarpetbombslow");
+            PreloadSpell("rumblecarpetbombburnorder");
+            PreloadSpell("rumblecarpetbombburndest");
+        }
+    }
+}

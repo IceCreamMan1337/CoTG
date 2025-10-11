@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SoulShroudAuraFriend : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("zettasmanamanipulator_itm.troy");
+        }
+    }
+}

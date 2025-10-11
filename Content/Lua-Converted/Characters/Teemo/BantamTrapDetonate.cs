@@ -40,3 +40,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BantamTrapDetonate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shroommine.troy");
+            PreloadSpell("slow");
+        }
+    }
+}

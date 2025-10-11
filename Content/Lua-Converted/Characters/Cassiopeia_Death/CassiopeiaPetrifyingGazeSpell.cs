@@ -44,3 +44,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaPetrifyingGazeSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cassiopeiapetrifyinggaze");
+            PreloadSpell("slow");
+            PreloadParticle("casspetrifymiss_tar.troy");
+            PreloadSpell("root");
+        }
+    }
+}

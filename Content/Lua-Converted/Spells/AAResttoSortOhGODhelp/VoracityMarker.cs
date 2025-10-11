@@ -41,3 +41,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VoracityMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("voracity");
+            PreloadParticle("katarina_spell_refresh_indicator.troy");
+        }
+    }
+}

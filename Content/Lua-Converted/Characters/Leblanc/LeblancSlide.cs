@@ -119,3 +119,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSlide : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancslidereturn");
+            PreloadParticle("leblanc_displacement_blink_indicator.troy");
+            PreloadParticle("leblanc_displacement_cas.troy");
+            PreloadParticle("leblanc_displacement_blink_return_trigger.troy");
+            PreloadSpell("leblancslidewallfix");
+            PreloadSpell("leblancslidem");
+            PreloadSpell("leblancslidemove");
+        }
+    }
+}

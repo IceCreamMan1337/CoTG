@@ -39,3 +39,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_GrandSkyfall_FallD : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+            PreloadParticle("globalhit_physical.troy");
+        }
+    }
+}

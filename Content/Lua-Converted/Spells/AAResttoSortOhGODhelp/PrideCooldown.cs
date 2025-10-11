@@ -45,3 +45,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PrideCooldown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("prideshield");
+        }
+    }
+}

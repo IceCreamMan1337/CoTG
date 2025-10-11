@@ -87,3 +87,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleGrenade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumblegrenadecd");
+            PreloadSpell("rumblegrenadecounter");
+            PreloadSpell("rumbleoverheat");
+            PreloadSpell("rumbleheatdelay");
+            PreloadSpell("rumbledangerzone");
+            PreloadSpell("rumblegrenadedz");
+        }
+    }
+}

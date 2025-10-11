@@ -69,3 +69,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3097 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("emblemofvalorparticle");
+            PreloadSpell("emblemofvalor");
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

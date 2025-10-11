@@ -37,3 +37,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Teleport_DeathRemoval : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("teleport_turret");
+            PreloadSpell("teleport_target");
+        }
+    }
+}

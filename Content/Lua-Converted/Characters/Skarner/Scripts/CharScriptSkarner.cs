@@ -72,3 +72,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSkarner : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("skarnerbrushcheck");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("skarnerimpaleflashlock");
+        }
+    }
+}

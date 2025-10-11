@@ -38,3 +38,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoBattleCryPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xen_ziou_battlecry_passive.troy");
+        }
+    }
+}

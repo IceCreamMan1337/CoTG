@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3123 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mourning");
+        }
+    }
+}

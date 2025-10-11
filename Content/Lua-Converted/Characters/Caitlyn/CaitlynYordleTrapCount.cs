@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynYordleTrapCount : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("caitlynyordletrap");
+        }
+    }
+}

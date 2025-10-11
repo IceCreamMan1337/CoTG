@@ -34,3 +34,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundleQDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundleqdebuff_buf.troy");
+            PreloadSpell("trundleq");
+        }
+    }
+}

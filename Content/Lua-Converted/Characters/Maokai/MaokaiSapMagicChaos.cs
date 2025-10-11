@@ -15,3 +15,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiSapMagicChaos : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maokaisapmagicmelee");
+            PreloadSpell("maokaisapmagichot");
+        }
+    }
+}

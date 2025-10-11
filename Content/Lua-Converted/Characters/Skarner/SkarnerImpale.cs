@@ -188,3 +188,20 @@ namespace Buffs
 
     }
 }
+namespace PreLoads
+{
+    public class SkarnerImpale : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("skarner_ult_beam.troy");
+            PreloadParticle("skarner_ult_tail_tip.troy");
+            PreloadParticle("skarner_ult_tar_01.troy");
+            PreloadParticle("skarner_ult_tar_04.troy");
+            PreloadSpell("suppression");
+            PreloadSpell("skarnerimpale");
+            PreloadParticle("skarner_ult_tar_03.troy");
+            PreloadSpell("skarnerimpalebuff");
+        }
+    }
+}

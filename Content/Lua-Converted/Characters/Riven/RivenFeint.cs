@@ -94,3 +94,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenFeint : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_e_interupt.troy");
+            PreloadParticle("exile_e_mis.troy  ");
+            PreloadSpell("riventricleave");
+        }
+    }
+}

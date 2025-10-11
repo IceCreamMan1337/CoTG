@@ -38,3 +38,15 @@ namespace Chars
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSivir : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fleetoffoot");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

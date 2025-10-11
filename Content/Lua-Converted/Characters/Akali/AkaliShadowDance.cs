@@ -100,3 +100,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowDance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("akalishadowdance");
+            PreloadParticle("akali_shadowdance_cas.troy");
+            PreloadParticle("akali_shadowdance_return_02.troy");
+            PreloadParticle("akali_shadowdance_return.troy");
+            PreloadSpell("akalishadowdancekick");
+        }
+    }
+}

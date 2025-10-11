@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaSolarFlareSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_slow.troy");
+        }
+    }
+}

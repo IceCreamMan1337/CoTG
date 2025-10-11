@@ -54,3 +54,18 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptWarwick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("eternalthirst");
+            PreloadParticle("eternalthirst_buf.troy");
+            PreloadSpell("eternalthirsticon");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("bloodscent_internal");
+        }
+    }
+}

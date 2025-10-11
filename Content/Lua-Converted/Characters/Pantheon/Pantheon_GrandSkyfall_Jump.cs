@@ -99,3 +99,22 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class Pantheon_GrandSkyfall_Jump : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("pantheon_grandskyfall_cas.troy");
+            PreloadSpell("pantheon_gs_particle");
+            PreloadSpell("pantheon_aegisshield2");
+            PreloadSpell("pantheon_aegisshield");
+            PreloadSpell("pantheon_aegis_counter");
+            PreloadSpell("pantheon_grandskyfall_jump");
+            PreloadParticle("pantheon_grandskyfall_up.troy");
+            PreloadSpell("pantheon_grandskyfall");
+            PreloadSpell("pantheon_gs_particlered");
+        }
+    }
+}

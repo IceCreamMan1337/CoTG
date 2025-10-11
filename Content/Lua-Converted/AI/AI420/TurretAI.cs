@@ -1,10 +1,9 @@
 ﻿namespace AIScripts;
 
-using CoTGEnumNetwork.Enums;
-
-using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
+using CoTG.CoTGServer.GameObjects.AttackableUnits.AI;
 using CoTG.CoTGServer.Scripting.CSharp.Converted;
+using CoTGEnumNetwork.Enums;
 using System.Collections.Generic;
 
 //Status: 100% Identical to Lua script

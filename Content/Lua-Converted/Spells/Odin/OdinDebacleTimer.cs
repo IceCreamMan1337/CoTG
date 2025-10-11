@@ -9,3 +9,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinDebacleTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("OdinDebacleCloak");
+        }
+    }
+}

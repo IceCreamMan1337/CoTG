@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoPuncture : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_heal_passive.troy");
+        }
+    }
+}

@@ -86,3 +86,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaReturn : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaghostself");
+            PreloadSpell("orianareturn");
+        }
+    }
+}

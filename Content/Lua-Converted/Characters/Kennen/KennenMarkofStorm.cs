@@ -65,3 +65,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenMarkofStorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenmarkofstorm");
+            PreloadSpell("kennenparticleholder");
+            PreloadParticle("kennen_mos2.troy");
+            PreloadSpell("kennenmosdiminish");
+            PreloadParticle("kennen_mos_tar.troy");
+        }
+    }
+}

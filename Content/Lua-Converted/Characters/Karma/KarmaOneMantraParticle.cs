@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaOneMantraParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("karma_mantracharge_indicator_01.troy");
+        }
+    }
+}

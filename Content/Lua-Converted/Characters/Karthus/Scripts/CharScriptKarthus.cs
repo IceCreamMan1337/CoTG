@@ -48,3 +48,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKarthus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("defile");
+            PreloadParticle("neutralmonster_buf.troy");
+            PreloadSpell("deathdefied");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

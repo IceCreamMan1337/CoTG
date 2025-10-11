@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyParagonParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("poppydemacia_max.troy");
+        }
+    }
+}

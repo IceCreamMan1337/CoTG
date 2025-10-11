@@ -15,3 +15,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_135 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("monsterbuffs");
+        }
+    }
+}

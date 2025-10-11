@@ -27,3 +27,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaChakraCharge : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmachakracharge");
+            PreloadSpell("karmaonemantraparticle");
+            PreloadSpell("karmatwomantraparticle");
+        }
+    }
+}

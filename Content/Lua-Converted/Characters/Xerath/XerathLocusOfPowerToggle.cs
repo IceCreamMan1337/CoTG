@@ -28,3 +28,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class XerathLocusOfPowerToggle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xerathlocusofpower");
+        }
+    }
+}

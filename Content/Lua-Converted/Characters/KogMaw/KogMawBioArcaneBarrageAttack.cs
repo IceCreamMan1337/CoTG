@@ -46,3 +46,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawBioArcaneBarrageAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kogmawchinesebasicattack_tar.troy");
+            PreloadParticle("kogmawspatter.troy");
+        }
+    }
+}

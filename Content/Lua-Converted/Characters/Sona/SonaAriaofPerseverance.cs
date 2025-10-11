@@ -96,3 +96,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaAriaofPerseverance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonahymnofvalor");
+            PreloadSpell("sonasongofdiscord");
+            PreloadSpell("sonapowerchord");
+            PreloadSpell("sonaariaofperseverance");
+            PreloadSpell("sonaariaofperseverancecheck");
+            PreloadParticle("global_heal.troy");
+            PreloadSpell("sonaariaofperseveranceaura");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("sonaariashield");
+        }
+    }
+}

@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDeathGripDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickdeathgrip");
+        }
+    }
+}

@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Rewind : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("chronorefresh_tar.troy");
+        }
+    }
+}

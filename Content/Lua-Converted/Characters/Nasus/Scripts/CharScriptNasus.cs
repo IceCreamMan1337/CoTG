@@ -45,3 +45,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptNasus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eternalthirst_buf.troy");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("souleater");
+        }
+    }
+}

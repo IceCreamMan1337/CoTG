@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainBeamTransition : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("swainnobird");
+        }
+    }
+}

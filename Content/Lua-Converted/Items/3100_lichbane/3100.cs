@@ -20,3 +20,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3100 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sheendelay");
+            PreloadSpell("lichbane");
+        }
+    }
+}

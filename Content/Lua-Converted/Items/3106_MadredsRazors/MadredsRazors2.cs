@@ -11,3 +11,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MadredsRazors2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("madredsrazors");
+        }
+    }
+}

@@ -97,3 +97,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VeigarEventHorizon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("veigareventhorizonmarker");
+            PreloadParticle("permission_desecrate_green_cas_leprechaun.troy");
+            PreloadParticle("permission_desecrate_red_cas_leprechaun.troy");
+            PreloadParticle("permission_desecrate_green_cas.troy");
+            PreloadParticle("permission_desecrate_red_cas.troy");
+            PreloadSpell("veigareventhorizonprevent");
+            PreloadCharacter("testcube");
+        }
+    }
+}

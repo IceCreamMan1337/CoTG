@@ -20,3 +20,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerTYellowBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+            PreloadSpell("upgradeslow");
+            PreloadParticle("absolutezero_tar.troy");
+        }
+    }
+}

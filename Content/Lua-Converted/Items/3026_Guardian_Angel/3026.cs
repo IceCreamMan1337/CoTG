@@ -50,3 +50,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3026 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hasbeenrevived");
+            PreloadSpell("guardianangel");
+            PreloadSpell("willrevive");
+        }
+    }
+}

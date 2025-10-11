@@ -116,3 +116,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianSuppression : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_suppression.troy");
+            PreloadSpell("odinguardiansuppressionorder");
+            PreloadSpell("odinguardiansuppressionchaos");
+            PreloadSpell("odinguardiansuppression");
+            PreloadSpell("prilisasblessing");
+            PreloadSpell("odincapturesoundemptying");
+            PreloadSpell("odincapturesoundfilling");
+        }
+    }
+}

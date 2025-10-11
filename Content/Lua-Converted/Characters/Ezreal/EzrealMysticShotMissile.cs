@@ -138,3 +138,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class EzrealMysticShotMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("ezreal_mysticshot_tar.troy");
+            PreloadSpell("ezrealrisingspellforce");
+        }
+    }
+}

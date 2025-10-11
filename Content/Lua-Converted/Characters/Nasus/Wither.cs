@@ -59,3 +59,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Wither : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wither");
+        }
+    }
+}

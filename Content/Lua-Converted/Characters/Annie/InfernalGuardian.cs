@@ -82,3 +82,20 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class InfernalGuardian : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("infernalguardian_tar_frost.troy");
+            PreloadParticle("infernalguardian_tar.troy");
+            PreloadCharacter("annietibbers");
+            PreloadSpell("infernalguardian");
+            PreloadSpell("infernalguardiantimer");
+            PreloadSpell("infernalguardianburning");
+            PreloadSpell("pyromania_particle");
+            PreloadSpell("pyromania");
+        }
+    }
+}

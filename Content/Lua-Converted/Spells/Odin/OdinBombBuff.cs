@@ -80,3 +80,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinBombBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_relic_buf_red.troy");
+            PreloadParticle("odin_relic_buf_green.troy");
+            PreloadParticle("odin_prism_red.troy");
+            PreloadParticle("odin_prism_green.troy");
+            PreloadSpell("odinbombsuppression");
+        }
+    }
+}

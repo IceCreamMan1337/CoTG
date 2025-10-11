@@ -115,3 +115,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ChronoRevive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("lifeaura.troy");
+            PreloadParticle("guardianangel_tar.troy");
+        }
+    }
+}

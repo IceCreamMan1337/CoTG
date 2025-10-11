@@ -85,3 +85,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CrestoftheAncientGolem : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_blue_defense.troy");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+        }
+    }
+}

@@ -42,3 +42,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerOdinGarrisonDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_enemy_capture_buf_01.troy");
+            PreloadParticle("summoner_enemy_capture_buf_02.troy ");
+            PreloadParticle("summoner_flash.troy");
+        }
+    }
+}

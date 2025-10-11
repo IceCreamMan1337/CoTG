@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_AegisApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_aegisshield");
+        }
+    }
+}

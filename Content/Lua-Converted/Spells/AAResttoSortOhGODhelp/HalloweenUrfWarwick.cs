@@ -40,3 +40,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HalloweenUrfWarwick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("halloweenurfcd");
+            PreloadParticle("ghosturf.troy");
+        }
+    }
+}

@@ -20,3 +20,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneInquisitionSpeedPartNormal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vayne_passive_speed_buf.troy");
+        }
+    }
+}

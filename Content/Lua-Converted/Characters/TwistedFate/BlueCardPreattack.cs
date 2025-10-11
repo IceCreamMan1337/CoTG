@@ -27,3 +27,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class BlueCardPreattack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pickacard");
+        }
+    }
+}

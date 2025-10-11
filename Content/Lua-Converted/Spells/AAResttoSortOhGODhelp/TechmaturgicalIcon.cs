@@ -132,3 +132,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TechmaturgicalIcon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("techmaturgicalrepairbots");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("h28gevolutionturret");
+            PreloadSpell("h28gevolutionturretspell1");
+            PreloadSpell("h28gevolutionturretspell2");
+            PreloadSpell("h28gevolutionturretspell3");
+            PreloadSpell("heimerdingerturretcounter");
+            PreloadSpell("heimerdingerturretready");
+            PreloadSpell("upgrade!!!");
+        }
+    }
+}

@@ -28,3 +28,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RemoveScurvy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("piratescurvy");
+        }
+    }
+}

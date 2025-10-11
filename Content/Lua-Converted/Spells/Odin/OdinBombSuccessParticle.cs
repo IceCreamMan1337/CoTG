@@ -72,3 +72,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinBombSuccessParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinbombsuccessparticle");
+            PreloadSpell("odinbombsuppressionorder");
+            PreloadSpell("odinbombsuppressionchaos");
+            PreloadSpell("odinbombsuppression");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("odincenterrelicbuff");
+            PreloadSpell("odinscorebigrelic");
+            PreloadSpell("odincenterrelicbuffdamage");
+        }
+    }
+}

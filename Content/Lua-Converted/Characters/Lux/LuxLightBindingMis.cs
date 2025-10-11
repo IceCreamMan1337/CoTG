@@ -126,3 +126,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxLightBindingMis : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxilluminatingfraulein");
+            PreloadSpell("luxlightbinding");
+        }
+    }
+}

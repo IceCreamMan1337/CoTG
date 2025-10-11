@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ForcePulseCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("forcepulsecounter");
+            PreloadSpell("forcepulsecancast");
+        }
+    }
+}

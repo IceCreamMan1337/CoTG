@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyDITargetDmg : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppyditarget");
+        }
+    }
+}

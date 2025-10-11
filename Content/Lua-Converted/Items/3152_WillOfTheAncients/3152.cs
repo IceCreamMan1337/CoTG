@@ -75,3 +75,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3152 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("willoftheancientsself");
+            PreloadSpell("willoftheancientsfriendly");
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

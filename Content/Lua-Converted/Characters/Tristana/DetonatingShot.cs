@@ -72,3 +72,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DetonatingShot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("detonatingshot_target");
+            PreloadParticle("detonatingshot_buf.troy");
+            PreloadParticle("tristana_explosiveshot_unit_tar.troy");
+            PreloadSpell("detonatingshot");
+            PreloadSpell("explosiveshotdebuff");
+            PreloadSpell("internal_50ms");
+            PreloadSpell("grievouswound");
+        }
+    }
+}

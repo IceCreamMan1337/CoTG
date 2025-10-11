@@ -97,3 +97,15 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class Bloodlust : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bloodlust");
+            PreloadParticle("tryndamere_heal.troy");
+        }
+    }
+}

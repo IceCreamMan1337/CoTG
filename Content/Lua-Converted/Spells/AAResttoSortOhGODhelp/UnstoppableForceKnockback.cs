@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UnstoppableForceKnockback : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("unstoppableforcestun");
+        }
+    }
+}

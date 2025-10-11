@@ -44,3 +44,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class goldcardattack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("goldcardpreattack");
+            PreloadSpell("pickacard");
+            PreloadParticle("pickacard_yellow_tar.troy");
+        }
+    }
+}

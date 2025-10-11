@@ -68,3 +68,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CaitlynEntrapmentMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+            PreloadParticle("caitlyn_entrapment_tar.troy");
+        }
+    }
+}

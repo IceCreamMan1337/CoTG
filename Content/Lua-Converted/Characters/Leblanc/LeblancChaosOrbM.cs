@@ -88,3 +88,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancChaosOrbM : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leblanc_displace_aoe_tar_ult.troy");
+            PreloadSpell("leblancchaosorbm");
+            PreloadSpell("leblancchaosorb");
+        }
+    }
+}

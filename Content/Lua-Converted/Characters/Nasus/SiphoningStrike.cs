@@ -37,3 +37,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SiphoningStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("deathscaress_nova.prt");
+            PreloadSpell("siphoningstrikedamagebonus");
+        }
+    }
+}

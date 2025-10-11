@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowDanceCounter3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("akalishadowdance");
+        }
+    }
+}

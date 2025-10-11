@@ -62,3 +62,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Flurry : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("globalhit_tar.troy");
+        }
+    }
+}

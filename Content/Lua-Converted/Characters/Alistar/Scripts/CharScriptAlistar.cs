@@ -32,3 +32,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAlistar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("colossalstrength");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

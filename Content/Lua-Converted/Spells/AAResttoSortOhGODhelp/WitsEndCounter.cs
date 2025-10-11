@@ -29,3 +29,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WitsEndCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("witsendcounter");
+        }
+    }
+}

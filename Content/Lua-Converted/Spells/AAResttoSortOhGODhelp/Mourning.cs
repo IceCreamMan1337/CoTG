@@ -71,3 +71,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Mourning : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("executionerscalling_cas.troy");
+            PreloadSpell("root");
+            PreloadParticle("executionerscalling_tar.troy");
+            PreloadSpell("internal_50ms");
+            PreloadSpell("grievouswound");
+        }
+    }
+}

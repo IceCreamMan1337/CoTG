@@ -51,3 +51,19 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssault : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("talon_ult_cas.troy");
+            PreloadSpell("root");
+            PreloadParticle("talon_invis_cas.troy");
+            PreloadSpell("talonshadowassaultanimbuff");
+            PreloadSpell("talonshadowassaultbuff");
+            PreloadSpell("talonshadowassaultmisone");
+            PreloadSpell("talonshadowassaulttoggle");
+        }
+    }
+}

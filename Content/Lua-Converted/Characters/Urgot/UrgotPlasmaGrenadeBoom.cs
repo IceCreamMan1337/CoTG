@@ -86,3 +86,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotPlasmaGrenadeBoom : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotplasmagrenade_tar.troy");
+            PreloadSpell("urgotcorrosivedebuff");
+        }
+    }
+}

@@ -228,3 +228,30 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCaptureChannel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odincapturechannel");
+            PreloadParticle("ezreal_essenceflux_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("odincaptureinterrupt");
+            PreloadSpell("odincaptureimmobile");
+            PreloadSpell("odinguardiansuppression");
+            PreloadSpell("prilisasblessing");
+            PreloadSpell("odinguardiansuppressionorder");
+            PreloadParticle("odincapturebeam.troy");
+            PreloadSpell("odinguardiansuppressionchaos");
+            PreloadSpell("odinscoreninja");
+            PreloadSpell("odinshrinebombbuff");
+            PreloadSpell("odinbombtickorder");
+            PreloadSpell("odinbombtickchaos");
+            PreloadParticle("odincapturebeamengaged_red.troy");
+            PreloadParticle("odincapturebeamengaged_green.troy");
+            PreloadSpell("odincapturechannelcooldownbuff");
+            PreloadParticle("odincapturecancel.troy");
+        }
+    }
+}

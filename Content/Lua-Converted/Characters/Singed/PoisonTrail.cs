@@ -97,3 +97,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PoisonTrail : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("poisontrailapplicator");
+            PreloadSpell("poisontrail");
+        }
+    }
+}

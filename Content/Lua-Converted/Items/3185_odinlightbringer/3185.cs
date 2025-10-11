@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3185 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinlightbringer");
+        }
+    }
+}

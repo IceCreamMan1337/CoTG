@@ -59,3 +59,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAshe : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("archersmark");
+            PreloadSpell("focus");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("bowmasterfocusdisplay");
+        }
+    }
+}

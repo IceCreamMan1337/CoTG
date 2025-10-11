@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowSwipeHealingParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_shadowswipe_heal.troy");
+        }
+    }
+}

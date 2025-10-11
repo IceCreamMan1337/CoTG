@@ -35,3 +35,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class FallenOneExtra : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("fallenone_nova.troy");
+        }
+    }
+}

@@ -31,3 +31,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDoubleAttackHit : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingpassive");
+        }
+    }
+}

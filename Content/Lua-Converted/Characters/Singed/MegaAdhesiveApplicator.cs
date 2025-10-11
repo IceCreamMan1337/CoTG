@@ -56,3 +56,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MegaAdhesiveApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("megaadhesive_green_pool.troy");
+            PreloadParticle("megaadhesive_red_pool.troy");
+            PreloadSpell("megaadhesivetarget");
+        }
+    }
+}

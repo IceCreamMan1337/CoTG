@@ -11,3 +11,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptShen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("shenwayoftheninjamarker");
+            PreloadSpell("isninja");
+        }
+    }
+}

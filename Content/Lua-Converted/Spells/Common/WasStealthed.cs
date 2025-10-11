@@ -61,3 +61,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WasStealthed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+        }
+    }
+}

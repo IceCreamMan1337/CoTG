@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirTransfusionHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vampheal.troy");
+        }
+    }
+}

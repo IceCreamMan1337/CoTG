@@ -47,3 +47,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CamouflageStealth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("camouflagecheck");
+            PreloadSpell("camouflagebuff");
+        }
+    }
+}

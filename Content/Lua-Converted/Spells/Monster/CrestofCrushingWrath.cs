@@ -48,3 +48,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CrestofCrushingWrath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("speed_runes_01.troy");
+        }
+    }
+}

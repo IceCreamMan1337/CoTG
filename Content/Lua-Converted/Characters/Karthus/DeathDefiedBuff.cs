@@ -197,3 +197,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathDefiedBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordekeiser_cotg_skin.troy");
+        }
+    }
+}

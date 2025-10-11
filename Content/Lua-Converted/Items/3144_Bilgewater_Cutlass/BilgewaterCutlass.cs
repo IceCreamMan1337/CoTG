@@ -69,3 +69,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BilgewaterCutlass : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_slow.troy");
+            PreloadParticle("piratecutlass_cas.troy");
+        }
+    }
+}

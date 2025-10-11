@@ -49,3 +49,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaHitenStyleCharged : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ireliahitenstyle");
+        }
+    }
+}

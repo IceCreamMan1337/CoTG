@@ -57,3 +57,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HunterCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("adrenalinerushdebuff");
+        }
+    }
+}

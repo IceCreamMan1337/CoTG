@@ -22,3 +22,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3180 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odynsveil");
+        }
+    }
+}

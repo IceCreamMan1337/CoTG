@@ -23,3 +23,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Malady : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maladycounter");
+            PreloadSpell("maladyspell");
+        }
+    }
+}

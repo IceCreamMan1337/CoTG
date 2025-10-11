@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KatsudionsGlueGun : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+        }
+    }
+}

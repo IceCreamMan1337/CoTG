@@ -34,3 +34,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaChakraTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmachakracharge");
+            PreloadSpell("karmaonemantraparticle");
+            PreloadSpell("karmatwomantraparticle");
+            PreloadSpell("karmachakratimer");
+        }
+    }
+}

@@ -25,3 +25,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3093 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("avariceblade");
+        }
+    }
+}

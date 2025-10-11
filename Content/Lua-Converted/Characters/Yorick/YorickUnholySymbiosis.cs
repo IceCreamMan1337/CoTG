@@ -76,3 +76,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickUnholySymbiosis : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yoricksummonspectral");
+            PreloadSpell("yoricksummonravenous");
+            PreloadSpell("yoricksummondecayed");
+            PreloadSpell("yorickraremovepet");
+            PreloadSpell("yorickultpetactive");
+        }
+    }
+}

@@ -53,3 +53,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinSigilAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odinsigil.troy");
+            PreloadParticle("neutralmonster_buf_red_offense.troy");
+            PreloadSpell("odinsigilaura");
+            PreloadSpell("odinsigilbuff");
+        }
+    }
+}

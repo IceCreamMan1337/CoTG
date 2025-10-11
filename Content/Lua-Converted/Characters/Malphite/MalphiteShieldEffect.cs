@@ -67,3 +67,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MalphiteShieldEffect : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("malphiteshieldremoval");
+            PreloadSpell("malphiteshieldbeenhit");
+        }
+    }
+}

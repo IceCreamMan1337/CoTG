@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyParagonSpeed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_haste.troy");
+        }
+    }
+}

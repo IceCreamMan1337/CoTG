@@ -161,3 +161,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenShadowDash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("shenshadowdashcooldown");
+            PreloadParticle("shen_shadowdash_mis.troy");
+            PreloadParticle("shen_shadowdash_unit_impact.troy");
+        }
+    }
+}

@@ -27,3 +27,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class dragonApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("crestofcrushingwrath");
+        }
+    }
+}

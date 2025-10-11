@@ -52,3 +52,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CH1ConcussionGrenadeUpgrade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("heimerdinger_ch1_grenade_tar.troy");
+            PreloadParticle("heimerdinger_ch1_grenade_unit_tar.troy");
+            PreloadSpell("blindingdart");
+        }
+    }
+}

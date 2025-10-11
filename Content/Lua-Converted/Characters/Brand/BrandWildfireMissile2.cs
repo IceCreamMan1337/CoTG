@@ -115,3 +115,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class BrandWildfireMissile2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("brandwildfire");
+            PreloadParticle("brandconflagration_tar_frost.troy");
+            PreloadParticle("brandconflagration_tar.troy");
+            PreloadSpell("brandablaze");
+        }
+    }
+}

@@ -90,3 +90,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonNoxianDiplomacy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonnoxiandiplomacybuff");
+            PreloadSpell("talonnoxiandiplomacy");
+            PreloadSpell("talonbleeddebuff");
+        }
+    }
+}

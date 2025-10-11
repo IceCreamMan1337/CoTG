@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxMaliceCannonBall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("luxmalicecannon_cas.troy");
+        }
+    }
+}

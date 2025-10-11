@@ -129,3 +129,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathLocusOfPower : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xerathlocusofpowertoggle");
+            PreloadSpell("xeratharcanopulseextended");
+            PreloadSpell("xerathmagechainsextended");
+            PreloadSpell("xeratharcanebarragewrapperext");
+            PreloadParticle("xerath_locusofpower_buf.troy");
+            PreloadParticle("xerath_locusofpower_beam.troy");
+            PreloadSpell("xerathlocusofpower");
+            PreloadSpell("xeratharcanopulse");
+            PreloadSpell("xerathmagechains");
+            PreloadSpell("xeratharcanebarragewrapper");
+            PreloadSpell("xerathenergize");
+        }
+    }
+}

@@ -67,3 +67,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SpiritFireAoE : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nassus_spiritfire_afterburn.troy");
+            PreloadParticle("nassus_spiritfire_tar_green.troy");
+            PreloadParticle("nassus_spiritfire_tar_red.troy");
+            PreloadSpell("spiritfirearmorreduction");
+        }
+    }
+}

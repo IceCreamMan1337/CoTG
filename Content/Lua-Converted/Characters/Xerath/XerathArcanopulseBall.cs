@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcanopulseBall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xerath_beam_cas.troy");
+        }
+    }
+}

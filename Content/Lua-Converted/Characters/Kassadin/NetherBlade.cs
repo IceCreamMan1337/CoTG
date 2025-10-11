@@ -46,3 +46,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NetherBlade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("netherblade_cas.troy");
+            PreloadSpell("netherbladebuff");
+        }
+    }
+}

@@ -43,3 +43,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiDrain3Defense : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maokaidrain3tally");
+            PreloadSpell("maokaidrain3toggle");
+            PreloadParticle("maoki_torrent_damage_pulse.troy");
+        }
+    }
+}

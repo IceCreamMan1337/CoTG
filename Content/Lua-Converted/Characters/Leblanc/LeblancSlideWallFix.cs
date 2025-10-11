@@ -29,3 +29,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSlideWallFix : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancslide");
+        }
+    }
+}

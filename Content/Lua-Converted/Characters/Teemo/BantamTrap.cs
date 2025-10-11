@@ -197,3 +197,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BantamTrap : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teemoeaster2.troy");
+            PreloadParticle("teemoeaster3.troy");
+            PreloadSpell("stealth");
+            PreloadSpell("bantamarmor");
+            PreloadParticle("shroommine.troy");
+            PreloadSpell("bantamtraptarget");
+            PreloadSpell("slow");
+            PreloadSpell("teemomushrooms");
+            PreloadCharacter("teemomushroom");
+            PreloadSpell("sharedwardbuff");
+        }
+    }
+}

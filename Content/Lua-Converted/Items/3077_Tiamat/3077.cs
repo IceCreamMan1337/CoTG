@@ -46,3 +46,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3077 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tiamatmelee_itm.troy");
+            PreloadSpell("judicatorrighteousfury");
+        }
+    }
+}

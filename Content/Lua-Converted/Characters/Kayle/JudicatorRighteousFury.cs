@@ -54,3 +54,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JudicatorRighteousFury : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kaylerighteousfuryanim");
+        }
+    }
+}

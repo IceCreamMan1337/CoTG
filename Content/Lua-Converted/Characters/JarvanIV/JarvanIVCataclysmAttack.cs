@@ -55,3 +55,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVCataclysmAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvanwallcrumble.troy");
+            PreloadSpell("root");
+            PreloadSpell("jarvanivcataclysmcheck");
+            PreloadSpell("unstoppableforcemarker");
+        }
+    }
+}

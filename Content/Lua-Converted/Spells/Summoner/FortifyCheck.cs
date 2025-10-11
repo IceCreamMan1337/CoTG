@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class FortifyCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fortifybuff");
+        }
+    }
+}

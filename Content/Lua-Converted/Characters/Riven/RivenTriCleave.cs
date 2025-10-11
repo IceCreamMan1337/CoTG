@@ -173,3 +173,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("riventricleave");
+            PreloadSpell("riventricleavecooldown");
+            PreloadSpell("riventricleavesoundone");
+            PreloadSpell("riventricleavebuffer");
+            PreloadSpell("riventricleavedamage");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("riventricleavesoundtwo");
+            PreloadSpell("riventricleavebufferb");
+            PreloadSpell("riventricleavesoundthree");
+            PreloadSpell("rivensword");
+        }
+    }
+}

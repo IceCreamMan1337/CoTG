@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenParticleHolder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_mos1.troy");
+        }
+    }
+}

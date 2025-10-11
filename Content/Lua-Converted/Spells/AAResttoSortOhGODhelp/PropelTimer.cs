@@ -24,3 +24,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PropelTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("spellbook1");
+            PreloadSpell("propelspellcaster");
+            PreloadParticle("propelbubbles.troy");
+        }
+    }
+}

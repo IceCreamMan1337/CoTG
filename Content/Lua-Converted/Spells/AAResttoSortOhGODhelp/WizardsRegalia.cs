@@ -81,3 +81,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WizardsRegalia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("infuse_tar.troy");
+        }
+    }
+}

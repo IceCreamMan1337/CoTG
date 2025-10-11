@@ -8,3 +8,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CorkiDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("crashboom.troy");
+            PreloadSpell("root");
+        }
+    }
+}

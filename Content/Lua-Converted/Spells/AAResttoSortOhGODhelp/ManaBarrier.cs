@@ -76,3 +76,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ManaBarrier : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("steamgolemshield.troy");
+            PreloadParticle("steamgolemshield_hit.troy");
+        }
+    }
+}

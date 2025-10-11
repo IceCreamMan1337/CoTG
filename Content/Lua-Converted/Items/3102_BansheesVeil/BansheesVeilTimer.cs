@@ -9,3 +9,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BansheesVeilTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bansheesveil");
+        }
+    }
+}

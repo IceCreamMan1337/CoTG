@@ -22,3 +22,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MejaisStats : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mejaischeck");
+            PreloadSpell("mejaisstats");
+        }
+    }
+}

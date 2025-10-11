@@ -100,3 +100,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasBarrelRollBoom : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gragasbarrelrolltoggle");
+            PreloadParticle("gragas_giftbarrelfoam.troy");
+            PreloadParticle("gragas_barrelfoam_classy.troy");
+            PreloadParticle("gragas_barrelfoam.troy");
+            PreloadSpell("gragasexplosivecaskdebuff");
+            PreloadParticle("gragas_barrelboom_classy.troy");
+            PreloadParticle("gragas_barrelboom.troy");
+            PreloadSpell("gragasbarrelroll");
+        }
+    }
+}

@@ -71,3 +71,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LightstrikerBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("lightstrikerbuff");
+        }
+    }
+}

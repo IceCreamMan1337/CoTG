@@ -64,3 +64,18 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKassadin : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("netherblade");
+            PreloadSpell("forcepulse");
+            PreloadSpell("forcepulsechaos");
+            PreloadSpell("voidstone");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

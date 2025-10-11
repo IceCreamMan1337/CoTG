@@ -31,3 +31,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDecayedDiseaseCloud : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_necrocloud.troy");
+            PreloadSpell("yorickdecayedauraslow");
+        }
+    }
+}

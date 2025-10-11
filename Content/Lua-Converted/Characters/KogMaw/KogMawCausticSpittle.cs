@@ -52,3 +52,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawCausticSpittle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kogmawcausticspittlecharged");
+        }
+    }
+}

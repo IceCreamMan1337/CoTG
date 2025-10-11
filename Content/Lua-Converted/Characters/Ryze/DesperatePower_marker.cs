@@ -48,3 +48,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DesperatePower_marker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("desperatepower");
+        }
+    }
+}

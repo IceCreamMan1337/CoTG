@@ -45,3 +45,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptUrf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("halloweenurfcd");
+            PreloadSpell("eternalthirsticon");
+            PreloadSpell("halloweenurfwarwick");
+            PreloadSpell("halloweenurfappear");
+        }
+    }
+}

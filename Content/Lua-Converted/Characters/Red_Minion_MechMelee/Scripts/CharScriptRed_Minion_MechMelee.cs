@@ -18,3 +18,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRed_Minion_MechMelee : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("feelnopain_eff.troy");
+            PreloadSpell("turretshield");
+            PreloadSpell("structuredamagereduction");
+        }
+    }
+}

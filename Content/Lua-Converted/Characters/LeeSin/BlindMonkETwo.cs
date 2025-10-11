@@ -59,3 +59,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkETwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blindmonkeone");
+            PreloadSpell("blindmonkemanager");
+        }
+    }
+}

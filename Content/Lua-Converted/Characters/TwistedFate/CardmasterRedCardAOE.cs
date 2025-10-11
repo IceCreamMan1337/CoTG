@@ -30,3 +30,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CardmasterRedCardAOE : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cardmasterslow");
+        }
+    }
+}

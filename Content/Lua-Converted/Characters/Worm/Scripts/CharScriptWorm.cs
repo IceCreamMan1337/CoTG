@@ -73,3 +73,20 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptWorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("resistantskin");
+            PreloadSpell("wormrecouperateon");
+            PreloadSpell("wrathtimer");
+            PreloadSpell("sweeptimer");
+            PreloadSpell("propeltimer");
+            PreloadSpell("actiontimer2");
+            PreloadSpell("actiontimer");
+            PreloadSpell("wrathcooldown");
+        }
+    }
+}

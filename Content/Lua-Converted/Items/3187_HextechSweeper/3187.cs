@@ -31,3 +31,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3187 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hextechsweeper");
+            PreloadSpell("odinlightbringer");
+        }
+    }
+}

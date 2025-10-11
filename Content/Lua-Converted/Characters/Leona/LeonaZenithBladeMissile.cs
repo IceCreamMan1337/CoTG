@@ -92,3 +92,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaZenithBladeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leonazenithbladebufforder");
+            PreloadSpell("leonazenithbladeroot");
+            PreloadParticle("leona_zenithblade_trail.troy");
+            PreloadSpell("leonasunlight");
+            PreloadParticle("leona_zenithblade_sound.troy");
+            PreloadParticle("leona_zenithblade_arrive.troy");
+        }
+    }
+}

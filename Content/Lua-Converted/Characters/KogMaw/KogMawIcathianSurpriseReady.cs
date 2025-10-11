@@ -55,3 +55,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawIcathianSurpriseReady : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kognoseglow.troy");
+            PreloadParticle("kogmaw_deepsea_glow.troy");
+            PreloadSpell("kogmawicathiansurprise");
+        }
+    }
+}

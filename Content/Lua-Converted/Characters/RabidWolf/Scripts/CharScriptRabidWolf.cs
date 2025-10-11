@@ -21,3 +21,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRabidWolf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("crestofnaturesfury");
+            PreloadSpell("hpbyplayerlevel");
+        }
+    }
+}

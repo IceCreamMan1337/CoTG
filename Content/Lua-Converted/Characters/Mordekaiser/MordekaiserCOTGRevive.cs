@@ -38,3 +38,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCOTGRevive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisercotgpetslow");
+            PreloadSpell("mordekaisercotgpetbuff2");
+            PreloadSpell("mordekaisercotgrevive");
+        }
+    }
+}

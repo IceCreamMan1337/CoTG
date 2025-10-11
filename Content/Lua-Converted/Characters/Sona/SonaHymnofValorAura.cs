@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaHymnofValorAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonahymnofvalor_aura.troy");
+            PreloadSpell("sonahymnofvaloraurab");
+        }
+    }
+}

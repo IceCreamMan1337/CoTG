@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptCrystal_platform : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odindisintegrate");
+        }
+    }
+}

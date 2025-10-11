@@ -51,3 +51,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HextechSweeperArea : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_hextechsweeper_tar_green.troy");
+            PreloadSpell("odinlightbringer");
+        }
+    }
+}

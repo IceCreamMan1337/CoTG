@@ -38,3 +38,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasDrunkenRageSelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("gragas_buff_01.troy");
+        }
+    }
+}

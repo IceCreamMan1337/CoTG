@@ -33,3 +33,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptYorick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("yorickunholysymbiosis");
+            PreloadSpell("yorickravenouslifesteal");
+        }
+    }
+}

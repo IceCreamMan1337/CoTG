@@ -51,3 +51,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleaveBufferB : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("marthtricleavebuffer");
+            PreloadSpell("marthtricleave");
+            PreloadSpell("marthtricleavebuffered");
+            PreloadSpell("marthtricleavebufferlock");
+        }
+    }
+}

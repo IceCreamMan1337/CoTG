@@ -140,3 +140,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_LeapBash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_aegisshield");
+            PreloadSpell("pantheon_aegisshield2");
+            PreloadSpell("pantheon_aegis_counter");
+        }
+    }
+}

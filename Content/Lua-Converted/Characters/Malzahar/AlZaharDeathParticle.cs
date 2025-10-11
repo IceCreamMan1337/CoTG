@@ -8,3 +8,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("alzahar_death.troy");
+            PreloadSpell("root");
+        }
+    }
+}

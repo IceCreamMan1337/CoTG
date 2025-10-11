@@ -70,3 +70,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonSuperExecute : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonunlockanimation");
+            PreloadSpell("renektonrageready");
+            PreloadSpell("renektonweaponglowfade");
+        }
+    }
+}

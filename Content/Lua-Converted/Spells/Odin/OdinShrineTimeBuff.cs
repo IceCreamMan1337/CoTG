@@ -29,3 +29,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineTimeBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_blue_defense.troy");
+        }
+    }
+}

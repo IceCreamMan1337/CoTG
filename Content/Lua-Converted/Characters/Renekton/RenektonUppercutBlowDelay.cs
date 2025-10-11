@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonUppercutBlowDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonuppercutblow");
+        }
+    }
+}

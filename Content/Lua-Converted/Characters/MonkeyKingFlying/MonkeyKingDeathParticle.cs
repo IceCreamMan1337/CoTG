@@ -20,3 +20,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cassiopeiadeath.troy");
+            PreloadParticle("monkeykingphremoverocks.troy");
+        }
+    }
+}

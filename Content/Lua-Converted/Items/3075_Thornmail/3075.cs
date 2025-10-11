@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3075 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("thornmail");
+        }
+    }
+}

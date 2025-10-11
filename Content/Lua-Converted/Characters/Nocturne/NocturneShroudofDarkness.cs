@@ -85,3 +85,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneShroudofDarkness : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturne_shroud_deactivatetrigger.troy");
+            PreloadSpell("nocturneshroudofdarknessbuff");
+            PreloadSpell("nocturneshroudofdarkness");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

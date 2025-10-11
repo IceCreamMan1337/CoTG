@@ -51,3 +51,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaGlobalCooldown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaglobalcooldown");
+        }
+    }
+}

@@ -110,3 +110,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VoidWalk : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_flashback.troy");
+            PreloadParticle("summoner_flash.troy");
+        }
+    }
+}

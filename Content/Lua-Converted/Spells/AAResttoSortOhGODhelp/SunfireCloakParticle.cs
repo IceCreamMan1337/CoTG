@@ -42,3 +42,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SunfireCloakParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sunfirecape_aura.troy");
+            PreloadSpell("sunfirecapeaura");
+        }
+    }
+}

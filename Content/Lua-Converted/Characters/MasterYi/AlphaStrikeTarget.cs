@@ -50,3 +50,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlphaStrikeTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alphastrike");
+            PreloadParticle("alphastrike_slash.troy");
+        }
+    }
+}

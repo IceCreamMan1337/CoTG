@@ -30,3 +30,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MejaisCap : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mejaischeck");
+            PreloadSpell("mejaisstats");
+        }
+    }
+}

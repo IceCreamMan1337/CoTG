@@ -42,3 +42,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliSmokeBombInternal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("recall");
+            PreloadParticle("akali_invis_cas.troy");
+            PreloadSpell("akalisbstealth");
+        }
+    }
+}

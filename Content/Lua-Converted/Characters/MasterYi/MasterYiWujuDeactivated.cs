@@ -20,3 +20,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MasterYiWujuDeactivated : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yiglowblade.troy");
+        }
+    }
+}

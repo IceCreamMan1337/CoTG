@@ -33,3 +33,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCreepingDeathCast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisercreepingdeathcheck");
+            PreloadSpell("mordekaisercreepingdeath");
+        }
+    }
+}

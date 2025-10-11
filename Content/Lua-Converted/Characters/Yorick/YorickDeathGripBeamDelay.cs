@@ -36,3 +36,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDeathGripBeamDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("wallofpain_new_post_red.troy");
+            PreloadParticle("wallofpain_new_post_green.troy");
+            PreloadParticle("yorickphwallblue.troy");
+            PreloadSpell("yorickdeathgripbeam");
+        }
+    }
+}

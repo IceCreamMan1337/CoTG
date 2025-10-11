@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DoubleStrikeTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("globalhit_yellow_tar.troy");
+        }
+    }
+}

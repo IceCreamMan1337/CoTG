@@ -90,3 +90,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaMiasma : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cassmiasma_tar_green.troy");
+            PreloadParticle("cassmiasma_tar_red.troy");
+            PreloadSpell("cassiopeiamiasmapoison");
+            PreloadSpell("slow");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

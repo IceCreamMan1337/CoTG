@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3126 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("bloodrazor");
+        }
+    }
+}

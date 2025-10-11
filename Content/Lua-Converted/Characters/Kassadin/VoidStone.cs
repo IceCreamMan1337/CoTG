@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VoidStone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("voidstoneattackspeedboost");
+        }
+    }
+}

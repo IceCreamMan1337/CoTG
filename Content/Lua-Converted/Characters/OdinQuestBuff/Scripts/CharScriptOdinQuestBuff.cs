@@ -27,3 +27,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinQuestBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("odinquestbuff");
+            PreloadCharacter("odinquestbuff");
+            PreloadSpell("odinguardianbuff");
+            PreloadSpell("odinquestbuffparticle");
+        }
+    }
+}

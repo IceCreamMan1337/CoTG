@@ -10,3 +10,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserSyphonParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordakaiser_siphonofdestruction_self.troy");
+            PreloadParticle("mordakeiser_hallowedstrike_self_skin.troy");
+        }
+    }
+}

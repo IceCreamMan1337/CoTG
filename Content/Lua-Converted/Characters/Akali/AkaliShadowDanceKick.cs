@@ -57,3 +57,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowDanceKick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_shadowdance_mis.troy");
+            PreloadSpell("akalishadowdancekick");
+            PreloadSpell("akalishadowdancekickparticle");
+        }
+    }
+}

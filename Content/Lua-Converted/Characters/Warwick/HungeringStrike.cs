@@ -54,3 +54,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class HungeringStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("hungeringstrikefire_tar.troy");
+            PreloadParticle("hungeringstrike_tar.troy");
+            PreloadSpell("globaldrain");
+            PreloadParticle("meditate_eff.troy");
+        }
+    }
+}

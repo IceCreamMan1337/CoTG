@@ -107,3 +107,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_feint_self_deactivate.troy");
+            PreloadSpell("rumbleoverheat");
+            PreloadSpell("rumbleshield");
+            PreloadSpell("rumbledangerzone");
+            PreloadSpell("rumbleheatdelay");
+            PreloadSpell("rumbleshieldbuff");
+        }
+    }
+}

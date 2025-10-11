@@ -36,3 +36,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotSwapExecute : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("urgotswapmissile");
+            PreloadSpell("urgotswapmissile2");
+            PreloadSpell("slow");
+        }
+    }
+}

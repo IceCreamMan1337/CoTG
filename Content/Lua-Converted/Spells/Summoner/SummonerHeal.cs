@@ -85,3 +85,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("summonerhealcheck");
+        }
+    }
+}

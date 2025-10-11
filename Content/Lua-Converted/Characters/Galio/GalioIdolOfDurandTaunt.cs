@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioIdolOfDurandTaunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_taunt_unit_indicator.troy");
+        }
+    }
+}

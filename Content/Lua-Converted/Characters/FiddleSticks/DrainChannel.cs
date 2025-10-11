@@ -107,3 +107,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class DrainChannel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("fearmonger_marker");
+            PreloadParticle("drain.troy");
+            PreloadSpell("globaldrain");
+            PreloadSpell("drain");
+        }
+    }
+}

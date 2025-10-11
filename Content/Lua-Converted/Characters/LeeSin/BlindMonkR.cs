@@ -56,3 +56,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkR : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blindmonkrmarker");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("blindmonkrnewminion");
+        }
+    }
+}

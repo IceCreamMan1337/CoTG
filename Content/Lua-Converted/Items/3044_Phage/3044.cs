@@ -13,3 +13,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3044 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_30slow");
+            PreloadSpell("itemslow");
+        }
+    }
+}

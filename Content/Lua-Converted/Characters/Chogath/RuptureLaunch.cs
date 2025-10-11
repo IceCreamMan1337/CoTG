@@ -42,3 +42,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RuptureLaunch : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rupturetarget");
+        }
+    }
+}

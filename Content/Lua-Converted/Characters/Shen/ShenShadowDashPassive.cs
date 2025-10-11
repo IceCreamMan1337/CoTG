@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenShadowDashPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shenshadowdashcooldown");
+        }
+    }
+}

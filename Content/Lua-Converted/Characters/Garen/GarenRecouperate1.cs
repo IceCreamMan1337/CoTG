@@ -98,3 +98,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenRecouperate1 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenrecoupdebuff");
+            PreloadParticle("garen_heal.troy");
+            PreloadSpell("garenrecouperateon");
+        }
+    }
+}

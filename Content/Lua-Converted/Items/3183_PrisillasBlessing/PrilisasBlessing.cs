@@ -55,3 +55,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class PrilisasBlessing : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("haste_proc.troy");
+            PreloadSpell("haste");
+        }
+    }
+}

@@ -232,3 +232,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerTeleport : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_teleport.troy");
+            PreloadSpell("teleportcancel");
+            PreloadParticle("summoner_teleportarrive.troy");
+            PreloadSpell("summonerteleport");
+            PreloadSpell("teleport_turret");
+            PreloadSpell("teleport_target");
+            PreloadSpell("teleport_deathremoval");
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("destealth");
+        }
+    }
+}

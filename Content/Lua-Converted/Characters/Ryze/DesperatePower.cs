@@ -61,3 +61,14 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class DesperatePower : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("manaleach_tar2.troy");
+        }
+    }
+}

@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinCenterRelic : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinbombbuff");
+        }
+    }
+}

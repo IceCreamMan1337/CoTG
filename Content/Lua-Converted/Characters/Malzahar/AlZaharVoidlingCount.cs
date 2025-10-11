@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharVoidlingCount : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alzaharvoidlingcount");
+            PreloadSpell("alzaharsummonvoidling");
+        }
+    }
+}

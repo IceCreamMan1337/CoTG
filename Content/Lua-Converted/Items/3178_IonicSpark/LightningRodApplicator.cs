@@ -34,3 +34,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LightningRodApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_btl_beam.troy");
+            PreloadSpell("root");
+        }
+    }
+}

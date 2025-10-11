@@ -51,3 +51,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerRally : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_flash.troy");
+            PreloadCharacter("summonerbeacon");
+            PreloadSpell("beaconauraap");
+            PreloadSpell("beaconaura");
+        }
+    }
+}

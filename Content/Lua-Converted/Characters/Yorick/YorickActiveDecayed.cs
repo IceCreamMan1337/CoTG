@@ -24,3 +24,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickActiveDecayed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorickphdecayedexplosion.troy");
+            PreloadParticle("tristana_explosiveshot_unit_tar.troy");
+            PreloadSpell("yorickdecayedslow");
+        }
+    }
+}

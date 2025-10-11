@@ -65,3 +65,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3124 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rageblade");
+        }
+    }
+}

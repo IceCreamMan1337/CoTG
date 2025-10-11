@@ -52,3 +52,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JudicatorDivineBlessing : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kayledivineblessinganim");
+        }
+    }
+}

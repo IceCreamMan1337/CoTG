@@ -8,3 +8,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vladdeath.troy");
+            PreloadSpell("root");
+        }
+    }
+}

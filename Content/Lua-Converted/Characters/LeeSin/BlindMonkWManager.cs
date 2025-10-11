@@ -24,3 +24,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkWManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blindmonkwtwo");
+            PreloadSpell("blindmonkwone");
+        }
+    }
+}

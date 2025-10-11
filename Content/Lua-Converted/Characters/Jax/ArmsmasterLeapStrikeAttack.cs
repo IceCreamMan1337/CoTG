@@ -48,3 +48,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ArmsmasterLeapStrikeAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leapstrikespeed");
+            PreloadSpell("empowertwo");
+            PreloadSpell("relentlessassaultmarker");
+        }
+    }
+}

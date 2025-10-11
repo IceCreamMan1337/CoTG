@@ -21,3 +21,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TantrumCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("tantrumcounter");
+            PreloadSpell("tantrumcancast");
+        }
+    }
+}

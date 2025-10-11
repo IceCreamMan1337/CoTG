@@ -111,3 +111,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawLivingArtillery : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kogmawlivingartillery_cas_chinese_green.troy");
+            PreloadParticle("kogmawlivingartillery_cas_chinese_red.troy");
+            PreloadParticle("kogmawlivingartillery_cas_green.troy");
+            PreloadParticle("kogmawlivingartillery_cas_red.troy");
+            PreloadParticle("kogmawlivingartillery_tar_green.troy");
+            PreloadSpell("kogmawlivingartillerysight");
+            PreloadParticle("kogmawlivingartillery_mis.troy");
+            PreloadCharacter("testcube");
+            PreloadSpell("kogmawlivingartillerycost");
+        }
+    }
+}

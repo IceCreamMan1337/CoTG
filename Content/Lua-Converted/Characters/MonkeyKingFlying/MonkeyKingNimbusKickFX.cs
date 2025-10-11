@@ -11,3 +11,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingNimbusKickFX : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeyking_q_unit_tar.troy");
+        }
+    }
+}

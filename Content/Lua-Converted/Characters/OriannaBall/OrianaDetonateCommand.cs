@@ -141,3 +141,20 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class OrianaDetonateCommand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaglobalcooldown");
+            PreloadSpell("orianaghost");
+            PreloadSpell("oriannaballtracker");
+            PreloadParticle("oriana_shockwave_nova_ally.troy");
+            PreloadParticle("oriana_shockwave_nova.troy");
+            PreloadParticle("orianadetonate_tar.troy");
+            PreloadSpell("orianastun");
+            PreloadSpell("moveawaycollision");
+        }
+    }
+}

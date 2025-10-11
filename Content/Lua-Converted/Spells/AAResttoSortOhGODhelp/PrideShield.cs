@@ -129,3 +129,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PrideShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("razzlespride_100.troy");
+            PreloadParticle("razzlespride_66.troy");
+            PreloadParticle("razzlespride_33.troy");
+            PreloadSpell("prideshield");
+        }
+    }
+}

@@ -39,3 +39,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinVampRelicBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("regen_rune_buf.troy");
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

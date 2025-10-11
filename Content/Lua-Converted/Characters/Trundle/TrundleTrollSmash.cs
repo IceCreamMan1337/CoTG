@@ -68,3 +68,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundleTrollSmash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundle_trollsmash_buf.troy");
+            PreloadSpell("trundletrollsmash");
+        }
+    }
+}

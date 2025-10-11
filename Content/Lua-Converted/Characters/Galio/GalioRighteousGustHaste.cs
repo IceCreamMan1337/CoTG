@@ -35,3 +35,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioRighteousGustHaste : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_windtunnel_speed_buf.troy");
+            PreloadSpell("root");
+        }
+    }
+}

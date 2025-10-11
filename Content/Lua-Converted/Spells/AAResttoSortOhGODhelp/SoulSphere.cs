@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SoulSphere : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("aura_defense.troy");
+        }
+    }
+}

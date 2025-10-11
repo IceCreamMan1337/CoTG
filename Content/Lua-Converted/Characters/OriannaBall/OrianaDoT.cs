@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaDoT : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yomupowerdagger");
+        }
+    }
+}

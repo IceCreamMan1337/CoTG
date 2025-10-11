@@ -39,3 +39,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Imbue : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_heal.troy");
+        }
+    }
+}

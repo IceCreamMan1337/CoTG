@@ -73,3 +73,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharVoidling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("voidlingflash.troy");
+            PreloadSpell("alzaharvoidlingphase2");
+            PreloadSpell("alzaharvoidlingphase3");
+        }
+    }
+}

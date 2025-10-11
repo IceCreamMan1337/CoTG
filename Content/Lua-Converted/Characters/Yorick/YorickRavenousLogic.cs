@@ -95,3 +95,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRavenousLogic : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_ravenousghoul_lifesteal_self.troy");
+        }
+    }
+}

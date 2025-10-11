@@ -46,3 +46,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinSpeedShrineBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("invis_runes_01.troy");
+            PreloadParticle("odin_speed_shrine_buf.troy");
+            PreloadSpell("root");
+        }
+    }
+}

@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptLesserWraith : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

@@ -128,3 +128,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaDamageIzuna : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yomuizuna");
+            PreloadCharacter("testcube");
+            PreloadSpell("yomughost");
+            PreloadSpell("yomughostminion");
+            PreloadSpell("yomuizunadamage");
+        }
+    }
+}

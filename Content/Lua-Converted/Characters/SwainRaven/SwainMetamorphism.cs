@@ -165,3 +165,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainMetamorphism : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("swainraven");
+            PreloadParticle("swain_metamorph.troy");
+            PreloadParticle("swain_metamorph_02.troy");
+            PreloadParticle("swain_demonform_idle.troy");
+            PreloadSpell("swainbeamself");
+            PreloadSpell("swainbeamtransition");
+            PreloadSpell("swainmetamorphism");
+        }
+    }
+}

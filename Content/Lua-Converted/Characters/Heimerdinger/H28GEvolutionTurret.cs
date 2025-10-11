@@ -220,3 +220,28 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class H28GEvolutionTurret : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("heimerdinger_turret_birth.troy");
+            PreloadSpell("h28gevolutionturretspell2");
+            PreloadSpell("h28gevolutionturretspell3");
+            PreloadSpell("heimerdingerturretmaximum");
+            PreloadSpell("h28gevolutionturretspell1");
+            PreloadSpell("upgradeslow");
+            PreloadSpell("heimerdingerturretready");
+            PreloadSpell("h28gevolutionturret");
+            PreloadSpell("upgradebuff");
+            PreloadCharacter("heimertblue");
+            PreloadCharacter("heimertred");
+            PreloadSpell("explosivecartridges");
+            PreloadCharacter("heimertgreen");
+            PreloadSpell("uraniumrounds");
+            PreloadCharacter("heimertyellow");
+            PreloadSpell("upgrade!!!proof");
+        }
+    }
+}

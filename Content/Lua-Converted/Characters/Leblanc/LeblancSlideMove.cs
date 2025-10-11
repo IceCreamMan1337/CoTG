@@ -101,3 +101,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSlideMove : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leblanc_displacement_blink_target.troy");
+            PreloadParticle("leblanc_displacement_yellow_mis.troy");
+            PreloadParticle("leblanc_slide_impact_self.troy");
+            PreloadParticle("leblanc_slide_impact_unit_tar.troy");
+            PreloadSpell("leblancchaosorb");
+            PreloadSpell("leblancchaosorbm");
+        }
+    }
+}

@@ -132,3 +132,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkQOne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_q_resonatingstrike_tar.troy");
+            PreloadParticle("blindmonk_q_resonatingstrike_tar_blood.troy");
+            PreloadParticle("blindmonk_q_tar_indicator.troy");
+            PreloadSpell("blindmonkqonechaos");
+            PreloadParticle("blindmonk_q_tar.troy");
+            PreloadSpell("blindmonkqmanager");
+        }
+    }
+}

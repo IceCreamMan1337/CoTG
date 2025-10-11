@@ -75,3 +75,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkQTwoDash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_q_resonatingstrike_mis.troy");
+            PreloadSpell("blindmonkqtwodashparticle");
+        }
+    }
+}

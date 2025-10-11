@@ -116,3 +116,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AspectOfTheCougar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("nidalee_cougar");
+            PreloadParticle("nidalee_transform.troy");
+            PreloadSpell("takedown");
+            PreloadSpell("aspectofthecougar");
+        }
+    }
+}

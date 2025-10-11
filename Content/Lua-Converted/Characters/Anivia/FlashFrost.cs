@@ -109,3 +109,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class FlashFrost : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cryo_flashfrost_tar.troy");
+            PreloadSpell("chilled");
+            PreloadSpell("flashfrost");
+        }
+    }
+}

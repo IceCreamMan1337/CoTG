@@ -72,3 +72,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandAblaze : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandblaze_hotfoot_frost.troy");
+            PreloadParticle("brandfiremark_frost.troy");
+            PreloadParticle("brandblaze_hotfoot.troy");
+            PreloadParticle("brandfiremark.troy");
+        }
+    }
+}

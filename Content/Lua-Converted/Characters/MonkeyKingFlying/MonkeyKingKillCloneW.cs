@@ -46,3 +46,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingKillCloneW : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeyking_w_cas_team_id_green.troy");
+            PreloadParticle("monkeyking_w_cas_team_id_red.troy");
+            PreloadParticle("monkeyking_w_death_team_id_green.troy");
+            PreloadParticle("monkeyking_w_death_team_id_red.troy");
+        }
+    }
+}

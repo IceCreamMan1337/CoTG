@@ -83,3 +83,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GlacialStormSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cryo_storm.troy");
+            PreloadSpell("glacialstorm");
+            PreloadSpell("chilled");
+        }
+    }
+}

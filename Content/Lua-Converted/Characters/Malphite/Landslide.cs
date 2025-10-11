@@ -52,3 +52,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class Landslide : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("landslide_blue_nova.troy");
+            PreloadParticle("landslide_nova.troy");
+            PreloadSpell("landslidedebuff");
+        }
+    }
+}

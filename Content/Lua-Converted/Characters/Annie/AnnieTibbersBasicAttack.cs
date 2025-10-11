@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AnnieTibbersBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("annie");
+        }
+    }
+}

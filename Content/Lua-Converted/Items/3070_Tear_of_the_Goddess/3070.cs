@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3070 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("tearofthegoddesstrack");
+        }
+    }
+}

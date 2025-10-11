@@ -83,3 +83,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LayWaste : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("laywaste_point.troy");
+            PreloadParticle("laywaste_tar.troy");
+            PreloadCharacter("spellbook1");
+        }
+    }
+}

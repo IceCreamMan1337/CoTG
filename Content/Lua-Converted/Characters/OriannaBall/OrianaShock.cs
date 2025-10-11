@@ -38,3 +38,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaShock : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yomu_ts_tar.troy");
+            PreloadSpell("yomushred");
+        }
+    }
+}
