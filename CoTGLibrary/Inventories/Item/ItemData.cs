@@ -28,9 +28,9 @@ namespace CoTG.CoTGServer.Inventory
 
         public bool ClearUndoHistoryOnActivate { get; init; }
 
-        public ItemData(string itemName)
+        public ItemData(int itemName, string path)
         {
-            RFile? file = Cache.GetFile(Path.Join(ContentManager.ItemsPath, itemName + ".ini"));
+            RFile? file = Cache.GetFile(path);
             if (file is null)
             {
                 Name = "";

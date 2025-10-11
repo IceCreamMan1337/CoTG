@@ -311,7 +311,6 @@ public class ObjAIBase : AttackableUnit
             {
                 if (!string.IsNullOrEmpty(CharData.SpellNames[i]))
                 {
-
                     Spells[i] = new Spell(this, CharData.SpellNames[i], (byte)i);
                 }
             }
