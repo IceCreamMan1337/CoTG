@@ -154,29 +154,18 @@ public partial class Spell : IEventSource
 
     private CastType _castType;
 
-    public Spell(ObjAIBase caster, string name, int slot)
+    public Spell(ObjAIBase caster, string name, int slot, bool isPreload = false)
     {
         Caster = caster;
         Name = name;
         Slot = slot;
         ToolTipData = new(this);
 
-        Data = ContentManager.GetSpellData(name)!;
-        if (Data is null)
+        if (name.StartsWith("DoomBot_"))
         {
-            //Hack to fallback to normal spell data if the doom bot version is not found
-            if (name.Contains("DoomBot_"))
-            {
-                Data = ContentManager.GetSpellData(name.Replace("DoomBot_", ""))!;
-            }
-
-            //This may result in unnecessary double null check sometimes, but needed in case the fallback goes through
-            if (Data is null)
-            {
-                _logger.Error($"Spell data for spell \"{name}\" not found!");
-                Data = new();
-            }
+            Data = ContentManager.GetSpellData(name)!;
         }
+        Data ??= ContentManager.GetSpellData(name.Replace("DoomBot_", "")) ?? new();
 
         //this one seem obligatory in .126 
         //at first view when we calcul an range of spell we need take in account collisionradius of an champion + castrange 
@@ -185,8 +174,8 @@ public partial class Spell : IEventSource
 
         for (int i = 0; i < 6; i++)
         {
-            Data.CastRange[i] += caster.CollisionRadius + 10.0f;
-            Data.CastRadius[i] += caster.CollisionRadius + 10.0f;
+            Data.CastRange[i] += caster?.CollisionRadius ?? 0 + 10.0f;
+            Data.CastRadius[i] += caster?.CollisionRadius ?? 0 + 10.0f;
         }
         ///
 
@@ -222,8 +211,10 @@ public partial class Spell : IEventSource
             );
         }
 
-        Game.SpellManager.AddSpell(this);
-
+        if (!isPreload)
+        {
+            Game.SpellManager.AddSpell(this);
+        }
     }
 
     public float GetCastTime(bool isAutoAttackOrOverride)
@@ -1342,9 +1333,9 @@ public partial class Spell : IEventSource
             Deactivate();
             ApiEventManager.RemoveAllListenersForOwner(Script);
         }
+
+        Game.ScriptEngine.CreateObject<IPreLoadScript>("PreLoads", SpellName, Game.Config.SupressScriptNotFound)?.Preload();
         var script = Game.ScriptEngine.CreateObject<ISpellScriptInternal>("Spells", SpellName, Game.Config.SupressScriptNotFound);
-
-
 
         if (script == null)
         {

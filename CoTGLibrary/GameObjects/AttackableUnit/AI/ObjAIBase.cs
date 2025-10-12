@@ -311,10 +311,10 @@ public class ObjAIBase : AttackableUnit
             {
                 if (!string.IsNullOrEmpty(CharData.SpellNames[i]))
                 {
+
                     Spells[i] = new Spell(this, CharData.SpellNames[i], (byte)i);
                 }
             }
-
 
             // InventorySlots
             // 4 - 9 
@@ -330,15 +330,10 @@ public class ObjAIBase : AttackableUnit
             Spells[(int)SpellSlotType.BluePillSlot] = new Spell(this, "BaseSpell", (int)SpellSlotType.BluePillSlot);
             Spells[(int)SpellSlotType.TempItemSlot] = new Spell(this, "BaseSpell", (int)SpellSlotType.TempItemSlot);
 
-
-
-
             // Summoner Spells //pas d'incidence de l'emplacement a premiere vu 
             // 4 - 5
             Spells[(int)SpellSlotType.SummonerSpellSlots] = new Spell(this, "BaseSpell", (int)SpellSlotType.SummonerSpellSlots);
             Spells[(int)SpellSlotType.SummonerSpellSlots + 1] = new Spell(this, "BaseSpell", (int)SpellSlotType.SummonerSpellSlots + 1);
-
-
 
             // Fix126
             //// RuneSlots
@@ -384,12 +379,10 @@ public class ObjAIBase : AttackableUnit
                     //  DebugSayCrash(this, "");
                 }
 
-
-
                 //if (!string.IsNullOrEmpty(aaName))
                 // If you ask the client to launch an attack for which it does not have an ini,
                 // then even if the attack is in the champion ini, the client will pause the animation.
-                if (ContentManager.GetSpellData(aaName) != null)
+                if (!string.IsNullOrEmpty(aaName))
                 {
                     // Fix126
                     int slot = i + (int)SpellSlotType.BasicAttackSlots;
@@ -415,12 +408,7 @@ public class ObjAIBase : AttackableUnit
         ApiEventManager.OnDealDamage.AddListener(this, this,
             _ => ItemInventory.ClearUndoHistory()
         );
-
-
     }
-
-
-
 
     internal override void OnAdded()
     {
@@ -497,9 +485,9 @@ public class ObjAIBase : AttackableUnit
             ApiEventManager.RemoveAllListenersForOwner(CharScript);
         }
 
-        var scriptNamespace = "CharScripts";
         var scriptName = $"CharScript{Model}";
-        var script = Game.ScriptEngine.CreateObject<ICharScriptInternal>(scriptNamespace, scriptName, Game.Config.SupressScriptNotFound);
+        Game.ScriptEngine.CreateObject<IPreLoadScript>("PreLoads", scriptName, Game.Config.SupressScriptNotFound)?.Preload();
+        var script = Game.ScriptEngine.CreateObject<ICharScriptInternal>("CharScripts", scriptName, Game.Config.SupressScriptNotFound);
         if (script == null)
         {
             if (LuaScriptEngine.HasBBScript(scriptName))
