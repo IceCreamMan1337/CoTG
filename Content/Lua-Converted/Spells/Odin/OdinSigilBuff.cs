@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinSigilBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_red_offense.troy");
+        }
+    }
+}

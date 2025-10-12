@@ -69,3 +69,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Taunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("galioidolofdurandmarker");
+            PreloadParticle("galio_taunt_unit_indicator.troy");
+            PreloadSpell("shenshadowdashcooldown");
+            PreloadParticle("global_taunt_multi_unit.troy");
+            PreloadParticle("shen_shadowdash_unit_impact.troy");
+            PreloadSpell("puncturingtauntarmordebuff");
+            PreloadParticle("global_taunt.troy");
+        }
+    }
+}

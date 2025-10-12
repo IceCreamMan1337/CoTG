@@ -43,3 +43,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynHeadshotMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("caitlyn_headshot_tar.troy");
+            PreloadSpell("caitlynheadshot");
+        }
+    }
+}

@@ -78,3 +78,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SowTheWind : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sowthewind_tar.troy");
+            PreloadParticle("sowthewind_buf.troy");
+            PreloadSpell("slow");
+        }
+    }
+}

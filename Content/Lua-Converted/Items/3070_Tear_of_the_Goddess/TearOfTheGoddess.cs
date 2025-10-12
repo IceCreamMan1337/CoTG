@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TearOfTheGoddess : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("tearofthegoddesstrack");
+        }
+    }
+}

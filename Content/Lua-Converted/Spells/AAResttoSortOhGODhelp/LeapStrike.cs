@@ -96,3 +96,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeapStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("leapstrike");
+        }
+    }
+}

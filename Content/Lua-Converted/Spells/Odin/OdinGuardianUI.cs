@@ -30,3 +30,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianUI : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianuidamage");
+            PreloadSpell("odinguardianuidamagechaos");
+            PreloadSpell("odinguardianuidamageorder");
+        }
+    }
+}

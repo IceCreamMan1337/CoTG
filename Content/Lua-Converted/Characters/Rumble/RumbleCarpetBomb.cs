@@ -42,3 +42,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleCarpetBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumblecarpetbombeffect");
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("rumbleheatdelay");
+            PreloadSpell("rumblecarpetbomb");
+        }
+    }
+}

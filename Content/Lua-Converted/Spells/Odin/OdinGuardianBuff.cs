@@ -167,3 +167,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odinneutralguardian_green.troy");
+            PreloadParticle("odinneutralguardian_red.troy");
+            PreloadParticle("blank.troy");
+            PreloadParticle("odinneutralguardian_stone.troy");
+            PreloadSpell("odinsuperminion");
+            PreloadSpell("odinminiontaunt");
+            PreloadSpell("odinminion");
+            PreloadParticle("goldaquisition_glb.troy");
+            PreloadSpell("root");
+            PreloadSpell("odinguardiansuppression");
+            PreloadSpell("odinminionspellattack");
+        }
+    }
+}

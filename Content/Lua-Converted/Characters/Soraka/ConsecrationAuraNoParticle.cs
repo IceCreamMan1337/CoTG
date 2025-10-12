@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ConsecrationAuraNoParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("consecrationaura_tar.troy");
+        }
+    }
+}

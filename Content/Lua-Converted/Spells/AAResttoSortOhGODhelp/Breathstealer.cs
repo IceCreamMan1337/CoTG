@@ -59,3 +59,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Breathstealer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("breathstealerspell");
+        }
+    }
+}

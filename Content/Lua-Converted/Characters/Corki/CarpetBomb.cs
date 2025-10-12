@@ -206,3 +206,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CarpetBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_valkrie_speed.troy");
+            PreloadSpell("root");
+            PreloadCharacter("testcube");
+            PreloadSpell("dangerzone");
+            PreloadSpell("valkyriesound");
+        }
+    }
+}

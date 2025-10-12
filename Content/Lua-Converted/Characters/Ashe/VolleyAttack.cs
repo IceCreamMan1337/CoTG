@@ -92,3 +92,15 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class VolleyAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("volleyattack");
+            PreloadParticle("bowmaster_basicattack_tar.troy");
+            PreloadSpell("frostarrow");
+        }
+    }
+}

@@ -47,3 +47,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAmumu : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("tantrum");
+            PreloadSpell("cursedtouch");
+            PreloadSpell("cursedtouchmarker");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

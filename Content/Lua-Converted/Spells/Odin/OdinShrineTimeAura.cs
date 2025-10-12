@@ -37,3 +37,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineTimeAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_shrine_time.troy");
+            PreloadSpell("odinshrinetimebuff");
+        }
+    }
+}

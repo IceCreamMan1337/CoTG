@@ -23,3 +23,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleHeatDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumbleheatingup");
+            PreloadSpell("rumbleheatingup2");
+        }
+    }
+}

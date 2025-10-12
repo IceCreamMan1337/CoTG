@@ -34,3 +34,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotCorrosiveDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotcorrosivedebuff_buf.troy");
+            PreloadParticle("urgotplasmagrenade_hit.troy");
+        }
+    }
+}

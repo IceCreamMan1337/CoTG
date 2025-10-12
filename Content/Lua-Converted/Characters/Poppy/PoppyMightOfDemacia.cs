@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyMightOfDemacia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppymightparticle");
+        }
+    }
+}

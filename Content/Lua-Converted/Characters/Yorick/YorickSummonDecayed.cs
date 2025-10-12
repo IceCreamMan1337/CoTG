@@ -94,3 +94,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickSummonDecayed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_necroexplosion_deactivate.troy");
+            PreloadCharacter("yorickdecayedghoul");
+            PreloadSpell("yorickdecayeddiseasecloud");
+            PreloadSpell("yorickdecayedlogic");
+            PreloadParticle("yorick_necroexplosion.troy");
+            PreloadParticle("yorick_necroexplosion_unit_tar.troy");
+            PreloadSpell("yorickdecayedslow");
+        }
+    }
+}

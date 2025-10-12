@@ -37,3 +37,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_Throw : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_aegisshield2");
+            PreloadSpell("pantheon_aegisshield");
+            PreloadSpell("pantheon_aegis_counter");
+            PreloadSpell("pantheon_certaindeath");
+        }
+    }
+}

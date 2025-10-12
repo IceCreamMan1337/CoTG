@@ -55,3 +55,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class VladimirTidesofBlood : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vladimirtidesofbloodcost");
+            PreloadSpell("vladimirtidesofbloodnuke");
+        }
+    }
+}

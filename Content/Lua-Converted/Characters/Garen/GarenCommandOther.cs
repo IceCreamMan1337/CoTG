@@ -34,3 +34,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenCommandOther : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_commandingpresence_unit_buf.troy");
+        }
+    }
+}

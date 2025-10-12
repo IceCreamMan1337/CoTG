@@ -112,3 +112,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GodofDeath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nassus_godofdeath_aura.troy");
+            PreloadParticle("nassus_godofdeath_transform.troy");
+        }
+    }
+}

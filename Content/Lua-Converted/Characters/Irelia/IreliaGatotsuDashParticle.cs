@@ -11,3 +11,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaGatotsuDashParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_gotasu_tar.troy");
+        }
+    }
+}

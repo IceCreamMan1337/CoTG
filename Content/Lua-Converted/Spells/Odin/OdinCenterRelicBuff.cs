@@ -72,3 +72,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCenterRelicBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_center_relic.troy");
+            PreloadSpell("odincenterrelicshieldcheck2");
+            PreloadSpell("odincenterrelicshieldcheck");
+        }
+    }
+}

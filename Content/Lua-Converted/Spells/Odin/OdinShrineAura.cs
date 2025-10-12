@@ -36,3 +36,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_shrine_aura.troy");
+            PreloadSpell("odinshrinebuff");
+        }
+    }
+}

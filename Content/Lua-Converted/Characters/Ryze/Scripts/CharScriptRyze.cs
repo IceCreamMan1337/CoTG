@@ -37,3 +37,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRyze : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("arcanemastery");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("overload");
+        }
+    }
+}

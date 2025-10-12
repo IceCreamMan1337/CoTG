@@ -81,3 +81,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WriggleLantern : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odingolembombbuff");
+            PreloadSpell("wrigglelantern");
+            PreloadCharacter("wrigglelantern");
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("wrigglelanternward");
+            PreloadSpell("itemplacementmissile");
+        }
+    }
+}

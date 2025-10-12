@@ -74,3 +74,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaShieldOfDaybreak : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leona_shieldofdaybreak_cas.troy");
+            PreloadSpell("leonashieldofdaybreak");
+        }
+    }
+}

@@ -69,3 +69,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Overload : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("overload_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("desperatepower");
+            PreloadParticle("desperatepower_aoe.troy");
+            PreloadParticle("manaleach_tar.troy");
+        }
+    }
+}

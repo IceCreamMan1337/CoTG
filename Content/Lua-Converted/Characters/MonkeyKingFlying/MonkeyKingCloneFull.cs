@@ -10,3 +10,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingCloneFull : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeykingclone.troy");
+            PreloadSpell("root");
+        }
+    }
+}

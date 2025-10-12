@@ -137,3 +137,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BurningAgony : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("burningagony");
+        }
+    }
+}

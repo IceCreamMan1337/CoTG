@@ -21,3 +21,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MuramasaStats : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("muramasacheck");
+            PreloadSpell("muramasastats");
+        }
+    }
+}

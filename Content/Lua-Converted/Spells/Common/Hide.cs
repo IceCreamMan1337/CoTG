@@ -36,3 +36,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Hide : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hideinshadows");
+        }
+    }
+}

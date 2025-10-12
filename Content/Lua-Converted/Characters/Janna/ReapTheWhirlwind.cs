@@ -102,3 +102,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ReapTheWhirlwind : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("reapthewhirlwind_green_cas.troy");
+            PreloadParticle("reapthewhirlwind_red_cas.troy");
+            PreloadSpell("moveaway");
+            PreloadSpell("reapthewhirlwind");
+        }
+    }
+}

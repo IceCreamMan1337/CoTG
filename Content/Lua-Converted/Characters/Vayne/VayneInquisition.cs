@@ -99,3 +99,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneInquisition : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vaynetumblebonus");
+            PreloadSpell("vayneinquisition");
+        }
+    }
+}

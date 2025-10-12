@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TimeBombCountdown : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("timebombcountdown");
+        }
+    }
+}

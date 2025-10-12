@@ -43,3 +43,14 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class Infuse : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("soraka_infuse_ally_tar.troy");
+            PreloadParticle("soraka_infuse_enemy_tar.troy");
+        }
+    }
+}

@@ -175,3 +175,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinPlayerBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinscorelowhpattacker");
+            PreloadSpell("odinscorelowhp");
+            PreloadSpell("callforhelp");
+            PreloadSpell("odinscoreavengertarget");
+            PreloadSpell("odinscorekiller");
+            PreloadSpell("odinscorearchangel");
+            PreloadSpell("odinscoreangel");
+        }
+    }
+}

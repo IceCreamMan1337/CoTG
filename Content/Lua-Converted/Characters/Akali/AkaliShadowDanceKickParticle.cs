@@ -11,3 +11,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowDanceKickParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_shadowdance_tar.troy");
+        }
+    }
+}

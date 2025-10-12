@@ -42,3 +42,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotSwapDef : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotswapdef.troy");
+        }
+    }
+}

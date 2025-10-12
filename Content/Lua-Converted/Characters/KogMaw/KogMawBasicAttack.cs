@@ -27,3 +27,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kogmawchinesebasicattack_tar.troy");
+            PreloadParticle("kogmawspatter.troy");
+        }
+    }
+}

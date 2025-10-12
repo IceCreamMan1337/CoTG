@@ -36,3 +36,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMissFortune : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunebulletsound");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("missfortunestrut");
+            PreloadSpell("ispiratehunter");
+            PreloadSpell("missfortunepassive");
+        }
+    }
+}

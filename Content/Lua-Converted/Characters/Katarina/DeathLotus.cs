@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathLotus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deathlotussound");
+            PreloadSpell("deathlotus");
+        }
+    }
+}

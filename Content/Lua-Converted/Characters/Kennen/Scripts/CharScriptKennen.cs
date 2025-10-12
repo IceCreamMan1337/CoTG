@@ -40,3 +40,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKennen : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("isninja");
+            PreloadSpell("kennendoublestrikeproc");
+        }
+    }
+}

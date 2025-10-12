@@ -36,3 +36,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaIzunaDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("orianaizuna_tar.troy");
+        }
+    }
+}

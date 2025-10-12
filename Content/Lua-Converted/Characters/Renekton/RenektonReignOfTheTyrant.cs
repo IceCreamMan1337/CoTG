@@ -99,3 +99,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonReignOfTheTyrant : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonincombat");
+        }
+    }
+}

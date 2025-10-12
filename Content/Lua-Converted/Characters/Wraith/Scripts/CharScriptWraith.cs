@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptWraith : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("lifestealattack");
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

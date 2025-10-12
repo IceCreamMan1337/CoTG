@@ -43,3 +43,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptBlitzcrank : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("staticfield");
+            PreloadSpell("root");
+            PreloadSpell("manabarriericon");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

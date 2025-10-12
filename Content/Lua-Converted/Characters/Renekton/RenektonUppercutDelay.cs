@@ -24,3 +24,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonUppercutDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonuppercut");
+            PreloadParticle("globalhit_yellow_tar.troy");
+        }
+    }
+}

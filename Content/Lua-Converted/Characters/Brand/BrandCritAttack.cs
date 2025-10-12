@@ -27,3 +27,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandCritAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandcritattack_frost_tar.troy");
+            PreloadParticle("brandcritattack_tar.troy");
+        }
+    }
+}

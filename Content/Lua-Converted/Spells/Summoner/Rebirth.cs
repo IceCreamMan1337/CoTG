@@ -108,3 +108,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Rebirth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("aniviaegg");
+            PreloadParticle("eggtimer.troy");
+            PreloadSpell("rebirthcooldown");
+            PreloadParticle("rebirth_cas.troy");
+        }
+    }
+}

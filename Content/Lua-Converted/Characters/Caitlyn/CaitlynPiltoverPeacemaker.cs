@@ -52,3 +52,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynPiltoverPeacemaker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("caitlyn_peacemaker_tar_02.troy");
+        }
+    }
+}

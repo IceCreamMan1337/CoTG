@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSlideWallFixM : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancslidem");
+        }
+    }
+}

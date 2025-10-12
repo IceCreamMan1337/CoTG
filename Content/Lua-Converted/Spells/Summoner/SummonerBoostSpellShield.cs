@@ -61,3 +61,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerBoostSpellShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spelleffect_proc.troy");
+        }
+    }
+}

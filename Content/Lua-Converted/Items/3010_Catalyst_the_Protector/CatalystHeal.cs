@@ -27,3 +27,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CatalystHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("env_manaheal.troy");
+        }
+    }
+}

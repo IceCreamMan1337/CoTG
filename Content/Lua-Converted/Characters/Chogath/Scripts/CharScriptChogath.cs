@@ -103,3 +103,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptChogath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("feast");
+            PreloadSpell("feastmarker");
+            PreloadSpell("vorpalspikes");
+            PreloadSpell("carnivore");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

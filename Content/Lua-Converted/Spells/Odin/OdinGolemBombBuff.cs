@@ -89,3 +89,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGolemBombBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hpbyplayerlevel");
+            PreloadSpell("odinguardianbuff");
+        }
+    }
+}

@@ -61,3 +61,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKogMaw : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickrazombie");
+            PreloadSpell("yorickreviveallyself");
+            PreloadSpell("kogmawicathiansurpriseready");
+            PreloadSpell("kogmawcausticspittle");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("kogmawicathiandisplay");
+        }
+    }
+}

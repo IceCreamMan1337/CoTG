@@ -74,3 +74,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDragonStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jarvanivdragonstrikedebuff");
+            PreloadSpell("jarvanivdemacianstandard");
+            PreloadSpell("jarvanivdragonstrikeph");
+            PreloadSpell("jarvanivdragonstrikesound");
+            PreloadParticle("caitlyn_peacemaker_tar_02.troy");
+        }
+    }
+}

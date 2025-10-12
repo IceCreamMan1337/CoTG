@@ -40,3 +40,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class QuicksilverSash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+        }
+    }
+}

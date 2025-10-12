@@ -71,3 +71,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerExhaust : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("exhaustslow");
+            PreloadSpell("exhaustdebuff");
+        }
+    }
+}

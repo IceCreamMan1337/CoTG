@@ -41,3 +41,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiUnstableGrowthArmor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maokai_elementaladvance_armor.troy");
+        }
+    }
+}

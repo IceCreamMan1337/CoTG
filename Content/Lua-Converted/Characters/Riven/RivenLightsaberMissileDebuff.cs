@@ -31,3 +31,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenLightsaberMissileDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_ult_mis_tar.troy ");
+            PreloadParticle("exile_ult_mis_tar_minion.troy ");
+        }
+    }
+}

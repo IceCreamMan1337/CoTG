@@ -14,3 +14,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGalio : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("galiorunicskin");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

@@ -28,3 +28,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MaokaiDrain3Toggle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maokaidrain3");
+        }
+    }
+}

@@ -16,3 +16,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRARemovePet : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickraremovepet");
+            PreloadSpell("yorickrapetbuff2");
+        }
+    }
+}

@@ -51,3 +51,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class IreliaTranscendentBladesSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_ult_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("globaldrain");
+        }
+    }
+}

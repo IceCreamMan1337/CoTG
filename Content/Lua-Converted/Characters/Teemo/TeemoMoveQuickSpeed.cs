@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TeemoMoveQuickSpeed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("movequick_buf.troy");
+        }
+    }
+}

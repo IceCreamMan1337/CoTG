@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_111 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ardor");
+        }
+    }
+}

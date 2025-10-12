@@ -34,3 +34,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemPlacementMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("itemplacementmissile");
+            PreloadParticle("itemplacement_tar.troy");
+        }
+    }
+}

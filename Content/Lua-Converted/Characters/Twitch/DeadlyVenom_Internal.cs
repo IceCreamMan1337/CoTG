@@ -70,3 +70,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeadlyVenom_Internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("twitch_poison_counter_01.troy");
+            PreloadSpell("root");
+            PreloadSpell("deadlyvenom");
+            PreloadSpell("deadlyvenom_marker");
+            PreloadParticle("twitch_poison_counter_02.troy");
+            PreloadParticle("twitch_poison_counter_03.troy");
+            PreloadParticle("twitch_poison_counter_04.troy");
+            PreloadParticle("twitch_poison_counter_05.troy");
+            PreloadParticle("twitch_poison_counter_06.troy");
+        }
+    }
+}

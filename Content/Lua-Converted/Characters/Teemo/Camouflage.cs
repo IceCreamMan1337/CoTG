@@ -95,3 +95,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Camouflage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("camouflagecheck");
+            PreloadSpell("recall");
+            PreloadSpell("odincapturechannel");
+            PreloadSpell("summonerteleport");
+            PreloadSpell("camouflagestealth");
+        }
+    }
+}

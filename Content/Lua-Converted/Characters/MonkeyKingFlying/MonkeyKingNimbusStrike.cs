@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingNimbusStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("olaf_viciousstrikes_weapon_glow.troy");
+            PreloadParticle("olaf_viciousstrikes_heal.troy");
+        }
+    }
+}

@@ -59,3 +59,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3041 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mejaischeck");
+            PreloadSpell("mejaisstats");
+            PreloadSpell("mejaiscap");
+        }
+    }
+}

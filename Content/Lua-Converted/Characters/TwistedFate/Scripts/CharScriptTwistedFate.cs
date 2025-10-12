@@ -47,3 +47,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTwistedFate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("secondsight");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("cardmasterstack");
+        }
+    }
+}

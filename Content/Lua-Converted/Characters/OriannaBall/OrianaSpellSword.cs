@@ -143,3 +143,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaSpellSword : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaghost");
+            PreloadParticle("orianavacuumindicator_ally.troy");
+            PreloadParticle("orianavacuumindicatorselfnoring.troy");
+            PreloadSpell("root");
+            PreloadParticle("orianavacuumindicatorselfring.troy");
+            PreloadParticle("orianavacuumindicator.troy");
+            PreloadSpell("oriannaballtracker");
+            PreloadSpell("orianapowerdagger");
+            PreloadSpell("orianapowerdaggerdisplay");
+        }
+    }
+}

@@ -79,3 +79,26 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class OrianaDissonanceCommand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaglobalcooldown");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("orianaghost");
+            PreloadParticle("orianadissonance_ally_green.troy");
+            PreloadParticle("orianadissonance_ally_red.troy");
+            PreloadParticle("orianadissonance_ball_green.troy");
+            PreloadParticle("orianadissonance_ball_red.troy");
+            PreloadSpell("oriannaballtracker");
+            PreloadParticle("orianadissonance_cas_green.troy");
+            PreloadParticle("orianadissonance_cas_red.troy");
+            PreloadParticle("orianadissonance_tar.troy");
+            PreloadSpell("orianaslow");
+            PreloadSpell("orianahaste");
+            PreloadSpell("orianadissonancewave");
+        }
+    }
+}

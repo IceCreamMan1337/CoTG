@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenVorpalStarHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_vorpalstar_lifetap_tar_02.troy");
+        }
+    }
+}

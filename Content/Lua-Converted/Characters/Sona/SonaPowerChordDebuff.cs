@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaPowerChordDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonapowerchord_buf.troy");
+        }
+    }
+}

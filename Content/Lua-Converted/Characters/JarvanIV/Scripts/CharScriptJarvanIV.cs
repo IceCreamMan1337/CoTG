@@ -60,3 +60,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptJarvanIV : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jarvanivmartialcadencecheck");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

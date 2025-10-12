@@ -32,3 +32,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ArmsmasterRelentlessAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("empowertwo");
+            PreloadSpell("relentlessassaultdebuff");
+            PreloadParticle("relentlessassault_tar.troy");
+        }
+    }
+}

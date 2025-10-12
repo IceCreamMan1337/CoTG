@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonBloodSplatterTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("renektonslicedice_tar.troy");
+        }
+    }
+}

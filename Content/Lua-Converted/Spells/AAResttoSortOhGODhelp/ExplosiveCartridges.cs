@@ -28,3 +28,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ExplosiveCartridges : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+            PreloadSpell("uraniumroundshit");
+            PreloadParticle("tiamatmelee_itm.troy");
+        }
+    }
+}

@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TurretPreBonus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretbonus");
+        }
+    }
+}

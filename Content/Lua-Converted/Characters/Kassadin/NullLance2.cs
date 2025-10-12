@@ -48,3 +48,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NullLance2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("chronorefresh_tar.troy");
+        }
+    }
+}

@@ -60,3 +60,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JudicatorIntervention : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("eyeforaneye_self.troy");
+            PreloadParticle("eyeforaneye_cas.troy");
+            PreloadSpell("kayleinterventionanim");
+        }
+    }
+}

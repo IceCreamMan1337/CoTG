@@ -34,3 +34,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDecoyClone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeyking_copy.troy");
+            PreloadSpell("root");
+            PreloadSpell("monkeykingkillclonew");
+        }
+    }
+}

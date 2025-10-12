@@ -104,3 +104,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDoubleAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_battle_cry_weapon_01.troy");
+            PreloadParticle("monkey_king_crushingblow_tar.troy");
+            PreloadSpell("monkeykingdoubleattack");
+            PreloadSpell("monkeykingdoubleattackdebuff");
+        }
+    }
+}

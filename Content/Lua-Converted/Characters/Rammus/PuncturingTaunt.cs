@@ -32,3 +32,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class PuncturingTaunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("puncturingtauntarmordebuff");
+        }
+    }
+}

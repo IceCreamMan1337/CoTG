@@ -14,3 +14,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptShaco : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("backstab");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

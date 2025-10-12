@@ -29,3 +29,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class GragasBarrelRollToggle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gragasbarrelroll");
+        }
+    }
+}

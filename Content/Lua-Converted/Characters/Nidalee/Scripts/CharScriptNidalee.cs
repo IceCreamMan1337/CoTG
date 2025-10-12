@@ -58,3 +58,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptNidalee : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("prowl");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

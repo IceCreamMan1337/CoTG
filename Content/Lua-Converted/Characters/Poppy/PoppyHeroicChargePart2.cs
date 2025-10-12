@@ -93,3 +93,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyHeroicChargePart2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("heroiccharge_cas.troy");
+            PreloadSpell("poppyheroicchargepart2check");
+            PreloadParticle("heroiccharge_tar2.troy");
+        }
+    }
+}

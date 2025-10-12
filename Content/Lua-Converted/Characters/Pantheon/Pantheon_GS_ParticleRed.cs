@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_GS_ParticleRed : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("pantheon_grandskyfall_tar_red.troy");
+        }
+    }
+}

@@ -41,3 +41,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrBearActivation : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("primalcharge.troy");
+        }
+    }
+}

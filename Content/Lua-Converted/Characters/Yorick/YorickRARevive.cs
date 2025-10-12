@@ -21,3 +21,15 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class YorickRARevive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickrarevive");
+            PreloadSpell("yorickrapetbuff2");
+            PreloadSpell("yorickraremovepet");
+        }
+    }
+}

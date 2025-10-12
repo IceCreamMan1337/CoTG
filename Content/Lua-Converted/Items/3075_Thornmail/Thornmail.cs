@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Thornmail : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("thornmail_tar.troy");
+        }
+    }
+}

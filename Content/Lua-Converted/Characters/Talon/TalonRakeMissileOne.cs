@@ -110,3 +110,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonRakeMissileOne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonrakemarker");
+            PreloadCharacter("testcube");
+            PreloadSpell("talonrakemissileone");
+            PreloadSpell("talonrakemissileonemarker");
+            PreloadParticle("talon_w_tar.troy");
+            PreloadSpell("talonslow");
+        }
+    }
+}

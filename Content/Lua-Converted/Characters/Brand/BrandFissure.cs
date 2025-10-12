@@ -98,3 +98,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BrandFissure : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("brandpof_tar_green.troy");
+            PreloadParticle("brandpof_tar_red.troy");
+            PreloadParticle("brandpof_frost_charge.troy");
+            PreloadParticle("brandpof_charge.troy");
+            PreloadParticle("brandpof_frost_tar.troy");
+            PreloadParticle("brandpof_tar.troy");
+            PreloadSpell("brandablaze");
+            PreloadParticle("brandcritattack_frost_tar.troy");
+            PreloadParticle("brandcritattack_tar.troy");
+            PreloadCharacter("testcube");
+        }
+    }
+}

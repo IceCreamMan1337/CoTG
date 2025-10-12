@@ -39,3 +39,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KillerInstinct : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("katarina_killerinstinct_buf.troy");
+            PreloadSpell("killerinstinct");
+        }
+    }
+}

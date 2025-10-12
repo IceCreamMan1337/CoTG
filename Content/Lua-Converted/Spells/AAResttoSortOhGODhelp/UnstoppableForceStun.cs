@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UnstoppableForceStun : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("unstoppableforce_stun.troy");
+        }
+    }
+}

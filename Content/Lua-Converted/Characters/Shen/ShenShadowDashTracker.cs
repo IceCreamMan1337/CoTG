@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenShadowDashTracker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shenshadowdashpassive");
+        }
+    }
+}

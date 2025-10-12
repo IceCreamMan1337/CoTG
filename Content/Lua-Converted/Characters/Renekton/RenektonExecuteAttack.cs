@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonExecuteAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonpreexecute");
+        }
+    }
+}

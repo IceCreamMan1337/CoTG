@@ -11,3 +11,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCOTGDeath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisercotgpetbuff");
+        }
+    }
+}

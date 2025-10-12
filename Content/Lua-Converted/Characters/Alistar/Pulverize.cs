@@ -60,3 +60,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Pulverize : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alistartrample");
+            PreloadSpell("pulverize");
+        }
+    }
+}

@@ -77,3 +77,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliSBStealth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_twilight_buf.troy");
+            PreloadSpell("akaliholdstealth");
+            PreloadSpell("recall");
+        }
+    }
+}

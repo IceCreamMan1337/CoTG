@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaAriaofPerseveranceMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_heal.troy");
+            PreloadSpell("sonaariashield");
+        }
+    }
+}

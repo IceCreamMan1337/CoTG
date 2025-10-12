@@ -40,3 +40,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeceiveFade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deceive");
+            PreloadSpell("deceivecritbonus");
+        }
+    }
+}

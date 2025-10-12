@@ -80,3 +80,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundleQ : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundleq_buf.troy");
+            PreloadParticle("globalhit_physical.troy");
+            PreloadSpell("trundleqdebuff");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

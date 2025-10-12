@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathLotusSound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("katarinadeathlotus_indicator_cas.troy");
+        }
+    }
+}

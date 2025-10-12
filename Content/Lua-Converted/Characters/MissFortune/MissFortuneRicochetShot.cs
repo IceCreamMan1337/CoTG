@@ -97,3 +97,17 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneRicochetShot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("missfortune_richochet_tar_first.troy");
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("missfortunershotholder");
+            PreloadSpell("missfortunericochetshot");
+        }
+    }
+}

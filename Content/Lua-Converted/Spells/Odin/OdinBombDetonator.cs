@@ -113,3 +113,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinBombDetonator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardiansuppression");
+            PreloadSpell("odinguardianbuff");
+            PreloadParticle("crashboom.troy");
+            PreloadSpell("root");
+        }
+    }
+}

@@ -99,3 +99,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkRKick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blindmonkrmarker");
+            PreloadParticle("blind_monk_ult_unit_impact.troy");
+            PreloadSpell("blindmonkrdamage");
+        }
+    }
+}

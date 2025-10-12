@@ -1,8 +1,7 @@
 ﻿namespace AIScripts;
 
-using CoTGEnumNetwork.Enums;
-
 using CoTG.CoTGServer.Scripting.CSharp.Converted;
+using CoTGEnumNetwork.Enums;
 
 //Status: 100% Identical to Lua script
 public class IdleAIold : CAIScript

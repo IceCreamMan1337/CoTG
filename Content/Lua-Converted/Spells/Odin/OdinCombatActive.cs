@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCombatActive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_50ms");
+            PreloadSpell("odingrievouswound");
+        }
+    }
+}

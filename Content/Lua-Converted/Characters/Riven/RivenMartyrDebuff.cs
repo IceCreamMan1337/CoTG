@@ -25,3 +25,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenMartyrDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_w_tar_02.troy");
+        }
+    }
+}

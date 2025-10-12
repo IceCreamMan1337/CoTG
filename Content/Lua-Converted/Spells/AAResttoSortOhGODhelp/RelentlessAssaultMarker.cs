@@ -50,3 +50,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RelentlessAssaultMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("empower");
+            PreloadSpell("relentlessassaultmarker");
+            PreloadSpell("relentlessassaultdebuff");
+        }
+    }
+}

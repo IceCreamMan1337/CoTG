@@ -28,3 +28,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LightstrikerApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sword_of_the_divine_tar.troy");
+        }
+    }
+}

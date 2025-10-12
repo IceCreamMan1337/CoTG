@@ -107,3 +107,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AbsoluteZero : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("absolutezero2_green_cas.troy");
+            PreloadParticle("absolutezero2_red_cas.troy");
+            PreloadSpell("absolutezeroslow");
+            PreloadSpell("absolutezero");
+            PreloadParticle("absolutezero_nova.troy");
+            PreloadParticle("absolutezero_tar.troy");
+        }
+    }
+}

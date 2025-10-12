@@ -48,3 +48,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MegaAdhesive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("megaadhesiveapplicator");
+            PreloadCharacter("spellbook1");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

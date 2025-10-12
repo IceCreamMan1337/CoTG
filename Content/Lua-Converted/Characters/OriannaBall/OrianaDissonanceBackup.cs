@@ -64,3 +64,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class OrianaDissonanceBackup : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yomughost");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("yomuglobalcooldown");
+        }
+    }
+}

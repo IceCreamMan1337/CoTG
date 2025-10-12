@@ -346,3 +346,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonSliceAndDice : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektontargetsliced");
+            PreloadSpell("renektonsliceanddicedelay");
+            PreloadSpell("renektonbloodsplattertarget");
+            PreloadSpell("renektonsliceanddicedebuff");
+            PreloadParticle("renektonslicedice_buf_rage.troy");
+            PreloadParticle("renektonslicedice_buf.troy");
+            PreloadSpell("renektonsliceanddicetimer");
+            PreloadSpell("renektonsliceanddice");
+            PreloadSpell("renektonunlockanimationattack");
+        }
+    }
+}

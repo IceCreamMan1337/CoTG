@@ -56,3 +56,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Shatter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shatter_tar.troy");
+            PreloadParticle("bloodslash.troy");
+            PreloadParticle("shatter_nova.troy");
+            PreloadSpell("shatterselfbonus");
+            PreloadSpell("shatter");
+        }
+    }
+}

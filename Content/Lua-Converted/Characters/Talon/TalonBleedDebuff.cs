@@ -81,3 +81,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonBleedDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("talon_q_bleed_indicator.troy");
+            PreloadParticle("talon_q_bleed.troy");
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

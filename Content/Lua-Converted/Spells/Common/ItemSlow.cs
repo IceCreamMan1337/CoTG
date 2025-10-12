@@ -52,3 +52,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_50slow");
+            PreloadSpell("internal_40slow");
+            PreloadSpell("internal_35slow");
+            PreloadSpell("internal_30slow");
+            PreloadSpell("internal_20slow");
+            PreloadSpell("internal_15slow");
+        }
+    }
+}

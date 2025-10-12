@@ -39,3 +39,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Ardor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("zhonyasring");
+        }
+    }
+}

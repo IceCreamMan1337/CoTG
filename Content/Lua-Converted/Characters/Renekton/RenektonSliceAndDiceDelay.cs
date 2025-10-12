@@ -36,3 +36,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonSliceAndDiceDelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektondice");
+            PreloadSpell("renektonsliceanddicetimer");
+            PreloadSpell("renektonsliceanddice");
+        }
+    }
+}

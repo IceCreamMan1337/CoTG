@@ -75,3 +75,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenDestabilize : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("isninja");
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

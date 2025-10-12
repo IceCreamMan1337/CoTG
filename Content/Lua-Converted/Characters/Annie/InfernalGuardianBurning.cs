@@ -75,3 +75,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InfernalGuardianBurning : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sunfirecape_aura_frost.troy");
+            PreloadParticle("sunfirecapeaura_tar.troy");
+            PreloadSpell("infernalguardiantimer");
+        }
+    }
+}

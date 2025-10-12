@@ -30,3 +30,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WormRecouperateOn : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wormrecoupdebuff");
+            PreloadSpell("wormrecouperate1");
+        }
+    }
+}

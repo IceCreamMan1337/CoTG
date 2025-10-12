@@ -33,3 +33,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDragonStrikeDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvandragonstrike_debuff.troy");
+            PreloadParticle("jarvandragonstrike_hit.troy");
+        }
+    }
+}

@@ -28,3 +28,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CorkiMissileBarrageCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("corkimissilebarragetimer");
+            PreloadSpell("missilebarrage");
+        }
+    }
+}

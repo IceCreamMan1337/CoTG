@@ -53,3 +53,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LichBane : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sheen");
+            PreloadSpell("sheendelay");
+            PreloadSpell("lichbane");
+        }
+    }
+}

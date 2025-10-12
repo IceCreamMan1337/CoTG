@@ -38,3 +38,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainMetaNuke : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swain_heal.troy");
+            PreloadSpell("globaldrain");
+        }
+    }
+}

@@ -35,3 +35,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PowerFistSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("powerfist_tar.troy");
+        }
+    }
+}

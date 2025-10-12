@@ -86,3 +86,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerClairvoyance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("clairvoyanceeyelong_green.troy");
+            PreloadParticle("clairvoyanceeyelong_red.troy");
+        }
+    }
+}

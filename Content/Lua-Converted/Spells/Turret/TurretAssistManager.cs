@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TurretAssistManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("personalturretassistbonus");
+            PreloadSpell("turretbackdoorbonus");
+        }
+    }
+}

@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class H28GEvolutionTurretLvl2BasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+        }
+    }
+}

@@ -34,3 +34,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class FlashFrostSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("chilled");
+        }
+    }
+}

@@ -52,3 +52,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptUrgot : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("urgotdeathparticle");
+            PreloadSpell("urgotentropypassive");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("urgotparticlebuff");
+        }
+    }
+}

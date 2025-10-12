@@ -102,3 +102,15 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class ChronoShift : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nickoftime_tar.troy");
+            PreloadSpell("chronorevive");
+        }
+    }
+}

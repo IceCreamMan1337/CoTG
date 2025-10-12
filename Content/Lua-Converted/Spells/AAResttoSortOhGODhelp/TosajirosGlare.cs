@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TosajirosGlare : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxlightbinding");
+        }
+    }
+}

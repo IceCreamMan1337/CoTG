@@ -64,3 +64,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_HeartseekerChannel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("pantheon_heartseeker_cas2.troy");
+            PreloadSpell("pantheon_heartseekerchannel");
+        }
+    }
+}

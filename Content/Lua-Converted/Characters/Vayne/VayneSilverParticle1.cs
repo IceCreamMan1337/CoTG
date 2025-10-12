@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneSilverParticle1 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vayne_w_ring1.troy");
+        }
+    }
+}

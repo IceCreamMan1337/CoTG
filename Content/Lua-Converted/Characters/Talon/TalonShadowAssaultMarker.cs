@@ -28,3 +28,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssaultMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("talon_ult_blade_hold.troy");
+            PreloadParticle("talon_ult_blade_hold_team_id_red.troy");
+            PreloadSpell("root");
+        }
+    }
+}

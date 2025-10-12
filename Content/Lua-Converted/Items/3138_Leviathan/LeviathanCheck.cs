@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeviathanCheck : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leviathanstats");
+        }
+    }
+}

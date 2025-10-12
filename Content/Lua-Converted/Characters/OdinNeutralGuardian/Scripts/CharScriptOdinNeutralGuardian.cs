@@ -25,3 +25,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinNeutralGuardian : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianbuff");
+            PreloadSpell("odinguardianui");
+            PreloadSpell("turretdamagemanager");
+            PreloadSpell("odinplayerbuff");
+            PreloadSpell("odinguardianstatsbylevel");
+        }
+    }
+}

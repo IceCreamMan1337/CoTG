@@ -67,3 +67,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3099 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("soulshroudauraself");
+            PreloadSpell("soulshroudaurafriend");
+            PreloadParticle("zettasmanamanipulator_itm.troy");
+        }
+    }
+}

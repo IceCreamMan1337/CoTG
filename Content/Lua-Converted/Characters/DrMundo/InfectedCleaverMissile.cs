@@ -147,3 +147,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InfectedCleaverMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_slow.troy");
+            PreloadParticle("dr_mundo_infected_cleaver_tar.troy");
+        }
+    }
+}

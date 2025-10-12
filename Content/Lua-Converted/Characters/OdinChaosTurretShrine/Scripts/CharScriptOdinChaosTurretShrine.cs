@@ -36,3 +36,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinChaosTurretShrine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinturretdamage");
+            PreloadSpell("turretbonus");
+            PreloadSpell("turretbonushealth");
+            PreloadSpell("callforhelpmanager");
+        }
+    }
+}

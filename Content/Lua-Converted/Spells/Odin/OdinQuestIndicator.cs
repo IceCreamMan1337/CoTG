@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinQuestIndicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_point_active.troy");
+        }
+    }
+}

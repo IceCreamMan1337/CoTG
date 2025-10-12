@@ -23,3 +23,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3110 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("frozenheart");
+            PreloadSpell("frozenheartaura");
+        }
+    }
+}

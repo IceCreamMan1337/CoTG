@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Swipe : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nidalee_cougar_swipe_tar.troy");
+        }
+    }
+}

@@ -88,3 +88,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliSmokeBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_smoke_bomb_tar_team_green.troy");
+            PreloadParticle("akali_smoke_bomb_tar_team_red.troy");
+            PreloadSpell("recall");
+            PreloadSpell("akaliholdstealth");
+            PreloadSpell("akalisbstealth");
+            PreloadSpell("akalismokebombinternal");
+            PreloadSpell("akalisbbuff");
+            PreloadSpell("akalisbdebuff");
+            PreloadCharacter("testcube");
+        }
+    }
+}

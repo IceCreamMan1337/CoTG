@@ -37,3 +37,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HateSpikeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("malice_marker");
+        }
+    }
+}

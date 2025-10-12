@@ -27,3 +27,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LightningRodChain : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("lightningrodchain");
+            PreloadParticle("kennen_btl_beam.troy");
+            PreloadSpell("root");
+            PreloadParticle("kennen_btl_tar.troy");
+        }
+    }
+}

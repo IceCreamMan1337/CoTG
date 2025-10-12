@@ -32,3 +32,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirHemoplagueMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("unlockanimation");
+            PreloadParticle("vladhemoplague_nova.troy");
+            PreloadSpell("vladimirhemoplaguedebuff");
+        }
+    }
+}

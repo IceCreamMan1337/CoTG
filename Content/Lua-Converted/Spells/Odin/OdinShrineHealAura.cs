@@ -30,3 +30,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineHealAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_shrine_heal.troy");
+        }
+    }
+}

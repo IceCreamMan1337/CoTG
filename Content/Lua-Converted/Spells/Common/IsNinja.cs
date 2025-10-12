@@ -34,3 +34,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class IsNinja : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("isninja");
+        }
+    }
+}

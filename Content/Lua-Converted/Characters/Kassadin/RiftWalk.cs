@@ -57,3 +57,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RiftWalk : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("riftwalk_flashback.troy");
+            PreloadSpell("riftwalk");
+            PreloadParticle("riftwalk_flash.troy");
+        }
+    }
+}

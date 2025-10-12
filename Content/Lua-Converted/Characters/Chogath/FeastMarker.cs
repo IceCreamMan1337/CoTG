@@ -45,3 +45,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class FeastMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("feast_tar_indicator.troy");
+            PreloadSpell("feast");
+        }
+    }
+}

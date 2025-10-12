@@ -65,3 +65,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoiaTargeting : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneparanoiatargeting.troy");
+        }
+    }
+}

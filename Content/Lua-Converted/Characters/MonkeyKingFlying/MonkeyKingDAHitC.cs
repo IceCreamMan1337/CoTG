@@ -24,3 +24,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDAHitC : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingkillclonee");
+        }
+    }
+}

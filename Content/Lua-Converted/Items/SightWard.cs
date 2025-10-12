@@ -143,3 +143,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SightWard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stealth");
+            PreloadSpell("sightward");
+            PreloadCharacter("sightward");
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("itemplacementmissile");
+        }
+    }
+}

@@ -88,3 +88,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliMota : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_markoftheassasin_marker_tar.troy");
+            PreloadParticle("akali_markoftheassasin_marker_tar_02.troy");
+            PreloadParticle("akali_mark_impact_tar.troy");
+            PreloadSpell("akalitwinap");
+            PreloadSpell("akalishadowswipehealingparticle");
+        }
+    }
+}

@@ -19,3 +19,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAnnie : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pyromania_marker");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

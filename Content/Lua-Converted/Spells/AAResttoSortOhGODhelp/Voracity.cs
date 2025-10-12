@@ -54,3 +54,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Voracity : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("katarina_spell_refresh_indicator.troy");
+        }
+    }
+}

@@ -29,3 +29,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDecoy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingdecoydummy");
+            PreloadSpell("monkeykingdecoyclone");
+            PreloadSpell("monkeykingdecoystealth");
+        }
+    }
+}

@@ -58,3 +58,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaSunlight : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leona_sunlight_champion.troy");
+            PreloadParticle("leona_sunlight.troy");
+            PreloadParticle("leonapassive_tar.troy");
+            PreloadSpell("leonasunlight");
+        }
+    }
+}

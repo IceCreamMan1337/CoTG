@@ -53,3 +53,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ScoutsBounty : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("scoutsbounty");
+        }
+    }
+}

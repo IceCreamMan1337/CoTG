@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinBloodburster : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinbloodbursterbuff");
+        }
+    }
+}

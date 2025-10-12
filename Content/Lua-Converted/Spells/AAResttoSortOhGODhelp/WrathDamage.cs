@@ -13,3 +13,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WrathDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("slimecall_tar.troy");
+            PreloadSpell("wrathdebuff");
+        }
+    }
+}

@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MockingShout : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("facingme");
+            PreloadSpell("mockingshoutslow");
+        }
+    }
+}

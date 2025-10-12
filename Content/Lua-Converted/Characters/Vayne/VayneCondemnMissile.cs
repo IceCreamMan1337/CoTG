@@ -118,3 +118,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneCondemnMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vayne_e_tar.troy");
+            PreloadParticle("vayne_e_terrain_tar.troy");
+            PreloadSpell("vaynesilveredbolts");
+            PreloadSpell("vaynesilvereddebuff");
+            PreloadParticle("vayne_w_tar.troy");
+            PreloadSpell("vaynecondemnmissile");
+        }
+    }
+}

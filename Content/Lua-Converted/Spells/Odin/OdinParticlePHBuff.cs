@@ -25,3 +25,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinParticlePHBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odindontshipthis_green.troy");
+            PreloadParticle("odindontshipthis_red.troy");
+        }
+    }
+}

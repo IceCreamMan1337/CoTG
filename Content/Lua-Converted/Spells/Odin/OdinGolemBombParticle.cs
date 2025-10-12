@@ -16,3 +16,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGolemBombParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odingolemplaceholder.troy");
+            PreloadParticle("odingolemplaceholder2.troy");
+        }
+    }
+}

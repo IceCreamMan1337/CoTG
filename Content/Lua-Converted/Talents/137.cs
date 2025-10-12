@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_137 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("offensivemasterybuff");
+        }
+    }
+}

@@ -75,3 +75,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CrestofUnyieldingStone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_invulnerability.troy");
+        }
+    }
+}

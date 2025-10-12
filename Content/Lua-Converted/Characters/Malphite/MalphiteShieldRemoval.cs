@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MalphiteShieldRemoval : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("obduracy_off.troy");
+            PreloadSpell("root");
+        }
+    }
+}

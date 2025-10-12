@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerdingerTurretMaximum : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("h28gevolutionturret");
+        }
+    }
+}

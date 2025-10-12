@@ -63,3 +63,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenMartyr : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_w_cast_ult_01.troy");
+            PreloadParticle("exile_w_cast_02.troy");
+            PreloadParticle("exile_w_weapon_cas.troy");
+            PreloadParticle("exile_w_cast_ult_02.troy");
+            PreloadSpell("rivenmartyrdebuff");
+            PreloadParticle("exile_w_cast_01.troy");
+        }
+    }
+}

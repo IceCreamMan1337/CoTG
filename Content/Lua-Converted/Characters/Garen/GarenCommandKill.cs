@@ -61,3 +61,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenCommandKill : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenkillbuff");
+            PreloadSpell("garencommandkill");
+        }
+    }
+}

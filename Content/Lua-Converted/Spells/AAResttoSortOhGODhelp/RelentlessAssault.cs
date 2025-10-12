@@ -71,3 +71,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RelentlessAssault : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("armsmasterrelentlesscounter");
+            PreloadSpell("relentlessassaultdebuff");
+            PreloadSpell("relentlessassaultmarker");
+            PreloadSpell("armsmasterrelentlessmr");
+        }
+    }
+}

@@ -93,3 +93,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class BansheesVeil : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spelleffect_proc.troy");
+            PreloadParticle("bansheesveil_buf_tempxerath.troy");
+            PreloadParticle("bansheesveil_buf.troy");
+            PreloadSpell("bansheesveiltimer");
+        }
+    }
+}

@@ -30,3 +30,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pantheon_Aegis : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pantheon_aegisshield2");
+            PreloadSpell("pantheon_aegisshield");
+            PreloadSpell("pantheon_aegis_counter");
+        }
+    }
+}

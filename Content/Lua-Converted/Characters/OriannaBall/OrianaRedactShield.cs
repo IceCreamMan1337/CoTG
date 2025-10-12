@@ -71,3 +71,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaRedactShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("orianaprotectshield.troy");
+        }
+    }
+}

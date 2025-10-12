@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptChaosTurretTutorial : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretdamagemanager");
+        }
+    }
+}

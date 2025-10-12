@@ -47,3 +47,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenLightningRushDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenlightningrushmarker");
+            PreloadSpell("kennenmarkofstorm");
+            PreloadParticle("kennen_lr_tar.troy");
+            PreloadSpell("kennenlrenergy");
+        }
+    }
+}

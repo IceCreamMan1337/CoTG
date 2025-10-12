@@ -17,3 +17,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingCloneApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingclonefull");
+            PreloadSpell("monkeykingclone");
+            PreloadCharacter("monkeykingclone");
+            PreloadSpell("monkeykingclonespellcast");
+            PreloadParticle("leblanc_mirrorimagepoof.troy");
+        }
+    }
+}

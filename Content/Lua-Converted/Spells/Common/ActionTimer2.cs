@@ -30,3 +30,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ActionTimer2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stealth");
+            PreloadSpell("actiontimer");
+        }
+    }
+}

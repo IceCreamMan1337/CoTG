@@ -64,3 +64,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainShadowGrasp : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swain_shadowgrasp_warning_green.troy");
+            PreloadParticle("swain_shadowgrasp_warning_red.troy");
+            PreloadParticle("swain_shadowgrasp_transform.troy");
+            PreloadSpell("swainshadowgrasproot");
+            PreloadCharacter("testcube");
+        }
+    }
+}

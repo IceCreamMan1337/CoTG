@@ -35,3 +35,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SprayAndPrayAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("twitch_gangster_sprayandpray_tar.troy");
+            PreloadParticle("twitch_punk_sprayandpray_tar.troy");
+            PreloadParticle("twitch_sprayandpray_tar.troy");
+        }
+    }
+}

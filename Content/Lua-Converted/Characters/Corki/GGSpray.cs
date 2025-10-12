@@ -50,3 +50,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GGSpray : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gatlingdebuff");
+        }
+    }
+}

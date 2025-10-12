@@ -70,3 +70,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Meditate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("meditate_eff.troy");
+            PreloadSpell("meditate");
+        }
+    }
+}

@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTutorial_Red_Minion_Basic : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("hallucinatepoof.troy");
+        }
+    }
+}

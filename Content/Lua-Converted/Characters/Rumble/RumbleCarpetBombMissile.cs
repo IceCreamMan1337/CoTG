@@ -101,3 +101,26 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleCarpetBombMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumblecarpetbombeffect");
+            PreloadSpell("rumblecarpetbombmissile");
+            PreloadSpell("rumblecarpetbomb");
+            PreloadSpell("rumblecarpetbombcounter");
+            PreloadCharacter("testcube");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("rumblecarpetbombsound1");
+            PreloadSpell("rumblecarpetbombsound2");
+            PreloadParticle("rumble_ult_placeholder_01.troy");
+            PreloadParticle("rumble_incoming_mis_cannon_ball.troy");
+            PreloadParticle("rumble_incoming_mis_pineapple.troy");
+            PreloadParticle("rumble_incoming_mis.troy");
+            PreloadSpell("rumblecarpetbombbufforder");
+            PreloadSpell("rumblecarpetbombbuffdest");
+        }
+    }
+}

@@ -105,3 +105,20 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKarma : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmachakra");
+            PreloadSpell("karmachakracharge");
+            PreloadSpell("karmaonemantraparticle");
+            PreloadSpell("karmatranscendence");
+            PreloadSpell("karmachakracounter");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("karmatwomantraparticle");
+        }
+    }
+}

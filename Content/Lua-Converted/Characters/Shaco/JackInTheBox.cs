@@ -216,3 +216,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JackInTheBox : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jackintheboxpoof.troy");
+            PreloadSpell("endkill");
+            PreloadSpell("stealth");
+            PreloadSpell("jackintheboxinternal");
+        }
+    }
+}

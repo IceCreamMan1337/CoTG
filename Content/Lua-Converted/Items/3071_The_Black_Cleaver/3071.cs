@@ -32,3 +32,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3071 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("blackcleaver");
+            PreloadParticle("blackcleave_itm.troy");
+        }
+    }
+}

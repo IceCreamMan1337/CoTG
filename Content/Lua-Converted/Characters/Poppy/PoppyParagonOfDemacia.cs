@@ -45,3 +45,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class PoppyParagonOfDemacia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppyparagonstats");
+            PreloadSpell("poppyparagonparticle");
+            PreloadSpell("poppyparagonspeed");
+            PreloadSpell("poppyparagonicon");
+        }
+    }
+}

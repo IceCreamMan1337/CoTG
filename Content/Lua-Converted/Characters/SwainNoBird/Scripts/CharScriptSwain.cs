@@ -38,3 +38,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSwain : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("swaintacticalsupremacy");
+            PreloadSpell("swaintorment");
+        }
+    }
+}

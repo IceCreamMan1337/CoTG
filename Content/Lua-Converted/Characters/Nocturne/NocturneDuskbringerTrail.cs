@@ -39,3 +39,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneDuskbringerTrail : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("nocturneduskbringer");
+        }
+    }
+}

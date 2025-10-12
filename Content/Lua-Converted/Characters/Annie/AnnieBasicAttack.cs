@@ -27,3 +27,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AnnieBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("anniebasicattack_tar_frost.troy");
+            PreloadParticle("anniebasicattack_tar.troy");
+        }
+    }
+}

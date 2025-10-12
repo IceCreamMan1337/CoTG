@@ -34,3 +34,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class SonaSongofDiscordAttackUpgrade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("slow");
+            PreloadSpell("sonapowerchord");
+        }
+    }
+}

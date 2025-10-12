@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GatlingGunAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gatlingdebuff");
+            PreloadSpell("gatlingdebuffcheck");
+        }
+    }
+}

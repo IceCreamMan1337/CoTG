@@ -45,3 +45,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptCassiopeia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cassiopeiadeathparticle");
+            PreloadSpell("cassiopeiadeadlycadence");
+            PreloadParticle("cassdeadlycadence_buf.troy");
+            PreloadSpell("root");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

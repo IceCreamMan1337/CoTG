@@ -40,3 +40,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_146 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("burningembers");
+        }
+    }
+}

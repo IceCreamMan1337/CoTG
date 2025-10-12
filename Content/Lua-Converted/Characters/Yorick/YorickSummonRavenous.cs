@@ -87,3 +87,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickSummonRavenous : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickactiveravenous");
+            PreloadParticle("yorick_ravenousghoul_death.troy");
+            PreloadSpell("yorickravenousprimarytarget");
+            PreloadCharacter("yorickravenousghoul");
+            PreloadSpell("yorickravenouslogic");
+        }
+    }
+}

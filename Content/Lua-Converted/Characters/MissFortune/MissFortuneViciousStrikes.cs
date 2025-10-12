@@ -53,3 +53,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneViciousStrikes : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("missfortune_viciousshots_attack_buf.troy");
+            PreloadSpell("internal_50ms");
+            PreloadSpell("grievouswound");
+        }
+    }
+}

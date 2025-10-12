@@ -110,3 +110,17 @@ namespace Buffs
         }
     }
 }
+
+namespace PreLoads
+{
+    public class Crystallize : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("crystallizepush");
+            PreloadSpell("crystallize");
+            PreloadSpell("iceblock");
+            PreloadCharacter("aniviaiceblock");
+        }
+    }
+}

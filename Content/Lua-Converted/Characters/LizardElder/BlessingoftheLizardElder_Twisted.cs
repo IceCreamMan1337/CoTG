@@ -116,3 +116,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BlessingoftheLizardElder_Twisted : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_red_offense.troy");
+            PreloadParticle("clairvoyanceeyelong.troy");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+            PreloadSpell("blessingofthelizardelder_twisted");
+            PreloadSpell("burning");
+            PreloadSpell("judicatorrighteousfury");
+            PreloadSpell("slow");
+        }
+    }
+}

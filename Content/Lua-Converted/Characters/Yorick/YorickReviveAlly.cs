@@ -28,3 +28,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class YorickReviveAlly : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickreviveallyself");
+        }
+    }
+}

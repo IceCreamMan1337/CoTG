@@ -32,3 +32,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class SonaAriaofPerseveranceUpgrade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("sonapowerchorddebuff");
+            PreloadSpell("sonapowerchord");
+        }
+    }
+}

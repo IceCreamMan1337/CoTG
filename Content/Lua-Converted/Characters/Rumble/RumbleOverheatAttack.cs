@@ -33,3 +33,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleOverheatAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumbleoverheat");
+        }
+    }
+}

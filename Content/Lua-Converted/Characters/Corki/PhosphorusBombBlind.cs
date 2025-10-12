@@ -31,3 +31,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PhosphorusBombBlind : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_blind_buf.troy");
+        }
+    }
+}

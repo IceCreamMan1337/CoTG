@@ -22,3 +22,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CardMasterStackHolder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cardmasterstackholder");
+            PreloadSpell("cardmasterstackparticle");
+        }
+    }
+}

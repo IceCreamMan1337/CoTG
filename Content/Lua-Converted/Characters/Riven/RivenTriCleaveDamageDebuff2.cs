@@ -29,3 +29,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleaveDamageDebuff2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("exile_q_tar_03.troy");
+            PreloadParticle("exile_q_tar_04.troy");
+        }
+    }
+}

@@ -88,3 +88,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Enrage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("enragemaxhp");
+            PreloadSpell("enrage");
+        }
+    }
+}

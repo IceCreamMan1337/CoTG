@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinTestCubeRender : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinparticlephbuff");
+        }
+    }
+}

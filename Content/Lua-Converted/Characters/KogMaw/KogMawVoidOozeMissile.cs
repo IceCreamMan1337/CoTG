@@ -83,3 +83,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawVoidOozeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kogmawvoidooze_green.troy");
+            PreloadParticle("kogmawvoidooze_red.troy");
+            PreloadSpell("kogmawvoidoozeslow");
+            PreloadSpell("kogmawvoidoozemissile");
+            PreloadParticle("kogmawvoidooze_tar.troy");
+        }
+    }
+}

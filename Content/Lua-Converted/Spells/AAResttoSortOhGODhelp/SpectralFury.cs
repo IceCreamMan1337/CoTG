@@ -36,3 +36,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SpectralFury : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("judicatorrighteousfury");
+            PreloadSpell("spectralfury");
+        }
+    }
+}

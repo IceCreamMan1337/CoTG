@@ -110,3 +110,13 @@ namespace Buffs
         */
     }
 }
+namespace PreLoads
+{
+    public class Highlander : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("deathscaress_nova.troy");
+        }
+    }
+}

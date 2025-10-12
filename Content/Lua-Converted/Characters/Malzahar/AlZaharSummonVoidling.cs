@@ -28,3 +28,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharSummonVoidling : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("malzaharvoidling");
+            PreloadSpell("alzaharvoidling");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("alzaharsummonvoidling");
+        }
+    }
+}

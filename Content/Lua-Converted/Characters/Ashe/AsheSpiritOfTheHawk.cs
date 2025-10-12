@@ -28,3 +28,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class AsheSpiritOfTheHawk : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ashespiritofthehawkbubble");
+        }
+    }
+}

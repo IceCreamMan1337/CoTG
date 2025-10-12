@@ -51,3 +51,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class EzrealTrueshotBarrage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("ezreal_trueshot_tar.troy");
+            PreloadSpell("ezrealrisingspellforce");
+        }
+    }
+}

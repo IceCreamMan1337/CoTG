@@ -17,3 +17,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class FireoftheGreatDragon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("burning");
+        }
+    }
+}

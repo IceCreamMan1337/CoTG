@@ -29,3 +29,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JackInTheBoxInternal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("shacobox");
+            PreloadSpell("jackinthebox");
+        }
+    }
+}

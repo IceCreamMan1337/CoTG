@@ -56,3 +56,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShamanAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonasongofdiscord_aura.troy");
+        }
+    }
+}

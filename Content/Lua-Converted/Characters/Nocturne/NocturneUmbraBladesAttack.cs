@@ -79,3 +79,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneUmbraBladesAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneumbrablades_tar.troy");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("nocturneumbrabladesattack");
+            PreloadSpell("nocturneumbrablades");
+        }
+    }
+}

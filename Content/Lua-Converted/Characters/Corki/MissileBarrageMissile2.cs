@@ -61,3 +61,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissileBarrageMissile2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("corki_misslebarrage_dd_tar.troy");
+        }
+    }
+}

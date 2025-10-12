@@ -53,3 +53,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class LeonaShieldOfDaybreakAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leona_shieldofdaybreak_nova.troy");
+            PreloadParticle("leona_shieldofdaybreak_tar.troy");
+            PreloadSpell("leonasunlight");
+        }
+    }
+}

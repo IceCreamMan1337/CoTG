@@ -96,3 +96,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlphaStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alphastrikemarker");
+            PreloadSpell("alphastriketarget");
+        }
+    }
+}

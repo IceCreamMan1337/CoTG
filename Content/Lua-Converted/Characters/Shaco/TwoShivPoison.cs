@@ -71,3 +71,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TwoShivPoison : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("castfrombehind");
+            PreloadSpell("twoshivpoison");
+        }
+    }
+}

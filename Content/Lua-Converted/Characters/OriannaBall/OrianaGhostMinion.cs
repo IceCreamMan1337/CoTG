@@ -51,3 +51,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaGhostMinion : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yomu_ring_green.troy");
+            PreloadParticle("yomu_ring_red.troy");
+            PreloadParticle("oriana_ball_glow_green.troy");
+            PreloadParticle("oriana_ball_glow_red.troy");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

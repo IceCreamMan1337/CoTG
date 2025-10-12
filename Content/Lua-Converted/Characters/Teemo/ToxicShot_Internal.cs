@@ -44,3 +44,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ToxicShot_Internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("toxicshotattack");
+        }
+    }
+}

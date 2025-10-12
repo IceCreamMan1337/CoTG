@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CardmasterStackParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("cardmaster_stackready.troy");
+        }
+    }
+}

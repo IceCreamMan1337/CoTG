@@ -29,3 +29,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathDefiedSpirit : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

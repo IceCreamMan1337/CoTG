@@ -155,3 +155,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiDrain3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maokaidrain3toggle");
+            PreloadParticle("maoki_torrent_cas_01.troy");
+            PreloadParticle("maoki_torrent_01_teamid_green.troy");
+            PreloadParticle("maoki_torrent_01_teamid_red.troy");
+            PreloadSpell("maokaidrain3defense");
+            PreloadSpell("maokaidrain3");
+            PreloadParticle("maoki_torrent_deflect_self_cas.troy");
+            PreloadParticle("maoki_torrent_deflect_cas_02.troy");
+            PreloadParticle("maoki_torrent_unit_tar.troy");
+        }
+    }
+}

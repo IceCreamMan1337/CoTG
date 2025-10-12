@@ -82,3 +82,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Empower : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("relentlessassaultmarker");
+            PreloadParticle("empower_buf.troy");
+            PreloadSpell("empowercleave");
+            PreloadParticle("tiamatmelee_itm.troy");
+            PreloadSpell("empower");
+        }
+    }
+}

@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynHeadshotCount : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("caitlynheadshotcount");
+            PreloadSpell("caitlynheadshot");
+        }
+    }
+}

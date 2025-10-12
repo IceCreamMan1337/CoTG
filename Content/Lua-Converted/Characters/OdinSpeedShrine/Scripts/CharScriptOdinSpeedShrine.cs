@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinSpeedShrine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinspeedshrineaura");
+        }
+    }
+}

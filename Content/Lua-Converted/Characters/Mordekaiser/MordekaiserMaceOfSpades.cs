@@ -129,3 +129,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserMaceOfSpades : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisersyphonparticle");
+            PreloadParticle("mordakaiser_maceofspades_tar.troy");
+            PreloadSpell("mordekaisermaceofspadesdmg");
+        }
+    }
+}

@@ -15,3 +15,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptAnivia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rebirthready");
+            PreloadSpell("rebirthmarker");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

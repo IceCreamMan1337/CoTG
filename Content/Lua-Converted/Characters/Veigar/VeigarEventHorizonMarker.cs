@@ -49,3 +49,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VeigarEventHorizonMarker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("veigareventhorizonprevent");
+            PreloadSpell("veigareventhorizonmarker");
+        }
+    }
+}

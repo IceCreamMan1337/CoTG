@@ -62,3 +62,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaDissonanceWave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianashock");
+            PreloadSpell("orianaslow");
+            PreloadSpell("orianahaste");
+        }
+    }
+}

@@ -30,3 +30,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class GarenBladestormLeave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenbladestorm");
+        }
+    }
+}

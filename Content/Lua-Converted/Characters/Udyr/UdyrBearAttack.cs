@@ -20,3 +20,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrBearAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("udyrbearstuncheck");
+            PreloadParticle("udyr_bear_slam.troy");
+        }
+    }
+}

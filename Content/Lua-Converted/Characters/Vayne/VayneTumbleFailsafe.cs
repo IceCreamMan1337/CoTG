@@ -13,3 +13,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneTumbleFailsafe : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vaynetumble");
+            PreloadSpell("vaynetumblebonus");
+        }
+    }
+}

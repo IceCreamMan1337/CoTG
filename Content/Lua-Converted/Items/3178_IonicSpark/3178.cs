@@ -12,3 +12,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3178 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("lightningrodapplicator");
+            PreloadSpell("lightningrodchain");
+        }
+    }
+}

@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxDeath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxdeathparticletimer");
+        }
+    }
+}

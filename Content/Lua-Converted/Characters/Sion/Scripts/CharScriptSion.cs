@@ -34,3 +34,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSion : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("feelnopain_eff.troy");
+            PreloadSpell("feelnopain");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

@@ -96,3 +96,17 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class OdinMinionSpellAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odingolembombbuff");
+            PreloadSpell("odinsuperminion");
+            PreloadParticle("thornmail_tar.troy");
+            PreloadSpell("summonerodinpromote");
+            PreloadSpell("odinminionspellattack");
+        }
+    }
+}

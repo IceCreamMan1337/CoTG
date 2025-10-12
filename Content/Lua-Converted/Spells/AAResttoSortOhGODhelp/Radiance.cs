@@ -78,3 +78,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Radiance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("taricgemstorm.troy");
+            PreloadSpell("radianceaura");
+        }
+    }
+}

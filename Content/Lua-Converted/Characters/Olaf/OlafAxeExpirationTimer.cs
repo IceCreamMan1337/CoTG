@@ -58,3 +58,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OlafAxeExpirationTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("olaf_axe_trigger.troy");
+            PreloadParticle("olaf_axe_totem_team_id_green.troy");
+            PreloadParticle("olaf_axe_totem_team_id_red.troy");
+            PreloadSpell("olafaxeexpirationtimer2");
+            PreloadSpell("olafberzerkerrage");
+            PreloadParticle("olaf_axe_refresh_indicator.troy");
+            PreloadParticle("olaf_axe_trigger_02.troy");
+        }
+    }
+}

@@ -32,3 +32,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptBlue_Minion_MechCannon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretshield");
+            PreloadParticle("feelnopain_eff.troy");
+        }
+    }
+}

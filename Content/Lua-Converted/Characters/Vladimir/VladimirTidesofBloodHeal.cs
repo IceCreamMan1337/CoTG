@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VladimirTidesofBloodHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("briefheal.troy");
+        }
+    }
+}

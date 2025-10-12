@@ -29,3 +29,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDeathGripTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("swainshadowgrasproottemp.troy");
+            PreloadParticle("swain_shadowgrasp_magic.troy");
+        }
+    }
+}

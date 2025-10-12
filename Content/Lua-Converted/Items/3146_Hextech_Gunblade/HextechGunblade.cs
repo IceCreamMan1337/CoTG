@@ -69,3 +69,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HextechGunblade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("hextech_gunblade_cas.troy");
+            PreloadSpell("root");
+            PreloadSpell("hextechgunbladespell");
+        }
+    }
+}

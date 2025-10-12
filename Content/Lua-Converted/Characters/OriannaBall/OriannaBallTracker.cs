@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OriannaBallTracker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("orianaghost");
+        }
+    }
+}

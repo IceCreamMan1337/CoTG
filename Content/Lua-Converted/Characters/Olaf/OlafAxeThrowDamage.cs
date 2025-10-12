@@ -38,3 +38,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OlafAxeThrowDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("olaf_axethrow_tar.troy");
+            PreloadParticle("olaf_axethrow_tar_02.troy");
+            PreloadParticle("olaf_axethrow_tar_03.troy");
+        }
+    }
+}

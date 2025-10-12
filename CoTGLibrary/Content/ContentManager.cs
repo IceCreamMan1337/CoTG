@@ -1112,19 +1112,42 @@ internal class ContentManager
         }
     }
 
+    internal static bool CheckLoadedCharacter(string name)
+    {
+        return CharactersData.ContainsKey(name.ToLowerInvariant());
+    }
+    internal static bool CheckLoadedSpell(string name)
+    {
+        return SpellsData.ContainsKey(name.ToLowerInvariant());
+    }
+    internal static bool CheckLoadedParticle(string name)
+    {
+        return ParticlesData.ContainsKey(name.ToLowerInvariant());
+    }
+
+    private static readonly Dictionary<string, string[]> FileMap = [];
+    private static readonly Dictionary<string, string[]> DirectoryMap = [];
     private static string? FindFileCaseInsensitive(string directory, string fileName)
     {
         if (!Directory.Exists(directory))
             return null;
-        string[] files = Directory.GetFiles(directory);
+
+        if (!FileMap.TryGetValue(directory, out string[]? files))
+        {
+            files = FileMap[directory] = Directory.GetFiles(directory);
+        }
         return files.FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
     }
-    private static string? FindDirectoryCaseInsensitive(string directory, string fileName)
+    private static string? FindDirectoryCaseInsensitive(string directory, string folderName)
     {
         if (!Directory.Exists(directory))
             return null;
-        string[] directories = Directory.GetDirectories(directory);
-        return directories.FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
+
+        if (!FileMap.TryGetValue(directory, out string[]? directories))
+        {
+            directories = FileMap[directory] = Directory.GetDirectories(directory);
+        }
+        return directories.FirstOrDefault(f => string.Equals(Path.GetFileName(f), folderName, StringComparison.OrdinalIgnoreCase));
     }
 
     /// <summary>
@@ -1139,7 +1162,7 @@ internal class ContentManager
             return null;
         }
 
-        characterName = characterName.ToLowerInvariant();
+        characterName = Path.GetFileNameWithoutExtension(characterName).ToLowerInvariant();
         if (CharactersData.TryGetValue(characterName, out var charData))
         {
             return charData;
@@ -1148,7 +1171,7 @@ internal class ContentManager
         string? directoryPath = FindDirectoryCaseInsensitive(CharactersPath, characterName);
         if (directoryPath is null)
         {
-            _logger.ErrorFormat("Could not find directory for CharData for Character {0}!", characterName);
+            _logger.WarnFormat("Could not find directory for CharData for Character {0}!", characterName);
             return CharactersData[characterName] = null;
         }
 
@@ -1158,7 +1181,7 @@ internal class ContentManager
             path = FindFileCaseInsensitive(directoryPath, characterName + ".inibin");
             if (path is null)
             {
-                _logger.ErrorFormat("Could not find CharData for Character {0}!", characterName);
+                _logger.WarnFormat("Could not find CharData for Character {0}!", characterName);
                 return CharactersData[characterName] = null;
             }
             path = path[..^3]; //remove "bin" from the end
@@ -1175,29 +1198,24 @@ internal class ContentManager
     /// <returns></returns>
     internal static SpellData? GetSpellData(string spellName)
     {
-        if (string.IsNullOrEmpty(spellName))
-        {
-            //TODO: This gets triggered a lot for some reason.
-            //_logger.Error($"Provided spell name is null or empty.");
-            return null;
-        }
-        spellName = spellName.ToLowerInvariant();
+        spellName = Path.GetFileNameWithoutExtension(spellName).ToLowerInvariant();
         if (SpellsData.TryGetValue(spellName, out var spellData))
         {
             return spellData;
         }
 
-        string? path = FindFileCaseInsensitive(SpellsPath, spellName + ".ini");
+        string? path = FindFileCaseInsensitive(SpellsPath, spellName + ".ini") ?? FindFileCaseInsensitive(SpellsPath, spellName + ".inibin");
         if (path is null)
         {
-            path = FindFileCaseInsensitive(SpellsPath, spellName + ".inibin");
-            if (path is null)
+            //There are spells that don't have spelldata, only scripts. So this is just so the console doesn't get spammed because of them
+            if (FindFileCaseInsensitive(SpellsPath, spellName + ".lua") is null && FindFileCaseInsensitive(SpellsPath, spellName + ".luaobj") is null)
             {
-                _logger.ErrorFormat($"Could not find SpellData for Spell {0}!", spellName);
-                return SpellsData[spellName] = null;
+                _logger.WarnFormat("Could not find SpellData for Spell {0}!", spellName);
             }
-            path = path[..^3]; //remove "bin" from the end
+            return SpellsData[spellName] = null;
         }
+        //remove "bin" from the end
+        path = path.EndsWith("bin") ? path[..^3] : path;
 
         SpellsData[spellName] = new(spellName, path);
         return SpellsData[spellName];
@@ -1211,7 +1229,8 @@ internal class ContentManager
     /// <returns></returns>
     internal static ParticleData? GetParticleData(string name, params GameObject[] characters)
     {
-        if (ParticlesData.TryGetValue(name.ToLower(), out List<ParticleData>? list) || list?.Count <= 0)
+        name = Path.GetFileNameWithoutExtension(name).ToLowerInvariant();
+        if (ParticlesData.TryGetValue(name, out List<ParticleData>? list) || list?.Count <= 0)
         {
             return DoStuffWithParticleData(list, characters);
         }
@@ -1222,7 +1241,7 @@ internal class ContentManager
             path = FindFileCaseInsensitive(ParticlesPath, name + ".troybin");
             if (path is null)
             {
-                _logger.ErrorFormat("Could not find ParticleData for particle {0}!", name);
+                _logger.WarnFormat("Could not find ParticleData for particle {0}!", name);
                 ParticlesData[name] = [];
                 return null!;
             }

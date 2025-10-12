@@ -28,3 +28,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class SonaHymnofValorAttackUpgrade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("sonapowerchord");
+        }
+    }
+}

@@ -88,3 +88,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class InnateSpellHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("meditate_eff.troy");
+            PreloadSpell("meditate");
+            PreloadSpell("innatespellheal");
+        }
+    }
+}

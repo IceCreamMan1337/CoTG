@@ -27,3 +27,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptSoraka : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("consecrationauranoparticle");
+            PreloadSpell("consecrationaura");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

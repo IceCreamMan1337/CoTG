@@ -79,3 +79,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Instagate : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gatefix");
+            PreloadParticle("cardmasterteleport_red.troy");
+            PreloadParticle("gatemarker_red.troy");
+            PreloadParticle("gatemarker_green.troy");
+            PreloadParticle("cardmasterteleport_green.troy");
+            PreloadParticle("cardmasterteleportarrive.troy");
+            PreloadSpell("gate");
+            PreloadSpell("instagate");
+        }
+    }
+}

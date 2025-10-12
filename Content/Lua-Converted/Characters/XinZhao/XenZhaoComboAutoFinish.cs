@@ -43,3 +43,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoComboAutoFinish : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_chainattack_indicator.troy");
+        }
+    }
+}

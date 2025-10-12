@@ -31,3 +31,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGragas : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gragaspassiveheal");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

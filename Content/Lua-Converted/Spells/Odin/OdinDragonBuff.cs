@@ -29,3 +29,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinDragonBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nashor_rune_buf.troy");
+        }
+    }
+}

@@ -91,3 +91,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptEzreal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("cantattack");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

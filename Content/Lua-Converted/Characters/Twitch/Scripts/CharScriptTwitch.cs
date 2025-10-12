@@ -30,3 +30,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTwitch : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deadlyvenom");
+            PreloadSpell("deadlyvenom_internal");
+            PreloadSpell("deadlyvenom_marker");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

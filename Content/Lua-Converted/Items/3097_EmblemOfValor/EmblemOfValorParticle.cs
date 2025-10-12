@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class EmblemOfValorParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

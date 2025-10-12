@@ -107,3 +107,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SadMummyBandageToss : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("bandage_beam.troy");
+            PreloadParticle("bandagetoss_tar.troy");
+        }
+    }
+}

@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LandslideDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("landslide_buf.troy");
+        }
+    }
+}

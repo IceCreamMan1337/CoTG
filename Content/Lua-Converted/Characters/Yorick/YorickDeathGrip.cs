@@ -96,3 +96,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickDeathGrip : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickdeathgripextra");
+            PreloadSpell("yorickdeathgriptarget");
+            PreloadSpell("yorickdeathgripdelay");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("yorickdeathgripbeamdelay");
+        }
+    }
+}

@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlphaStrikeTeleport : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alphastrikemarker");
+        }
+    }
+}

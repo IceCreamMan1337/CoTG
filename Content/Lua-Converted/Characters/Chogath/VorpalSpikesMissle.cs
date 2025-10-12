@@ -37,3 +37,13 @@ namespace Buffs
 
     }
 }
+namespace PreLoads
+{
+    public class VorpalSpikesMissle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vorpalspikesmisslebuff");
+        }
+    }
+}

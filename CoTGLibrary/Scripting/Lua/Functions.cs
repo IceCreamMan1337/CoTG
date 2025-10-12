@@ -337,35 +337,29 @@ public static partial class Functions
     [BBFunc]
     public static void PreloadParticle(string name)
     {
+        if (!ContentManager.CheckLoadedParticle(name))
+        {
+            _ = new Particle(name, null, Vector2.Zero, isPreload: true);
+        }
     }
 
     private static Table _emptyTable = new(null);
     [BBFunc]
     public static void PreloadSpell([BBSpellName] string name)
     {
-        /*
-        var entry = LuaScriptEngine.GetBBCacheEntry(name);
-        if(!entry.Preloaded)
+        if (!ContentManager.CheckLoadedSpell(name))
         {
-            entry.Preloaded = true;
-
-            Console.WriteLine($"Preloading {name}");
-
-            entry.GetMetadata<BuffScriptMetaData>();
-            
-            const string funcname = "PreLoad";
-            var blocks = entry.Globals.RawGet(funcname + "BuildingBlocks")?.Table;
-            if(blocks != null)
-            {
-                LuaScriptEngine.ExecBB(blocks, _emptyTable, funcname);
-            }
+            _ = new Spell(null, name, 0, isPreload: true);
         }
-        */
     }
 
     [BBFunc]
     public static void PreloadCharacter(string name)
     {
+        if (!ContentManager.CheckLoadedCharacter(name))
+        {
+            _ = new ObjAIBase(name);
+        }
     }
 
     private static int ConvertAPISlot(

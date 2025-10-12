@@ -30,3 +30,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingSpinToWinLeave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingspintowin");
+        }
+    }
+}

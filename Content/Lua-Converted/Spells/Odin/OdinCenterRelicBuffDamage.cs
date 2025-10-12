@@ -60,3 +60,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCenterRelicBuffDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_relic_buf_light_blue.troy");
+            PreloadParticle("odin_centerbuffbeam.troy");
+            PreloadSpell("root");
+        }
+    }
+}

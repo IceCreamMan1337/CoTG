@@ -48,3 +48,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XerathArcaneBarrageWrapper : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xeratharcanebarragebarrage");
+            PreloadSpell("xeratharcanebarragewrapper");
+            PreloadSpell("xeratharcanebarrageminion");
+            PreloadCharacter("xeratharcanebarragelauncher");
+        }
+    }
+}

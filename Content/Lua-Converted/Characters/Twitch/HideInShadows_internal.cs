@@ -68,3 +68,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HideInShadows_internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hideinshadows");
+        }
+    }
+}

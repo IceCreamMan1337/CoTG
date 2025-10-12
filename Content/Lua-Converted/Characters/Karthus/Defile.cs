@@ -109,3 +109,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Defile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("defile_green_cas.troy");
+            PreloadParticle("defile_red_cas.troy");
+            PreloadSpell("deathdefiedbuff");
+            PreloadSpell("defile");
+        }
+    }
+}

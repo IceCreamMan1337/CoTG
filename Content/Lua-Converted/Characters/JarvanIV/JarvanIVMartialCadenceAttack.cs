@@ -22,3 +22,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVMartialCadenceAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jarvanivmartialcadencecheck");
+            PreloadParticle("jarvincritattack_tar.troy");
+        }
+    }
+}

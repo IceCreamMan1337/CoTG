@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3145 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hextechrevolver");
+        }
+    }
+}

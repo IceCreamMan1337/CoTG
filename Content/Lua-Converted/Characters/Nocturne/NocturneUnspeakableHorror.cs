@@ -118,3 +118,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneUnspeakableHorror : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneunspeakablehorror_tar_frost.troy");
+            PreloadParticle("nocturneunspeakablehorror_counter_frost.troy");
+            PreloadParticle("nocturneunspeakablehorror_tar.troy");
+            PreloadParticle("nocturneunspeakablehorror_counter.troy");
+            PreloadParticle("nocturneunspeakablehorror_beam.troy");
+            PreloadParticle("nocturneunspeakablehorror_break.troy");
+            PreloadSpell("root");
+            PreloadParticle("nocturneunspeakablehorror_fear.troy");
+            PreloadSpell("nocturneunspeakablehorror");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

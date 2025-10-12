@@ -81,3 +81,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Deceive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deceivecritbonus");
+            PreloadParticle("jackintheboxpoof2.troy");
+            PreloadSpell("deceivefade");
+        }
+    }
+}

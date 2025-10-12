@@ -52,3 +52,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TimeWarp : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("timewarpslow");
+        }
+    }
+}

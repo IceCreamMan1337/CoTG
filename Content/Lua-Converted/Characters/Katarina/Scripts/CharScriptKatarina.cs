@@ -44,3 +44,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKatarina : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("voracity");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("killerinstinctbuff");
+        }
+    }
+}

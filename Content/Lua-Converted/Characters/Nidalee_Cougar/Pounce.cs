@@ -78,3 +78,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Pounce : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nidalee_cougarpounce_cas.troy");
+            PreloadParticle("nidalee_cougarpounce_land.troy");
+            PreloadParticle("nidalee_cougar_pounce_tar.troy");
+        }
+    }
+}

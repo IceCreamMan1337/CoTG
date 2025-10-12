@@ -65,3 +65,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTaric : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shatteraura");
+            PreloadSpell("shatterselfbonus");
+            PreloadSpell("tarichammerinternal");
+            PreloadSpell("gemcraft");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

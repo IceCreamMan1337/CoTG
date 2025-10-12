@@ -43,3 +43,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrPhoenixActivation : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("udyr_phoenix_nova.troy");
+        }
+    }
+}

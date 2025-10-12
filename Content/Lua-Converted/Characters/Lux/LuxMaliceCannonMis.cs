@@ -38,3 +38,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxMaliceCannonMis : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxilluminatingfraulein");
+            PreloadParticle("luxpassive_tar.troy");
+            PreloadParticle("luxmalicecannon_tar.troy");
+        }
+    }
+}

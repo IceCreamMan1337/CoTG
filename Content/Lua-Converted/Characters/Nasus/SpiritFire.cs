@@ -65,3 +65,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SpiritFire : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nassus_spiritfire_warning.troy");
+            PreloadSpell("spiritfireaoe");
+            PreloadCharacter("spellbook1");
+        }
+    }
+}

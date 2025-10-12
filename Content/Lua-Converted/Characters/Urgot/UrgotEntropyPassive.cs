@@ -38,3 +38,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotEntropyPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotentropy_buf.troy");
+        }
+    }
+}

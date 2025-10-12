@@ -17,3 +17,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class H28GEvolutionTurretLvl3BasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("heimerdinger");
+            PreloadSpell("uraniumroundshit");
+        }
+    }
+}

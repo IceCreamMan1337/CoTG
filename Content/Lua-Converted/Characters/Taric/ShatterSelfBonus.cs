@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShatterSelfBonus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shatterready_buf.troy");
+        }
+    }
+}

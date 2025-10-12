@@ -31,3 +31,15 @@
         }
     }
 }
+
+namespace PreLoads
+{
+    public class LuxLightstrikeDetonator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxlightstriketoggle");
+            PreloadSpell("luxlightstrikekugel");
+        }
+    }
+}

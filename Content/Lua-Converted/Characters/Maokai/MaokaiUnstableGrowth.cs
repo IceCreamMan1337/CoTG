@@ -115,3 +115,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiUnstableGrowth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maokai_elementaladvance_mis.troy");
+            PreloadSpell("maokaiunstablegrowth");
+            PreloadSpell("maokaiunstablegrowthroot");
+        }
+    }
+}

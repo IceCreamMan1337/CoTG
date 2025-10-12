@@ -14,7 +14,7 @@
             int spellLevel = GetSlotSpellLevel(attacker, 2, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots);
 
             // Calculate dodge modifier based on spell level
-            float dodgeMod = 0.08f + (spellLevel * 0.02f);
+            float dodgeMod = 0.28f + (spellLevel * 0.02f);
 
             // Increase the dodge modifier for the owner
             IncFlatDodgeMod(owner, dodgeMod);
@@ -25,6 +25,17 @@
                 // Seal the spell slot if the buff does not exist
                 SealSpellSlot(2, SpellSlotType.SpellSlots, (ObjAIBase)owner, true, SpellbookType.SPELLBOOK_CHAMPION);
             }
+        }
+    }
+}
+
+namespace PreLoads
+{
+    public class CounterStrikeDodgeUp : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("counterstrikecancast");
         }
     }
 }

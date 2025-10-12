@@ -66,3 +66,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneScatterAoE : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slow");
+            PreloadParticle("missfortune_makeitrain_unit_tar.troy");
+        }
+    }
+}

@@ -140,3 +140,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaTranscendentBlades : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ireliaidleparticle");
+            PreloadParticle("irelia_ult_magic_resist.troy");
+            PreloadParticle("irelia_ult_dagger_active_04.troy");
+            PreloadSpell("ireliatranscendentbladesspell");
+            PreloadSpell("ireliatranscendentblades");
+            PreloadSpell("unlockanimation");
+        }
+    }
+}

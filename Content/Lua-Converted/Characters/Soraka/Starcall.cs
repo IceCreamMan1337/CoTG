@@ -54,3 +54,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Starcall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("starcalldamage");
+        }
+    }
+}

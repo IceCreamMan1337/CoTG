@@ -33,3 +33,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaAriaofPerseveranceAura : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("sonaariaofper_aura.troy");
+            PreloadSpell("sonaariaofperseveranceaurab");
+        }
+    }
+}

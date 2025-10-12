@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonWeaponGlowFade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("renekton_weapon_cooloff.troy");
+        }
+    }
+}

@@ -43,3 +43,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaZenithBlade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leonazenithblade");
+        }
+    }
+}

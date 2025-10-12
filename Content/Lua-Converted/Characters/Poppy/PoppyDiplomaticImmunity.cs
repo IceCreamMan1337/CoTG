@@ -93,3 +93,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyDiplomaticImmunity : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppyditarget");
+            PreloadParticle("diplomaticimmunity_buf.troy");
+            PreloadParticle("diplomaticimmunity_tar.troy");
+            PreloadSpell("poppyditargetdmg");
+        }
+    }
+}

@@ -71,3 +71,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class H28GEvolutionTurretSpell3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("taunt");
+        }
+    }
+}

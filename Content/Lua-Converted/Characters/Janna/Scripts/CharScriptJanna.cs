@@ -47,3 +47,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptJanna : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sowthewind");
+            PreloadSpell("tailwind");
+            PreloadSpell("tailwindself");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

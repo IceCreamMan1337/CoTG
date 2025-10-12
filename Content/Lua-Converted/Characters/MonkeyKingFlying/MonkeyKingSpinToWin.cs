@@ -213,3 +213,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingSpinToWin : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkey_king_ult_spin.troy");
+            PreloadParticle("garen_weapon_glow_01.troy");
+            PreloadSpell("monkeykingdecoystealth");
+            PreloadSpell("monkeykingspintowin");
+            PreloadParticle("monkey_king_ult_unit_tar.troy");
+            PreloadSpell("monkeykingspinmarkerorder");
+            PreloadSpell("monkeykingspinmarkerchaos");
+            PreloadParticle("monkey_king_ult_unit_tar_02.troy");
+            PreloadSpell("monkeykingspinknockup");
+            PreloadSpell("monkeykingspintowinleave");
+        }
+    }
+}

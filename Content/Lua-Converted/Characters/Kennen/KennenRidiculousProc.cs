@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenRidiculousProc : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenmarkofstorm");
+        }
+    }
+}

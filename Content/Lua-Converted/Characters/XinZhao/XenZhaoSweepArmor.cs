@@ -37,3 +37,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoSweepArmor : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("xenziou_selfshield_01.troy");
+            PreloadSpell("root");
+        }
+    }
+}

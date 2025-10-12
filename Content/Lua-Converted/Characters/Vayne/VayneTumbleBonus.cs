@@ -76,3 +76,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneTumbleBonus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vayneinquisition");
+        }
+    }
+}

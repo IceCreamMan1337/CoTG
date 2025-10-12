@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserDeathParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("mordakaiser_death_01.troy");
+        }
+    }
+}

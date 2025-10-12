@@ -41,3 +41,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WrathoftheAncients : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wrathdamage");
+        }
+    }
+}

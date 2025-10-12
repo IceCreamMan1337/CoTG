@@ -27,3 +27,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCenterRelicLightning : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_btl_beam.troy");
+            PreloadSpell("root");
+            PreloadParticle("kennen_btl_tar.troy");
+        }
+    }
+}

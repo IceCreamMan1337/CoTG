@@ -75,3 +75,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenLightningRush : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_lr_buf.troy");
+            PreloadSpell("kennenlightningrushbuff");
+            PreloadSpell("kennenlightningrush");
+            PreloadParticle("kennen_lr_off.troy");
+            PreloadSpell("kennenlightningrushdamage");
+            PreloadSpell("kennenlrcancel");
+        }
+    }
+}

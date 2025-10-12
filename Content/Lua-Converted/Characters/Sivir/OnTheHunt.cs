@@ -69,3 +69,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OnTheHunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("onthehuntaurabuff");
+        }
+    }
+}

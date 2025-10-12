@@ -113,3 +113,22 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioIdolOfDurand : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_beguilingstatue_taunt_indicator_team_green.troy");
+            PreloadParticle("galio_beguilingstatue_taunt_indicator_team_red.troy");
+            PreloadParticle("galio_talion_channel.troy");
+            PreloadParticle("galio_talion_breakout.troy");
+            PreloadParticle("galio_builingstatue_impact_01.troy");
+            PreloadSpell("taunt");
+            PreloadSpell("galioidolofdurandtaunt");
+            PreloadParticle("galio_builingstatue_unit_impact_01.troy");
+            PreloadSpell("galioidolofdurandmarker");
+            PreloadSpell("galioidolofdurand");
+        }
+    }
+}

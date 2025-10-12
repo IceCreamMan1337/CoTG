@@ -121,3 +121,20 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickReviveAllySelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yorick_ult_01_teamid_green.troy");
+            PreloadParticle("yorick_ult_01_teamid_red.troy");
+            PreloadParticle("yorick_ult_02.troy");
+            PreloadSpell("yorickradelaylich");
+            PreloadSpell("yorickradelaykogmaw");
+            PreloadSpell("yorickultpetactive");
+            PreloadSpell("yorickradelay");
+            PreloadSpell("yorickraremovepet");
+        }
+    }
+}

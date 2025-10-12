@@ -14,3 +14,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinOpeningBarrier : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("OdinOpeningBarrierBasicAttack");
+            PreloadSpell("OdinOpeningBarrierBasicAttack2");
+            PreloadSpell("OdinOpeningBarrierBasicAttack3");
+            PreloadSpell("OdinOpeningBarrier");
+            PreloadSpell("OdinOpeningBarrierParticle");
+        }
+    }
+}

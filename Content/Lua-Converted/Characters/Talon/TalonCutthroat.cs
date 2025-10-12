@@ -49,3 +49,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonCutthroat : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("talon_e_cast.troy");
+            PreloadParticle("talon_e_tar.troy");
+            PreloadSpell("talondamageamp");
+        }
+    }
+}

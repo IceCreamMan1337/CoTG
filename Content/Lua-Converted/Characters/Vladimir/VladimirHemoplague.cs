@@ -36,3 +36,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class VladimirHemoplague : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

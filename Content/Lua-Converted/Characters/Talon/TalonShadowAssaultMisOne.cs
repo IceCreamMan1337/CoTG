@@ -104,3 +104,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TalonShadowAssaultMisOne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonshadowassault");
+            PreloadSpell("talonshadowassaultmarker");
+            PreloadCharacter("testcube");
+            PreloadSpell("talonshadowassaultmisbuff");
+            PreloadParticle("talon_ult_tar.troy");
+            PreloadParticle("bowmaster_basicattack_tar.troy");
+        }
+    }
+}

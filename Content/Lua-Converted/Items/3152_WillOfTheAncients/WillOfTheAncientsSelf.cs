@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WillOfTheAncientsSelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rallyingbanner_itm.troy");
+        }
+    }
+}

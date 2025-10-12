@@ -93,3 +93,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TrundleCircle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("trundle_plagueblock_green.troy");
+            PreloadParticle("trundle_plagueblock_red.troy");
+            PreloadSpell("trundlecircle");
+            PreloadSpell("trundlewallpush");
+            PreloadSpell("slow");
+            PreloadSpell("crystallize");
+            PreloadCharacter("trundlewall");
+        }
+    }
+}

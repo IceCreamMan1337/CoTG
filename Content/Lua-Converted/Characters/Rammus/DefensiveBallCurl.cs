@@ -87,3 +87,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DefensiveBallCurl : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("powerball");
+            PreloadCharacter("rammusdbc");
+            PreloadSpell("defensiveballcurlcancel");
+            PreloadParticle("dbc_out.troy");
+            PreloadSpell("defensiveballcurl");
+            PreloadParticle("thornmail_tar.troy");
+        }
+    }
+}

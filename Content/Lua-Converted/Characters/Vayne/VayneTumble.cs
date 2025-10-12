@@ -117,3 +117,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneTumble : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vayneinquisition");
+            PreloadParticle("vayne_ult_invis_cas.troy");
+            PreloadParticle("vayne_q_cas.troy");
+            PreloadParticle("vayne_ult_invis_cas_02.troy");
+            PreloadSpell("vaynetumble");
+            PreloadSpell("vaynetumblefade");
+            PreloadSpell("vaynetumblefailsafe");
+            PreloadSpell("vaynetumblebonus");
+        }
+    }
+}

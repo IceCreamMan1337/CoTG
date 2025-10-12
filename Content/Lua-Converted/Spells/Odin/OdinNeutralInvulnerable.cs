@@ -41,3 +41,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinNeutralInvulnerable : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odinneutralinvulnerable.troy");
+        }
+    }
+}

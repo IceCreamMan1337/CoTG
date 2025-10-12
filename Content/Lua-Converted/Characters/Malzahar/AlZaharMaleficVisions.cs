@@ -82,3 +82,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharMaleficVisions : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alzaharvoidling");
+            PreloadSpell("alzaharrecentvis");
+            PreloadCharacter("malzahar");
+            PreloadSpell("alzaharmaleficvisions");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("alzaharvoidlingcount");
+        }
+    }
+}

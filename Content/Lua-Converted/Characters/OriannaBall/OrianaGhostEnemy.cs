@@ -76,3 +76,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaGhostEnemy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("yomu_ghost_bind.troy");
+            PreloadCharacter("testcube");
+            PreloadSpell("yomughost");
+            PreloadSpell("yomughostminion");
+            PreloadSpell("yomughostenemy");
+            PreloadSpell("yomureturn");
+        }
+    }
+}

@@ -62,3 +62,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Hexdrinker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hexdrinkertimercd");
+            PreloadParticle("hextech_dmg_shield_onhit_01.troy");
+            PreloadParticle("hextech_dmg_shield_onhit_02.troy");
+        }
+    }
+}

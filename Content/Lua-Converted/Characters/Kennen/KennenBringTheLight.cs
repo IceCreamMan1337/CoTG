@@ -36,3 +36,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenBringTheLight : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenmarkofstorm");
+            PreloadParticle("kennen_btl_beam.troy");
+            PreloadSpell("root");
+            PreloadParticle("kennen_btl_tar.troy");
+        }
+    }
+}

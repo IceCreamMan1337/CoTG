@@ -52,3 +52,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HextechGunbladeSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_slow.troy");
+            PreloadSpell("bilgewatercutlass");
+        }
+    }
+}

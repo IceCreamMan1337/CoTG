@@ -57,3 +57,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class BlindMonkWOne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("blindmonk_w_cas_01.troy");
+            PreloadSpell("blindmonkwonedash");
+            PreloadSpell("blindmonkwmanager");
+            PreloadSpell("sharedwardbuff");
+            PreloadSpell("blindmonkwoneshield");
+        }
+    }
+}

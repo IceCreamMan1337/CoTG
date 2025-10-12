@@ -27,3 +27,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShieldRelicBuffHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinplayerbuff");
+            PreloadParticle("odin_healthpackheal.troy");
+            PreloadSpell("root");
+            PreloadParticle("summoner_mana.troy");
+            PreloadSpell("odinshieldrelicbuffheal");
+        }
+    }
+}

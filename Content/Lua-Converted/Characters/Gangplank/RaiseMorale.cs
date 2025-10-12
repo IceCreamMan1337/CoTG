@@ -53,3 +53,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RaiseMorale : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("raisemorale");
+            PreloadSpell("raisemoraleteambuff");
+        }
+    }
+}

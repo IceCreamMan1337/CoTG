@@ -32,3 +32,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMalzahar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alzahardeathparticle");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("alzaharvoidlingdetonation");
+            PreloadSpell("alzaharcallr");
+        }
+    }
+}

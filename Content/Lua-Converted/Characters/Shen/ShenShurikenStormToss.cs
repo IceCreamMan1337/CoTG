@@ -24,3 +24,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenShurikenStormToss : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("shen");
+        }
+    }
+}

@@ -100,3 +100,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneStrut : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missfortunestrutdebuff");
+            PreloadSpell("missfortunewaves");
+            PreloadParticle("missfortune_passive_buf.troy");
+            PreloadSpell("root");
+        }
+    }
+}

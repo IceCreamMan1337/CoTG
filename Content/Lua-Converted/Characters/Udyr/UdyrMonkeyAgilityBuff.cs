@@ -39,3 +39,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrMonkeyAgilityBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("udyrbuff.troy");
+            PreloadSpell("udyrmonkeyagilitybuff");
+        }
+    }
+}

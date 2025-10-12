@@ -35,3 +35,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaladySpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("maladycounter");
+        }
+    }
+}

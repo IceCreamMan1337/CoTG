@@ -42,3 +42,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TeemoMoveQuickPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("teemomovequickdebuff");
+            PreloadSpell("teemomovequickspeed");
+            PreloadSpell("movequick");
+        }
+    }
+}

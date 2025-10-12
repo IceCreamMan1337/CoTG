@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaSongofDiscordMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonasongofdiscordhaste");
+        }
+    }
+}

@@ -31,3 +31,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RumbleGrenadeZapEffect : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rumblegrenadedz");
+            PreloadParticle("rumble_taze_tar_dangerzone_02.troy");
+            PreloadParticle("rumble_taze_tar_dangerzone.troy");
+            PreloadParticle("rumble_taze_beam.troy");
+            PreloadParticle("rumble_taze_beam_tar.troy");
+        }
+    }
+}

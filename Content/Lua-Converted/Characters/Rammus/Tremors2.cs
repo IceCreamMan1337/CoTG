@@ -67,3 +67,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Tremors2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tremors_cas.troy");
+        }
+    }
+}

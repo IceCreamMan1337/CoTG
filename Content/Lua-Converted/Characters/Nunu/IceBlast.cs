@@ -49,3 +49,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class IceBlast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("iceblast");
+        }
+    }
+}

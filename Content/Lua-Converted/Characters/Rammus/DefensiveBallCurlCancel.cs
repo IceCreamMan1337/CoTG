@@ -27,3 +27,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class DefensiveBallCurlCancel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("defensiveballcurl");
+        }
+    }
+}

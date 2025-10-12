@@ -59,3 +59,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3138 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leviathancheck");
+            PreloadSpell("leviathanstats");
+            PreloadSpell("leviathancap");
+        }
+    }
+}

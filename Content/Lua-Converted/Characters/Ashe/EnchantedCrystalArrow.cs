@@ -80,3 +80,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class EnchantedCrystalArrow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("chilled");
+        }
+    }
+}

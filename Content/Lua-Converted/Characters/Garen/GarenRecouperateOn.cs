@@ -37,3 +37,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GarenRecouperateOn : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenrecoupdebuff");
+            PreloadSpell("garenrecouperate1");
+        }
+    }
+}

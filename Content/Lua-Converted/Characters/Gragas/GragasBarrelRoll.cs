@@ -58,3 +58,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GragasBarrelRoll : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("gragasbarrelrollboom");
+            PreloadSpell("gragasbarrelrollrender");
+            PreloadSpell("gragasbarrelroll");
+        }
+    }
+}

@@ -90,3 +90,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharNullZone : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("alzaharnullzoneflash.troy");
+            PreloadParticle("alzaharvoidportal_flat_green.troy");
+            PreloadParticle("alzaharvoidportal_flat_red.troy");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("alzaharvoidlingcount");
+            PreloadSpell("alzaharnullzone");
+        }
+    }
+}

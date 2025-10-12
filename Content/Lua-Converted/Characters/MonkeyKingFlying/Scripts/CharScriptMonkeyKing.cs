@@ -37,3 +37,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMonkeyKing : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingclonecd");
+            PreloadSpell("monkeykingclonespellcast");
+            PreloadSpell("monkeykingcloneapplicator");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("monkeykingdeathparticle");
+        }
+    }
+}

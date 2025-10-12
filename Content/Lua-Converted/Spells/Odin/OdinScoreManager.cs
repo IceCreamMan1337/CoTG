@@ -114,3 +114,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinScoreManager : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinscorelowhpattacker");
+            PreloadSpell("odinscoreavengertarget");
+            PreloadSpell("odinscorekiller");
+        }
+    }
+}

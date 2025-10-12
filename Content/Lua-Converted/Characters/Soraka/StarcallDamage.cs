@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class StarcallDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("starcall");
+        }
+    }
+}

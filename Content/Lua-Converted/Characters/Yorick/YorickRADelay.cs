@@ -78,3 +78,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRADelay : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickrazombie");
+        }
+    }
+}

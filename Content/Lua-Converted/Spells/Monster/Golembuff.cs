@@ -9,3 +9,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Golembuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("crestoftheancientgolem");
+            PreloadParticle("neutralmonster_buf.troy");
+        }
+    }
+}

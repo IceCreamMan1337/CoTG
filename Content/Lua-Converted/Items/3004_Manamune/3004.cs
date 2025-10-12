@@ -39,3 +39,15 @@ namespace Buffs
     }
 }
 */
+namespace PreLoads
+{
+    public class ItemID_3004 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("tearofthegoddesstrack");
+            PreloadSpell("manamuneattacktrack");
+            PreloadSpell("manamuneattackconversion");
+        }
+    }
+}

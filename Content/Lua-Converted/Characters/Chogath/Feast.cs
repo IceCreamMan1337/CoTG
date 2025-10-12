@@ -111,3 +111,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Feast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("feast");
+            PreloadParticle("chogath_feast_sign.troy");
+            PreloadSpell("feast_internal");
+        }
+    }
+}

@@ -82,3 +82,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerHaste : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+        }
+    }
+}

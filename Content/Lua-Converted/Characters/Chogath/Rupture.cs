@@ -80,3 +80,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Rupture : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("rupture_cas_01.troy");
+            PreloadParticle("rupture_cas_02.troy");
+            PreloadSpell("rupturelaunch");
+            PreloadCharacter("testcube");
+        }
+    }
+}

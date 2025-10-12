@@ -151,3 +151,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinDebacleCloak : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spelleffect_proc.troy");
+        }
+    }
+}

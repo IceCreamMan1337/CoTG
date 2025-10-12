@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3134 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("brutalizer");
+        }
+    }
+}

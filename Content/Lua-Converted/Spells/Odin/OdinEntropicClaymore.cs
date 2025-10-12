@@ -71,3 +71,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinEntropicClaymore : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_red_offense.troy");
+            PreloadSpell("entropyburning");
+            PreloadSpell("internal_30slow");
+            PreloadSpell("itemslow");
+            PreloadParticle("spectral_fury_cas.troy");
+        }
+    }
+}

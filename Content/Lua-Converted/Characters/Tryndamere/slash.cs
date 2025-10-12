@@ -162,3 +162,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class slash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("slashbeenhit");
+            PreloadParticle("bloodslash.troy");
+            PreloadParticle("slash.troy");
+        }
+    }
+}

@@ -18,3 +18,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptKogMawDead : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kogmawicathiansurpriseready");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

@@ -28,3 +28,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGhast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("crestofflowingwater");
+            PreloadSpell("hpbyplayerlevel");
+            PreloadSpell("lifestealattack");
+            PreloadParticle("eternalthirst_buf.troy");
+        }
+    }
+}

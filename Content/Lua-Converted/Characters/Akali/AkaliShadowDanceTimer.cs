@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AkaliShadowDanceTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("akalishadowdance");
+        }
+    }
+}

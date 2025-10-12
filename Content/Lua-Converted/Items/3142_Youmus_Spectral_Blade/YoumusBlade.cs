@@ -65,3 +65,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class YoumusBlade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spectral_fury_cas.troy");
+            PreloadSpell("spectralfury");
+        }
+    }
+}

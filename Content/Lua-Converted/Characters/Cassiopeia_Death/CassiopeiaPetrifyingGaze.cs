@@ -52,3 +52,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CassiopeiaPetrifyingGaze : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("turntostone.troy");
+            PreloadParticle("turnback.troy");
+        }
+    }
+}

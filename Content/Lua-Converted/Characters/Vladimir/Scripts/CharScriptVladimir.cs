@@ -44,3 +44,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptVladimir : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vladdeathparticle");
+            PreloadSpell("vladimirbloodgorged");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

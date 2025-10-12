@@ -139,3 +139,27 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nocturneparanoia");
+            PreloadSpell("nocturneparanoiavo");
+            PreloadSpell("nocturneparanoiatargetordervo");
+            PreloadSpell("nocturneparanoiatargetchaosvo");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("nocturneparanoiaparticle");
+            PreloadParticle("nocturneparanoiastartorderfriend.troy");
+            PreloadSpell("root");
+            PreloadParticle("nocturneparanoiastartorderfoe.troy");
+            PreloadSpell("nocturneparanoiatargeting");
+            PreloadSpell("nocturneparanoiatarget");
+            PreloadSpell("nocturneparanoiatargetorder");
+            PreloadParticle("nocturneparanoiastartchaosfriend.troy");
+            PreloadParticle("nocturneparanoiastartchaosfoe.troy");
+            PreloadSpell("nocturneparanoiatargetchaos");
+        }
+    }
+}

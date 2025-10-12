@@ -46,3 +46,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class GarenJustice : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("garen_damacianjustice_cas.troy");
+            PreloadParticle("garen_damacianjustice_tar_indicator.troy");
+            PreloadParticle("garen_damacianjustice_tar.troy");
+        }
+    }
+}

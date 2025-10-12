@@ -30,3 +30,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRAPetBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisercotgpetbuff2");
+        }
+    }
+}

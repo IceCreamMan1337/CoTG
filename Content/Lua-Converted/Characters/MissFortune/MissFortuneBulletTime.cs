@@ -91,3 +91,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MissFortuneBulletTime : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("missfortune_ult_cas_muzzle_flash.troy");
+            PreloadParticle("missfortune_left_ult_cas.troy");
+            PreloadParticle("missfortune_ult_cas.troy");
+            PreloadSpell("missfortunewaves");
+            PreloadSpell("missfortunebulletsound");
+        }
+    }
+}

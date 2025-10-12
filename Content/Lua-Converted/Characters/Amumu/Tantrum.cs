@@ -50,3 +50,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Tantrum : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tantrum_cas.troy");
+        }
+    }
+}

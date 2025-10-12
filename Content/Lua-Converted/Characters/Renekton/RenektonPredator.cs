@@ -104,3 +104,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RenektonPredator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonincombat");
+            PreloadSpell("renektonrageready");
+        }
+    }
+}

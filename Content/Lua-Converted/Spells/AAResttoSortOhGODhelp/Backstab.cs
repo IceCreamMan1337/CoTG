@@ -70,3 +70,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Backstab : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("castfrombehind");
+            PreloadSpell("frombehind");
+            PreloadParticle("absolutezero_tar.troy");
+            PreloadSpell("twoshivpoison");
+        }
+    }
+}

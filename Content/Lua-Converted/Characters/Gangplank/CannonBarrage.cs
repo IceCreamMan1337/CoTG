@@ -100,3 +100,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CannonBarrage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("expirationtimer");
+            PreloadParticle("pirate_cannonbarrage_aoe_indicator_green.troy");
+            PreloadParticle("pirate_cannonbarrage_aoe_indicator_red.troy");
+            PreloadSpell("cannonbarrageball");
+            PreloadSpell("slow");
+            PreloadCharacter("testcube");
+            PreloadSpell("cannonbarrage");
+        }
+    }
+}

@@ -1,10 +1,9 @@
 ﻿namespace AIScripts;
 
-using CoTGEnumNetwork.Enums;
-
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
 using CoTG.CoTGServer.Scripting.CSharp.Converted;
 using CoTG.CoTGServer.Scripting.Lua;
+using CoTGEnumNetwork.Enums;
 
 //Status: 100% Identical to Lua script
 public class AzirTurretAI : CAIScript

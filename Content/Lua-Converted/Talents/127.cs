@@ -19,3 +19,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class ItemID_127 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nimbleness");
+        }
+    }
+}

@@ -17,3 +17,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxDeathParticleTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("luxdeathparticle.troy");
+            PreloadSpell("root");
+            PreloadSpell("luxdeathparticle");
+        }
+    }
+}

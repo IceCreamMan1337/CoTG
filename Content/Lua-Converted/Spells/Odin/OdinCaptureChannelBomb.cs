@@ -172,3 +172,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCaptureChannelBomb : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odincapturechannelbomb");
+            PreloadParticle("ezreal_essenceflux_tar.troy");
+            PreloadSpell("root");
+            PreloadSpell("odinchannelvision");
+            PreloadParticle("odincapturebeam.troy");
+            PreloadSpell("odinbombsuppression");
+            PreloadParticle("odincapturebeamengaged.troy");
+            PreloadSpell("odinbombsuppressionorder");
+            PreloadSpell("odinbombsuppressionchaos");
+            PreloadSpell("odinbombsuccessparticle");
+            PreloadParticle("odincapturecancel.troy");
+        }
+    }
+}

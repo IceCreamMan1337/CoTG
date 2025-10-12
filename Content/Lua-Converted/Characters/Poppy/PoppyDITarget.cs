@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyDITarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppydiplomaticimmunity");
+        }
+    }
+}

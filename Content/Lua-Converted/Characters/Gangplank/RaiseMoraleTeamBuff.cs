@@ -36,3 +36,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RaiseMoraleTeamBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("raisemorale");
+        }
+    }
+}

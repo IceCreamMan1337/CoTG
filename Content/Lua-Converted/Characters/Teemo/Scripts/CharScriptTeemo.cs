@@ -83,3 +83,20 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTeemo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("toxicshot");
+            PreloadSpell("camouflage");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("teemomushrooms");
+            PreloadSpell("teemomushroomcounter");
+            PreloadSpell("teemomushroommanager");
+            PreloadSpell("teemomovequickpassive");
+        }
+    }
+}

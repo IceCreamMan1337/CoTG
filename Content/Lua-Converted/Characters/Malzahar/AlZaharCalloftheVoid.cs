@@ -99,3 +99,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharCalloftheVoid : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("voidflash.troy");
+            PreloadParticle("voidportal_green.troy");
+            PreloadParticle("voidportal_red.troy");
+            PreloadSpell("alzaharcallr");
+            PreloadSpell("ifhasbuffcheck");
+            PreloadSpell("alzaharvoidlingcount");
+            PreloadCharacter("testcuberender");
+        }
+    }
+}

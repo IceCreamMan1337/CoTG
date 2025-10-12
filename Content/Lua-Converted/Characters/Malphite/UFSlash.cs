@@ -95,3 +95,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UFSlash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("unstoppableforce_cas.troy");
+            PreloadSpell("unstoppableforcemarker");
+            PreloadParticle("unstoppableforce_tar.troy");
+            PreloadSpell("unstoppableforcestun");
+        }
+    }
+}

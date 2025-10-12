@@ -33,3 +33,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CounterStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("counterstrike_cas.troy");
+            PreloadSpell("counterstrikecancast");
+        }
+    }
+}

@@ -11,3 +11,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptChaosTurretShrine : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("turretbonus");
+            PreloadSpell("turretbonushealth");
+        }
+    }
+}

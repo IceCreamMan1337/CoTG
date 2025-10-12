@@ -58,3 +58,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOlaf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("olafaxethrow");
+            PreloadSpell("olafberzerkerrage");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

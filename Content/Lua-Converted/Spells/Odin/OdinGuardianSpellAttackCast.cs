@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinGuardianSpellAttackCast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stun");
+        }
+    }
+}

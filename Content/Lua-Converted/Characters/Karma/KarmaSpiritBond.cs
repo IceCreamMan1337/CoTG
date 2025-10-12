@@ -417,3 +417,34 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaSpiritBond : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leblanc_shackle_self_idle.troy");
+            PreloadParticle("karma_spiritbond_indicator_target_blank.troy");
+            PreloadParticle("karma_spiritbond_indicator_impact.troy");
+            PreloadParticle("karma_spiritbond_speed_buf.troy");
+            PreloadSpell("root");
+            PreloadParticle("karma_spiritbond_indicator_target.troy");
+            PreloadParticle("karma_spiritbond_dmg_indicator.troy");
+            PreloadParticle("karma_spiritbond_ult_beam_teamid_ally_green.troy");
+            PreloadParticle("karma_spiritbond_ult_beam_teamid_enemy_red.troy");
+            PreloadParticle("karmaspiritbondsoundgreen.troy");
+            PreloadParticle("karmaspiritbondsoundred.troy");
+            PreloadSpell("karmalinkdmgcdorder");
+            PreloadSpell("karmamantrasbhaste");
+            PreloadParticle("karma_spiritbond_damage_tar.troy");
+            PreloadSpell("karmamantrasbslow");
+            PreloadSpell("karmalinkdmgcdchaos");
+            PreloadSpell("karmaspiritbondallyselftooltip");
+            PreloadParticle("karma_spiritbond_break_overhead.troy");
+            PreloadSpell("karmasbstealthbreak");
+            PreloadSpell("karmaspiritbond");
+            PreloadSpell("karmaspiritbondc");
+            PreloadSpell("karmaspiritbondenemytooltip");
+        }
+    }
+}

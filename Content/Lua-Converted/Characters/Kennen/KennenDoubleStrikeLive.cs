@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenDoubleStrikeLive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_ds_proc.troy");
+        }
+    }
+}

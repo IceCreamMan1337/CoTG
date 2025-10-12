@@ -32,3 +32,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathDefied : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deathdefiedbuff");
+        }
+    }
+}

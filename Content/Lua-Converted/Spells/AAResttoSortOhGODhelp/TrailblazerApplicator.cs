@@ -37,3 +37,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TrailblazerApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("trailblazertarget");
+        }
+    }
+}

@@ -160,3 +160,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BattleFury : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonincombat");
+            PreloadSpell("bloodlustparticle");
+        }
+    }
+}

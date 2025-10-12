@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenStandUnitedTarget : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_teleport_target_v2.troy");
+        }
+    }
+}

@@ -124,3 +124,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WriggleLanternWard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stealth");
+        }
+    }
+}

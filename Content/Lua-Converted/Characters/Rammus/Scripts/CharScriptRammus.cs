@@ -31,3 +31,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptRammus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("spikedshell");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

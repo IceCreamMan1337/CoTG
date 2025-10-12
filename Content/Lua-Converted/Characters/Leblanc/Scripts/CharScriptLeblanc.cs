@@ -90,3 +90,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptLeblanc : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leblancslidem");
+            PreloadSpell("leblancchaosorbm");
+            PreloadSpell("leblancsoulshacklem");
+            PreloadSpell("leblancpassive");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

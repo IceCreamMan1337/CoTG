@@ -38,3 +38,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiSapling2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender10vision");
+            PreloadSpell("maokaisapling2");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("maokaisapling2boom");
+            PreloadSpell("maokaisaplingmine");
+            PreloadParticle("maoki_sapling_unit_tar.troy");
+            PreloadParticle("maoki_sapling_detonate.troy");
+            PreloadParticle("maokai_sapling_rdy_indicator_green.troy");
+            PreloadParticle("maokai_sapling_rdy_indicator_red.troy");
+            PreloadParticle("maokai_sapling_team_id_green.troy");
+            PreloadParticle("maokai_sapling_team_id_red.troy");
+        }
+    }
+}

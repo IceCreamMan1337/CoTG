@@ -58,3 +58,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTryndamere : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("facingme");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("battlefury");
+            PreloadSpell("bloodlustmarker");
+        }
+    }
+}

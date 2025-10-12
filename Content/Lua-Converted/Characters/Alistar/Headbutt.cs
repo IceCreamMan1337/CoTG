@@ -72,3 +72,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Headbutt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("alistarheadbuttmarker");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("alistartrample");
+            PreloadSpell("headbutt");
+            PreloadSpell("headbutttarget");
+        }
+    }
+}

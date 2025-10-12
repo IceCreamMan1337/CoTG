@@ -221,3 +221,27 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaGhost : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("oriana_ghost_bind_goth.troy");
+            PreloadParticle("oriana_ghost_bind_doll.troy");
+            PreloadParticle("oriana_ghost_bind.troy");
+            PreloadParticle("orianaballindicatorfar.troy");
+            PreloadParticle("orianaballindicatormedium.troy");
+            PreloadParticle("orianaballindicatornear.troy");
+            PreloadSpell("orianaghostminion");
+            PreloadSpell("oriannaballtracker");
+            PreloadSpell("orianaghost");
+            PreloadParticle("orianna_ball_flash.troy");
+            PreloadSpell("root");
+            PreloadSpell("orianaghostself");
+            PreloadParticle("orianna_ball_flash_reverse.troy");
+            PreloadSpell("orianadissonancecountdown");
+            PreloadCharacter("oriannaball");
+        }
+    }
+}

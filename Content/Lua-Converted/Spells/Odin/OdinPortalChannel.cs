@@ -43,3 +43,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinPortalChannel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teleporthome.troy");
+            PreloadSpell("odinportalteleport");
+        }
+    }
+}

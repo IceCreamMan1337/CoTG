@@ -72,3 +72,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HallucinateApplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("hallucinatepoof.troy");
+            PreloadSpell("hallucinate");
+            PreloadSpell("backstab");
+            PreloadSpell("hallucinatefull");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

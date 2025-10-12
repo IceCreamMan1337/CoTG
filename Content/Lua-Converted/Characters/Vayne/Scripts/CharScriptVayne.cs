@@ -107,3 +107,19 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptVayne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vaynehunted");
+            PreloadSpell("vayneinquisition");
+            PreloadSpell("vayneinquisitionspeedpart");
+            PreloadSpell("vayneinquisitionspeedpartnormal");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("vaynesilveredbolts");
+        }
+    }
+}

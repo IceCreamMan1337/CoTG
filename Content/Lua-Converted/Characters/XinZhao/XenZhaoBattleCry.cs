@@ -70,3 +70,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class XenZhaoBattleCry : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("xenzhaobattlecryph");
+            PreloadParticle("xen_ziou_battlecry_cas_05.troy");
+            PreloadParticle("xen_ziou_battlecry_cas_03.troy");
+            PreloadParticle("xen_ziou_battlecry_cas_02.troy");
+            PreloadParticle("xenzhiou_battlecry_active.troy");
+            PreloadParticle("xenziou_battle_cry_weapon_01.troy");
+        }
+    }
+}

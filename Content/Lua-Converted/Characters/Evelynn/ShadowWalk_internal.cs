@@ -62,3 +62,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShadowWalk_internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("shadowwalk");
+        }
+    }
+}

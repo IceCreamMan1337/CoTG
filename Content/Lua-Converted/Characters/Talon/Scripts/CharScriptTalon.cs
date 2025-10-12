@@ -75,3 +75,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptTalon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("talonmercy");
+        }
+    }
+}

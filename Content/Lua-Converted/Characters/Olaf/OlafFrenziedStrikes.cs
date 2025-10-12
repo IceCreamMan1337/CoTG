@@ -67,3 +67,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class OlafFrenziedStrikes : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("olaf_viciousstrikes_weapon_glow.troy");
+            PreloadParticle("olaf_viciousstrikes_heal.troy");
+        }
+    }
+}

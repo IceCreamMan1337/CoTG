@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharVoidlingPhase2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("voidlingtransform.prt");
+        }
+    }
+}

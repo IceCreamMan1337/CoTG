@@ -85,3 +85,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyDevastatingBlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("poppy_devastatingblow_tar.troy");
+            PreloadSpell("poppydevastatingblow");
+        }
+    }
+}

@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UdyrPhoenixAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("phoenixbreath_cas.troy");
+        }
+    }
+}

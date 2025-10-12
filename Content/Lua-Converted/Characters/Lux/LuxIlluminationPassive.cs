@@ -37,3 +37,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxIlluminationPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxilluminatingfraulein");
+            PreloadParticle("luxpassive_tar.troy");
+        }
+    }
+}

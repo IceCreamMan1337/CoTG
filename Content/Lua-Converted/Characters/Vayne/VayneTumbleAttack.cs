@@ -50,3 +50,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneTumbleAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("vayne_q_tar.troy");
+            PreloadSpell("vaynetumblebonus");
+            PreloadSpell("vaynetumblefade");
+        }
+    }
+}

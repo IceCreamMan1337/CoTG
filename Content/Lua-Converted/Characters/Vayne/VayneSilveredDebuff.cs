@@ -52,3 +52,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VayneSilveredDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("vaynesilvereddebuff");
+            PreloadSpell("vaynesilverparticle1");
+            PreloadParticle("vayne_w_ring2.troy");
+        }
+    }
+}

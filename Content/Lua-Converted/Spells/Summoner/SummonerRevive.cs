@@ -52,3 +52,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerRevive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_cast.troy");
+            PreloadSpell("revivemarker");
+            PreloadSpell("summonerrevivespeedboost");
+        }
+    }
+}

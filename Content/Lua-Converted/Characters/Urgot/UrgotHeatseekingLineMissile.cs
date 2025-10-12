@@ -88,3 +88,18 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class UrgotHeatseekingLineMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("urgotterrorcapacitoractive2");
+            PreloadSpell("urgotslow");
+            PreloadParticle("bloodslash.troy");
+            PreloadParticle("urgotheatseekingmissile_tar.troy");
+            PreloadSpell("urgotentropypassive");
+            PreloadSpell("slow");
+        }
+    }
+}

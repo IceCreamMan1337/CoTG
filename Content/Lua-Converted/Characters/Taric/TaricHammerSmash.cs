@@ -44,3 +44,16 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TaricHammerSmash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tarichammersmash_shatter.troy");
+            PreloadParticle("tarichammersmash_nova.troy");
+            PreloadParticle("taric_gemstorm_tar.troy");
+            PreloadSpell("radiance");
+        }
+    }
+}

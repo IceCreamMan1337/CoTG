@@ -157,3 +157,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVDragonStrikePH : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("jarvanivdragonstrikebehindme");
+            PreloadSpell("slashbeenhit");
+            PreloadParticle("bloodslash.troy");
+            PreloadSpell("jarvanivdragonstrikeph2");
+        }
+    }
+}

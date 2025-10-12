@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinOpeningBarrierParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_forcefield_red.troy");
+            PreloadParticle("odin_forcefield_green.troy");
+        }
+    }
+}

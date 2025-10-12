@@ -8,3 +8,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingCloneSpellCast : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingclonesweep");
+        }
+    }
+}

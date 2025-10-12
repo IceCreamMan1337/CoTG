@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_112 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("strengthofspirit");
+        }
+    }
+}

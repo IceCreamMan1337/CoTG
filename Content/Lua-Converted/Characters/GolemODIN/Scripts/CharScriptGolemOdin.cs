@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGolemOdin : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odindisintegrate");
+        }
+    }
+}

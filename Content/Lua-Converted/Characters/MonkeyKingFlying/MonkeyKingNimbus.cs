@@ -89,3 +89,19 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingNimbus : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkeyking_q_cas.troy");
+            PreloadSpell("monkeykingnimbuskick");
+            PreloadSpell("monkeykingdecoystealth");
+            PreloadSpell("monkeykingclone");
+            PreloadCharacter("monkeykingclone");
+            PreloadCharacter("monkeykingflying");
+            PreloadSpell("monkeykingnimbuskickclone");
+        }
+    }
+}

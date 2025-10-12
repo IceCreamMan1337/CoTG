@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3181 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinbloodburster");
+        }
+    }
+}

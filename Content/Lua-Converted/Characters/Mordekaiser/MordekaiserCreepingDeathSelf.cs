@@ -31,3 +31,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MordekaiserCreepingDeathSelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaisercreepingdeathdebuff");
+        }
+    }
+}

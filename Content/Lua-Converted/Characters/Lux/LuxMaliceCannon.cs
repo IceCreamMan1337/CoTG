@@ -33,3 +33,21 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxMaliceCannon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadCharacter("testcube");
+            PreloadSpell("luxmalicecannondeathfix");
+            PreloadSpell("expirationtimer");
+            PreloadSpell("luxmalicecannonpartfix");
+            PreloadSpell("luxmalicecannonpartfix2");
+            PreloadSpell("luxmalicecannonbeam");
+            PreloadSpell("luxmalicecannonball");
+            PreloadParticle("luxmalicecannon_beammiddle.troy");
+        }
+    }
+}

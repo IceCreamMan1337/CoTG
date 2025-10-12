@@ -52,3 +52,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RebirthReady : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("willrevive");
+            PreloadSpell("rebirth");
+        }
+    }
+}

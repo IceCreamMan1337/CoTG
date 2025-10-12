@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3031 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("infinityedge");
+        }
+    }
+}

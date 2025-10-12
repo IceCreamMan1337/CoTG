@@ -33,3 +33,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ParanoiaMissChance : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("consecrationaura_tar.troy");
+        }
+    }
+}

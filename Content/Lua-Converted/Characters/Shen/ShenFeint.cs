@@ -82,3 +82,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenFeint : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_feint_self_deactivate.troy");
+            PreloadParticle("shen_feint_block.troy");
+        }
+    }
+}

@@ -16,3 +16,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GateFix2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("gatefix");
+        }
+    }
+}

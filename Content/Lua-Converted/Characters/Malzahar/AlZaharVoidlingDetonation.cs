@@ -19,3 +19,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharVoidlingDetonation : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("alzaharvoidling");
+            PreloadCharacter("Malzaharvoidling");
+        }
+    }
+}

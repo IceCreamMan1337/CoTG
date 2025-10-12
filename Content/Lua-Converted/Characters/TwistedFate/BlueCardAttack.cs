@@ -43,3 +43,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class BlueCardAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pickacard");
+            PreloadSpell("bluecardpreattack");
+            PreloadParticle("pickacard_blue_tar.troy");
+            PreloadSpell("cardmasterbluecardmana");
+            PreloadParticle("soraka_infuse_ally_tar.troy");
+        }
+    }
+}

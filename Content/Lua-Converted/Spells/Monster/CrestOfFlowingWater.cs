@@ -53,3 +53,17 @@
         }
     }
 }
+
+namespace PreLoads
+{
+    public class CrestOfFlowingWater : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("invis_runes_01.troy");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("monsterbuffs");
+            PreloadSpell("monsterbuffs2");
+        }
+    }
+}

@@ -34,3 +34,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TearOfTheGoddessTrack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tearofthegoddess_itm.troy");
+        }
+    }
+}

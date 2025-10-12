@@ -23,3 +23,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptEvelynn : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("silentkiller");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

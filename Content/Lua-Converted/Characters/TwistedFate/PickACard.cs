@@ -294,3 +294,24 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PickACard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("anniesparks.troy");
+            PreloadParticle("card_blue.troy");
+            PreloadParticle("card_red.troy");
+            PreloadParticle("card_yellow.troy");
+            PreloadSpell("pickacard");
+            PreloadSpell("goldcardpreattack");
+            PreloadSpell("redcardpreattack");
+            PreloadSpell("bluecardpreattack");
+            PreloadSpell("redcardlock");
+            PreloadSpell("goldcardlock");
+            PreloadSpell("bluecardlock");
+            PreloadSpell("pickacard_tracker");
+        }
+    }
+}

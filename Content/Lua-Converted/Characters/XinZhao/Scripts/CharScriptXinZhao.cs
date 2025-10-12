@@ -32,3 +32,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptXinZhao : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("xenzhaopuncture");
+            PreloadSpell("xenzhaobattlecrypassive");
+            PreloadSpell("xenzhaobattlecryph");
+        }
+    }
+}

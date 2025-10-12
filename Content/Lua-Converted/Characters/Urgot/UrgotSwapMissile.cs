@@ -58,3 +58,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UrgotSwapMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcuberender");
+            PreloadSpell("urgotswapmarker");
+            PreloadSpell("urgotswapmissile");
+            PreloadSpell("urgotswapmissile2");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

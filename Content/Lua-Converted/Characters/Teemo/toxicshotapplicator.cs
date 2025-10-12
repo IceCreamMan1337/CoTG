@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class toxicshotapplicator : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("toxicshotparticle");
+        }
+    }
+}

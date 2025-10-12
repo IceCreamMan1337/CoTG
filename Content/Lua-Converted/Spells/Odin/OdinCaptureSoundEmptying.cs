@@ -13,3 +13,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinCaptureSoundEmptying : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin-capture-emptying.troy");
+        }
+    }
+}

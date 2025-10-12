@@ -43,3 +43,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RegenerationPotion : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("regenerationpotion");
+            PreloadSpell("potion_internal");
+        }
+    }
+}

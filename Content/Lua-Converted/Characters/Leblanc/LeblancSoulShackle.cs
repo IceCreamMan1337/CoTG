@@ -189,3 +189,20 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeblancSoulShackle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leblanc_shackle_chain_beam.troy");
+            PreloadSpell("root");
+            PreloadParticle("leblanc_shackle_self_idle.troy");
+            PreloadParticle("leblanc_shackle_target_idle.troy");
+            PreloadParticle("leblanc_shackle_tar_blood.troy");
+            PreloadSpell("leblancsoulshacklenet");
+            PreloadSpell("leblancsoulshackle");
+            PreloadSpell("slow");
+        }
+    }
+}

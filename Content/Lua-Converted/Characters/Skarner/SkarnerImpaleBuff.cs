@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerImpaleBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("skarnerimpale");
+        }
+    }
+}

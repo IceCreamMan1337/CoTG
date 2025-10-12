@@ -12,3 +12,14 @@
         }
     }
 }
+
+namespace PreLoads
+{
+    public class LuxLightstrikeToggle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("luxlightstrikekugel");
+        }
+    }
+}

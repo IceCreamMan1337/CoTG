@@ -73,3 +73,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Ricochet : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ricochet");
+        }
+    }
+}

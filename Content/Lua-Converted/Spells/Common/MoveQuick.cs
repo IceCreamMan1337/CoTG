@@ -75,3 +75,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MoveQuick : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("movequick_buf2.troy");
+            PreloadSpell("teemomovequickspeed");
+        }
+    }
+}

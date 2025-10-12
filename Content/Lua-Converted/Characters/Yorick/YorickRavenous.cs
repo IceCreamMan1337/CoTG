@@ -34,3 +34,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRavenous : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yoricksummonravenous");
+            PreloadSpell("yorickravenousprimarytarget");
+            PreloadSpell("globaldrain");
+            PreloadParticle("yorick_ravenousghoul_activeheal.troy");
+            PreloadParticle("yorick_ravenousghoul_cas_tar.troy");
+        }
+    }
+}

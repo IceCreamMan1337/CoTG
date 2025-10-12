@@ -51,3 +51,15 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class TalonRakeMissileTwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonrakemissiletwo");
+            PreloadParticle("talon_w_tar.troy");
+            PreloadSpell("talonslow");
+        }
+    }
+}

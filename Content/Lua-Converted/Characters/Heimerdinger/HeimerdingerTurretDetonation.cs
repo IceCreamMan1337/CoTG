@@ -22,3 +22,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class HeimerdingerTurretDetonation : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickreviveallyself");
+            PreloadSpell("yorickradelay");
+            PreloadSpell("h28gevolutionturret");
+        }
+    }
+}

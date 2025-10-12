@@ -41,3 +41,15 @@ namespace Buffs
         */
     }
 }
+namespace PreLoads
+{
+    public class RivenCounterReady : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("marthcounterdash");
+            PreloadSpell("marthcounterready");
+            PreloadSpell("marthcounter");
+        }
+    }
+}

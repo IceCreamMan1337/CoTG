@@ -50,3 +50,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OrianaGhostSelf : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("oriannaballtracker");
+            PreloadCharacter("oriannanoball");
+        }
+    }
+}

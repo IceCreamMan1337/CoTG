@@ -30,3 +30,13 @@ namespace Spells
         }
     }
 }
+namespace PreLoads
+{
+    public class SpiralBladeMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spiralblade_tar.troy");
+        }
+    }
+}

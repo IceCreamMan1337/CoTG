@@ -68,3 +68,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class WildCards : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sealfatemissile");
+            PreloadCharacter("testcube");
+            PreloadCharacter("testcuberender");
+            PreloadSpell("expirationtimer");
+        }
+    }
+}

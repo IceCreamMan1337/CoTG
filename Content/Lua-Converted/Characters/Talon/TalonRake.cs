@@ -32,3 +32,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class TalonRake : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("talonrakemissileone");
+        }
+    }
+}

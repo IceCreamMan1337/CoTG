@@ -32,3 +32,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PickACardLock : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pickacard");
+        }
+    }
+}

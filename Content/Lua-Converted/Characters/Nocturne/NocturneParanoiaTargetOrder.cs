@@ -65,3 +65,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoiaTargetOrder : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nocturneparanoiatargetchaos");
+            PreloadParticle("nocturneparanoiafriend.troy");
+            PreloadSpell("root");
+            PreloadParticle("nocturneparanoiafoe.troy");
+        }
+    }
+}

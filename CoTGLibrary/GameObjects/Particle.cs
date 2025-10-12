@@ -111,7 +111,8 @@ public class Particle : GameObject
         bool followGroundTilt = false,
         FXFlags flags = FXFlags.BindDirection,
         TeamId forceTeam = TeamId.TEAM_UNKNOWN,
-        Champion visibilityOwner = null
+        Champion visibilityOwner = null,
+        bool isPreload = false
 
 
     ) : base(startPos, particleName, 0, 0, 0, 0, forceTeam)
@@ -215,9 +216,10 @@ public class Particle : GameObject
 
         }
 
-
-        Game.ObjectManager.AddObject(this);
-
+        if (!isPreload)
+        {
+            Game.ObjectManager.AddObject(this);
+        }
     }
 
     protected override void OnSpawn(int userId, TeamId team, bool doVision)

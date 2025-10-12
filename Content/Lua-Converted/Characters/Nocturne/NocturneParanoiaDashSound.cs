@@ -31,3 +31,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoiaDashSound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneparanoiadashsound.troy");
+            PreloadSpell("root");
+        }
+    }
+}

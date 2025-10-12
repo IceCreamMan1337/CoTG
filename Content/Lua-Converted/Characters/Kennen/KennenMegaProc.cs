@@ -47,3 +47,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenMegaProc : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennendoublestrikelive");
+            PreloadSpell("kennenmarkofstorm");
+        }
+    }
+}

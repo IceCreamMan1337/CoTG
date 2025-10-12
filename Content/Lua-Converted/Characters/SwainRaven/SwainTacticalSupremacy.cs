@@ -18,3 +18,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainTacticalSupremacy : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("swaindampeningfieldmana");
+        }
+    }
+}

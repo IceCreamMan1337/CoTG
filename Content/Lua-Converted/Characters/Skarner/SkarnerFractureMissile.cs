@@ -90,3 +90,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerFractureMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("skarner_fracture_tar.troy");
+            PreloadSpell("skarnerfracture");
+            PreloadSpell("skarnerfracturemissile");
+            PreloadParticle("skarner_fracture_tar_consume.troy");
+            PreloadParticle("galio_bulwark_heal.troy");
+        }
+    }
+}

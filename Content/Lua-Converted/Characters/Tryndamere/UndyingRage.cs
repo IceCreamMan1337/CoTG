@@ -66,3 +66,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class UndyingRage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("undyingrage_glow.troy");
+        }
+    }
+}

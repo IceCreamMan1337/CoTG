@@ -83,3 +83,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SpellShield : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("spelleffect_proc.troy");
+        }
+    }
+}

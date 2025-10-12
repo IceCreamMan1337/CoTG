@@ -96,3 +96,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MalphiteCleave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("malphitecleaveenragedhit.troy");
+            PreloadParticle("malphitecleavehit.troy");
+            PreloadParticle("globalhit_physical.troy");
+        }
+    }
+}

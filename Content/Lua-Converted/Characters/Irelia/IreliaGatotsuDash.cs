@@ -70,3 +70,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaGatotsuDash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_gotasu_dash_02.troy");
+            PreloadSpell("root");
+            PreloadSpell("ireliagatotsudash");
+            PreloadSpell("ireliagatotsu");
+            PreloadSpell("ireliagatotsudashparticle");
+        }
+    }
+}

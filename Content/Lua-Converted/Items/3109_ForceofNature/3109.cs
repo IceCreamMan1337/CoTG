@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3109 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("forceofnature");
+        }
+    }
+}

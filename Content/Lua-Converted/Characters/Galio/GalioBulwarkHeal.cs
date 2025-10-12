@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioBulwarkHeal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_bulwark_heal.troy");
+        }
+    }
+}

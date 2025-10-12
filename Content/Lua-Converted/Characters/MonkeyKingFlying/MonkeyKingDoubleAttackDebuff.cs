@@ -30,3 +30,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDoubleAttackDebuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("monkey_king_crushingblow_armor_debuff.troy");
+        }
+    }
+}

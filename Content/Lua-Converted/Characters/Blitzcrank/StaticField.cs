@@ -62,3 +62,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class StaticField : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("staticfield_tar.troy");
+            PreloadSpell("staticfield");
+            PreloadParticle("staticfield_nova.prt");
+        }
+    }
+}

@@ -55,3 +55,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class GalioResoluteSmite : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("galio_concussiveblast_mis_tar.troy");
+            PreloadParticle("galio_concussiveblast_unit_tar.troy");
+            PreloadParticle("galio_concussiveblast_unit_tar_02.troy");
+        }
+    }
+}

@@ -20,3 +20,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaZenithBladeBuffChaos : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("Leona_ZenithBlade_tar.troy");
+        }
+    }
+}

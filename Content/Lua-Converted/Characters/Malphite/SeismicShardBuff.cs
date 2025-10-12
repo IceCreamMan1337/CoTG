@@ -38,3 +38,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SeismicShardBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_slow.troy");
+        }
+    }
+}

@@ -12,3 +12,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3136 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hauntingguise");
+        }
+    }
+}

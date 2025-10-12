@@ -18,3 +18,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptLeona : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("leonasolarbarriertracker");
+            PreloadSpell("leonasunlight");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("leonasunlightpassive");
+        }
+    }
+}

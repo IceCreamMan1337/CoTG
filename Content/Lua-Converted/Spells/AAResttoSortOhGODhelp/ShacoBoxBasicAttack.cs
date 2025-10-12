@@ -21,3 +21,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShacoBoxBasicAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("shaco");
+        }
+    }
+}

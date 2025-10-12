@@ -55,3 +55,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class TriumphantRoar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("meditate_eff.troy");
+            PreloadSpell("alistartrample");
+        }
+    }
+}

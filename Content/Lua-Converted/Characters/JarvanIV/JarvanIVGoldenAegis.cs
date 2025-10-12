@@ -99,3 +99,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class JarvanIVGoldenAegis : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jarvangoldenaegis_buf.troy");
+            PreloadParticle("jarvangoldenaegis_nova.troy");
+            PreloadSpell("slow");
+            PreloadParticle("jarvangoldenaegis_tar.troy");
+        }
+    }
+}

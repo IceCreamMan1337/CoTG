@@ -26,3 +26,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class DisconnectTimer : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("testcube");
+            PreloadSpell("disconnecttarget");
+        }
+    }
+}

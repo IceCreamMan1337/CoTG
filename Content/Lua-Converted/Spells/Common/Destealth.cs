@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Destealth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("stealth");
+        }
+    }
+}

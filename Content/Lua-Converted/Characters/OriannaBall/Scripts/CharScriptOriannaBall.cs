@@ -17,3 +17,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOriannaBall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("orianna");
+            PreloadSpell("orianaghost");
+            PreloadSpell("orianaghostminion");
+            PreloadSpell("oriannaballtracker");
+        }
+    }
+}

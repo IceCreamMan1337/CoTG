@@ -17,3 +17,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinQuestParticleRemover : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinguardianbuff");
+            PreloadSpell("odinquestindicator");
+            PreloadCharacter("odinquestindicator");
+        }
+    }
+}

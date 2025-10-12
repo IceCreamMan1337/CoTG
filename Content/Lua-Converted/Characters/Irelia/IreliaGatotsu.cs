@@ -86,3 +86,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class IreliaGatotsu : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("irelia_gotasu_ability_indicator.troy");
+            PreloadParticle("irelia_gotasu_mana_refresh.troy");
+            PreloadParticle("irelia_gotasu_cas.troy");
+            PreloadParticle("irelia_gotasu_cast_01.troy");
+            PreloadParticle("irelia_gotasu_cast_02.troy");
+            PreloadSpell("ireliagatotsudash");
+        }
+    }
+}

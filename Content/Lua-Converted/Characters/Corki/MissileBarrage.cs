@@ -76,3 +76,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MissileBarrage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("missilebarrage");
+            PreloadSpell("mbcheck2");
+            PreloadSpell("corkimissilebarragenc");
+        }
+    }
+}

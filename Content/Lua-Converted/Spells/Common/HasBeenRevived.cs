@@ -30,3 +30,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HasBeenRevived : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("willrevive");
+        }
+    }
+}

@@ -51,3 +51,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenShurikenHurlMissile1 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kennenmarkofstorm");
+            PreloadParticle("kennen_ts_tar.troy");
+        }
+    }
+}

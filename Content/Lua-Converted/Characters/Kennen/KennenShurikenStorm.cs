@@ -110,3 +110,19 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KennenShurikenStorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("kennen_ss_aoe_green.troy");
+            PreloadParticle("kennen_ss_aoe_red.troy");
+            PreloadSpell("kennenshurikennocast");
+            PreloadSpell("kennenshurikenstormholder");
+            PreloadSpell("kennenmarkofstorm");
+            PreloadSpell("kennenshurikenstormmos");
+            PreloadParticle("kennen_ss_tar.troy");
+        }
+    }
+}

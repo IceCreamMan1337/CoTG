@@ -118,3 +118,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptIrelia : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ireliaionianduelist");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("ireliaidleparticle");
+            PreloadSpell("ireliahitenstylecharged");
+            PreloadSpell("ireliahitenstyle");
+        }
+    }
+}

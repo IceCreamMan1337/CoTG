@@ -53,3 +53,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenStandUnited : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shenteleport_v2.troy");
+            PreloadSpell("shenstandunitedshield");
+            PreloadSpell("shenstandunitedtarget");
+        }
+    }
+}

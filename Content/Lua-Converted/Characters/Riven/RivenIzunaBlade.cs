@@ -45,3 +45,14 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class RivenIzunaBlade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rivenwindslashready");
+            PreloadSpell("rivenfengshuiengine");
+        }
+    }
+}

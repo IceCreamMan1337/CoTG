@@ -187,3 +187,14 @@
         //}
     }
 }
+namespace PreLoads
+{
+    public class APBonusDamageToTowers : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("disconnecttimer");
+            PreloadSpell("fortifycheck");
+        }
+    }
+}

@@ -84,3 +84,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HallucinateFull : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jester_copy.troy");
+            PreloadSpell("root");
+            PreloadParticle("hallucinate_nova.troy");
+            PreloadCharacter("shaco");
+            PreloadSpell("hallucinateapplicator");
+        }
+    }
+}

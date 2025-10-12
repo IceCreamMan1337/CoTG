@@ -66,3 +66,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class PowerFist : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("powerfistslow");
+            PreloadSpell("powerfist");
+        }
+    }
+}

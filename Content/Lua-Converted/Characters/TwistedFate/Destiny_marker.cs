@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Destiny_marker : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("destiny");
+        }
+    }
+}

@@ -85,3 +85,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class WillRevive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("willrevive");
+            PreloadSpell("hasbeenrevived");
+            PreloadSpell("guardianangel");
+        }
+    }
+}

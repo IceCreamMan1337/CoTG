@@ -72,3 +72,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class CaitlynAceintheHole : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("caitlynaceintheholevisibility");
+            PreloadSpell("caitlynaceinthehole");
+            PreloadParticle("caitlyn_laser_beam_01.troy");
+            PreloadSpell("ifhasbuffcheck");
+        }
+    }
+}

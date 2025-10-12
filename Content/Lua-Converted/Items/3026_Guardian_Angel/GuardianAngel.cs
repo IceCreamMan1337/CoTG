@@ -95,3 +95,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GuardianAngel : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("lifeaura.troy");
+            PreloadSpell("willrevive");
+            PreloadParticle("guardianangel_tar.troy");
+            PreloadSpell("hasbeenrevived");
+        }
+    }
+}

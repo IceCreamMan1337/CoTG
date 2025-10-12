@@ -20,3 +20,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptblueDragon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("dragonapplicator");
+            PreloadSpell("hpbyplayerlevel");
+            PreloadSpell("resistantskindragon");
+        }
+    }
+}

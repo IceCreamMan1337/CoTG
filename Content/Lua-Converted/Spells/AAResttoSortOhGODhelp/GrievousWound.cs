@@ -49,3 +49,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class GrievousWound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("internal_50ms");
+        }
+    }
+}

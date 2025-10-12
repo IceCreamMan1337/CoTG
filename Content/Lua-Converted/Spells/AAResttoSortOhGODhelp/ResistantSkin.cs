@@ -136,3 +136,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ResistantSkin : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("wrathtimer");
+            PreloadSpell("sweeptimer");
+            PreloadSpell("propeltimer");
+            PreloadSpell("actiontimer2");
+            PreloadSpell("actiontimer");
+            PreloadSpell("exaltedwithbaronnashor");
+        }
+    }
+}

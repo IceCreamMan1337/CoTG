@@ -125,3 +125,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathsCaress : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deathscaress");
+            PreloadParticle("deathscaress_nova.prt");
+            PreloadSpell("deathscaressfull");
+        }
+    }
+}

@@ -55,3 +55,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingConsume : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("meditate_eff.troy");
+            PreloadSpell("resistantskin");
+        }
+    }
+}

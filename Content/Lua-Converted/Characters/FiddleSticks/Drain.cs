@@ -34,3 +34,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class Drain : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("draincheck");
+        }
+    }
+}

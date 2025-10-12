@@ -91,3 +91,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SkarnerExoskeleton : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("skarner_exoskeleon_shatter.troy");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("skarnerexoskeleton");
+        }
+    }
+}

@@ -42,3 +42,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MaokaiSapMagicMelee : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("maokai_heal.troy");
+            PreloadSpell("maokaisapmagicmelee");
+        }
+    }
+}

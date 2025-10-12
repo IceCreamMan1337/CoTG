@@ -81,3 +81,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenPassive : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("rivenmartyr");
+            PreloadSpell("rivenpassiveaaboost");
+        }
+    }
+}

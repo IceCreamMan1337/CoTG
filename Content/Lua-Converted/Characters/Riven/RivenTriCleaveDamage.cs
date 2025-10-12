@@ -230,3 +230,28 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RivenTriCleaveDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("riventricleavedamagedebuff");
+            PreloadParticle("exile_q_01_trail_02_ult.troy");
+            PreloadParticle("exile_q_03_trail.troy");
+            PreloadParticle("exile_q_01_trail_02.troy");
+            PreloadParticle("exile_q_02_trail_02_ult.troy");
+            PreloadParticle("exile_q_02_trail_02.troy");
+            PreloadParticle("exile_q_03_trail_02_ult.troy");
+            PreloadParticle("exile_q_03_trail_02.troy");
+            PreloadSpell("riventricleaveunlock");
+            PreloadParticle("exile_q_02_detonate_ult.troy");
+            PreloadParticle("exile_q_02_detonate.troy");
+            PreloadParticle("exile_q_01_detonate.troy");
+            PreloadParticle("exile_q_03_detonate_ult.troy");
+            PreloadParticle("exile_q_03_detonate.troy");
+            PreloadSpell("riventricleavedamagedebuff2");
+            PreloadSpell("rivenknockback");
+        }
+    }
+}

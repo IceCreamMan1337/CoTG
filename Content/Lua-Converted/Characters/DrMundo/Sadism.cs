@@ -55,3 +55,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Sadism : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sadismheal");
+            PreloadParticle("dr_mundo_sadism_cas.troy");
+            PreloadParticle("dr_mundo_sadism_cas_02.troy");
+        }
+    }
+}

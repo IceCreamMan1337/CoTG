@@ -54,3 +54,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptVeigar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("veigarequilibrium");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

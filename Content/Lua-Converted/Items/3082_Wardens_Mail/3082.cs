@@ -15,3 +15,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3082 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("randuinsomen");
+            PreloadSpell("slow");
+            PreloadSpell("cripple");
+        }
+    }
+}

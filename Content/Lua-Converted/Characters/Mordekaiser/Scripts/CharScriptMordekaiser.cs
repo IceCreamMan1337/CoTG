@@ -40,3 +40,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptMordekaiser : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("mordekaiserdeathparticle");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("mordekaiserironman");
+            PreloadSpell("apbonusdamagetotowers");
+        }
+    }
+}

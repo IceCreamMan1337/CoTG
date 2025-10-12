@@ -55,3 +55,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TurretEvoStats : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("jackintheboxpoof.troy");
+        }
+    }
+}

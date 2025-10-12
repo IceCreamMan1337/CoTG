@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptOdinMinionGraveyardPortal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("odinminionportal");
+        }
+    }
+}

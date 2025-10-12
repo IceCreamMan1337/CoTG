@@ -15,3 +15,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinQuestBuffParticle : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_quest_complete.troy");
+        }
+    }
+}

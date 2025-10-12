@@ -117,3 +117,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SummonerFlash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("summoner_flashback.troy");
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_flash.troy");
+        }
+    }
+}

@@ -36,3 +36,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class TurretChampionDelta : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("negativeturretdelta");
+            PreloadSpell("positivechampiondelta");
+            PreloadSpell("positiveturretdelta");
+            PreloadSpell("negativechampiondelta");
+        }
+    }
+}

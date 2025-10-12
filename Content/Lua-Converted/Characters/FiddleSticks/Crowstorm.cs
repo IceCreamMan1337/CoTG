@@ -111,3 +111,18 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Crowstorm : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("crowstorm_green_cas.troy");
+            PreloadParticle("crowstorm_red_cas.troy");
+            PreloadParticle("summoner_flashback.troy");
+            PreloadParticle("summoner_cast.troy");
+            PreloadParticle("summoner_flash.troy");
+            PreloadSpell("paranoiamisschance");
+        }
+    }
+}

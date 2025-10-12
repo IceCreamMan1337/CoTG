@@ -25,3 +25,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PropelSpellCaster : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("propel");
+        }
+    }
+}

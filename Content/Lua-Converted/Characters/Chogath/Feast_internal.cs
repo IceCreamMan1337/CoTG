@@ -34,3 +34,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Feast_internal : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("feast");
+        }
+    }
+}

@@ -71,3 +71,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class HextechSweeper : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("hextechsweeperarea");
+        }
+    }
+}

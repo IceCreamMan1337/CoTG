@@ -152,3 +152,21 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KogMawIcathianSurprise : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("kogmawicathiansurprisesound");
+            PreloadParticle("kogmawdeathproc.troy");
+            PreloadParticle("kogmawdeathbackbeam.troy");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("untargetable");
+            PreloadCharacter("kogmawdead");
+            PreloadParticle("kogmawdeath_nova.troy");
+            PreloadParticle("kogmawdead_idle.troy");
+            PreloadSpell("kogmawicathiansurprise");
+        }
+    }
+}

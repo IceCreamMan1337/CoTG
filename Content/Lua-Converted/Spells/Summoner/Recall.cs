@@ -84,3 +84,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class Recall : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teleporthome.troy");
+            PreloadParticle("teleportarrive.troy");
+            PreloadSpell("recall");
+        }
+    }
+}

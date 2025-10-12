@@ -25,3 +25,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptDrMundo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nevershade");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

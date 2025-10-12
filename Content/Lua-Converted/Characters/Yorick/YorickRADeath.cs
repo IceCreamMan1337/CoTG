@@ -9,3 +9,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class YorickRADeath : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("yorickrapetbuff");
+        }
+    }
+}

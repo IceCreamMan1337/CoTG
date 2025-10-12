@@ -71,3 +71,15 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class UrgotHeatseekingMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("urgotcorrosivedebuff");
+            PreloadParticle("urgotheatseekingindicator.troy");
+            PreloadParticle("urgottargetindicator.troy");
+        }
+    }
+}

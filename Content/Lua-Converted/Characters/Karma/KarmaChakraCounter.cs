@@ -80,3 +80,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class KarmaChakraCounter : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("karmaonemantraparticle");
+            PreloadSpell("karmatwomantraparticle");
+            PreloadSpell("karmachakra");
+        }
+    }
+}

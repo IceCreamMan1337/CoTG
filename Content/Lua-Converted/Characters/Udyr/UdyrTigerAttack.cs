@@ -30,3 +30,14 @@ namespace Buffs
     {
     }
 }
+namespace PreLoads
+{
+    public class UdyrTigerAttack : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("udyr_tiger_claw_tar.troy");
+            PreloadParticle("udyr_tiger_tar.troy");
+        }
+    }
+}

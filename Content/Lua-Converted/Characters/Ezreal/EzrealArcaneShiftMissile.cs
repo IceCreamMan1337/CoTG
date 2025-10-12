@@ -33,3 +33,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class EzrealArcaneShiftMissile : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("ezrealrisingspellforce");
+        }
+    }
+}

@@ -23,3 +23,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinQuestBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("odin_quest_buf.troy");
+        }
+    }
+}

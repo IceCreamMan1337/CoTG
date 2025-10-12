@@ -94,3 +94,17 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class CharScriptNocturne : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("nocturneumbrablades");
+            PreloadParticle("globalhit_red.troy");
+            PreloadSpell("nocturneparanoia2");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+        }
+    }
+}

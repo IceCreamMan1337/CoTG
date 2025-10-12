@@ -71,3 +71,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class VeigarBalefulStrike : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("permission_ability_indicator.troy");
+        }
+    }
+}

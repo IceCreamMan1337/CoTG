@@ -62,3 +62,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class DeathfireGrasp : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("deathfiregraspspell");
+        }
+    }
+}

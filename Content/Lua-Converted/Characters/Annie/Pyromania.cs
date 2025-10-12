@@ -18,3 +18,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Pyromania : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("pyromania");
+            PreloadSpell("pyromania_particle");
+        }
+    }
+}

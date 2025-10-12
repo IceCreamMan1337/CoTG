@@ -79,3 +79,16 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class EmpowerTwo : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("armsmaster_empower_self_01.troy");
+            PreloadParticle("armsmaster_empower_buf.troy");
+            PreloadParticle("empowertwohit_tar.troy");
+            PreloadSpell("empowertwo");
+        }
+    }
+}

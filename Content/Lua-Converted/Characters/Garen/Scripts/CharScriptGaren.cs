@@ -55,3 +55,17 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class CharScriptGaren : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("garenjusticeprecast");
+            PreloadSpell("apbonusdamagetotowers");
+            PreloadSpell("championchampiondelta");
+            PreloadSpell("garenrecouperateon");
+            PreloadSpell("garencommandkill");
+        }
+    }
+}

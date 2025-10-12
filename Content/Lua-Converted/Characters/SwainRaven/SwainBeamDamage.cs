@@ -48,3 +48,16 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class SwainBeamDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("swainmetamorphism");
+            PreloadCharacter("swainnobird");
+            PreloadSpell("swainbeamtransition");
+            PreloadSpell("swainbeamself");
+        }
+    }
+}

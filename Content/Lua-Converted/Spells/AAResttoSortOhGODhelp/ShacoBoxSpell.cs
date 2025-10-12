@@ -14,3 +14,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShacoBoxSpell : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadCharacter("shaco");
+        }
+    }
+}

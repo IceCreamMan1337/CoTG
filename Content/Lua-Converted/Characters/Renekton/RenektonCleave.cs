@@ -131,3 +131,19 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class RenektonCleave : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("renektonunlockanimationcleave");
+            PreloadSpell("renektonreignofthetyrant");
+            PreloadParticle("renektoncleave_trail_rage.troy ");
+            PreloadSpell("renektoncleavedrain");
+            PreloadSpell("renektonbloodsplattertarget");
+            PreloadSpell("renektonrageready");
+            PreloadParticle("renektoncleave_trail.troy ");
+        }
+    }
+}

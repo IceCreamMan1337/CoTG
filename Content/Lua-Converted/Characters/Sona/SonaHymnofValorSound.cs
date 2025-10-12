@@ -89,3 +89,14 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SonaHymnofValorSound : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("sonasoundoff");
+            PreloadParticle("sonahymnofvalorsound.troy");
+        }
+    }
+}

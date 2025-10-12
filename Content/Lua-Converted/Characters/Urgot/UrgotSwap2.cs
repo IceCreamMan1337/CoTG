@@ -145,3 +145,23 @@ namespace Buffs
         */
     }
 }
+namespace PreLoads
+{
+    public class UrgotSwap2 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("urgotswapdrip.troy");
+            PreloadSpell("urgotswapmissile");
+            PreloadSpell("suppression");
+            PreloadSpell("urgotswaptarget");
+            PreloadSpell("urgotswapexecute");
+            PreloadSpell("unlockanimation");
+            PreloadSpell("urgotswap2");
+            PreloadParticle("urgotswaptarget.troy");
+            PreloadSpell("root");
+            PreloadSpell("urgotswapmarker");
+            PreloadSpell("urgotswapdef");
+        }
+    }
+}

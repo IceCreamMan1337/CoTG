@@ -110,3 +110,18 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class NocturneParanoiaDash : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("nocturneparanoiadash_trail.troy");
+            PreloadSpell("root");
+            PreloadParticle("nocturneparanoiadash_tar.troy");
+            PreloadSpell("unstoppableforcemarker");
+            PreloadSpell("nocturneparanoiadash");
+            PreloadSpell("nocturneparanoiadashsound");
+        }
+    }
+}

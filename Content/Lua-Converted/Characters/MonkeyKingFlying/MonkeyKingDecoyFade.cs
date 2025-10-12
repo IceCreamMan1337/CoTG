@@ -30,3 +30,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class MonkeyKingDecoyFade : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("monkeykingspintowin");
+            PreloadSpell("monkeykingnimbuskick");
+            PreloadSpell("monkeykingdecoystealth");
+        }
+    }
+}

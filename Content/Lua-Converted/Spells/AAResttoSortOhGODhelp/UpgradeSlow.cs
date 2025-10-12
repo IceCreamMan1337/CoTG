@@ -60,3 +60,23 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class UpgradeSlow : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("heimerdinger_slowaura_self.troy");
+            PreloadSpell("h28gevolutionturret");
+            PreloadCharacter("heimertblue");
+            PreloadSpell("h28gevolutionturretspell1");
+            PreloadSpell("h28gevolutionturretspell2");
+            PreloadSpell("h28gevolutionturretspell3");
+            PreloadSpell("explosivecartridges");
+            PreloadCharacter("heimertred");
+            PreloadSpell("uraniumrounds");
+            PreloadCharacter("heimertgreen");
+            PreloadCharacter("heimertyellow");
+        }
+    }
+}

@@ -20,3 +20,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AbsoluteZeroBonusDamage : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("absolutezerobonusdamage2");
+            PreloadParticle("absolutezero_nova.troy");
+            PreloadSpell("absolutezerobonusdamage");
+        }
+    }
+}

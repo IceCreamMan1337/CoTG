@@ -125,3 +125,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class SoulShackles : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("soulshackle_beam.troy");
+            PreloadSpell("soulshacklesowner");
+            PreloadSpell("soulshackleslow");
+            PreloadSpell("soulshackles");
+            PreloadSpell("slow");
+        }
+    }
+}

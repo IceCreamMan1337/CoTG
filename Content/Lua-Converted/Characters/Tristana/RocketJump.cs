@@ -130,3 +130,17 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class RocketJump : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("tristana_rocketjump_cas.troy");
+            PreloadSpell("root");
+            PreloadParticle("tristana_rocketjump_land.troy");
+            PreloadParticle("tristana_rocketjump_unit_tar.troy");
+            PreloadSpell("rocketjumpslow");
+        }
+    }
+}

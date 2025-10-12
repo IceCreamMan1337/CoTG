@@ -25,3 +25,13 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ItemID_3132 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("heartofgold");
+        }
+    }
+}

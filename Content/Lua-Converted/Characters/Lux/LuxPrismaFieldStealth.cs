@@ -67,3 +67,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class LuxPrismaFieldStealth : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("akali_twilight_buf.troy");
+            PreloadSpell("recall");
+        }
+    }
+}

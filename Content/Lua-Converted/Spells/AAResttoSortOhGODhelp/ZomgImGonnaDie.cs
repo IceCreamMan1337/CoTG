@@ -22,3 +22,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ZomgImGonnaDie : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teleportarrive.troy");
+        }
+    }
+}

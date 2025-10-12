@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class AlZaharVoidlingPhase3 : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("alzaharvoidling_evo.troy");
+        }
+    }
+}

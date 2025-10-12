@@ -23,3 +23,14 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenShadowDashTaunt : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("global_taunt_multi_unit.troy");
+            PreloadSpell("taunt");
+        }
+    }
+}

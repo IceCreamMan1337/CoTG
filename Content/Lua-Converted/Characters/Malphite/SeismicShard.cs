@@ -24,3 +24,13 @@ namespace Buffs
         };
     }
 }
+namespace PreLoads
+{
+    public class SeismicShard : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("seismicshardbuff");
+        }
+    }
+}

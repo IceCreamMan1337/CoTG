@@ -19,3 +19,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class PoppyParagonIcon : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadSpell("poppyparagonstats");
+        }
+    }
+}

@@ -84,3 +84,15 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class OdinShrineBuff : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("neutralmonster_buf_red_offense.troy");
+            PreloadParticle("tiamatmelee_itm.troy");
+            PreloadSpell("judicatorrighteousfury");
+        }
+    }
+}

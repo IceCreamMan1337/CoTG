@@ -57,3 +57,15 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class ShenVorpalStar : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("shen_life_tap_tar_02.troy");
+            PreloadSpell("shenvorpalstarheal");
+            PreloadParticle("shen_vorpalstar_tar.troy");
+        }
+    }
+}

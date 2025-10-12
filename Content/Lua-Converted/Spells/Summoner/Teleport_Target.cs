@@ -34,3 +34,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Teleport_Target : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("teleport_target.troy");
+        }
+    }
+}

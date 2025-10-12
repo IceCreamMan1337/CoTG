@@ -26,3 +26,13 @@
         }
     }
 }
+namespace PreLoads
+{
+    public class Wish : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("wish_tar.troy");
+        }
+    }
+}

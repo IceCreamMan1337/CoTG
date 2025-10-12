@@ -93,3 +93,23 @@ namespace Buffs
         }
     }
 }
+namespace PreLoads
+{
+    public class LeonaSolarFlare : IPreLoadScript
+    {
+        public void Preload()
+        {
+            PreloadParticle("leona_solarflare_cas_green.troy");
+            PreloadParticle("leona_solarflare_cas_red.troy");
+            PreloadParticle("leona_solarflare_tar.troy");
+            PreloadParticle("leona_solarbarrier_tar.troy");
+            PreloadSpell("leonasunlight");
+            PreloadSpell("leonasolarflareslow");
+            PreloadParticle("leona_solarflare_cas.troy");
+            PreloadSpell("root");
+            PreloadCharacter("testcube");
+            PreloadSpell("leonasolarflare");
+            PreloadSpell("leonasolarflarevision");
+        }
+    }
+}
