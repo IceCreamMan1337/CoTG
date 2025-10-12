@@ -1162,7 +1162,7 @@ internal class ContentManager
             return null;
         }
 
-        characterName = characterName.ToLowerInvariant();
+        characterName = Path.GetFileNameWithoutExtension(characterName).ToLowerInvariant();
         if (CharactersData.TryGetValue(characterName, out var charData))
         {
             return charData;
@@ -1198,7 +1198,7 @@ internal class ContentManager
     /// <returns></returns>
     internal static SpellData? GetSpellData(string spellName)
     {
-        spellName = spellName.ToLowerInvariant();
+        spellName = Path.GetFileNameWithoutExtension(spellName).ToLowerInvariant();
         if (SpellsData.TryGetValue(spellName, out var spellData))
         {
             return spellData;
@@ -1229,7 +1229,8 @@ internal class ContentManager
     /// <returns></returns>
     internal static ParticleData? GetParticleData(string name, params GameObject[] characters)
     {
-        if (ParticlesData.TryGetValue(name.ToLower(), out List<ParticleData>? list) || list?.Count <= 0)
+        name = Path.GetFileNameWithoutExtension(name).ToLowerInvariant();
+        if (ParticlesData.TryGetValue(name, out List<ParticleData>? list) || list?.Count <= 0)
         {
             return DoStuffWithParticleData(list, characters);
         }
