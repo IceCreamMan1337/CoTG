@@ -762,17 +762,14 @@ public partial class Spell : IEventSource
             //if(missile != null) //TODO: Find out when to send this packet
             //    Game.PacketNotifier126.NotifyS2C_ForceCreateMissile(missile);
 
+            TryCatch(() => ScriptInternal.OnSpellCast());
+            ApiEventManager.OnSpellCast.Publish(this);
+            ApiEventManager.OnUnitSpellCast.Publish(Caster, this);
 
-            //this is again an bad method , need find where put these listener
-            _ = Task.Run(async () =>
+            if (missile != null)
             {
-                //Console.WriteLine($"[DEBUG] Wait before Deactivate at {DateTime.Now:HH:mm:ss.fff}");
-                await Task.Delay(250); //25ms again 
-
-                TryCatch(() => ScriptInternal.OnSpellCast());
-                ApiEventManager.OnSpellCast.Publish(this);
-                ApiEventManager.OnUnitSpellCast.Publish(Caster, this);
-            });
+                ApiEventManager.OnLaunchMissile.Publish(this, missile);
+            }
 
             if (!noCast)
             {
@@ -1070,7 +1067,6 @@ public partial class Spell : IEventSource
                 default:
                     throw new Exception();
             }
-            ApiEventManager.OnLaunchMissile.Publish(this, m);
             return m;
         }
 
