@@ -818,6 +818,15 @@ public class AttackableUnit : GameObject, IGoldOwner
         return false;
     }
 
+    bool Missed()
+    {
+        if (_random.NextSingle() <= Stats.MissChance.Total)
+        {
+            return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Applies damage to this unit.
     /// </summary>
@@ -825,16 +834,33 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <param name="sourceScript">EventSource for hash</param>
     public virtual void TakeDamage(DamageData damageData, IEventSource sourceScript = null)
     {
-        if(damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK && !damageData.Attacker.DodgePiercing && Dodged()) 
+        if (damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK)
         {
-            ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
-            ApiEventManager.OnBeingDodged.Publish(damageData.Target, damageData.Attacker);
-            damageData.Damage = 0;
-            damageData.DamageResultType = DamageResultType.RESULT_DODGE;
+            if (!damageData.Attacker.DodgePiercing && Dodged())
+            {
+                damageData.Damage = 0;
 
-            UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
-            return;
+                //Order of events need to be checked
+                ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
+                ApiEventManager.OnBeingDodged.Publish(damageData.Attacker, damageData.Target);
+                ApiEventManager.OnBeingHit.Publish(damageData.Target, damageData);
+                ApiEventManager.OnHitUnit.Publish(damageData.Attacker as ObjAIBase, damageData);
+
+                UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
+                return;
+            }
+            else if (damageData.Attacker.Missed())
+            {
+                damageData.Damage = 0;
+                damageData.DamageResultType = DamageResultType.RESULT_MISS;
+                //Order of events needs to be checked
+                ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
+                UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
+                return;
+            }
         }
+
+
 
         var originalDamage = damageData.Damage;
         damageData.Damage *= GetAttackRatio(damageData.Attacker);
@@ -856,15 +882,10 @@ public class AttackableUnit : GameObject, IGoldOwner
             //todo : have damagesource default here can create an stackoverflow 
 
             ApiEventManager.OnBeingHit.Publish(damageData.Target, damageData);
-
             ApiEventManager.OnHitUnit.Publish(damageData.Attacker as ObjAIBase, damageData);
 
-            if (damageData.DamageResultType == DamageResultType.RESULT_DODGE)
-            {
-                ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
-                ApiEventManager.OnBeingDodged.Publish(damageData.Attacker, damageData.Target);
-            }
-            else if (damageData.DamageResultType == DamageResultType.RESULT_MISS)
+
+            if (damageData.DamageResultType == DamageResultType.RESULT_MISS)
             {
                 ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
             }
@@ -1251,7 +1272,7 @@ public class AttackableUnit : GameObject, IGoldOwner
         {
             _statusBeforeApplyingBuffEfects &= ~status;
         }
-        Status = ((_statusBeforeApplyingBuffEfects & ~_buffEffectsToDisable)| _buffEffectsToEnable) & ~_dashEffectsToDisable;
+        Status = ((_statusBeforeApplyingBuffEfects & ~_buffEffectsToDisable) | _buffEffectsToEnable) & ~_dashEffectsToDisable;
         UpdateActionState();
     }
 
