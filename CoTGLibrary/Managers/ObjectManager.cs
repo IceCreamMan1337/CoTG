@@ -273,7 +273,6 @@ namespace CoTG.CoTGServer
             foreach (var obj in _objectsToAdd)
             {
                 _objects.Add(obj.NetId, obj);
-                obj.OnAdded();
             }
             _objectsToAdd.Clear();
 
