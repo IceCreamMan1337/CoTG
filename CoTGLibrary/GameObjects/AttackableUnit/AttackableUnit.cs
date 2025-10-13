@@ -34,6 +34,7 @@ public class AttackableUnit : GameObject, IGoldOwner
 {
     private const float STATS_TRACKER_UPDATE_TIME = 250;
     private const float STAT_UPDATE_TIME = 500;
+    protected Random _random = new();
 
     // Crucial Vars.
     protected float _statUpdateTimer;
@@ -140,6 +141,7 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <summary>
     /// If this unit's auto attacks can go through dodge
     /// </summary>
+    //This is supposed to be in ObjAIBase.CharacterState
     public bool DodgePiercing { get; internal set; }
 
     public ForceMovementType _ForceMovementType { get; set; }
@@ -807,6 +809,24 @@ public class AttackableUnit : GameObject, IGoldOwner
         return data.DamageSource is DamageSource.DAMAGE_SOURCE_INTERNALRAW or DamageSource.DAMAGE_SOURCE_RAW ? originalDamage : damage;
     }
 
+    bool Dodged()
+    {
+        if (_random.NextSingle() <= Stats.DodgeChance.Total)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    bool Missed()
+    {
+        if (_random.NextSingle() <= Stats.MissChance.Total)
+        {
+            return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Applies damage to this unit.
     /// </summary>
@@ -814,11 +834,38 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <param name="sourceScript">EventSource for hash</param>
     public virtual void TakeDamage(DamageData damageData, IEventSource sourceScript = null)
     {
+        if (damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK)
+        {
+            if (!damageData.Attacker.DodgePiercing && Dodged())
+            {
+                damageData.Damage = 0;
+
+                //Order of events need to be checked
+                ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
+                ApiEventManager.OnBeingDodged.Publish(damageData.Attacker, damageData.Target);
+                ApiEventManager.OnBeingHit.Publish(damageData.Target, damageData);
+                ApiEventManager.OnHitUnit.Publish(damageData.Attacker as ObjAIBase, damageData);
+
+                UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
+                return;
+            }
+            else if (damageData.Attacker.Missed())
+            {
+                damageData.Damage = 0;
+                damageData.DamageResultType = DamageResultType.RESULT_MISS;
+
+                ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
+                UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
+                return;
+            }
+        }
+
         var originalDamage = damageData.Damage;
         damageData.Damage *= GetAttackRatio(damageData.Attacker);
 
         LastTimeGetHit = Game.Time.GameTime;
         LastPersonwhohavehitthistarget = damageData.Attacker as ObjAIBase;
+
         //Raw damage does not get mitigated
         if (damageData.DamageResultType is DamageResultType.RESULT_CRITICAL && damageData.Target is BaseTurret or ObjAnimatedBuilding)
         {
@@ -833,18 +880,7 @@ public class AttackableUnit : GameObject, IGoldOwner
             //todo : have damagesource default here can create an stackoverflow 
 
             ApiEventManager.OnBeingHit.Publish(damageData.Target, damageData);
-
             ApiEventManager.OnHitUnit.Publish(damageData.Attacker as ObjAIBase, damageData);
-
-            if (damageData.DamageResultType == DamageResultType.RESULT_DODGE)
-            {
-                ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
-                ApiEventManager.OnBeingDodged.Publish(damageData.Attacker, damageData.Target);
-            }
-            else if (damageData.DamageResultType == DamageResultType.RESULT_MISS)
-            {
-                ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
-            }
 
             if (damageData.DamageResultType == DamageResultType.RESULT_CRITICAL && !damageData.IgnoreDamageCrit)
             {
@@ -886,8 +922,6 @@ public class AttackableUnit : GameObject, IGoldOwner
 
         ApiEventManager.OnTakeDamage.Publish(damageData.Target, damageData);
         ApiEventManager.OnDealDamage.Publish(damageData.Attacker, damageData);
-
-
 
         if (this is Champion c && damageData.Attacker is Champion cAttacker)
         {
@@ -1228,7 +1262,7 @@ public class AttackableUnit : GameObject, IGoldOwner
         {
             _statusBeforeApplyingBuffEfects &= ~status;
         }
-        Status = ((_statusBeforeApplyingBuffEfects & ~_buffEffectsToDisable)| _buffEffectsToEnable) & ~_dashEffectsToDisable;
+        Status = ((_statusBeforeApplyingBuffEfects & ~_buffEffectsToDisable) | _buffEffectsToEnable) & ~_dashEffectsToDisable;
         UpdateActionState();
     }
 

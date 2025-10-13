@@ -27,7 +27,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
-using System.Threading.Tasks;
 using static CoTGEnumNetwork.Content.HashFunctions;
 using static PacketVersioning.PktVersioning;
 using E = CoTGEnumNetwork.Extensions;
@@ -321,17 +320,11 @@ public static partial class Functions
         //TODO: and should not throw an error in this case.
         //this one seem attached to an casttime 
 
-        _ = Task.Run(async () =>
-            {
-                //Console.WriteLine($"[DEBUG] Wait before Deactivate at {DateTime.Now:HH:mm:ss.fff}");
-                await Task.Delay(250); //by default 0.25s 
-
-                target.Buffs.RemoveStack(buffName, attacker);
-                if (resetDuration > 0)
-                {
-                    target.Buffs.UpdateCDStack(buffName, resetDuration);
-                }
-            });
+        target.Buffs.RemoveStack(buffName, attacker);
+        if (resetDuration > 0)
+        {
+            target.Buffs.UpdateCDStack(buffName, resetDuration);
+        }
     }
 
     [BBFunc]

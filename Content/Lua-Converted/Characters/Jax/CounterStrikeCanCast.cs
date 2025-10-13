@@ -4,7 +4,7 @@
     {
         public override BuffScriptMetadataUnmutable MetaData { get; } = new()
         {
-            AutoBuffActivateEffect = new[] { "", },
+            AutoBuffActivateEffect = ["",],
             BuffName = "Counter Strike Can Cast",
             BuffTextureName = "Armsmaster_Disarm.dds",
             NonDispellable = true,
@@ -23,12 +23,12 @@
 
             if (cooldown <= 0)
             {
-                CreateReadyEffect(teamID);
+                SpellEffectCreate(out readyEffect, out _, "CounterStrike_ready.troy", default, teamID, 10, 0, TeamId.TEAM_UNKNOWN, default, owner, false, owner, default, default, owner, default, default, false);
                 isCooledDown = true;
             }
             else
             {
-                CreateDodgedEffect(teamID);
+                SpellEffectCreate(out dodgedEffect, out _, "CounterStrike_dodged.troy", default, teamID, 10, 0, TeamId.TEAM_UNKNOWN, default, owner, false, owner, default, default, owner, default, default, false);
                 isCooledDown = false;
             }
         }
@@ -59,19 +59,9 @@
                 {
                     isCooledDown = true;
                     SpellEffectRemove(dodgedEffect);
-                    CreateReadyEffect(teamID);
+                    SpellEffectCreate(out readyEffect, out _, "CounterStrike_ready.troy", default, teamID, 10, 0, TeamId.TEAM_UNKNOWN, default, owner, false, owner, default, default, owner, default, default, false);
                 }
             }
-        }
-
-        private void CreateReadyEffect(TeamId teamID)
-        {
-            SpellEffectCreate(out readyEffect, out _, "CounterStrike_ready.troy", default, teamID, 10, 0, TeamId.TEAM_UNKNOWN, default, owner, false, owner, default, default, owner, default, default, false);
-        }
-
-        private void CreateDodgedEffect(TeamId teamID)
-        {
-            SpellEffectCreate(out dodgedEffect, out _, "CounterStrike_dodged.troy", default, teamID, 10, 0, TeamId.TEAM_UNKNOWN, default, owner, false, owner, default, default, owner, default, default, false);
         }
     }
 }

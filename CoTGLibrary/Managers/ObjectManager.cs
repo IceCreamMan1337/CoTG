@@ -27,12 +27,12 @@ namespace CoTG.CoTGServer
     {
         private static ILog _logger = LoggerProvider.GetLogger();
 
-        private readonly List<GameObject> _objectsToAdd = new();
-        private readonly List<GameObject> _objectsToRemove = new();
-        private readonly SortedDictionary<uint, GameObject> _objects = new();
-        private readonly SortedDictionary<uint, Champion> _champions = new();
-        private readonly SortedDictionary<uint, BaseTurret> _turrets = new();
-        private readonly SortedDictionary<uint, Inhibitor> _inhibitors = new();
+        private readonly List<GameObject> _objectsToAdd = [];
+        private readonly List<GameObject> _objectsToRemove = [];
+        private readonly SortedDictionary<uint, GameObject> _objects = [];
+        private readonly SortedDictionary<uint, Champion> _champions = [];
+        private readonly SortedDictionary<uint, BaseTurret> _turrets = [];
+        private readonly SortedDictionary<uint, Inhibitor> _inhibitors = [];
         private readonly object _objectsLock = new();
 
         private bool _currentlyInUpdate = false;
@@ -93,10 +93,7 @@ namespace CoTG.CoTGServer
         /// </summary>
         private void UpdateAIManager()
         {
-
-
             float currentTime = Game.Time.GameTime;
-
             if (currentTime - _lastAIManagerUpdateTime < _aiManagerUpdateInterval)
             {
                 return; // Not time to update yet
@@ -106,10 +103,7 @@ namespace CoTG.CoTGServer
 
             if (_aiManagersInitialized.Count == 0 || !_aiManagersInitialized.All(kv => kv.Value))
             {
-
                 InitializeAIManager();
-
-
                 return;
             }
 
@@ -118,25 +112,18 @@ namespace CoTG.CoTGServer
             {
                 if (kv.Value != null)
                 {
-
                     // Call AIManager_Logic() directly instead of Update()
                     var method = kv.Value.GetType().GetMethod("AIManager_Logic");
                     if (method != null)
                     {
                         var result = method.Invoke(kv.Value, null);
                     }
-
-
-
-
                 }
-
             }
 
             // 2. Update the specialized manager (if initialized)
             if (_specializedManagerInitialized && _specializedManager != null)
             {
-
                 // Call the appropriate method based on the manager type
                 var method = _specializedManager.GetType().GetMethod("Update");
                 if (method != null)
@@ -144,7 +131,6 @@ namespace CoTG.CoTGServer
                     var result = method.Invoke(_specializedManager, null);
                 }
             }
-
             UpdateSquadMission();
         }
 
@@ -159,7 +145,6 @@ namespace CoTG.CoTGServer
                 }
             }
         }
-
 
         /// <summary>
         /// Configures the AIManager update interval
@@ -182,25 +167,8 @@ namespace CoTG.CoTGServer
                 int mapId = Game.Map.MapData.Id;
                 if (gameMode == "CLASSIC" && mapId == 1)
                 {
-
-
                     //gametype not implemented correctly 
                     string gameType = "MATCHED_GAME";
-
-
-                    int botCount = bots.Count();
-                    if (botCount > 0)
-                    {
-
-                        // gameType = "CUSTOM_GAME";
-                        /*  else
-                              {
-                        todo : tutorial 
-
-                              }
-                          */
-                    }
-
                     foreach (var team in Teams)
                     {
                         string teamStr = team.ToString();
@@ -253,7 +221,7 @@ namespace CoTG.CoTGServer
                             var teamBots = Game.PlayerManager.GetBotsFromTeam(team).ToList();
                             _aiManagers[team].AIEntitiesAssociated = teamBots;
                         }
-                        _logger.Info($"AIManager initialisé dynamiquement via .dat - Map: {mapId}, Mode: {gameMode}, Type: {gameType}, Bots: {botCount}");
+                        _logger.Info($"AIManager initialisé dynamiquement via .dat - Map: {mapId}, Mode: {gameMode}, Type: {gameType}");
                     }
                 }
             }
@@ -278,12 +246,10 @@ namespace CoTG.CoTGServer
         /// <param name="diff">Number of milliseconds since this tick occurred.</param>
         internal void Update()
         {
-
             _currentlyInUpdate = true;
 
             UpdateStats();
             UpdateActions();
-
 
             // It is now safe to call RemoveObject at any time,
             // but compatibility with the older remove method remains.
@@ -292,8 +258,6 @@ namespace CoTG.CoTGServer
                 if (obj.IsToRemove())
                 {
                     obj.RemoveAllVisibilityLinkForEntity();
-
-
                     RemoveObject(obj);
                 }
             }
@@ -341,9 +305,6 @@ namespace CoTG.CoTGServer
             {
                 UpdateAIManager();
             }
-
-
-
             _currentlyInUpdate = false;
         }
 
@@ -387,23 +348,23 @@ namespace CoTG.CoTGServer
         /// <param name="o">GameObject to add.</param>
         public void AddObject(GameObject o)
         {
-            if (o != null)
+            if (o is null)
             {
-                _objectsToRemove.Remove(o);
-
-                if (_currentlyInUpdate)
-                {
-                    _objectsToAdd.Add(o);
-                }
-                else
-                {
-                    if (!_objects.TryAdd(o.NetId, o))
-                    {
-                        _logger.Error($"Can't add object \"{o.Name}\"(ID: {o.NetId}) to ObjectManager!");
-                    }
-                }
-                o.OnAdded();
+                return;
             }
+            _objectsToRemove.Remove(o);
+            if (_currentlyInUpdate)
+            {
+                _objectsToAdd.Add(o);
+            }
+            else
+            {
+                if (!_objects.TryAdd(o.NetId, o))
+                {
+                    _logger.Error($"Can't add object \"{o.Name}\"(ID: {o.NetId}) to ObjectManager!");
+                }
+            }
+            o.OnAdded();
         }
 
         /// <summary>
@@ -562,7 +523,6 @@ namespace CoTG.CoTGServer
                             AImanagerentities.Add(cp);
                         }
                     }
-
                 }
             }
 
@@ -679,9 +639,8 @@ namespace CoTG.CoTGServer
         /// <param name="range">Distance to check.</param>
         /// <param name="onlyAlive">Whether dead Champions should be excluded or not.</param>
         /// <returns>List of all Champions within the specified range of the position and of the specified alive status.</returns>
-        public List<Champion> GetChampionsInRangeFromTeam(Vector2 checkPos, float range, TeamId team, bool onlyAlive = false)
+        public IEnumerable<Champion> GetChampionsInRangeFromTeam(Vector2 checkPos, float range, TeamId team, bool onlyAlive = false)
         {
-            var champs = new List<Champion>();
             foreach (var kv in _champions)
             {
                 var c = kv.Value;
@@ -689,22 +648,18 @@ namespace CoTG.CoTGServer
                 {
                     if (c.Team == team && ((onlyAlive && !c.Stats.IsDead) || !onlyAlive))
                     {
-                        champs.Add(c);
+                        yield return c;
                     }
                 }
             }
-
-            return champs;
         }
 
-        public List<IExperienceOwner> GetExperienceOwnersInRangeFromTeam(Vector2 checkPos, float range, TeamId team, bool onlyAlive = false)
+        public IEnumerable<IExperienceOwner> GetExperienceOwnersInRangeFromTeam(Vector2 checkPos, float range, TeamId team, bool onlyAlive = false)
         {
-            List<IExperienceOwner> experienceOwners = new();
-
             var champions = GetChampionsInRangeFromTeam(checkPos, range, team, onlyAlive);
             foreach (var champion in champions)
             {
-                experienceOwners.Add(champion);
+                yield return champion;
             }
 
             foreach (var kv in _objects)
@@ -713,12 +668,10 @@ namespace CoTG.CoTGServer
                 {
                     if (expOwner.Experience.Owner.Team == team && ((onlyAlive && !expOwner.Experience.Owner.Stats.IsDead) || !onlyAlive))
                     {
-                        experienceOwners.Add(expOwner);
+                        yield return expOwner;
                     }
                 }
             }
-
-            return experienceOwners;
         }
 
         internal void LoadScripts()

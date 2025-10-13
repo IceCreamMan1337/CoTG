@@ -34,7 +34,6 @@ public class ObjAIBase : AttackableUnit
     private bool _skipNextAutoAttack;
     private Spell _castingSpell;
     private Spell _lastAutoAttack;
-    private Random _random = new();
     protected AIState _aiState = AIState.AI_IDLE;
     protected bool _aiPaused;
     protected Pet _lastPetSpawned;
