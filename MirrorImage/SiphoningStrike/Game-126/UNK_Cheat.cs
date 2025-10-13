@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using SiphoningStrike.Game.Common;
 using MirrorImage;
 using MirrorImage;
-using static Dropbox.Api.TeamLog.SharedLinkAccessLevel;
 using SiphoningStrike.Game.Cheat;
 namespace SiphoningStrike.Game
 {

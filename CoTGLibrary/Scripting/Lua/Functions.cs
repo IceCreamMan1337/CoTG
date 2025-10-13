@@ -2581,26 +2581,6 @@ public static partial class Functions
         EndGameNotify(team);
         Game.StateHandler.SetGameState(GameState.ENDGAME);
         Game.StateHandler.SetGameToExit();
-
-        /*    var test = new byte[0];
-            test[0] = 0;
-            // Write packet data to the end of the binary file
-            using (FileStream fileStream = new FileStream(Game.nameofreplay, FileMode.Append, FileAccess.Write))
-            {
-                fileStream.Seek(0, SeekOrigin.End); // Move to the end of the file
-                fileStream.Write(test, 0, 1);
-            }*/
-
-        //TODO: Maybe have a dedicated HTTP post system?
-        if (!string.IsNullOrEmpty(Game.Config.HttpPostAddress))
-        {
-            var endGame = new EndGameInfo(winningTeam);
-            endGame.Post(Game.Config.HttpPostAddress);
-        }
-        else
-        {
-            Game.isUploadingfinished = true;
-        }
     }
 
     public static void Log(string message)

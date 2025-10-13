@@ -181,9 +181,6 @@ namespace CoTG.CoTGServer
             }
         }
 
-
-
-
         /// <summary>
         /// Function which initiates ticking of the game's logic.
         /// </summary>
@@ -244,13 +241,6 @@ namespace CoTG.CoTGServer
                     pendingActions.Clear();
                 }
                 PktVersioningNotifier.NetLoop((uint)timeout);
-            }
-
-
-
-            while (!isUploadingfinished)
-            {
-
             }
         }
 
