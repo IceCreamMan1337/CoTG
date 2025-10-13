@@ -348,21 +348,23 @@ namespace CoTG.CoTGServer
         /// <param name="o">GameObject to add.</param>
         public void AddObject(GameObject o)
         {
-            if (o != null)
+            if (o is null)
             {
-                if (_currentlyInUpdate)
-                {
-                    _objectsToAdd.Add(o);
-                }
-                else
-                {
-                    if (!_objects.TryAdd(o.NetId, o))
-                    {
-                        _logger.Error($"Can't add object \"{o.Name}\"(ID: {o.NetId}) to ObjectManager!");
-                    }
-                }
-                o.OnAdded();
+                return;
             }
+            _objectsToRemove.Remove(o);
+            if (_currentlyInUpdate)
+            {
+                _objectsToAdd.Add(o);
+            }
+            else
+            {
+                if (!_objects.TryAdd(o.NetId, o))
+                {
+                    _logger.Error($"Can't add object \"{o.Name}\"(ID: {o.NetId}) to ObjectManager!");
+                }
+            }
+            o.OnAdded();
         }
 
         /// <summary>
