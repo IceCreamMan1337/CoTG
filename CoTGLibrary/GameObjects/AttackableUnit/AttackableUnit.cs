@@ -853,14 +853,12 @@ public class AttackableUnit : GameObject, IGoldOwner
             {
                 damageData.Damage = 0;
                 damageData.DamageResultType = DamageResultType.RESULT_MISS;
-                //Order of events needs to be checked
+
                 ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
                 UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
                 return;
             }
         }
-
-
 
         var originalDamage = damageData.Damage;
         damageData.Damage *= GetAttackRatio(damageData.Attacker);
@@ -883,12 +881,6 @@ public class AttackableUnit : GameObject, IGoldOwner
 
             ApiEventManager.OnBeingHit.Publish(damageData.Target, damageData);
             ApiEventManager.OnHitUnit.Publish(damageData.Attacker as ObjAIBase, damageData);
-
-
-            if (damageData.DamageResultType == DamageResultType.RESULT_MISS)
-            {
-                ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
-            }
 
             if (damageData.DamageResultType == DamageResultType.RESULT_CRITICAL && !damageData.IgnoreDamageCrit)
             {
@@ -930,8 +922,6 @@ public class AttackableUnit : GameObject, IGoldOwner
 
         ApiEventManager.OnTakeDamage.Publish(damageData.Target, damageData);
         ApiEventManager.OnDealDamage.Publish(damageData.Attacker, damageData);
-
-
 
         if (this is Champion c && damageData.Attacker is Champion cAttacker)
         {
