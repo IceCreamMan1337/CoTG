@@ -141,6 +141,7 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <summary>
     /// If this unit's auto attacks can go through dodge
     /// </summary>
+    //This is supposed to be in ObjAIBase.CharacterState
     public bool DodgePiercing { get; internal set; }
 
     public ForceMovementType _ForceMovementType { get; set; }
@@ -824,7 +825,7 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <param name="sourceScript">EventSource for hash</param>
     public virtual void TakeDamage(DamageData damageData, IEventSource sourceScript = null)
     {
-        if(damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK && Stats.DodgeChance.Total > 0 && Dodged()) 
+        if(damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK && !damageData.Attacker.DodgePiercing && Dodged()) 
         {
             ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
             ApiEventManager.OnBeingDodged.Publish(damageData.Target, damageData.Attacker);

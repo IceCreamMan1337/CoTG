@@ -12,6 +12,7 @@
 *.env
 
 Content/GameClient
+LuaScripts
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
