@@ -1125,7 +1125,6 @@ internal class ContentManager
     }
 
     private static readonly Dictionary<string, string[]> FileMap = [];
-    private static readonly Dictionary<string, string[]> DirectoryMap = [];
     private static string? FindFileCaseInsensitive(string directory, string fileName)
     {
         if (!Directory.Exists(directory))
