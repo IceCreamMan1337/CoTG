@@ -4,9 +4,5 @@
     <TargetFramework>net9.0</TargetFramework>
     <Configurations>Debug;Release;Debug_Log_AB;Debug AB;Release AB;Release AB</Configurations>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dropbox.Api" Version="7.0.0" />
-  </ItemGroup>
-
+	
 </Project>

@@ -41,11 +41,6 @@ namespace CoTG.CoTGServer
         internal string ContentPath { get; private set; } = string.Empty;
         internal string? DeployFolder { get; private set; }
         internal bool KeepAliveWhenEmpty { get; private set; }
-        internal string? nicknameforreplay { get; private set; }
-        internal string? pswdforreplay { get; private set; }
-
-        //use kdrive for host replay 
-        internal string? apikeydropbox { get; private set; }
         internal string[] AssemblyPaths { get; private set; }
 
 
@@ -113,16 +108,10 @@ namespace CoTG.CoTGServer
             ContentPath = gameInfo?.Value<string?>("CONTENT_PATH") ?? string.Empty;
             DeployFolder = gameInfo?.Value<string?>("DEPLOY_FOLDER") ?? string.Empty;
             KeepAliveWhenEmpty = gameInfo?.Value<bool?>("KEEP_ALIVE_WHEN_EMPTY") ?? false;
-            //launcherside
-            nicknameforreplay = gameInfo?.Value<string?>("USERNAMEOFREPLAYMAN") ?? string.Empty;
-            pswdforreplay = gameInfo?.Value<string?>("PASSWORDOFREPLAYMAN") ?? string.Empty;
 
             AssemblyPaths = gameInfo?.SelectToken("SCRIPT_ASSEMBLIES")?.Values<string>()?.ToArray() ?? [];
             //Address used to make an end-game API call to deliver all game stats. (Used for end-game screen on laucnher-clients mostly)
             HttpPostAddress = gameInfo?.Value<string?>("ENDGAME_HTTP_POST_ADDRESS") ?? string.Empty;
-
-            //account used for kdrive 
-            apikeydropbox = gameInfo?.Value<string?>("APIKEYDROPBOX") ?? string.Empty;
 
             //Evaluate if content path is correct, if not try to path traversal to find it
             if (!Directory.Exists(ContentPath))

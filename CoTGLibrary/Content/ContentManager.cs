@@ -19,7 +19,6 @@ using CoTG.CoTGServer.Inventory;
 using CoTG.CoTGServer.Logging;
 using log4net;
 using MoonSharp.Interpreter;
-using Dropbox.Api.Paper;
 
 namespace CoTG.CoTGServer.Content;
 

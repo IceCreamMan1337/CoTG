@@ -1,7 +1,7 @@
 {
   "gameId": 1,
   "game": {
-    "map": 4, // 1 SR , 3 PG ( providing ground) , 4 TT (twisted Treeline), 8 CS ( Crystal scar Dominion ) 
+    "map": 1, // 1 SR , 3 PG ( providing ground) , 4 TT (twisted Treeline), 8 CS ( Crystal scar Dominion ) 
     "gameMode": "CLASSIC", // ODIN for map8
     "mutators": [
       "",
@@ -12,8 +12,7 @@
       "",
       "",
       ""
-    ],
-    "dataPackage": "AvCsharp-Scripts"
+    ]
   },
   "gameInfo": {
     "TICK_RATE": 30, // TICKRATE DEPRECATED , DONT EDIT THIS PART , use cheat in gameclient directly 
@@ -27,17 +26,11 @@
     "IS_DAMAGE_TEXT_GLOBAL": false,
     //This will be used at end to get stats from the match. Not yet implemented 
     "ENDGAME_HTTP_POST_ADDRESS": "",
-    //Dropbox used to host replays (only necessary for serverlobby)
-    "APIKEYDROPBOX": "",
-    "USERNAMEOFREPLAYMAN": "",
-    "PASSWORDOFREPLAYMAN": "",
     //If true , this will send a heartbeat to tell the launcher_server :" the client can start join" because the CoTGServer takes too long to load
     "ENABLE_LAUNCHER": false,
     //The address and port used to send the heartbeat
     "LAUNCHER_ADRESS_AND_PORT": "127.0.0.1:25565",
     "SUPRESS_SCRIPT_NOT_FOUND_LOGS": true,
-    //If you want use ab_client switch the run configuration to "Release AB" or "Debug AB",
-    "AB_CLIENT": false,
     "ENABLE_LOG_AND_CONSOLEWRITELINE": false,
     "ENABLE_LOG_BehaviourTree": false,
     //If you want to enable packet receive , go in /"serverpath"/CoTGEnumNetwork/packets/handler/networkhandler.cs and uncomment this //  Console.WriteLine($"Receiving {packet.GetType().Name} {Newtonsoft.Json.JsonConvert.SerializeObject(packet, Newtonsoft.Json.Formatting.Indented)} from {userId}");
@@ -99,7 +92,7 @@
         "29": 5335,
         "30": 5335
       },
-      "talent": {
+      "talents": {
         "100": 0,
         "101": 0,
         "102": 4,
@@ -191,7 +184,7 @@
         "29": 10002,
         "30": 10002,
       },
-      "talent": {
+      "talents": {
         "100": 0,
         "101": 0,
         "102": 4,

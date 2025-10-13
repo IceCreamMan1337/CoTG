@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dropbox.Api" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\CoTGEnumNetwork\CoTGEnumNetwork.csproj" />
     <ProjectReference Include="..\..\CoTGLibrary\CoTGLibrary.csproj" />
   </ItemGroup>

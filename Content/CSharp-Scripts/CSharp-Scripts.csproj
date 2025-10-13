@@ -17,8 +17,4 @@
     <Folder Include="Maps\Map22\Mutators\" />
     <Folder Include="Maps\Map5\Mutators\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dropbox.Api" Version="7.0.0" />
-  </ItemGroup>
 </Project>
