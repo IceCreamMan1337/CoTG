@@ -744,11 +744,9 @@ public class AttackableUnit : GameObject, IGoldOwner
                     result = DamageResultType.RESULT_CRITICAL;
                     break;
                 case HitResult.HIT_Dodge:
-                    damage = 0;
                     result = DamageResultType.RESULT_DODGE;
                     break;
                 case HitResult.HIT_Miss:
-                    damage = 0;
                     result = DamageResultType.RESULT_MISS;
                     break;
             }
@@ -809,22 +807,14 @@ public class AttackableUnit : GameObject, IGoldOwner
         return data.DamageSource is DamageSource.DAMAGE_SOURCE_INTERNALRAW or DamageSource.DAMAGE_SOURCE_RAW ? originalDamage : damage;
     }
 
-    bool Dodged()
+    internal bool Dodged(AttackableUnit attacker)
     {
-        if (_random.NextSingle() <= Stats.DodgeChance.Total)
-        {
-            return true;
-        }
-        return false;
+        return !attacker.DodgePiercing && Stats.DodgeChance.Total > 0 && _random.NextSingle() <= Stats.DodgeChance.Total;
     }
 
-    bool Missed()
+    internal bool Missed()
     {
-        if (_random.NextSingle() <= Stats.MissChance.Total)
-        {
-            return true;
-        }
-        return false;
+        return Stats.MissChance.Total > 0 && _random.NextSingle() <= Stats.MissChance.Total;
     }
 
     /// <summary>
@@ -834,12 +824,11 @@ public class AttackableUnit : GameObject, IGoldOwner
     /// <param name="sourceScript">EventSource for hash</param>
     public virtual void TakeDamage(DamageData damageData, IEventSource sourceScript = null)
     {
-        if (damageData.DamageSource is DamageSource.DAMAGE_SOURCE_ATTACK)
+        switch (damageData.DamageResultType)
         {
-            if (!damageData.Attacker.DodgePiercing && Dodged())
-            {
+            case DamageResultType.RESULT_DODGE:
                 damageData.Damage = 0;
-
+                    
                 //Order of events need to be checked
                 ApiEventManager.OnDodge.Publish(damageData.Target, damageData.Attacker);
                 ApiEventManager.OnBeingDodged.Publish(damageData.Attacker, damageData.Target);
@@ -848,21 +837,19 @@ public class AttackableUnit : GameObject, IGoldOwner
 
                 UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
                 return;
-            }
-            else if (damageData.Attacker.Missed())
-            {
+            case DamageResultType.RESULT_MISS:
                 damageData.Damage = 0;
-                damageData.DamageResultType = DamageResultType.RESULT_MISS;
 
                 ApiEventManager.OnMiss.Publish(damageData.Attacker, damageData.Target);
                 UnitApplyDamageNotify(damageData, Game.Config.IsDamageTextGlobal);
                 return;
-            }
+            default:
+                break;
         }
-
+        
         var originalDamage = damageData.Damage;
         damageData.Damage *= GetAttackRatio(damageData.Attacker);
-
+        
         LastTimeGetHit = Game.Time.GameTime;
         LastPersonwhohavehitthistarget = damageData.Attacker as ObjAIBase;
 
@@ -871,7 +858,7 @@ public class AttackableUnit : GameObject, IGoldOwner
         {
             damageData.DamageResultType = DamageResultType.RESULT_NORMAL;
         }
-
+        
         //TODO: All these calls need confirmation when they are published
         //Sometimes autoattack seem an default damage source ( pantheon for example ) need investigation 
 
@@ -888,6 +875,8 @@ public class AttackableUnit : GameObject, IGoldOwner
             }
         }
 
+   
+   
         //InternalRaw bypasses invulnerability check (Kayle R)
         if (damageData.DamageSource is not DamageSource.DAMAGE_SOURCE_INTERNALRAW &&
            !CanTakeDamage(damageData.DamageType) ||

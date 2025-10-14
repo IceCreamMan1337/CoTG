@@ -613,29 +613,18 @@ public partial class Spell : IEventSource
             bool isMissed = false;
             bool isDodged = false;
 
-            if (Caster.Buffs.Has(BuffType.BLIND))
+            if (IsAutoAttack)
             {
-                isMissed = true;
+                if (Caster.Missed())
+                {
+                    hitResult = HitResult.HIT_Miss;
+                }
+                else if(target.Dodged(Caster))
+                {
+                    hitResult = HitResult.HIT_Dodge;
+                }
             }
-            else if (missChance > 0)
-            {
-                isMissed = Random.Shared.Next(0, 100) < missChance * 100;
-            }
-
-            if (!isMissed && dodgeChance > 0 && !Caster.DodgePiercing)
-            {
-                isDodged = Random.Shared.Next(0, 100) < dodgeChance * 100;
-            }
-
-            if (isMissed)
-            {
-                hitResult = HitResult.HIT_Miss;
-            }
-            else if (isDodged)
-            {
-                hitResult = HitResult.HIT_Dodge;
-            }
-
+            
             if (Caster.TargetHitResults.TryGetValue(target, out var result))
             {
                 result.Value = hitResult;
@@ -647,9 +636,7 @@ public partial class Spell : IEventSource
                     Value = hitResult
                 };
             }
-
-
-
+            
             return hitResult;
         }
 
