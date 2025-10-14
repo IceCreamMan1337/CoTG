@@ -190,8 +190,8 @@ public class Champion : ObjAIBase, IExperienceOwner
     private static ILog Logger = LoggerProvider.GetLogger();
     internal override void OnAdded()
     {
-        Game.ObjectManager.AddChampion(this);
         base.OnAdded();
+        Game.ObjectManager.AddChampion(this);
         TalentInventory.Activate(this);
 
         ItemData? bluePill = ContentManager.GetItemData(2001); //Game.Map.GameMode.MapScriptMetadata.RecallSpellItemId

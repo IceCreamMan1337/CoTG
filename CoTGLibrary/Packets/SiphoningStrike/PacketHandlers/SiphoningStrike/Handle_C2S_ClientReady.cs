@@ -20,7 +20,6 @@ public class Handle_C2S_ClientReady : PacketHandlerBase<C2S_ClientReady>
                 var msg = "[CoTG] Chat commands are enabled in this game.";
                 ChatManager.System(msg);
             }
-            Game.PlayerManager.GetPeerInfo(userId).Champion.ScriptInternal.OnActivate();
         }
 
 

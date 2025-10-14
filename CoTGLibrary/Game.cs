@@ -93,7 +93,6 @@ namespace CoTG.CoTGServer
         /// Class that compiles and loads all scripts which will be used for the game (ex: spells, items, AI, maps, etc).
         /// </summary>
         internal static CSharpScriptEngine ScriptEngine { get; private set; }
-        internal static FileSystemWatcher? ScriptsHotReloadWatcher { get; private set; }
 
         public static string nameofreplay { get; set; }
 

@@ -415,7 +415,6 @@ public class ObjAIBase : AttackableUnit
 
         if (!(Game.StateHandler.State == GameState.GAMELOOP))
         {
-
             Game.pendingActions.Add(ActivateAIScript);
             Game.pendingActions.Add(ActivateScriptInternal);
 
@@ -470,20 +469,6 @@ public class ObjAIBase : AttackableUnit
     /// </summary>
     internal void LoadCharScript(Spell spell)
     {
-        bool isReload = CharScript != null;
-        if (isReload)
-        {
-            try
-            {
-                ScriptInternal.OnDeactivate();
-            }
-            catch (Exception e)
-            {
-                _logger.Error(null, e);
-            }
-            ApiEventManager.RemoveAllListenersForOwner(CharScript);
-        }
-
         var scriptName = $"CharScript{Model}";
         Game.ScriptEngine.CreateObject<IPreLoadScript>("PreLoads", scriptName, Game.Config.SupressScriptNotFound)?.Preload();
         var script = Game.ScriptEngine.CreateObject<ICharScriptInternal>("CharScripts", scriptName, Game.Config.SupressScriptNotFound);
@@ -508,18 +493,6 @@ public class ObjAIBase : AttackableUnit
         }
         ScriptInternal = script;
         ScriptInternal.Init(this, spell);
-
-        if (isReload)
-        {
-            try
-            {
-                ScriptInternal.OnActivate();
-            }
-            catch (Exception e)
-            {
-                _logger.Error(null, e);
-            }
-        }
     }
 
     /// <summary>
@@ -551,16 +524,6 @@ public class ObjAIBase : AttackableUnit
         AIScript.Init(this);
     }
 
-    /// <summary>
-    /// Reload the spells scripts. Debug only
-    /// </summary>
-    internal void ReloadSpellsScripts()
-    {
-        foreach (var spell in Spells)
-        {
-            spell?.LoadScript();
-        }
-    }
     public int _currentWaypointIndex = 0;
     public Vector2 Closestwaypointofthelist()
     {

@@ -89,6 +89,7 @@ public class BaseTurret : ObjAIBase
     /// </summary>
     internal override void OnAdded()
     {
+        base.OnAdded();
         // Add the turret to the collision handler
         Game.Map.CollisionHandler.AddObject(this);
 
