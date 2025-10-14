@@ -126,15 +126,6 @@ Summary of each command:
 
 ---
 
-### `!hotreload`
-*   **Syntax:** `!hotreload 0 (disable) / 1 (enable)`
-*   **Explanation:** Enables or disables the script hot reloading feature for the server.
-*   **Examples:**
-    *   `!hotreload 1` (Enables script hot reloading)
-    *   `!hotreload 0` (Disables script hot reloading)
-
----
-
 ### `!inhib`
 *   **Syntax:** `!inhib`
 *   **Explanation:** Spawns a "Worm" minion (using "BasicJungleMonsterAI") at your champion's current position.

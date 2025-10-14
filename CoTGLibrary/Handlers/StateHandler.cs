@@ -49,17 +49,11 @@ internal class StateHandler
         SetGameState(GameState.GAMELOOP);
         try
         {
-            //Check?
             Game.Map.GameMode.OnMatchPreStart();
-
-            Game.Map.LevelScript.OnLevelInit();
             Game.Map.PublishMutatorCallback(script => script.OnInitClient());
-
             Game.Map.LevelScript.OnLevelInitServer();
             Game.Map.PublishMutatorCallback(script => script.OnInitServer());
-
             Game.Map.GameMode.OnMatchStart();
-
         }
         catch (Exception e)
         {

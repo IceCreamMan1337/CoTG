@@ -270,6 +270,7 @@ internal class MapHandler
         {
             luaScript.OnScriptInit();
         }
+        LevelScript.OnLevelInit();
     }
 
     private void InitializeMutators()

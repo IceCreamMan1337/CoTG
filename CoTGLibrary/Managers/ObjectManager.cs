@@ -673,21 +673,6 @@ namespace CoTG.CoTGServer
                 }
             }
         }
-
-        internal void LoadScripts()
-        {
-            _currentlyInUpdate = true;
-            foreach (var unit in _objects.Values)
-            {
-                if (unit is ObjAIBase obj)
-                {
-                    obj.LoadCharScript(obj.Spells.Passive);
-                    obj.Buffs.ReloadScripts();
-                    obj.ReloadSpellsScripts();
-                }
-            }
-            _currentlyInUpdate = false;
-        }
     }
 }
 
