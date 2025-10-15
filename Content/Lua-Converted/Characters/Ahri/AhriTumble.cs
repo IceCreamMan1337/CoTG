@@ -12,7 +12,7 @@
                 CanHitFriends = false,
                 CanHitSameTarget = false,
                 CanHitSameTargetConsecutively = false,
-                MaximumHits = 10,
+                MaximumHits = [10, 10, 10, 10, 10],
             },
             DoesntBreakShields = true,
             TriggersSpellCasts = true,

@@ -9,7 +9,7 @@
                 CanHitCaster = false,
                 CanHitSameTarget = false,
                 CanHitSameTargetConsecutively = false,
-                MaximumHits = 2,
+                MaximumHits = [2, 2, 2, 2, 2],
             },
             TriggersSpellCasts = true,
             NotSingleTargetSpell = false,

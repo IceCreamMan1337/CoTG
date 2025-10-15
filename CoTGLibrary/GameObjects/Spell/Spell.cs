@@ -1216,16 +1216,8 @@ public partial class Spell : IEventSource
     private bool inTargetExecute;
     private void TargetExecute(AttackableUnit target, SpellMissile? missile, HitResult hitResult, bool isAutoAttackOrOverride)
     {
-
-
-        // Prevent self-damage for Twitch's ultimate
-        /* if (target == Caster && Name == "FullAutomatic")
-         {
-             return;
-         }
-        */
         inTargetExecute = true;
-
+        Functions.CastedSpell = this;
         if (Data.HaveHitEffect && !string.IsNullOrEmpty(Data.HitEffectName) && !isAutoAttackOrOverride)
         {
             AFM.AddParticleBind

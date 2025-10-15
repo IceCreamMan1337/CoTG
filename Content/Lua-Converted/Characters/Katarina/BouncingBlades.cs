@@ -2,7 +2,6 @@
 {
     public class BouncingBlades : SpellScript
     {
-        private float remainingBounces = 2; // Used to track remaining bounces in a spell chain
         public override SpellScriptMetadata MetaData { get; } = new()
         {
             ChainMissileParameters = new()
@@ -10,7 +9,7 @@
                 CanHitCaster = false,
                 CanHitSameTarget = false,
                 CanHitSameTargetConsecutively = false,
-                MaximumHitsByLevel = new[] { 2, 3, 4, 5, 6 },
+                MaximumHits = [2, 3, 4, 5, 6],
             },
             TriggersSpellCasts = true,
             IsDamagingSpell = true,
@@ -35,69 +34,28 @@
             {
                 totalSpellDamage += killerInstinctDamage[killerInstinctLevel - 1];
             }
+            int bbCounter = GetCastSpellTargetsHitPlusOne();
 
-            if (GetBuffCountFromCaster(owner, owner, nameof(Buffs.KillerInstinct)) > 0)
+            if (HasBuff(owner, "KillerInstinct"))
             {
                 SpellBuffRemove(owner, nameof(Buffs.KillerInstinct), owner);
                 AddBuff(attacker, owner, new Buffs.KillerInstinctBuff2(), 1, 1, 4, BuffAddType.REPLACE_EXISTING, BuffType.INTERNAL, 0, true, false, false);
             }
 
-            if (GetBuffCountFromCaster(owner, owner, nameof(Buffs.KillerInstinctBuff2)) > 0)
+            if (HasBuff(owner, "KillerInstinctBuff2"))
             {
-                ApplyKillerInstinctEffects(target, totalSpellDamage);
+                AddBuff((ObjAIBase)target, target, new Buffs.Internal_50MS(), 1, 1, 5, BuffAddType.RENEW_EXISTING, BuffType.INTERNAL, 0, true, false, false);
+                AddBuff(attacker, target, new Buffs.GrievousWound(), 1, 1, 5, BuffAddType.RENEW_EXISTING, BuffType.COMBAT_DEHANCER, 0, true, false, false);
+                int TargetNum = GetCastSpellTargetsHitPlusOne();
+                ApplyDamage(attacker, target, totalSpellDamage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELLAOE, 1, 0.35f, 1, false, false, attacker);
             }
             else
             {
-                ApplyRegularDamage(target, totalSpellDamage);
+                float  bbCount = bbCounter - 1;
+                float inverseVar = bbCount * 0.1f;
+                float percentVar = MathF.Abs(inverseVar - 1); //This abs call wasn't present in the original script, but otherwise you'd deal negative damage
+                ApplyDamage(attacker, target, totalSpellDamage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELLAOE, percentVar, 0.35f, 1, false, false, attacker);
             }
-
-            // Handle bouncing logic
-            if (remainingBounces > 0)
-            {
-
-                BounceToNextTarget(target);
-            }
-            else
-            {
-                ResetBounceCount();
-            }
-
-
-        }
-
-        private void ApplyKillerInstinctEffects(AttackableUnit target, float damage)
-        {
-            remainingBounces -= 1;
-            AddBuff((ObjAIBase)target, target, new Buffs.Internal_50MS(), 1, 1, 5, BuffAddType.RENEW_EXISTING, BuffType.INTERNAL, 0, true, false, false);
-            AddBuff(attacker, target, new Buffs.GrievousWound(), 1, 1, 5, BuffAddType.RENEW_EXISTING, BuffType.COMBAT_DEHANCER, 0, true, false, false);
-            ApplyDamage(attacker, target, damage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELLAOE, 1, 0.35f, 1, false, false, attacker);
-        }
-
-        private void ApplyRegularDamage(AttackableUnit target, float damage)
-        {
-            remainingBounces -= 1;
-            float damageMultiplier = 1 - (remainingBounces * 0.1f);
-            ApplyDamage(attacker, target, damage, DamageType.DAMAGE_TYPE_MAGICAL, DamageSource.DAMAGE_SOURCE_SPELLAOE, damageMultiplier, 0.35f, 1, false, false, attacker);
-        }
-
-        private void BounceToNextTarget(AttackableUnit currentTarget)
-        {
-            foreach (AttackableUnit unit in GetRandomUnitsInArea(attacker, currentTarget.Position3D, 400, SpellDataFlags.AffectEnemies | SpellDataFlags.AffectNeutral | SpellDataFlags.AffectMinions | SpellDataFlags.AffectHeroes | SpellDataFlags.NotAffectSelf, 10, default, false))
-            {
-                if (unit != currentTarget && (!GetStealthed(unit) || CanSeeTarget(attacker, unit)))
-                {
-                    Vector3 attackerPos = GetUnitPosition(currentTarget);
-                    int level = GetSlotSpellLevel(attacker, 2, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots);
-                    SpellCast(attacker, unit, default, default, 0, SpellSlotType.SpellSlots, level, true, true, false, false, false, true, attackerPos);
-                    break;
-                }
-            }
-        }
-
-        private void ResetBounceCount()
-        {
-            int level = GetSlotSpellLevel(owner, 0, SpellbookType.SPELLBOOK_CHAMPION, SpellSlotType.SpellSlots);
-            remainingBounces = MetaData.ChainMissileParameters.MaximumHitsByLevel[level - 1];
         }
     }
 }
@@ -108,7 +66,7 @@ namespace Buffs
     {
         public override BuffScriptMetadataUnmutable MetaData { get; } = new()
         {
-            AutoBuffActivateEffect = new[] { "" },
+            AutoBuffActivateEffect = [""],
         };
     }
 }

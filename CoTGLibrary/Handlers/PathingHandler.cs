@@ -1,5 +1,6 @@
 using System.Activities.Presentation.View;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using CoTG.CoTGServer.GameObjects.AttackableUnits;
 
@@ -118,7 +119,7 @@ namespace CoTG.CoTGServer.Handlers
         {
             bool walkable = Game.Map.NavigationGrid.IsWalkable(pos, radius);
 
-            if (checkObjects && Game.Map.CollisionHandler.GetNearestObjects(new Circle(pos, radius)).Count > 0)
+            if (checkObjects && Game.Map.CollisionHandler.GetNearestObjects(new Circle(pos, radius)).Any())
             {
                 walkable = false;
             }

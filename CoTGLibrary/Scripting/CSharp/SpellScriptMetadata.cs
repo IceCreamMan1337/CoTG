@@ -127,7 +127,7 @@ namespace CoTG.CoTGServer.Scripting.CSharp
     public class MissileParameters
     {
         public bool CanHitCaster { get; set; } = false;
-        public bool CanHitEnemies { get; set; } = false;
+        public bool CanHitEnemies { get; set; } = true; //Check Default value
         public bool CanHitFriends { get; set; } = false;
         /// <summary>
         /// Whether or not the missile should be able to hit something multiple times.
@@ -140,12 +140,12 @@ namespace CoTG.CoTGServer.Scripting.CSharp
         /// regardless of if it has bounced to another unit.
         /// Overrides CanHitSameTarget.
         /// </summary>
+        //There no official scripts in .126 where this is true.
         public bool CanHitSameTargetConsecutively { get; set; } = false;
         /// <summary>
         /// Maximum number of times the missile can hit something before being removed.
         /// </summary>
-        public int MaximumHits { get; set; } = 0;
-        public int[] MaximumHitsByLevel = { 0, 0, 0, 0, 0 };
+        public int[] MaximumHits { get; set; } = [0, 0, 0, 0, 0];
     }
 
     /// <summary>

@@ -382,15 +382,17 @@ namespace CoTG.CoTGServer.API
         /// <param name="sourceTeam">Source team to validate the targets</param>
         /// <param name="filterFlags">Flags to filters units types and teams</param>
         /// <returns>List of AttackableUnits.</returns>
-        public static List<AttackableUnit> FilterUnitsInRange
-        (
-            AttackableUnit self,
-            Vector2 targetPos,
-            float range,
-            SpellDataFlags filterFlags
-        )
+        public static List<AttackableUnit> FilterUnitsInRange(AttackableUnit self, Vector2 targetPos, float range, SpellDataFlags filterFlags)
         {
             var units = EnumerateFilterUnitsInRange(self, targetPos, range, filterFlags);
+            var unitList = units.ToList();
+            unitList.Sort((a, b) => Vector2.DistanceSquared(a.Position, targetPos).CompareTo(Vector2.DistanceSquared(b.Position, targetPos)));
+            return unitList;
+        }
+
+        public static List<AttackableUnit> UnitsInRange(AttackableUnit self, Vector2 targetPos, float range)
+        {
+            var units = EnumerateUnfilteredUnitsInRange(self, targetPos, range);
             var unitList = units.ToList();
             unitList.Sort((a, b) => Vector2.DistanceSquared(a.Position, targetPos).CompareTo(Vector2.DistanceSquared(b.Position, targetPos)));
             return unitList;
@@ -404,17 +406,22 @@ namespace CoTG.CoTGServer.API
         /// <param name="sourceTeam">Source team to validate the targets</param>
         /// <param name="filterFlags">Flags to filters units types and teams</param>
         /// <returns>List of AttackableUnits.</returns>
-        public static IEnumerable<AttackableUnit> EnumerateFilterUnitsInRange
-        (
-            AttackableUnit self,
-            Vector2 targetPos,
-            float range,
-            SpellDataFlags filterFlags
-        )
+        public static IEnumerable<AttackableUnit> EnumerateFilterUnitsInRange(AttackableUnit self, Vector2 targetPos, float range, SpellDataFlags filterFlags)
         {
             foreach (var obj in Game.Map.CollisionHandler.GetNearestObjects(new Circle(targetPos, range)))
             {
                 if (obj is AttackableUnit u && IsValidTarget(self, u, filterFlags))
+                {
+                    yield return u;
+                }
+            }
+        }
+
+        public static IEnumerable<AttackableUnit> EnumerateUnfilteredUnitsInRange(AttackableUnit self, Vector2 targetPos, float range)
+        {
+            foreach (var obj in Game.Map.CollisionHandler.GetNearestObjects(new Circle(targetPos, range)))
+            {
+                if (obj is AttackableUnit u)
                 {
                     yield return u;
                 }

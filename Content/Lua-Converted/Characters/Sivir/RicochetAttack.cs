@@ -12,7 +12,7 @@ namespace Spells
 
                 CanHitSameTarget = false,
                 CanHitSameTargetConsecutively = false,
-                MaximumHitsByLevel = new[] { 2, 3, 4, 5, 6, },
+                MaximumHits = [2, 3, 4, 5, 6,],
 
             },
             TriggersSpellCasts = false,

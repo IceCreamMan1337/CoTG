@@ -109,9 +109,12 @@ namespace CoTG.CoTGServer.Handlers
         /// </summary>
         /// <param name="obj">GameObject which will be the origin of the check.</param>
         /// <returns>List of GameObjects. Null if GameObject is not present in the QuadTree.</returns>
-        public List<GameObject> GetNearestObjects(GameObject obj)
+        public IEnumerable<GameObject> GetNearestObjects(GameObject gobj)
         {
-            return GetNearestObjects(GetBounds(obj));
+            foreach (var obj in _quadDynamic.GetNodesInside(GetBounds(gobj)))
+            {
+                yield return obj;
+            }
         }
 
         /// <summary>
@@ -119,16 +122,12 @@ namespace CoTG.CoTGServer.Handlers
         /// </summary>
         /// <param name="circle"></param>
         /// <returns>List of GameObjects.</returns>
-        public List<GameObject> GetNearestObjects(Circle circle)
+        public IEnumerable<GameObject> GetNearestObjects(Circle circle)
         {
-            var nearest = new List<GameObject>();
-
             foreach (var obj in _quadDynamic.GetNodesInside(circle))
             {
-                nearest.Add(obj);
+                yield return obj;
             }
-
-            return nearest;
         }
 
         /// <summary>

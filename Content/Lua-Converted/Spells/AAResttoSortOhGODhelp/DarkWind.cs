@@ -9,7 +9,7 @@
                 CanHitCaster = false,
                 CanHitSameTarget = true,
                 CanHitSameTargetConsecutively = false,
-                MaximumHitsByLevel = new[] { 2, 4, 6, 8, 10, },
+                MaximumHits = [2, 4, 6, 8, 10,],
             },
             TriggersSpellCasts = true,
             IsDamagingSpell = true,
